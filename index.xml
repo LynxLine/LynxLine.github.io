@@ -9,6 +9,13 @@
     <lastBuildDate>Sun, 03 Mar 2024 11:21:28 +0100</lastBuildDate>
     <atom:link href="https://lynxline.com/index.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>Services</title>
+      <link>https://lynxline.com/services/</link>
+      <pubDate>Fri, 08 Mar 2024 10:10:11 +0100</pubDate>
+      <guid>https://lynxline.com/services/</guid>
+      <description>Introducing LynxLine. Our team specializes in creating secure and efficient solutions for businesses and organizations. With a focus on cutting-edge technology and unparalleled expertise, we are dedicated to providing top-notch services to protect your sensitive data and communications.&#xA;Smart contracts audit Our industry-leading veteran smart contract auditors, ensures that your Ethereum application is ready for launch and built to protect users.&#xA;Software development Our expertise lies in designing and developing software for networking and desktop applications, high-availability servers, and optimizing application performance.</description>
+    </item>
+    <item>
       <title>Contact</title>
       <link>https://lynxline.com/contact/</link>
       <pubDate>Wed, 06 Mar 2024 21:50:35 +0100</pubDate>

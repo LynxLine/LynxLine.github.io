@@ -17,26 +17,26 @@
     
 
     
-    <title>Services</title>
+    <title>Lab 1 Compiler</title>
     <meta name="description" content="">
     <meta name="keywords" content=''>
 
-    <meta property="og:url" content="https://lynxline.com/services/">
+    <meta property="og:url" content="https://lynxline.com/posts/lab-1-compiler/">
     <meta property="og:type" content="website">
-    <meta property="og:title" content="Services">
+    <meta property="og:title" content="Lab 1 Compiler">
     <meta property="og:description" content="">
     <meta property="og:image" content="https://lynxline.com/images/lynx.jpg">
     <meta property="og:image:secure_url" content="https://lynxline.com/images/lynx.jpg">
 
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Services">
+    <meta name="twitter:title" content="Lab 1 Compiler">
     <meta name="twitter:description" content="">
-    <meta property="twitter:domain" content="https://lynxline.com/services/">
-    <meta property="twitter:url" content="https://lynxline.com/services/">
+    <meta property="twitter:domain" content="https://lynxline.com/posts/lab-1-compiler/">
+    <meta property="twitter:url" content="https://lynxline.com/posts/lab-1-compiler/">
     <meta name="twitter:image" content="https://lynxline.com/images/lynx.jpg">
 
     
-    <link rel="canonical" href="https://lynxline.com/services/" />
+    <link rel="canonical" href="https://lynxline.com/posts/lab-1-compiler/" />
 
     
     <link rel="stylesheet" type="text/css" href="/css/normalize.min.css" media="print">
@@ -145,28 +145,67 @@
     </nav>
 </header>
 <main id="content">
-    
-
     <div class="post container">
-
     <div class="post-header-section">
-        <h1>Services</h1>
+        <h1>Lab 1 Compiler</h1>
+        <small role="doc-subtitle"></small>
+        <p class="post-date">November 16, 2012
+        
+        </p>
+
+        <ul class="post-tags">
+        
+        </ul>
     </div>
 
     <div class="post-content">
         <p>
-            <p>Introducing LynxLine. Our team specializes in creating secure and efficient solutions for businesses and organizations. With a focus on cutting-edge technology and unparalleled expertise, we are dedicated to providing top-notch services to protect your sensitive data and communications.</p>
-<h2 id="smart-contracts-audit">Smart contracts audit</h2>
-<p>Our industry-leading veteran smart contract auditors, ensures that your Ethereum application is ready for launch and built to protect users.</p>
-<h2 id="software-development">Software development</h2>
-<p>Our expertise lies in designing and developing software for networking and desktop applications, high-availability servers, and optimizing application performance.</p>
-
+            <p>Let’s start with tools that we need to just build the OS for ARM. First clone official inferno os repository
+from google code repository:</p>
+<pre tabindex="0"><code>##hg#clone#https://code.google.com/p/inferno6os/
+</code></pre><p>What we need to move further? We need the ARM cross compiler, linker, etc. For this, let’s just compile
+inferno targeting mac as host (we are on mac now, so we will get hosted inferno for mac as result):</p>
+<pre tabindex="0"><code>01 ##cd#inferno6os/
+02 ##INF_ROOT=`pwd`#perl#6i#6pe#&#39;s/^ROOT=.*/ROOT=$ENV{INF_ROOT}/m&#39;#mkconfig 03 ##perl#6i#6pe#&#39;s/^SYSHOST=.*/SYSHOST=MacOSX/m&#39;#mkconfig
+04 ##perl#6i#6pe#&#39;s/^OBJTYPE=.*/OBJTYPE=386/m&#39;#mkconfig
+05 ##sh#makemk.sh
+06 ##PATH=`pwd`/MacOSX/386/bin:$PATH#mk#nuke
+07 ##PATH=`pwd`/MacOSX/386/bin:$PATH#mk#install
+08 ...#waiting#just#few#minutes#...
+09 ##ls#MacOSX/386/bin/
+10 0a#########2l#########8l#########iar########ksize######ms2########tc
+11 0c#########5a#########acid#######idea#######kstrip#####ndate######va
+12 0l#########5c#########asm########inm########limbo######qa#########vc
+13 1a#########5coff######c2l########iyacc######md5sum#####qc#########vl
+14 1c#########5cv########data2c#####ka#########mk#########ql
+15 1l#########5l#########data2s#####kc#########mk.save####sqz
+16 2a#########8a#########emu########kl#########mkext######srclist
+17 2c#########8c#########ftl########kprof######mkppcimage#styxtest
+18 #
+</code></pre><p>Yes! Now we have all needed cross-platform tools for building Inferno OS for ARM, see 5c – C compiler, 5a – ARM assembler, 5l – ARM linker.
+Let’s check ARM asm generated:</p>
+<pre tabindex="0"><code>1 ##export#PATH=`pwd`/MacOSX/386/bin:$PATH
+2 ##echo#&#34;int#main()#{#return#123;#}&#34;#&gt;tmp.c#&amp;&amp;#5c#6S#tmp.c#&amp;&amp;#rm#tmp.c 3 ####TEXT####main+0(SB),0,$0
+4 ####MOVW####$123,R0 5 ####RET#,
+6 ####RET#,
+7 ####END#,
+</code></pre>
         </p>
+        
     </div>
+
+    <div class="prev-next">
+        
+    </div>
+
+    
+    
+    
 </div>
 
 
 
+    
 
         </main><footer class="footer">
     

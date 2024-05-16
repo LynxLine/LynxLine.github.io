@@ -6,8 +6,15 @@
     <description>Recent content in Raspberry Pi on LynxLine</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 16 Nov 2012 21:18:41 +0200</lastBuildDate>
+    <lastBuildDate>Fri, 16 Nov 2012 21:18:42 +0200</lastBuildDate>
     <atom:link href="https://lynxline.com/tags/raspberry-pi/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Lab 2 Hardware</title>
+      <link>https://lynxline.com/posts/lab-2-hardware/</link>
+      <pubDate>Fri, 16 Nov 2012 21:18:42 +0200</pubDate>
+      <guid>https://lynxline.com/posts/lab-2-hardware/</guid>
+      <description>We need to have possibility of booting kernel on Raspbery Pi. Because we will not have display driver soon, we need another approach – have serial port connected to get all output from booter and then from our kernel. We bought small FTDI 3.3V chip to have connected it to GPIO pins on one side and to USB port of my Mac on another side. Also need to install FTDIUSBSerialDriver_v2_2_18 for Mac.</description>
+    </item>
     <item>
       <title>Lab 1 Compiler</title>
       <link>https://lynxline.com/posts/lab-1-compiler/</link>

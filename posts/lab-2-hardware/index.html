@@ -17,26 +17,26 @@
     
 
     
-    <title>Raspberry Pi</title>
+    <title>Lab 2 Hardware</title>
     <meta name="description" content="">
-    <meta name="keywords" content=''>
+    <meta name="keywords" content='Blog, Inferno OS, Raspberry Pi, Research'>
 
-    <meta property="og:url" content="https://lynxline.com/tags/raspberry-pi/">
+    <meta property="og:url" content="https://lynxline.com/posts/lab-2-hardware/">
     <meta property="og:type" content="website">
-    <meta property="og:title" content="Raspberry Pi">
+    <meta property="og:title" content="Lab 2 Hardware">
     <meta property="og:description" content="">
     <meta property="og:image" content="https://lynxline.com/images/lynx.jpg">
     <meta property="og:image:secure_url" content="https://lynxline.com/images/lynx.jpg">
 
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Raspberry Pi">
+    <meta name="twitter:title" content="Lab 2 Hardware">
     <meta name="twitter:description" content="">
-    <meta property="twitter:domain" content="https://lynxline.com/tags/raspberry-pi/">
-    <meta property="twitter:url" content="https://lynxline.com/tags/raspberry-pi/">
+    <meta property="twitter:domain" content="https://lynxline.com/posts/lab-2-hardware/">
+    <meta property="twitter:url" content="https://lynxline.com/posts/lab-2-hardware/">
     <meta name="twitter:image" content="https://lynxline.com/images/lynx.jpg">
 
     
-    <link rel="canonical" href="https://lynxline.com/tags/raspberry-pi/" />
+    <link rel="canonical" href="https://lynxline.com/posts/lab-2-hardware/" />
 
     
     <link rel="stylesheet" type="text/css" href="/css/normalize.min.css" media="print">
@@ -145,27 +145,77 @@
     </nav>
 </header>
 <main id="content">
-    <div class="container list-posts">
+    <div class="post container">
+    <div class="post-header-section">
+        <h1>Lab 2 Hardware</h1>
+        <small role="doc-subtitle"></small>
+        <p class="post-date">November 16, 2012
+        
+        </p>
 
-    <h1 class="list-title">Raspberry Pi</h1>
+        <ul class="post-tags">
+        
+            <li class="post-tag"><a href="https://lynxline.com/tags/blog">Blog</a></li>
+        
+            <li class="post-tag"><a href="https://lynxline.com/tags/inferno-os">Inferno OS</a></li>
+        
+            <li class="post-tag"><a href="https://lynxline.com/tags/raspberry-pi">Raspberry Pi</a></li>
+        
+            <li class="post-tag"><a href="https://lynxline.com/tags/research">Research</a></li>
+        
+        </ul>
+    </div>
+
+    <div class="post-content">
+        <p>
+            <p>We need to have possibility of booting kernel on Raspbery Pi. Because we will not have display driver soon, we need another approach – have serial port connected to get all output from booter and then from our kernel. We bought small FTDI 3.3V chip to have connected it to GPIO pins on one side and to USB port of my Mac on another side. Also need to install FTDIUSBSerialDriver_v2_2_18 for Mac.</p>
+<ol>
+<li>Raspberry Pi itself:</li>
+</ol>
+<p><img src="/images/lab-2-1.png" alt="fig1"></p>
+<ol start="2">
+<li>Any SD card with some RPi distro to boot:</li>
+</ol>
+<p><img src="/images/lab-2-2.png" alt="fig1"></p>
+<ol start="3">
+<li>FTDI board to have serial port:</li>
+</ol>
+<p><img src="/images/lab-2-3.png" alt="fig1"></p>
+<ol start="4">
+<li>Way of connecting FTDI to GPIO pins:</li>
+</ol>
+<p><img src="/images/lab-2-4.jpg" alt="fig4"></p>
+<p>When connecting FTDI board remember that RX from FTDI should be connected to TX on Raspberry Pi, and TX on FTDI to RX on RPi, plus you need one wire for Ground.</p>
+<ol start="5">
+<li>When everything is connected you can see the boot process of linux by using screen command (you should specify speed 115200):</li>
+</ol>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># screen /dev/tty.usbserial-A501JR90 115200</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Attachments:
+FTDI device driver for Mac: FTDIUSBSerialDriver_v2_2_18</p>
+
+        </p>
+        
+    </div>
+
+    <div class="prev-next">
+        
+    </div>
 
     
-
-    <h2 class="posts-year">2012</h2><article class="post-title">
-    <a href="https://lynxline.com/posts/lab-2-hardware/" class="post-link">Lab 2 Hardware</a>
-    <div class="flex-break"></div>
-    <span class="post-date">November 16, 2012</span>
-</article>
-<article class="post-title">
-    <a href="https://lynxline.com/posts/lab-1-compiler/" class="post-link">Lab 1 Compiler</a>
-    <div class="flex-break"></div>
-    <span class="post-date">November 16, 2012</span>
-</article>
-
     
-
+    
 </div>
 
+
+
+    
 
         </main><footer class="footer">
     

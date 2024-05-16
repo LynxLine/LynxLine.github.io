@@ -2,24 +2,24 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Posts on LynxLine</title>
-    <link>https://lynxline.com/posts/</link>
+    <link>http://localhost:1313/posts/</link>
     <description>Recent content in Posts on LynxLine</description>
     <generator>Hugo</generator>
     <language>en-us</language>
     <lastBuildDate>Sun, 03 Mar 2024 11:21:28 +0100</lastBuildDate>
-    <atom:link href="https://lynxline.com/posts/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/posts/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Init</title>
-      <link>https://lynxline.com/posts/first_post/</link>
+      <link>http://localhost:1313/posts/first_post/</link>
       <pubDate>Sun, 03 Mar 2024 11:21:28 +0100</pubDate>
-      <guid>https://lynxline.com/posts/first_post/</guid>
+      <guid>http://localhost:1313/posts/first_post/</guid>
       <description>init</description>
     </item>
     <item>
       <title>Lab 1 Compiler</title>
-      <link>https://lynxline.com/posts/lab-1-compiler/</link>
+      <link>http://localhost:1313/posts/lab-1-compiler/</link>
       <pubDate>Fri, 16 Nov 2012 21:18:41 +0200</pubDate>
-      <guid>https://lynxline.com/posts/lab-1-compiler/</guid>
+      <guid>http://localhost:1313/posts/lab-1-compiler/</guid>
       <description>Let’s start with tools that we need to just build the OS for ARM. First clone official inferno os repository from google code repository:&#xA;##hg#clone#https://code.google.com/p/inferno6os/ What we need to move further? We need the ARM cross compiler, linker, etc. For this, let’s just compile inferno targeting mac as host (we are on mac now, so we will get hosted inferno for mac as result):&#xA;01 ##cd#inferno6os/ 02 ##INF_ROOT=`pwd`#perl#6i#6pe#&amp;#39;s/^ROOT=.*/ROOT=$ENV{INF_ROOT}/m&amp;#39;#mkconfig 03 ##perl#6i#6pe#&amp;#39;s/^SYSHOST=.*/SYSHOST=MacOSX/m&amp;#39;#mkconfig 04 ##perl#6i#6pe#&amp;#39;s/^OBJTYPE=.</description>
     </item>
   </channel>

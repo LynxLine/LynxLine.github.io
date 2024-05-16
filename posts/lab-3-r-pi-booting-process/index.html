@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <style>
+        :root {
+            --accent-color: #FF4D4D;
+        }
+    </style>
+
+    
+    
+    
+    
+    
+    
+
+    
+    <title>Lab 3 R Pi Booting Process</title>
+    <meta name="description" content="">
+    <meta name="keywords" content='Blog, Inferno OS, Raspberry Pi, Research'>
+
+    <meta property="og:url" content="https://lynxline.com/posts/lab-3-r-pi-booting-process/">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Lab 3 R Pi Booting Process">
+    <meta property="og:description" content="">
+    <meta property="og:image" content="https://lynxline.com/images/lynx.jpg">
+    <meta property="og:image:secure_url" content="https://lynxline.com/images/lynx.jpg">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Lab 3 R Pi Booting Process">
+    <meta name="twitter:description" content="">
+    <meta property="twitter:domain" content="https://lynxline.com/posts/lab-3-r-pi-booting-process/">
+    <meta property="twitter:url" content="https://lynxline.com/posts/lab-3-r-pi-booting-process/">
+    <meta name="twitter:image" content="https://lynxline.com/images/lynx.jpg">
+
+    
+    <link rel="canonical" href="https://lynxline.com/posts/lab-3-r-pi-booting-process/" />
+
+    
+    <link rel="stylesheet" type="text/css" href="/css/normalize.min.css" media="print">
+
+    
+    <link rel="stylesheet" type="text/css" href="/css/main.min.css">
+
+    
+    <link id="dark-theme" rel="stylesheet" href="/css/dark.min.css">
+
+    
+    <script src="/js/bundle.min.c60dbb422ed053b0761160e3a3f08b9af2060f00adc8f12c0ff21a8cf55b3d8e.js" integrity="sha256-xg27Qi7QU7B2EWDjo/CLmvIGDwCtyPEsD/IajPVbPY4="></script>
+
+    
+    
+</head>
+<body>
+        <script type="text/javascript">
+            
+            setThemeByUserPref();
+        </script><header class="header">
+    <nav class="header-nav">
+
+        
+        <div class="avatar">
+            <a href="https://lynxline.com/">
+                <img src='/images/lynx.jpg' alt="avatar" />
+            </a>
+        </div>
+        
+
+        <div class="nav-title">
+            <a class="nav-brand" href="https://lynxline.com/">LynxLine</a>
+        </div>
+
+        <div class="nav-links">
+            
+            <div class="nav-link">
+                <a href="https://lynxline.com/services/"><span data-feather='zap'></span> Services </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://lynxline.com/posts/"><span data-feather='layers'></span> Posts </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://lynxline.com/tags/"><span data-feather='tag'></span> Tags </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://lynxline.com/contact/"><span data-feather='mail'></span> Contact </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://github.com"><span data-feather='github'></span>  </a>
+            </div>
+            
+
+            <span class="nav-icons-divider"></span>
+            <div class="nav-link dark-theme-toggle">
+                <span id="dark-theme-toggle-screen-reader-target" class="sr-only"></span>
+                <a>
+                    <span id="theme-toggle-icon" data-feather="moon"></span>
+                </a>
+            </div>
+
+            <div class="nav-link" id="hamburger-menu-toggle">
+                <span id="hamburger-menu-toggle-screen-reader-target" class="sr-only">menu</span>
+                <a>
+                    <span data-feather="menu"></span>
+                </a>
+            </div>
+
+            
+            <ul class="nav-hamburger-list visibility-hidden">
+                
+                <li class="nav-item">
+                    <a href="https://lynxline.com/services/"><span data-feather='zap'></span> Services </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://lynxline.com/posts/"><span data-feather='layers'></span> Posts </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://lynxline.com/tags/"><span data-feather='tag'></span> Tags </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://lynxline.com/contact/"><span data-feather='mail'></span> Contact </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://github.com"><span data-feather='github'></span>  </a>
+                </li>
+                
+                <li class="nav-item dark-theme-toggle">
+                    <span id="dark-theme-toggle-screen-reader-target" class="sr-only">theme</span>
+                    <a>
+                        <span id="theme-toggle-icon" data-feather="moon"></span>
+                    </a>
+                </li>
+            </ul>
+
+        </div>
+    </nav>
+</header>
+<main id="content">
+    <div class="post container">
+    <div class="post-header-section">
+        <h1>Lab 3 R Pi Booting Process</h1>
+        <small role="doc-subtitle"></small>
+        <p class="post-date">November 16, 2012
+        
+        </p>
+
+        <ul class="post-tags">
+        
+            <li class="post-tag"><a href="https://lynxline.com/tags/blog">Blog</a></li>
+        
+            <li class="post-tag"><a href="https://lynxline.com/tags/inferno-os">Inferno OS</a></li>
+        
+            <li class="post-tag"><a href="https://lynxline.com/tags/raspberry-pi">Raspberry Pi</a></li>
+        
+            <li class="post-tag"><a href="https://lynxline.com/tags/research">Research</a></li>
+        
+        </ul>
+    </div>
+
+    <div class="post-content">
+        <p>
+            <p>Now time to study the boot process on Raspberry Pi.
+Good source to study: R-Pi Boot process</p>
+<ol>
+<li>Stage 1 boot is in the on-chip ROM. Loads stage2 in the L2 cache!</li>
+<li>Stage 2 is bootcode.bin. Enables SDRAM and loads stage3</li>
+<li>Stage 3 is loader.bin. Knows about elf format and load start.elf</li>
+<li>start.elf loads kernel.img (also start.elf is the main gpu code).</li>
+</ol>
+<ul>
+<li>It reads config.txt, cmdline.txt and bcm2835.dtb</li>
+<li>If the dtb file exists, it is loaded at 0x100 &amp; kernel @ 0x8000</li>
+<li>Else if disable_commandline_tags is set load kernel @ 0x0</li>
+<li>Else if load kernel @ 0x8000 and put ATAGS at 0x100</li>
+</ul>
+<ol start="5">
+<li>kernel.img, is the first! thing that runs on the ARM processor.
+We will use u-boot as kernel.img so our config.txt will look as:</li>
+</ol>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-txt" data-lang="txt"><span style="display:flex;"><span>kernel=u-boot.bin
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>cmdline.txt:</p>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-txt" data-lang="txt"><span style="display:flex;"><span>dwc_otg.lpm_enable=0 console=ttyAMA0,115200 kgdboc=ttyAMA0,115200 console=tty1 root=/dev/mmcblk0p2 rootfstype=ext4 rootwait
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>We will use <a href="http://people.freebsd.org/~gonzo/arm/rpi/freebsd-pi-uboot-20120806-netboot.tar.gz">http://people.freebsd.org/~gonzo/arm/rpi/freebsd-pi-uboot-20120806-netboot.tar.gz</a> u-boot package prepared by Gonzo to make R-Pi to start USB, initialize Serial, initialize Ethernet (remember it is behind USB), get IP via DHCP and can download and start our kernel via TFTP.</p>
+<p>To specify IP where kernel should be downloaded from, we need to prepare boot.scr for U-Boot:
+boot-tftp.cmd:</p>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-txt" data-lang="txt"><span style="display:flex;"><span>set autoload no
+</span></span><span style="display:flex;"><span>set serverip 10.0.55.112
+</span></span><span style="display:flex;"><span>set bootfile irpi
+</span></span><span style="display:flex;"><span>set loadaddr 7FE0
+</span></span><span style="display:flex;"><span>if usb start; then
+</span></span><span style="display:flex;"><span>    if dhcp; then
+</span></span><span style="display:flex;"><span>        if tftpboot ${loadaddr} irpi; then
+</span></span><span style="display:flex;"><span>            go 8000;
+</span></span><span style="display:flex;"><span>        fi;
+</span></span><span style="display:flex;"><span>    fi;
+</span></span><span style="display:flex;"><span>fi;
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Now compile it into boot.scr:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>mkimage -A arm -O linux -T script -C none -a <span style="color:#ae81ff">0</span> -e <span style="color:#ae81ff">0</span> -n <span style="color:#e6db74">&#39;U-Boot script&#39;</span> -d boot-tftp.cmd boot.scr
+</span></span></code></pre></div><p>That’s all, now we can write files into FAT boot partition onto SD card, put there generated boot.scr and start R-Pi.
+Let’s connect wires to FTDI, to USB, start screen on Mac, put SD into R-Pi, start TFTP server, turn power ON and wait:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-txt" data-lang="txt"><span style="display:flex;"><span>U-Boot 2012.04.01-00489-gcd2dac2-dirty (Jul 07 2012 - 12:57:03)
+</span></span><span style="display:flex;"><span> 
+</span></span><span style="display:flex;"><span>DRAM:  128 MiB
+</span></span><span style="display:flex;"><span>WARNING: Caches not enabled
+</span></span><span style="display:flex;"><span>MMC:   bcm2835_sdh: 0
+</span></span><span style="display:flex;"><span>Using default environment
+</span></span><span style="display:flex;"><span> 
+</span></span><span style="display:flex;"><span>In:    serial
+</span></span><span style="display:flex;"><span>Out:   serial
+</span></span><span style="display:flex;"><span>Err:   serial
+</span></span><span style="display:flex;"><span>Net:   Net Initialization Skipped
+</span></span><span style="display:flex;"><span>No ethernet found.
+</span></span><span style="display:flex;"><span>Hit any key to stop autoboot:  0
+</span></span><span style="display:flex;"><span>reading uEnv.txt
+</span></span><span style="display:flex;"><span> 
+</span></span><span style="display:flex;"><span>17 bytes read
+</span></span><span style="display:flex;"><span>Importing environment from mmc ...
+</span></span><span style="display:flex;"><span>reading boot.scr
+</span></span><span style="display:flex;"><span> 
+</span></span><span style="display:flex;"><span>274 bytes read
+</span></span><span style="display:flex;"><span>Running bootscript from mmc0 ...
+</span></span><span style="display:flex;"><span>## Executing script at 00008000
+</span></span><span style="display:flex;"><span>(Re)start USB...
+</span></span><span style="display:flex;"><span>USB:   Core Release: 2.80a
+</span></span><span style="display:flex;"><span>scanning bus for devices... 3 USB Device(s) found
+</span></span><span style="display:flex;"><span>       scanning bus for storage devices... 0 Storage Device(s) found
+</span></span><span style="display:flex;"><span>       scanning bus for ethernet devices... 1 Ethernet Device(s) found
+</span></span><span style="display:flex;"><span>Waiting for Ethernet connection... done.
+</span></span><span style="display:flex;"><span>BOOTP broadcast 1
+</span></span><span style="display:flex;"><span>*** Unhandled DHCP Option in OFFER/ACK: 95
+</span></span><span style="display:flex;"><span>BOOTP broadcast 2
+</span></span><span style="display:flex;"><span>*** Unhandled DHCP Option in OFFER/ACK: 95
+</span></span><span style="display:flex;"><span>*** Unhandled DHCP Option in OFFER/ACK: 95
+</span></span><span style="display:flex;"><span>DHCP client bound to address 10.0.55.120
+</span></span><span style="display:flex;"><span>BOOTP broadcast 3
+</span></span><span style="display:flex;"><span>Waiting for Ethernet connection... done.
+</span></span><span style="display:flex;"><span>Using sms0 device
+</span></span><span style="display:flex;"><span>TFTP from server 10.0.55.112; our IP address is 10.0.55.120
+</span></span><span style="display:flex;"><span>Filename &#39;irpi&#39;.
+</span></span></code></pre></div><p>Great!</p>
+
+        </p>
+        
+    </div>
+
+    <div class="prev-next">
+        
+    </div>
+
+    
+    
+    
+</div>
+
+
+
+    
+
+        </main><footer class="footer">
+    
+    
+
+    
+    <span>
+        Made using <a target="_blank" href="https://gohugo.io/">HUGO</a>
+    </span>
+</footer>
+</body>
+</html>

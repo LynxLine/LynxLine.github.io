@@ -6,8 +6,15 @@
     <description>Recent content in Inferno OS on LynxLine</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 16 Nov 2012 21:18:42 +0200</lastBuildDate>
+    <lastBuildDate>Fri, 16 Nov 2012 21:18:43 +0200</lastBuildDate>
     <atom:link href="https://lynxline.com/tags/inferno-os/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Lab 3 R Pi Booting Process</title>
+      <link>https://lynxline.com/posts/lab-3-r-pi-booting-process/</link>
+      <pubDate>Fri, 16 Nov 2012 21:18:43 +0200</pubDate>
+      <guid>https://lynxline.com/posts/lab-3-r-pi-booting-process/</guid>
+      <description>Now time to study the boot process on Raspberry Pi. Good source to study: R-Pi Boot process&#xA;Stage 1 boot is in the on-chip ROM. Loads stage2 in the L2 cache! Stage 2 is bootcode.bin. Enables SDRAM and loads stage3 Stage 3 is loader.bin. Knows about elf format and load start.elf start.elf loads kernel.img (also start.elf is the main gpu code). It reads config.txt, cmdline.txt and bcm2835.dtb If the dtb file exists, it is loaded at 0x100 &amp;amp; kernel @ 0x8000 Else if disable_commandline_tags is set load kernel @ 0x0 Else if load kernel @ 0x8000 and put ATAGS at 0x100 kernel.</description>
+    </item>
     <item>
       <title>Lab 2 Hardware</title>
       <link>https://lynxline.com/posts/lab-2-hardware/</link>

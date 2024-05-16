@@ -4,10 +4,17 @@
     <title>Inferno OS on LynxLine</title>
     <link>https://lynxline.com/tags/inferno-os/</link>
     <description>Recent content in Inferno OS on LynxLine</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 16 Nov 2012 21:18:43 +0200</lastBuildDate>
+    <lastBuildDate>Sun, 18 Nov 2012 21:27:34 +0200</lastBuildDate>
     <atom:link href="https://lynxline.com/tags/inferno-os/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Lab 4, Loading kernel</title>
+      <link>https://lynxline.com/posts/lab-4-loading-kernel/</link>
+      <pubDate>Sun, 18 Nov 2012 21:27:34 +0200</pubDate>
+      <guid>https://lynxline.com/posts/lab-4-loading-kernel/</guid>
+      <description>Time to study the way how we place our kernel into the memory on R-Pi. U-Boot have usually convention to place loaded binaries at 0x8000 (32KB) and just pass control there. So, let’s compile trivial program and study generated binary to understand the way how we can operate with it.&#xA;In Lab 1 we found a way of making ARM executables. Check what actually the file is:&#xA;$ file test test: Plan 9 executable, ARM 7-something By checking Plan 9 a.</description>
+    </item>
     <item>
       <title>Lab 3 R Pi Booting Process</title>
       <link>https://lynxline.com/posts/lab-3-r-pi-booting-process/</link>

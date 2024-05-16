@@ -2,10 +2,39 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tags on LynxLine</title>
-    <link>http://localhost:1313/tags/</link>
+    <link>https://lynxline.com/tags/</link>
     <description>Recent content in Tags on LynxLine</description>
-    <generator>Hugo</generator>
+    <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <atom:link href="http://localhost:1313/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 16 Nov 2012 21:18:41 +0200</lastBuildDate>
+    <atom:link href="https://lynxline.com/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Blog</title>
+      <link>https://lynxline.com/tags/blog/</link>
+      <pubDate>Fri, 16 Nov 2012 21:18:41 +0200</pubDate>
+      <guid>https://lynxline.com/tags/blog/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Inferno OS</title>
+      <link>https://lynxline.com/tags/inferno-os/</link>
+      <pubDate>Fri, 16 Nov 2012 21:18:41 +0200</pubDate>
+      <guid>https://lynxline.com/tags/inferno-os/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Raspberry Pi</title>
+      <link>https://lynxline.com/tags/raspberry-pi/</link>
+      <pubDate>Fri, 16 Nov 2012 21:18:41 +0200</pubDate>
+      <guid>https://lynxline.com/tags/raspberry-pi/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Research</title>
+      <link>https://lynxline.com/tags/research/</link>
+      <pubDate>Fri, 16 Nov 2012 21:18:41 +0200</pubDate>
+      <guid>https://lynxline.com/tags/research/</guid>
+      <description></description>
+    </item>
   </channel>
 </rss>

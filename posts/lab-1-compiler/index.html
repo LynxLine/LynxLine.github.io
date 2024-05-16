@@ -170,37 +170,81 @@
         <p>
             <p>Let’s start with tools that we need to just build the OS for ARM. First clone official inferno os repository
 from google code repository:</p>
-<pre tabindex="0"><code># hg clone https://code.google.com/p/inferno-os/
-</code></pre><p>What we need to move further? We need the ARM cross compiler, linker, etc. For this, let’s just compile
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># hg clone https://code.google.com/p/inferno-os/</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>What we need to move further? We need the ARM cross compiler, linker, etc. For this, let’s just compile
 inferno targeting mac as host (we are on mac now, so we will get hosted inferno for mac as result):</p>
-<pre tabindex="0"><code># cd inferno-os/
-# INF_ROOT=`pwd` perl -i -pe &#39;s/^ROOT=.*/ROOT=$ENV{INF_ROOT}/m&#39; mkconfig
-# perl -i -pe &#39;s/^SYSHOST=.*/SYSHOST=MacOSX/m&#39; mkconfig
-# perl -i -pe &#39;s/^OBJTYPE=.*/OBJTYPE=386/m&#39; mkconfig
-# sh makemk.sh
-# PATH=`pwd`/MacOSX/386/bin:$PATH mk nuke
-# PATH=`pwd`/MacOSX/386/bin:$PATH mk install
-… waiting just few minutes … 
-# ls MacOSX/386/bin/
-0a         2l         8l         iar        ksize      ms2        tc
-0c         5a         acid       idea       kstrip     ndate      va
-0l         5c         asm        inm        limbo      qa         vc
-1a         5coff      c2l        iyacc      md5sum     qc         vl
-1c         5cv        data2c     ka         mk         ql
-1l         5l         data2s     kc         mk.save    sqz
-2a         8a         emu        kl         mkext      srclist
-2c         8c         ftl        kprof      mkppcimage styxtest
-#
-</code></pre><p>Yes! Now we have all needed cross-platform tools for building Inferno OS for ARM, see 5c – C compiler, 5a – ARM assembler, 5l – ARM linker.
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># cd inferno-os/</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># INF_ROOT=`pwd` perl -i -pe &#39;s/^ROOT=.*/ROOT=$ENV{INF_ROOT}/m&#39; mkconfig</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># perl -i -pe &#39;s/^SYSHOST=.*/SYSHOST=MacOSX/m&#39; mkconfig</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># perl -i -pe &#39;s/^OBJTYPE=.*/OBJTYPE=386/m&#39; mkconfig</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># sh makemk.sh</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># PATH=`pwd`/MacOSX/386/bin:$PATH mk nuke</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># PATH=`pwd`/MacOSX/386/bin:$PATH mk install</span>
+</span></span><span style="display:flex;"><span>… waiting just few minutes … 
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># ls MacOSX/386/bin/</span>
+</span></span><span style="display:flex;"><span>0a         2l         8l         iar        ksize      ms2        tc
+</span></span><span style="display:flex;"><span>0c         5a         acid       idea       kstrip     ndate      va
+</span></span><span style="display:flex;"><span>0l         5c         asm        inm        limbo      qa         vc
+</span></span><span style="display:flex;"><span>1a         5coff      c2l        iyacc      md5sum     qc         vl
+</span></span><span style="display:flex;"><span>1c         5cv        data2c     ka         mk         ql
+</span></span><span style="display:flex;"><span>1l         5l         data2s     kc         mk.save    sqz
+</span></span><span style="display:flex;"><span>2a         8a         emu        kl         mkext      srclist
+</span></span><span style="display:flex;"><span>2c         8c         ftl        kprof      mkppcimage styxtest
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Yes! Now we have all needed cross-platform tools for building Inferno OS for ARM, see 5c – C compiler, 5a – ARM assembler, 5l – ARM linker.
 Let’s check ARM asm generated:</p>
-<pre tabindex="0"><code># export PATH=`pwd`/MacOSX/386/bin:$PATH 
-# echo &#34;int main() { return 123; }&#34; &gt;tmp.c &amp;&amp; 5c -S tmp.c &amp;&amp; rm tmp.c
-	TEXT	main+0(SB),0,$0
-	MOVW	$123,R0
-	RET	,
-	RET	,
-	END	,
-</code></pre>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># export PATH=`pwd`/MacOSX/386/bin:$PATH </span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># echo &#34;int main() { return 123; }&#34; &gt;tmp.c &amp;&amp; 5c -S tmp.c &amp;&amp; rm tmp.c</span>
+</span></span><span style="display:flex;"><span>	TEXT	main+0<span style="color:#f92672">(</span>SB<span style="color:#f92672">)</span>,0,$0
+</span></span><span style="display:flex;"><span>	MOVW	$123,R0
+</span></span><span style="display:flex;"><span>	RET	,
+</span></span><span style="display:flex;"><span>	RET	,
+</span></span><span style="display:flex;"><span>	END	,
+</span></span></code></pre></td></tr></table>
+</div>
+</div>
         </p>
         
     </div>

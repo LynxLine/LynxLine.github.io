@@ -34,7 +34,7 @@
       <link>https://lynxline.com/posts/lab-1-compiler/</link>
       <pubDate>Fri, 16 Nov 2012 21:18:41 +0200</pubDate>
       <guid>https://lynxline.com/posts/lab-1-compiler/</guid>
-      <description>Let’s start with tools that we need to just build the OS for ARM. First clone official inferno os repository from google code repository:&#xA;# hg clone https://code.google.com/p/inferno-os/ What we need to move further? We need the ARM cross compiler, linker, etc. For this, let’s just compile inferno targeting mac as host (we are on mac now, so we will get hosted inferno for mac as result):&#xA;# cd inferno-os/ # INF_ROOT=`pwd` perl -i -pe &amp;#39;s/^ROOT=.</description>
+      <description>Let’s start with tools that we need to just build the OS for ARM. First clone official inferno os repository from google code repository:&#xA;1 # hg clone https://code.google.com/p/inferno-os/ What we need to move further? We need the ARM cross compiler, linker, etc. For this, let’s just compile inferno targeting mac as host (we are on mac now, so we will get hosted inferno for mac as result):&#xA;1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 # cd inferno-os/ # INF_ROOT=`pwd` perl -i -pe &amp;#39;s/^ROOT=.</description>
     </item>
   </channel>
 </rss>

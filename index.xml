@@ -30,6 +30,13 @@
       <description>init</description>
     </item>
     <item>
+      <title>Lab 5, Hello World</title>
+      <link>https://lynxline.com/posts/lab-5-hello-world/</link>
+      <pubDate>Tue, 27 Nov 2012 22:05:20 +0200</pubDate>
+      <guid>https://lynxline.com/posts/lab-5-hello-world/</guid>
+      <description>This lab will be short but it is going to summarize all material provided in previous labs. Our target to develop simple “barebone” program which can be loaded and executed by U-Boot. It should only print “Hello world!” to our serial console.&#xA;First, let’s find out how we can print something. BCM2835 manual describes that the chip has different features as Mini-UART and PL011 UART.&#xA;Instead of writing own driver for UART routines let’s better check how U-Boot performs.</description>
+    </item>
+    <item>
       <title>Lab 4, Loading kernel</title>
       <link>https://lynxline.com/posts/lab-4-loading-kernel/</link>
       <pubDate>Sun, 18 Nov 2012 21:27:34 +0200</pubDate>
@@ -37,21 +44,21 @@
       <description>Time to study the way how we place our kernel into the memory on R-Pi. U-Boot have usually convention to place loaded binaries at 0x8000 (32KB) and just pass control there. So, let’s compile trivial program and study generated binary to understand the way how we can operate with it.&#xA;In Lab 1 we found a way of making ARM executables. Check what actually the file is:&#xA;$ file test test: Plan 9 executable, ARM 7-something By checking Plan 9 a.</description>
     </item>
     <item>
-      <title>Lab 3 R Pi Booting Process</title>
+      <title>Lab 3, R-Pi Booting process</title>
       <link>https://lynxline.com/posts/lab-3-r-pi-booting-process/</link>
       <pubDate>Fri, 16 Nov 2012 21:18:43 +0200</pubDate>
       <guid>https://lynxline.com/posts/lab-3-r-pi-booting-process/</guid>
       <description>Now time to study the boot process on Raspberry Pi. Good source to study: R-Pi Boot process&#xA;Stage 1 boot is in the on-chip ROM. Loads stage2 in the L2 cache! Stage 2 is bootcode.bin. Enables SDRAM and loads stage3 Stage 3 is loader.bin. Knows about elf format and load start.elf start.elf loads kernel.img (also start.elf is the main gpu code). It reads config.txt, cmdline.txt and bcm2835.dtb If the dtb file exists, it is loaded at 0x100 &amp;amp; kernel @ 0x8000 Else if disable_commandline_tags is set load kernel @ 0x0 Else if load kernel @ 0x8000 and put ATAGS at 0x100 kernel.</description>
     </item>
     <item>
-      <title>Lab 2 Hardware</title>
+      <title>Lab 2, Hardware</title>
       <link>https://lynxline.com/posts/lab-2-hardware/</link>
       <pubDate>Fri, 16 Nov 2012 21:18:42 +0200</pubDate>
       <guid>https://lynxline.com/posts/lab-2-hardware/</guid>
       <description>We need to have possibility of booting kernel on Raspbery Pi. Because we will not have display driver soon, we need another approach – have serial port connected to get all output from booter and then from our kernel. We bought small FTDI 3.3V chip to have connected it to GPIO pins on one side and to USB port of my Mac on another side. Also need to install FTDIUSBSerialDriver_v2_2_18 for Mac.</description>
     </item>
     <item>
-      <title>Lab 1 Compiler</title>
+      <title>Lab 1, Compiler</title>
       <link>https://lynxline.com/posts/lab-1-compiler/</link>
       <pubDate>Fri, 16 Nov 2012 21:18:41 +0200</pubDate>
       <guid>https://lynxline.com/posts/lab-1-compiler/</guid>

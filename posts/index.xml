@@ -16,6 +16,13 @@
       <description>init</description>
     </item>
     <item>
+      <title>Lab 6, Compile something</title>
+      <link>https://lynxline.com/posts/lab-6-compile-something/</link>
+      <pubDate>Tue, 11 Dec 2012 22:05:20 +0200</pubDate>
+      <guid>https://lynxline.com/posts/lab-6-compile-something/</guid>
+      <description>Now it is lab 6 and it is time to compile “something” – kernel of inferno, but we are going to compile without worrying that it would not work (even would not link). We just need inferno kernel which can be compiled okay for R-Pi using a lot of stabs.&#xA;Files/Folders structure:&#xA;inferno-os/ |-os/ | |-rpi/ | | |-rpi | | |-mkfile | | |-load.s | | |-main.c mkfile:&#xA;1&amp;lt;../../mkconfig 2 3CONF=rpi 4CONFLIST=rpi 5loadaddr=0x00008000 6 7SYSTARG=$OSTARG 8OBJTYPE=arm 9INSTALLDIR=$ROOT/Inferno/$OBJTYPE/bin 10 11&amp;lt;$ROOT/mkfiles/mkfile-$SYSTARG-$OBJTYPE 12 13&amp;lt;| $SHELLNAME .</description>
+    </item>
+    <item>
       <title>Lab 5, Hello World</title>
       <link>https://lynxline.com/posts/lab-5-hello-world/</link>
       <pubDate>Tue, 27 Nov 2012 22:05:20 +0200</pubDate>

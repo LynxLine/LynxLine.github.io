@@ -30,6 +30,13 @@
       <description>init</description>
     </item>
     <item>
+      <title>Lab 7, linking, planning next</title>
+      <link>https://lynxline.com/posts/lab-7-linking-more-initialization/</link>
+      <pubDate>Mon, 17 Dec 2012 21:07:59 +0200</pubDate>
+      <guid>https://lynxline.com/posts/lab-7-linking-more-initialization/</guid>
+      <description>As we have the kernel almost compiled now it is time to check what is missing to have it linked. By checking header files and adding stubs into main.c we will get linked with very small changes as:&#xA;Changes to main.c:&#xA;1#include &amp;#34;u.h&amp;#34; 2#include &amp;#34;../port/lib.h&amp;#34; 3#include &amp;#34;dat.h&amp;#34; 4#include &amp;#34;mem.h&amp;#34; 5 6Conf conf; 7Mach *m = (Mach*)MACHADDR; 8Proc *up = 0; 9 10#include &amp;#34;../port/uart.h&amp;#34; 11PhysUart* physuart[1]; 12 13int waserror(void) { return 0; } 14int splhi(void) { return 0; } 15void splx(int) { return; } 16int spllo(void) { return 0; } 17void splxpc(int) { return; } 18int islo(void) { return 0; } 19int setlabel(Label*) { return 0; } 20void gotolabel(Label*) { return; } 21ulong getcallerpc(void*) { return 0; } 22int segflush(void*, ulong) { return 0; } 23void idlehands(void) { return; } 24void kprocchild(Proc *p, void (*func)(void*), void *arg) { return; } 25ulong _tas(ulong*) { return 0; } 26ulong _div(ulong*) { return 0; } 27ulong _divu(ulong*) { return 0; } 28ulong _mod(ulong*) { return 0; } 29ulong _modu(ulong*) { return 0; } 30 31void setpanic(void) { return; } 32void dumpstack(void) { return; } 33void exit(int) { return; } 34void reboot(void) { return; } 35void halt(void) { return; } 36 37Timer* addclock0link(void (*)(void), int) { return 0; } 38void clockcheck(void) { return; } 39 40void fpinit(void) {} 41void FPsave(void*) {} 42void FPrestore(void*) {} Changes to fns.</description>
+    </item>
+    <item>
       <title>Lab 6, Compile something</title>
       <link>https://lynxline.com/posts/lab-6-compile-something/</link>
       <pubDate>Tue, 11 Dec 2012 22:05:20 +0200</pubDate>

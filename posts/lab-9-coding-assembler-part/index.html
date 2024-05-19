@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <style>
+        :root {
+            --accent-color: #FF4D4D;
+        }
+    </style>
+
+    
+    
+    
+    
+    
+    
+
+    
+    <title>Lab 9, coding assembler part</title>
+    <meta name="description" content="">
+    <meta name="keywords" content='Blog, Inferno OS, Raspberry Pi, Research'>
+
+    <meta property="og:url" content="https://lynxline.com/posts/lab-9-coding-assembler-part/">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Lab 9, coding assembler part">
+    <meta property="og:description" content="">
+    <meta property="og:image" content="https://lynxline.com/images/lynx.jpg">
+    <meta property="og:image:secure_url" content="https://lynxline.com/images/lynx.jpg">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Lab 9, coding assembler part">
+    <meta name="twitter:description" content="">
+    <meta property="twitter:domain" content="https://lynxline.com/posts/lab-9-coding-assembler-part/">
+    <meta property="twitter:url" content="https://lynxline.com/posts/lab-9-coding-assembler-part/">
+    <meta name="twitter:image" content="https://lynxline.com/images/lynx.jpg">
+
+    
+    <link rel="canonical" href="https://lynxline.com/posts/lab-9-coding-assembler-part/" />
+
+    
+    <link rel="stylesheet" type="text/css" href="/css/normalize.min.css" media="print">
+
+    
+    <link rel="stylesheet" type="text/css" href="/css/main.min.css">
+
+    
+    <link id="dark-theme" rel="stylesheet" href="/css/dark.min.css">
+
+    
+    <script src="/js/bundle.min.224c8e70fed292d18d7d9ae1b36797c99144e0be1117e2ea2c428379c8496551.js" integrity="sha256-IkyOcP7SktGNfZrhs2eXyZFE4L4RF&#43;LqLEKDechJZVE="></script>
+
+    
+    
+</head>
+<body>
+        <script type="text/javascript">
+            
+            setThemeByUserPref();
+        </script><header class="header">
+    <nav class="header-nav">
+
+        
+        <div class="avatar">
+            <a href="https://lynxline.com/">
+                <img src='/images/lynx.jpg' alt="avatar" />
+            </a>
+        </div>
+        
+
+        <div class="nav-title">
+            <a class="nav-brand" href="https://lynxline.com/">LynxLine</a>
+        </div>
+
+        <div class="nav-links">
+            
+            <div class="nav-link">
+                <a href="https://lynxline.com/services/"><span data-feather='zap'></span> Services </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://lynxline.com/posts/"><span data-feather='layers'></span> Posts </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://lynxline.com/tags/"><span data-feather='tag'></span> Tags </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://lynxline.com/contact/"><span data-feather='mail'></span> Contact </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://github.com"><span data-feather='github'></span>  </a>
+            </div>
+            
+
+            <span class="nav-icons-divider"></span>
+            <div class="nav-link dark-theme-toggle">
+                <span id="dark-theme-toggle-screen-reader-target" class="sr-only"></span>
+                <a>
+                    <span id="theme-toggle-icon" data-feather="moon"></span>
+                </a>
+            </div>
+
+            <div class="nav-link" id="hamburger-menu-toggle">
+                <span id="hamburger-menu-toggle-screen-reader-target" class="sr-only">menu</span>
+                <a>
+                    <span data-feather="menu"></span>
+                </a>
+            </div>
+
+            
+            <ul class="nav-hamburger-list visibility-hidden">
+                
+                <li class="nav-item">
+                    <a href="https://lynxline.com/services/"><span data-feather='zap'></span> Services </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://lynxline.com/posts/"><span data-feather='layers'></span> Posts </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://lynxline.com/tags/"><span data-feather='tag'></span> Tags </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://lynxline.com/contact/"><span data-feather='mail'></span> Contact </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://github.com"><span data-feather='github'></span>  </a>
+                </li>
+                
+                <li class="nav-item dark-theme-toggle">
+                    <span id="dark-theme-toggle-screen-reader-target" class="sr-only">theme</span>
+                    <a>
+                        <span id="theme-toggle-icon" data-feather="moon"></span>
+                    </a>
+                </li>
+            </ul>
+
+        </div>
+    </nav>
+</header>
+<main id="content">
+    <div class="post container">
+    <div class="post-header-section">
+        <h1>Lab 9, coding assembler part</h1>
+        <small role="doc-subtitle"></small>
+        <p class="post-date">January 27, 2013
+        
+        </p>
+
+        <ul class="post-tags">
+        
+            <li class="post-tag"><a href="https://lynxline.com/tags/blog">Blog</a></li>
+        
+            <li class="post-tag"><a href="https://lynxline.com/tags/inferno-os">Inferno OS</a></li>
+        
+            <li class="post-tag"><a href="https://lynxline.com/tags/raspberry-pi">Raspberry Pi</a></li>
+        
+            <li class="post-tag"><a href="https://lynxline.com/tags/research">Research</a></li>
+        
+        </ul>
+    </div>
+
+    <div class="post-content">
+        <p>
+            <p>Time to have assembler part of Inferno kernel to be implemented. Let’s start with routines that allows to make labels and later jump to them, they are used in kernel sources to have scheduler to switch control and do context switching between processes.
+The <strong>Label</strong> structure in <strong>dat.h:</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span><span style="color:#66d9ef">struct</span> Label {
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2</span><span>	ulong   sp;
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3</span><span>	ulong   pc;
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4</span><span>};
+</span></span></code></pre></div><p>Simple idea to remember the PC(program counter) and SP(stack pointer), to init the structure and use later, we should have two functions implemented:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-asm" data-lang="asm"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1</span><span><span style="color:#a6e22e">TEXT</span> <span style="color:#66d9ef">setlabel</span>(<span style="color:#66d9ef">SB</span>), <span style="color:#66d9ef">$-4</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2</span><span>    <span style="color:#a6e22e">MOVW</span>    <span style="color:#66d9ef">R13</span>, <span style="color:#ae81ff">0</span>(<span style="color:#66d9ef">R0</span>)
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3</span><span>    <span style="color:#a6e22e">MOVW</span>    <span style="color:#66d9ef">R14</span>, <span style="color:#ae81ff">4</span>(<span style="color:#66d9ef">R0</span>)
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4</span><span>    <span style="color:#a6e22e">MOVW</span>    <span style="color:#66d9ef">$0</span>, <span style="color:#66d9ef">R0</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5</span><span>    <span style="color:#a6e22e">RET</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7</span><span><span style="color:#a6e22e">TEXT</span> <span style="color:#66d9ef">gotolabel</span>(<span style="color:#66d9ef">SB</span>), <span style="color:#66d9ef">$-4</span> 
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8</span><span>    <span style="color:#66d9ef">MOVW</span>    <span style="color:#ae81ff">0</span>(<span style="color:#66d9ef">R0</span>), <span style="color:#66d9ef">R13</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9</span><span>    <span style="color:#a6e22e">MOVW</span>    <span style="color:#ae81ff">4</span>(<span style="color:#66d9ef">R0</span>), <span style="color:#66d9ef">R14</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10</span><span>    <span style="color:#a6e22e">MOVW</span>    <span style="color:#66d9ef">$1</span>, <span style="color:#66d9ef">R0</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11</span><span>    <span style="color:#a6e22e">RET</span>
+</span></span></code></pre></div><p>It works in simple way, <strong>setlabel()</strong> has pointer to Label as argument (R0 registry), so initialization 0(R0) puts value of R13/SP into Label.sp, and 4(R0) puts value of R14/PC into Label.pc; <strong>gotolabel()</strong> does opposite, taking pointer to Label and initialize SP and PC and as result pass control of execution.</p>
+<p><strong>getcallerpc()</strong> also is very simple, when the function is called, the PC is put in stack for return address, so we can extract it as 0(SP):</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-asm" data-lang="asm"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span><span style="color:#a6e22e">TEXT</span> <span style="color:#66d9ef">getcallerpc</span>(<span style="color:#66d9ef">SB</span>), <span style="color:#66d9ef">$-4</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2</span><span>    <span style="color:#a6e22e">MOVW</span>    <span style="color:#ae81ff">0</span>(<span style="color:#66d9ef">SP</span>), <span style="color:#66d9ef">R0</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3</span><span>    <span style="color:#a6e22e">RET</span>
+</span></span></code></pre></div><p><strong>splhi()</strong> is function that saves PC into Mach structure, disables all maskable interrupts and returns the previous interrupt enable state, see the <a href="http://www.vitanuova.com/inferno/man/10/splhi.html">http://www.vitanuova.com/inferno/man/10/splhi.html</a>, so we modify Mach structure to have ulong splpc at very beginning so address is same as address of Mach.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span><span style="color:#66d9ef">struct</span> Mach {
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2</span><span>    ulong   splpc;      <span style="color:#75715e">/* pc of last caller to splhi */</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3</span><span>    <span style="color:#66d9ef">int</span>     machno;     <span style="color:#75715e">/* physical id of processor */</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4</span><span>    ulong   ticks;      <span style="color:#75715e">/* of the clock since boot time */</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5</span><span>    Proc<span style="color:#f92672">*</span>   proc;       <span style="color:#75715e">/* current process on this processor */</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6</span><span>    Label   sched;      <span style="color:#75715e">/* scheduler wakeup */</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7</span><span>};
+</span></span></code></pre></div><p>So the code of <strong>int splhi():</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-asm" data-lang="asm"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span><span style="color:#a6e22e">TEXT</span> <span style="color:#66d9ef">splhi</span>(<span style="color:#66d9ef">SB</span>), <span style="color:#66d9ef">$-4</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2</span><span>	<span style="color:#a6e22e">MOVW</span>	<span style="color:#66d9ef">$</span>(<span style="color:#66d9ef">MACHADDR</span>), <span style="color:#66d9ef">R6</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3</span><span>	<span style="color:#a6e22e">MOVW</span>	<span style="color:#66d9ef">R14</span>, (<span style="color:#66d9ef">R6</span>)   <span style="color:#75715e">/* m-&gt;splpc */</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4</span><span>	<span style="color:#a6e22e">MOVW</span>	<span style="color:#66d9ef">CPSR</span>, <span style="color:#66d9ef">R0</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5</span><span>	<span style="color:#a6e22e">ORR</span>		<span style="color:#66d9ef">$</span>(<span style="color:#66d9ef">PsrDirq</span>), <span style="color:#66d9ef">R0</span>, <span style="color:#66d9ef">R1</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6</span><span>	<span style="color:#a6e22e">MOVW</span>	<span style="color:#66d9ef">R1</span>, <span style="color:#66d9ef">CPSR</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7</span><span>	<span style="color:#a6e22e">RET</span>
+</span></span></code></pre></div><p><strong>int spllo()</strong> enables interrupts and returns a flag representing the previous interrupt enable state:</p>
+<p><strong>splx(int x)</strong> saves PC into m-&gt;splpc, restores the interrupt enable state state to x, which must be a value returned by a previous call to splhi or spllo</p>
+<p><strong>splxpc(int x)</strong> does same but without saving PC</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-asm" data-lang="asm"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span><span style="color:#a6e22e">TEXT</span> <span style="color:#66d9ef">splx</span>(<span style="color:#66d9ef">SB</span>), <span style="color:#66d9ef">$-4</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2</span><span>	<span style="color:#a6e22e">MOVW</span>	<span style="color:#66d9ef">$</span>(<span style="color:#66d9ef">MACHADDR</span>), <span style="color:#66d9ef">R6</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3</span><span>	<span style="color:#a6e22e">MOVW</span>	<span style="color:#66d9ef">R14</span>, (<span style="color:#66d9ef">R6</span>)   <span style="color:#75715e">/* m-&gt;splpc */</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4</span><span><span style="color:#a6e22e">TEXT</span> <span style="color:#66d9ef">splxpc</span>(<span style="color:#66d9ef">SB</span>), <span style="color:#66d9ef">$-4</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5</span><span>	<span style="color:#a6e22e">MOVW</span>	<span style="color:#66d9ef">R0</span>, <span style="color:#66d9ef">R1</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6</span><span>	<span style="color:#a6e22e">MOVW</span>	<span style="color:#66d9ef">CPSR</span>, <span style="color:#66d9ef">R0</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7</span><span>	<span style="color:#a6e22e">MOVW</span>	<span style="color:#66d9ef">R1</span>, <span style="color:#66d9ef">CPSR</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">8</span><span>	<span style="color:#a6e22e">RET</span>
+</span></span></code></pre></div><p><strong>int islo()</strong> returns true (non-zero) if interrupts are currently enabled, and 0 otherwise:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-asm" data-lang="asm"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span><span style="color:#a6e22e">TEXT</span> <span style="color:#66d9ef">islo</span>(<span style="color:#66d9ef">SB</span>), <span style="color:#66d9ef">$-4</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2</span><span>	<span style="color:#a6e22e">MOVW</span>	<span style="color:#66d9ef">CPSR</span>, <span style="color:#66d9ef">R0</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3</span><span>	<span style="color:#a6e22e">AND</span>		<span style="color:#66d9ef">$</span>(<span style="color:#66d9ef">PsrDirq</span>), <span style="color:#66d9ef">R0</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4</span><span>	<span style="color:#a6e22e">EOR</span>		<span style="color:#66d9ef">$</span>(<span style="color:#66d9ef">PsrDirq</span>), <span style="color:#66d9ef">R0</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5</span><span>	<span style="color:#a6e22e">RET</span>
+</span></span></code></pre></div><p>FILES:</p>
+<ul>
+<li><a href="dat.h">os/rpi/dat.h</a></li>
+<li><a href="armv6.h">os/rpi/armv6.h</a></li>
+<li><a href="armv6.s">os/rpi/armv6.s</a></li>
+<li><a href="main.c">os/rpi/main.c</a></li>
+<li><a href="splhi.pdf">splhi.pdf</a></li>
+</ul>
+
+        </p>
+        
+    </div>
+
+    <div class="prev-next">
+        
+    </div>
+
+    
+    
+    
+</div>
+
+
+
+    
+
+        </main><footer class="footer">
+    
+    
+
+    
+    <span>
+        Made using <a target="_blank" href="https://gohugo.io/">HUGO</a>
+    </span>
+</footer>
+</body>
+</html>

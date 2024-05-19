@@ -4,10 +4,17 @@
     <title>Raspberry Pi on LynxLine</title>
     <link>https://lynxline.com/tags/raspberry-pi/</link>
     <description>Recent content in Raspberry Pi on LynxLine</description>
-    <generator>Hugo</generator>
+    <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 17 Dec 2012 21:07:59 +0200</lastBuildDate>
+    <lastBuildDate>Thu, 24 Jan 2013 20:18:59 +0200</lastBuildDate>
     <atom:link href="https://lynxline.com/tags/raspberry-pi/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Lab 8, memory model</title>
+      <link>https://lynxline.com/posts/lab-8-memory-model/</link>
+      <pubDate>Thu, 24 Jan 2013 20:18:59 +0200</pubDate>
+      <guid>https://lynxline.com/posts/lab-8-memory-model/</guid>
+      <description>Now time to have a look at memory model. The BCM2835 gives next picture:&#xA;Actually when U-Boot pass the control, we have memory model equal to just physical addresses (middle column), so we just do not do anything we can perfectly sit with memory model equal with physical.&#xA;So then, our kernel is loaded at 0x8000, which is 32KB, and we are going to use the low 0-0x8000 memory part for kernel structures and kernel stack (which is not expected to be too much)</description>
+    </item>
     <item>
       <title>Lab 7, linking, planning next</title>
       <link>https://lynxline.com/posts/lab-7-linking-more-initialization/</link>
@@ -55,7 +62,7 @@
       <link>https://lynxline.com/posts/lab-1-compiler/</link>
       <pubDate>Fri, 16 Nov 2012 21:18:41 +0200</pubDate>
       <guid>https://lynxline.com/posts/lab-1-compiler/</guid>
-      <description>Let’s start with tools that we need to just build the OS for ARM. First clone official inferno os repository from google code repository:&#xA;1 # hg clone https://code.google.com/p/inferno-os/ What we need to move further? We need the ARM cross compiler, linker, etc. For this, let’s just compile inferno targeting mac as host (we are on mac now, so we will get hosted inferno for mac as result):&#xA;1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 # cd inferno-os/ # INF_ROOT=`pwd` perl -i -pe &amp;#39;s/^ROOT=.</description>
+      <description>Let’s start with tools that we need to just build the OS for ARM. First clone official inferno os repository from google code repository:&#xA;1# hg clone https://code.google.com/p/inferno-os/ What we need to move further? We need the ARM cross compiler, linker, etc. For this, let’s just compile inferno targeting mac as host (we are on mac now, so we will get hosted inferno for mac as result):&#xA;1# cd inferno-os/ 2# INF_ROOT=`pwd` perl -i -pe &amp;#39;s/^ROOT=.</description>
     </item>
   </channel>
 </rss>

@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <style>
+        :root {
+            --accent-color: #FF4D4D;
+        }
+    </style>
+
+    
+    
+    
+    
+    
+    
+
+    
+    <title>Lab 8, memory model</title>
+    <meta name="description" content="">
+    <meta name="keywords" content='Blog, Inferno OS, Raspberry Pi, Research'>
+
+    <meta property="og:url" content="https://lynxline.com/posts/lab-8-memory-model/">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Lab 8, memory model">
+    <meta property="og:description" content="">
+    <meta property="og:image" content="https://lynxline.com/images/lynx.jpg">
+    <meta property="og:image:secure_url" content="https://lynxline.com/images/lynx.jpg">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Lab 8, memory model">
+    <meta name="twitter:description" content="">
+    <meta property="twitter:domain" content="https://lynxline.com/posts/lab-8-memory-model/">
+    <meta property="twitter:url" content="https://lynxline.com/posts/lab-8-memory-model/">
+    <meta name="twitter:image" content="https://lynxline.com/images/lynx.jpg">
+
+    
+    <link rel="canonical" href="https://lynxline.com/posts/lab-8-memory-model/" />
+
+    
+    <link rel="stylesheet" type="text/css" href="/css/normalize.min.css" media="print">
+
+    
+    <link rel="stylesheet" type="text/css" href="/css/main.min.css">
+
+    
+    <link id="dark-theme" rel="stylesheet" href="/css/dark.min.css">
+
+    
+    <script src="/js/bundle.min.c60dbb422ed053b0761160e3a3f08b9af2060f00adc8f12c0ff21a8cf55b3d8e.js" integrity="sha256-xg27Qi7QU7B2EWDjo/CLmvIGDwCtyPEsD/IajPVbPY4="></script>
+
+    
+    
+</head>
+<body>
+        <script type="text/javascript">
+            
+            setThemeByUserPref();
+        </script><header class="header">
+    <nav class="header-nav">
+
+        
+        <div class="avatar">
+            <a href="https://lynxline.com/">
+                <img src='/images/lynx.jpg' alt="avatar" />
+            </a>
+        </div>
+        
+
+        <div class="nav-title">
+            <a class="nav-brand" href="https://lynxline.com/">LynxLine</a>
+        </div>
+
+        <div class="nav-links">
+            
+            <div class="nav-link">
+                <a href="https://lynxline.com/services/"><span data-feather='zap'></span> Services </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://lynxline.com/posts/"><span data-feather='layers'></span> Posts </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://lynxline.com/tags/"><span data-feather='tag'></span> Tags </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://lynxline.com/contact/"><span data-feather='mail'></span> Contact </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://github.com"><span data-feather='github'></span>  </a>
+            </div>
+            
+
+            <span class="nav-icons-divider"></span>
+            <div class="nav-link dark-theme-toggle">
+                <span id="dark-theme-toggle-screen-reader-target" class="sr-only"></span>
+                <a>
+                    <span id="theme-toggle-icon" data-feather="moon"></span>
+                </a>
+            </div>
+
+            <div class="nav-link" id="hamburger-menu-toggle">
+                <span id="hamburger-menu-toggle-screen-reader-target" class="sr-only">menu</span>
+                <a>
+                    <span data-feather="menu"></span>
+                </a>
+            </div>
+
+            
+            <ul class="nav-hamburger-list visibility-hidden">
+                
+                <li class="nav-item">
+                    <a href="https://lynxline.com/services/"><span data-feather='zap'></span> Services </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://lynxline.com/posts/"><span data-feather='layers'></span> Posts </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://lynxline.com/tags/"><span data-feather='tag'></span> Tags </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://lynxline.com/contact/"><span data-feather='mail'></span> Contact </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://github.com"><span data-feather='github'></span>  </a>
+                </li>
+                
+                <li class="nav-item dark-theme-toggle">
+                    <span id="dark-theme-toggle-screen-reader-target" class="sr-only">theme</span>
+                    <a>
+                        <span id="theme-toggle-icon" data-feather="moon"></span>
+                    </a>
+                </li>
+            </ul>
+
+        </div>
+    </nav>
+</header>
+<main id="content">
+    <div class="post container">
+    <div class="post-header-section">
+        <h1>Lab 8, memory model</h1>
+        <small role="doc-subtitle"></small>
+        <p class="post-date">January 24, 2013
+        
+        </p>
+
+        <ul class="post-tags">
+        
+            <li class="post-tag"><a href="https://lynxline.com/tags/blog">Blog</a></li>
+        
+            <li class="post-tag"><a href="https://lynxline.com/tags/inferno-os">Inferno OS</a></li>
+        
+            <li class="post-tag"><a href="https://lynxline.com/tags/raspberry-pi">Raspberry Pi</a></li>
+        
+            <li class="post-tag"><a href="https://lynxline.com/tags/research">Research</a></li>
+        
+        </ul>
+    </div>
+
+    <div class="post-content">
+        <p>
+            <p>Now time to have a look at memory model. The BCM2835 gives next picture:</p>
+<p><img src="lab-8-1.png" alt="fig1"></p>
+<p>Actually when U-Boot pass the control, we have memory model equal to just physical addresses (middle column), so we just do not do anything we can perfectly sit with memory model equal with physical.</p>
+<p>So then, our kernel is loaded at 0x8000, which is 32KB, and we are going to use the low 0-0x8000 memory part for kernel structures and kernel stack (which is not expected to be too much)</p>
+<p>Now back to loader, we need to do some specific arm things before passing control: first we need to disable interrupts:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-asm" data-lang="asm"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span><span style="color:#a6e22e">MOVW</span>    <span style="color:#66d9ef">$</span>(<span style="color:#66d9ef">PsrDirq</span><span style="color:#960050;background-color:#1e0010">|</span><span style="color:#66d9ef">PsrDfiq</span><span style="color:#960050;background-color:#1e0010">|</span><span style="color:#66d9ef">PsrMsvc</span>), <span style="color:#66d9ef">R1</span>  <span style="color:#75715e">/* SVC mode: interrupts disabled */</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2</span><span><span style="color:#a6e22e">MOVW</span>    <span style="color:#66d9ef">R1</span>, <span style="color:#66d9ef">CPSR</span>
+</span></span></code></pre></div><p>Set address for stack: we decided to put Mach structure at address 0x2000 (8KB), so let’s have a stack at MACHADDR+BY2PG (added a page 4KB) = 12KB, as result we will have stack area for kernel as 0x3000-0x8000 (12KB–32KB). It is 20KB, which is expected as enough of all kernel routines.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-asm" data-lang="asm"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span><span style="color:#a6e22e">MOVW</span>    <span style="color:#66d9ef">$</span>(<span style="color:#66d9ef">MACHADDR</span><span style="color:#960050;background-color:#1e0010">+</span><span style="color:#66d9ef">BY2PG-4</span>),<span style="color:#66d9ef">SP</span> <span style="color:#75715e">/* stack; 4 bytes for link */</span>
+</span></span></code></pre></div><p>Enable cycle counter:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-asm" data-lang="asm"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span><span style="color:#a6e22e">MOVW</span>    <span style="color:#66d9ef">$1</span>, <span style="color:#66d9ef">R1</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2</span><span><span style="color:#a6e22e">MCR</span>     <span style="color:#66d9ef">CpSC</span>, <span style="color:#ae81ff">0</span>, <span style="color:#66d9ef">R1</span>, <span style="color:#66d9ef">C</span>(<span style="color:#66d9ef">CpSPM</span>), <span style="color:#66d9ef">C</span>(<span style="color:#66d9ef">CpSPMperf</span>), <span style="color:#66d9ef">CpSPMctl</span>
+</span></span></code></pre></div><p>Enable caches:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-asm" data-lang="asm"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span><span style="color:#a6e22e">MRC</span>     <span style="color:#66d9ef">CpSC</span>, <span style="color:#ae81ff">0</span>, <span style="color:#66d9ef">R0</span>, <span style="color:#66d9ef">C</span>(<span style="color:#66d9ef">CpCONTROL</span>), <span style="color:#66d9ef">C</span>(<span style="color:#ae81ff">0</span>), <span style="color:#66d9ef">CpMainctl</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2</span><span><span style="color:#a6e22e">ORR</span>     <span style="color:#66d9ef">$</span>(<span style="color:#66d9ef">CpChv</span><span style="color:#960050;background-color:#1e0010">|</span><span style="color:#66d9ef">CpCdcache</span><span style="color:#960050;background-color:#1e0010">|</span><span style="color:#66d9ef">CpCicache</span>), <span style="color:#66d9ef">R0</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3</span><span><span style="color:#a6e22e">MCR</span>     <span style="color:#66d9ef">CpSC</span>, <span style="color:#ae81ff">0</span>, <span style="color:#66d9ef">R0</span>, <span style="color:#66d9ef">C</span>(<span style="color:#66d9ef">CpCONTROL</span>), <span style="color:#66d9ef">C</span>(<span style="color:#ae81ff">0</span>), <span style="color:#66d9ef">CpMainctl</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4</span><span><span style="color:#a6e22e">MOVW</span>    <span style="color:#66d9ef">$0</span>, <span style="color:#66d9ef">R0</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5</span><span><span style="color:#a6e22e">MCR</span>     <span style="color:#66d9ef">CpSC</span>, <span style="color:#ae81ff">0</span>, <span style="color:#66d9ef">R0</span>, <span style="color:#66d9ef">C</span>(<span style="color:#66d9ef">CpCACHE</span>), <span style="color:#66d9ef">C</span>(<span style="color:#66d9ef">CpCACHEinvi</span>), <span style="color:#66d9ef">CpCACHEwait</span>
+</span></span></code></pre></div><p>(these codes I took from 9pi, so may not good explain step-by-step, I would appreciate if pointed to much better description of all specifics).</p>
+<p>Resulting <strong>load.s:</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-asm" data-lang="asm"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1</span><span><span style="color:#75715e">#include &#34;mem.h&#34;
+</span></span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2</span><span><span style="color:#75715e">#include &#34;armv6.h&#34;
+</span></span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3</span><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4</span><span><span style="color:#a6e22e">TEXT</span> <span style="color:#66d9ef">_start</span>(<span style="color:#66d9ef">SB</span>), <span style="color:#ae81ff">1</span>, <span style="color:#66d9ef">$-4</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5</span><span>    <span style="color:#a6e22e">MOVW</span>    <span style="color:#66d9ef">$setR12</span>(<span style="color:#66d9ef">SB</span>), <span style="color:#66d9ef">R12</span>    <span style="color:#75715e">/* static base (SB) */</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6</span><span>    <span style="color:#a6e22e">MOVW</span>    <span style="color:#66d9ef">$</span>(<span style="color:#66d9ef">PsrDirq</span><span style="color:#960050;background-color:#1e0010">|</span><span style="color:#66d9ef">PsrDfiq</span><span style="color:#960050;background-color:#1e0010">|</span><span style="color:#66d9ef">PsrMsvc</span>), <span style="color:#66d9ef">R1</span> <span style="color:#75715e">/* SVC: interrupts disabled */</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7</span><span>    <span style="color:#a6e22e">MOVW</span>    <span style="color:#66d9ef">R1</span>, <span style="color:#66d9ef">CPSR</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9</span><span>    <span style="color:#a6e22e">MOVW</span>    <span style="color:#66d9ef">$</span>(<span style="color:#66d9ef">MACHADDR</span><span style="color:#960050;background-color:#1e0010">+</span><span style="color:#66d9ef">BY2PG-4</span>),<span style="color:#66d9ef">SP</span> <span style="color:#75715e">/* stack; 4 bytes for link */</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11</span><span>    <span style="color:#a6e22e">MOVW</span>    <span style="color:#66d9ef">$1</span>, <span style="color:#66d9ef">R1</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12</span><span>    <span style="color:#a6e22e">MCR</span>     <span style="color:#66d9ef">CpSC</span>, <span style="color:#ae81ff">0</span>, <span style="color:#66d9ef">R1</span>, <span style="color:#66d9ef">C</span>(<span style="color:#66d9ef">CpSPM</span>), <span style="color:#66d9ef">C</span>(<span style="color:#66d9ef">CpSPMperf</span>), <span style="color:#66d9ef">CpSPMctl</span> <span style="color:#75715e">/* counter */</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14</span><span>    <span style="color:#a6e22e">MRC</span>     <span style="color:#66d9ef">CpSC</span>, <span style="color:#ae81ff">0</span>, <span style="color:#66d9ef">R0</span>, <span style="color:#66d9ef">C</span>(<span style="color:#66d9ef">CpCONTROL</span>), <span style="color:#66d9ef">C</span>(<span style="color:#ae81ff">0</span>), <span style="color:#66d9ef">CpMainctl</span> <span style="color:#75715e">/* caches */</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15</span><span>    <span style="color:#a6e22e">ORR</span>     <span style="color:#66d9ef">$</span>(<span style="color:#66d9ef">CpChv</span><span style="color:#960050;background-color:#1e0010">|</span><span style="color:#66d9ef">CpCdcache</span><span style="color:#960050;background-color:#1e0010">|</span><span style="color:#66d9ef">CpCicache</span>), <span style="color:#66d9ef">R0</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16</span><span>    <span style="color:#a6e22e">MCR</span>     <span style="color:#66d9ef">CpSC</span>, <span style="color:#ae81ff">0</span>, <span style="color:#66d9ef">R0</span>, <span style="color:#66d9ef">C</span>(<span style="color:#66d9ef">CpCONTROL</span>), <span style="color:#66d9ef">C</span>(<span style="color:#ae81ff">0</span>), <span style="color:#66d9ef">CpMainctl</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17</span><span>    <span style="color:#a6e22e">ISB</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19</span><span>    <span style="color:#a6e22e">BL</span>      ,<span style="color:#66d9ef">main</span>(<span style="color:#66d9ef">SB</span>)
+</span></span></code></pre></div><p>File armv6.h with all needed constants I took from 9pi sources.</p>
+<p>FILES:</p>
+<ul>
+<li><a href="load.s">os/rpi/load.s</a></li>
+<li><a href="armv6.h">os/rpi/armv6.h</a></li>
+</ul>
+
+        </p>
+        
+    </div>
+
+    <div class="prev-next">
+        
+    </div>
+
+    
+    
+    
+</div>
+
+
+
+    
+
+        </main><footer class="footer">
+    
+    
+
+    
+    <span>
+        Made using <a target="_blank" href="https://gohugo.io/">HUGO</a>
+    </span>
+</footer>
+</body>
+</html>

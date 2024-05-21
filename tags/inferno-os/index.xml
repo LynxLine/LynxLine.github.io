@@ -4,10 +4,17 @@
     <title>Inferno OS on LynxLine</title>
     <link>https://lynxline.com/tags/inferno-os/</link>
     <description>Recent content in Inferno OS on LynxLine</description>
-    <generator>Hugo</generator>
+    <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 27 Jan 2013 21:59:03 +0200</lastBuildDate>
+    <lastBuildDate>Sat, 16 Feb 2013 09:45:03 +0200</lastBuildDate>
     <atom:link href="https://lynxline.com/tags/inferno-os/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Lab 10, Bss, memory pools, malloc</title>
+      <link>https://lynxline.com/posts/lab-10-bss-menpools-malloc/</link>
+      <pubDate>Sat, 16 Feb 2013 09:45:03 +0200</pubDate>
+      <guid>https://lynxline.com/posts/lab-10-bss-menpools-malloc/</guid>
+      <description>Time to have a look at initial memory initializations. First we need to initialize BSS (more details: http://en.wikipedia.org/wiki/.bss), statically-allocated variables. We do it in next way:&#xA;1memset(edata, 0, end-edata); From Plan9 manual: “The loaded image has several symbols inserted by the loader: etext is the address of the end of the text segment; bdata is the address of the beginning of the data segment; edata is the address of the end of the data segment; and end is the address of the end of the bss segment, and of the program.</description>
+    </item>
     <item>
       <title>Lab 9, coding assembler part</title>
       <link>https://lynxline.com/posts/lab-9-coding-assembler-part/</link>

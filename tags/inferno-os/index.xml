@@ -6,8 +6,15 @@
     <description>Recent content in Inferno OS on LynxLine</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 13 Apr 2013 12:03:37 +0200</lastBuildDate>
+    <lastBuildDate>Sun, 14 Apr 2013 12:45:00 +0200</lastBuildDate>
     <atom:link href="https://lynxline.com/tags/inferno-os/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Lab 13, interrupts, part 2</title>
+      <link>https://lynxline.com/posts/lab-13-interrupts-part2/</link>
+      <pubDate>Sun, 14 Apr 2013 12:45:00 +0200</pubDate>
+      <guid>https://lynxline.com/posts/lab-13-interrupts-part2/</guid>
+      <description>Time to write a code to process interrupts. All interrupts that happens in system use the vector of interrupts (8 of them) which is located at 0xffff0000 (high memory case). This vector contains addresses that CPU should pass execution to.&#xA;1. +00 Reset 2. +04 Undefined 3. +08 SWI 4. +0C Prefetch abort 5. +10 Data abort 6. +14 Reserved 7. +18 IRQ 8. +1C FIQ In main() we have to call function called trapinit() to do all initializations of interrupts handling.</description>
+    </item>
     <item>
       <title>Lab 12, interrupts, part 1</title>
       <link>https://lynxline.com/posts/lab-12-interrupts-part-1/</link>

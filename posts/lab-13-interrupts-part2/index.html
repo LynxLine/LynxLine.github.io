@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <style>
+        :root {
+            --accent-color: #FF4D4D;
+        }
+    </style>
+
+    
+    
+    
+    
+    
+    
+
+    
+    <title>Lab 13, interrupts, part 2</title>
+    <meta name="description" content="">
+    <meta name="keywords" content='Blog, Inferno OS, Raspberry Pi, Research'>
+
+    <meta property="og:url" content="https://lynxline.com/posts/lab-13-interrupts-part2/">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Lab 13, interrupts, part 2">
+    <meta property="og:description" content="">
+    <meta property="og:image" content="https://lynxline.com/images/lynx.jpg">
+    <meta property="og:image:secure_url" content="https://lynxline.com/images/lynx.jpg">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Lab 13, interrupts, part 2">
+    <meta name="twitter:description" content="">
+    <meta property="twitter:domain" content="https://lynxline.com/posts/lab-13-interrupts-part2/">
+    <meta property="twitter:url" content="https://lynxline.com/posts/lab-13-interrupts-part2/">
+    <meta name="twitter:image" content="https://lynxline.com/images/lynx.jpg">
+
+    
+    <link rel="canonical" href="https://lynxline.com/posts/lab-13-interrupts-part2/" />
+
+    
+    <link rel="stylesheet" type="text/css" href="/css/normalize.min.css" media="print">
+
+    
+    <link rel="stylesheet" type="text/css" href="/css/main.min.css">
+
+    
+    <link id="dark-theme" rel="stylesheet" href="/css/dark.min.css">
+
+    
+    <script src="/js/bundle.min.c60dbb422ed053b0761160e3a3f08b9af2060f00adc8f12c0ff21a8cf55b3d8e.js" integrity="sha256-xg27Qi7QU7B2EWDjo/CLmvIGDwCtyPEsD/IajPVbPY4="></script>
+
+    
+    
+</head>
+<body>
+        <script type="text/javascript">
+            
+            setThemeByUserPref();
+        </script><header class="header">
+    <nav class="header-nav">
+
+        
+        <div class="avatar">
+            <a href="https://lynxline.com/">
+                <img src='/images/lynx.jpg' alt="avatar" />
+            </a>
+        </div>
+        
+
+        <div class="nav-title">
+            <a class="nav-brand" href="https://lynxline.com/">LynxLine</a>
+        </div>
+
+        <div class="nav-links">
+            
+            <div class="nav-link">
+                <a href="https://lynxline.com/services/"><span data-feather='zap'></span> Services </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://lynxline.com/posts/"><span data-feather='layers'></span> Posts </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://lynxline.com/tags/"><span data-feather='tag'></span> Tags </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://lynxline.com/contact/"><span data-feather='mail'></span> Contact </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://github.com"><span data-feather='github'></span>  </a>
+            </div>
+            
+
+            <span class="nav-icons-divider"></span>
+            <div class="nav-link dark-theme-toggle">
+                <span id="dark-theme-toggle-screen-reader-target" class="sr-only"></span>
+                <a>
+                    <span id="theme-toggle-icon" data-feather="moon"></span>
+                </a>
+            </div>
+
+            <div class="nav-link" id="hamburger-menu-toggle">
+                <span id="hamburger-menu-toggle-screen-reader-target" class="sr-only">menu</span>
+                <a>
+                    <span data-feather="menu"></span>
+                </a>
+            </div>
+
+            
+            <ul class="nav-hamburger-list visibility-hidden">
+                
+                <li class="nav-item">
+                    <a href="https://lynxline.com/services/"><span data-feather='zap'></span> Services </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://lynxline.com/posts/"><span data-feather='layers'></span> Posts </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://lynxline.com/tags/"><span data-feather='tag'></span> Tags </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://lynxline.com/contact/"><span data-feather='mail'></span> Contact </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://github.com"><span data-feather='github'></span>  </a>
+                </li>
+                
+                <li class="nav-item dark-theme-toggle">
+                    <span id="dark-theme-toggle-screen-reader-target" class="sr-only">theme</span>
+                    <a>
+                        <span id="theme-toggle-icon" data-feather="moon"></span>
+                    </a>
+                </li>
+            </ul>
+
+        </div>
+    </nav>
+</header>
+<main id="content">
+    <div class="post container">
+    <div class="post-header-section">
+        <h1>Lab 13, interrupts, part 2</h1>
+        <small role="doc-subtitle"></small>
+        <p class="post-date">April 14, 2013
+        
+        </p>
+
+        <ul class="post-tags">
+        
+            <li class="post-tag"><a href="https://lynxline.com/tags/blog">Blog</a></li>
+        
+            <li class="post-tag"><a href="https://lynxline.com/tags/inferno-os">Inferno OS</a></li>
+        
+            <li class="post-tag"><a href="https://lynxline.com/tags/raspberry-pi">Raspberry Pi</a></li>
+        
+            <li class="post-tag"><a href="https://lynxline.com/tags/research">Research</a></li>
+        
+        </ul>
+    </div>
+
+    <div class="post-content">
+        <p>
+            <p>Time to write a code to process interrupts.
+All interrupts that happens in system use the vector of interrupts (8 of them) which is located at <strong>0xffff0000</strong> (high memory case). This vector contains addresses that CPU should pass execution to.</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1.</td>
+<td>+00</td>
+<td>Reset</td>
+</tr>
+<tr>
+<td>2.</td>
+<td>+04</td>
+<td>Undefined</td>
+</tr>
+<tr>
+<td>3.</td>
+<td>+08</td>
+<td>SWI</td>
+</tr>
+<tr>
+<td>4.</td>
+<td>+0C</td>
+<td>Prefetch abort</td>
+</tr>
+<tr>
+<td>5.</td>
+<td>+10</td>
+<td>Data abort</td>
+</tr>
+<tr>
+<td>6.</td>
+<td>+14</td>
+<td>Reserved</td>
+</tr>
+<tr>
+<td>7.</td>
+<td>+18</td>
+<td>IRQ</td>
+</tr>
+<tr>
+<td>8.</td>
+<td>+1C</td>
+<td>FIQ</td>
+</tr>
+</tbody>
+</table>
+<p>In <em>main()</em> we have to call function called trapinit() to do all initializations of interrupts handling.</p>
+<p>Example: when interrupt happens – say IRQ (number 7), then cpu will pass execution to <strong>0xffff0000+18</strong>. Our task is to initialize that place with codes that will pass execution to specific calls in kernel.</p>
+<p>It is done in next way: in assembler file <strong>intr.s</strong> we create two functions:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-asm" data-lang="asm"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1</span><span><span style="color:#a6e22e">TEXT</span> <span style="color:#66d9ef">vectors</span>(<span style="color:#66d9ef">SB</span>), <span style="color:#66d9ef">$-4</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2</span><span>	<span style="color:#a6e22e">MOVW</span>    <span style="color:#ae81ff">0x18</span>(<span style="color:#66d9ef">PC</span>), <span style="color:#66d9ef">PC</span>	<span style="color:#75715e">/* reset */</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3</span><span>	<span style="color:#a6e22e">MOVW</span>    <span style="color:#ae81ff">0x18</span>(<span style="color:#66d9ef">PC</span>), <span style="color:#66d9ef">PC</span>	<span style="color:#75715e">/* undefined */</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4</span><span>	<span style="color:#a6e22e">MOVW</span>    <span style="color:#ae81ff">0x18</span>(<span style="color:#66d9ef">PC</span>), <span style="color:#66d9ef">PC</span>	<span style="color:#75715e">/* SWI */</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5</span><span>	<span style="color:#a6e22e">MOVW</span>    <span style="color:#ae81ff">0x18</span>(<span style="color:#66d9ef">PC</span>), <span style="color:#66d9ef">PC</span>	<span style="color:#75715e">/* prefetch abort */</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6</span><span>	<span style="color:#a6e22e">MOVW</span>    <span style="color:#ae81ff">0x18</span>(<span style="color:#66d9ef">PC</span>), <span style="color:#66d9ef">PC</span>	<span style="color:#75715e">/* data abort */</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7</span><span>	<span style="color:#a6e22e">MOVW</span>    <span style="color:#ae81ff">0x18</span>(<span style="color:#66d9ef">PC</span>), <span style="color:#66d9ef">PC</span>	<span style="color:#75715e">/* reserved */</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8</span><span>	<span style="color:#a6e22e">MOVW</span>    <span style="color:#ae81ff">0x18</span>(<span style="color:#66d9ef">PC</span>), <span style="color:#66d9ef">PC</span>	<span style="color:#75715e">/* IRQ */</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9</span><span>	<span style="color:#a6e22e">MOVW</span>    <span style="color:#ae81ff">0x18</span>(<span style="color:#66d9ef">PC</span>), <span style="color:#66d9ef">PC</span>	<span style="color:#75715e">/* FIQ */</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11</span><span><span style="color:#a6e22e">TEXT</span> <span style="color:#66d9ef">vtable</span>(<span style="color:#66d9ef">SB</span>), <span style="color:#66d9ef">$-4</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12</span><span>	<span style="color:#a6e22e">WORD</span>	<span style="color:#66d9ef">$_vsvc</span>(<span style="color:#66d9ef">SB</span>)		<span style="color:#75715e">/* reset, in svc mode already */</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13</span><span>	<span style="color:#a6e22e">WORD</span>	<span style="color:#66d9ef">$_vund</span>(<span style="color:#66d9ef">SB</span>)		<span style="color:#75715e">/* undefined, switch to svc mode */</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14</span><span>	<span style="color:#a6e22e">WORD</span>	<span style="color:#66d9ef">$_vsvc</span>(<span style="color:#66d9ef">SB</span>)		<span style="color:#75715e">/* swi, in svc mode already */</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15</span><span>	<span style="color:#a6e22e">WORD</span>	<span style="color:#66d9ef">$_vpab</span>(<span style="color:#66d9ef">SB</span>)		<span style="color:#75715e">/* prefetch abort, switch to svc mode */</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16</span><span>	<span style="color:#a6e22e">WORD</span>	<span style="color:#66d9ef">$_vdab</span>(<span style="color:#66d9ef">SB</span>)		<span style="color:#75715e">/* data abort, switch to svc mode */</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17</span><span>	<span style="color:#a6e22e">WORD</span>	<span style="color:#66d9ef">$_vsvc</span>(<span style="color:#66d9ef">SB</span>)		<span style="color:#75715e">/* reserved */</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18</span><span>	<span style="color:#a6e22e">WORD</span>	<span style="color:#66d9ef">$_virq</span>(<span style="color:#66d9ef">SB</span>)		<span style="color:#75715e">/* IRQ, switch to svc mode */</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19</span><span>	<span style="color:#a6e22e">WORD</span>	<span style="color:#66d9ef">$_vfiq</span>(<span style="color:#66d9ef">SB</span>)		<span style="color:#75715e">/* FIQ, switch to svc mode */</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21</span><span><span style="color:#a6e22e">TEXT</span> <span style="color:#66d9ef">_vund</span>(<span style="color:#66d9ef">SB</span>), <span style="color:#66d9ef">$-4</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22</span><span>	<span style="color:#a6e22e">...</span>
+</span></span></code></pre></div><p>Then in <em>trapinit()</em> we copy bytes of these functions to <strong>0xffff0000</strong>:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1</span><span><span style="color:#66d9ef">enum</span> { Nvec <span style="color:#f92672">=</span> <span style="color:#ae81ff">8</span> }; <span style="color:#75715e">/* # of vectors */</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2</span><span><span style="color:#66d9ef">typedef</span> <span style="color:#66d9ef">struct</span> Vpage0 {
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3</span><span>	<span style="color:#66d9ef">void</span>    (<span style="color:#f92672">*</span>vectors[Nvec])(<span style="color:#66d9ef">void</span>);
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4</span><span>	u32int  vtable[Nvec];
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5</span><span>} Vpage0;
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7</span><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">trapinit</span>(<span style="color:#66d9ef">void</span>) {
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8</span><span>	Vpage0 <span style="color:#f92672">*</span>vpage0;
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9</span><span>	<span style="color:#75715e">/* set up the exception vectors */</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10</span><span>	vpage0 <span style="color:#f92672">=</span> (Vpage0<span style="color:#f92672">*</span>)HVECTORS;
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11</span><span>	<span style="color:#a6e22e">memmove</span>(vpage0<span style="color:#f92672">-&gt;</span>vectors, vectors, <span style="color:#66d9ef">sizeof</span>(vpage0<span style="color:#f92672">-&gt;</span>vectors));
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12</span><span>	<span style="color:#a6e22e">memmove</span>(vpage0<span style="color:#f92672">-&gt;</span>vtable,  vtable,  <span style="color:#66d9ef">sizeof</span>(vpage0<span style="color:#f92672">-&gt;</span>vtable));
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13</span><span>	...
+</span></span></code></pre></div><p>You may see that when execution passed to <strong>0xffff0000+18</strong> (HVECTORS+IRQ), then cpu does <em>MOVW 0x18(PC), PC,</em> which means to jump to address which is located in memory just <strong>+0x18</strong> above – where the vtable with addresses of our kernel routines <em>_virq()</em></p>
+<p>Then our 8 assembler routines to do initial logic of handling interrupts:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-asm" data-lang="asm"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1</span><span><span style="color:#a6e22e">TEXT</span> <span style="color:#66d9ef">_vund</span>(<span style="color:#66d9ef">SB</span>), <span style="color:#66d9ef">$-4</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2</span><span>	<span style="color:#a6e22e">MOVM.DB</span>	[<span style="color:#66d9ef">R0-R3</span>], (<span style="color:#66d9ef">SP</span>)
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3</span><span>	<span style="color:#a6e22e">MOVW</span>	<span style="color:#66d9ef">$PsrMund</span>, <span style="color:#66d9ef">R0</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4</span><span>	<span style="color:#a6e22e">B</span>		<span style="color:#66d9ef">_vswitch</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6</span><span><span style="color:#a6e22e">TEXT</span> <span style="color:#66d9ef">_vsvc</span>(<span style="color:#66d9ef">SB</span>), <span style="color:#66d9ef">$-4</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7</span><span>	<span style="color:#a6e22e">MOVW.W</span>	<span style="color:#66d9ef">R14</span>, -<span style="color:#ae81ff">4</span>(<span style="color:#66d9ef">SP</span>)
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8</span><span>	<span style="color:#a6e22e">MOVW</span>	<span style="color:#66d9ef">CPSR</span>, <span style="color:#66d9ef">R14</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9</span><span>	<span style="color:#a6e22e">MOVW.W</span>	<span style="color:#66d9ef">R14</span>, -<span style="color:#ae81ff">4</span>(<span style="color:#66d9ef">SP</span>)
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10</span><span>	<span style="color:#a6e22e">BIC</span>		<span style="color:#66d9ef">$PsrMask</span>, <span style="color:#66d9ef">R14</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11</span><span>	<span style="color:#a6e22e">ORR</span>		<span style="color:#66d9ef">$</span>(<span style="color:#66d9ef">PsrDirq</span><span style="color:#960050;background-color:#1e0010">|</span><span style="color:#66d9ef">PsrDfiq</span><span style="color:#960050;background-color:#1e0010">|</span><span style="color:#66d9ef">PsrMsvc</span>), <span style="color:#66d9ef">R14</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12</span><span>	<span style="color:#a6e22e">MOVW</span>	<span style="color:#66d9ef">R14</span>, <span style="color:#66d9ef">CPSR</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13</span><span>	<span style="color:#a6e22e">MOVW</span>	<span style="color:#66d9ef">$PsrMsvc</span>, <span style="color:#66d9ef">R14</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14</span><span>	<span style="color:#a6e22e">MOVW.W</span>	<span style="color:#66d9ef">R14</span>, -<span style="color:#ae81ff">4</span>(<span style="color:#66d9ef">SP</span>)
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15</span><span>	<span style="color:#a6e22e">B</span>		<span style="color:#66d9ef">_vsaveu</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17</span><span><span style="color:#a6e22e">TEXT</span> <span style="color:#66d9ef">_vpab</span>(<span style="color:#66d9ef">SB</span>), <span style="color:#66d9ef">$-4</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18</span><span>	<span style="color:#a6e22e">MOVM.DB</span>	[<span style="color:#66d9ef">R0-R3</span>], (<span style="color:#66d9ef">R13</span>)
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19</span><span>	<span style="color:#a6e22e">MOVW</span>	<span style="color:#66d9ef">$PsrMabt</span>, <span style="color:#66d9ef">R0</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20</span><span>	<span style="color:#a6e22e">B</span>		<span style="color:#66d9ef">_vswitch</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22</span><span><span style="color:#a6e22e">TEXT</span> <span style="color:#66d9ef">_vdab</span>(<span style="color:#66d9ef">SB</span>), <span style="color:#66d9ef">$-4</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23</span><span>	<span style="color:#a6e22e">MOVM.DB</span>	[<span style="color:#66d9ef">R0-R3</span>], (<span style="color:#66d9ef">R13</span>)
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24</span><span>	<span style="color:#a6e22e">MOVW</span>	<span style="color:#66d9ef">$</span>(<span style="color:#66d9ef">PsrMabt</span><span style="color:#960050;background-color:#1e0010">+</span><span style="color:#ae81ff">1</span>), <span style="color:#66d9ef">R0</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">25</span><span>	<span style="color:#a6e22e">B</span>		<span style="color:#66d9ef">_vswitch</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">26</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">27</span><span><span style="color:#a6e22e">TEXT</span> <span style="color:#66d9ef">_vfiq</span>(<span style="color:#66d9ef">SB</span>), <span style="color:#66d9ef">$-4</span>				<span style="color:#75715e">/* FIQ */</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">28</span><span>	<span style="color:#a6e22e">MOVM.DB</span>	[<span style="color:#66d9ef">R0-R3</span>], (<span style="color:#66d9ef">R13</span>)
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">29</span><span>	<span style="color:#a6e22e">MOVW</span>	<span style="color:#66d9ef">$PsrMfiq</span>, <span style="color:#66d9ef">R0</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">30</span><span>	<span style="color:#a6e22e">B</span>		<span style="color:#66d9ef">_vswitch</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">31</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">32</span><span><span style="color:#a6e22e">TEXT</span> <span style="color:#66d9ef">_virq</span>(<span style="color:#66d9ef">SB</span>), <span style="color:#66d9ef">$-4</span>				<span style="color:#75715e">/* IRQ */</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">33</span><span>	<span style="color:#a6e22e">MOVM.DB</span>	[<span style="color:#66d9ef">R0-R3</span>], (<span style="color:#66d9ef">R13</span>)
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">34</span><span>	<span style="color:#a6e22e">MOVW</span>	<span style="color:#66d9ef">$PsrMirq</span>, <span style="color:#66d9ef">R0</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">35</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">36</span><span>_vswitch: <span style="color:#75715e">/* switch to svc mode */</span>
+</span></span></code></pre></div><p>You see that they are using 4 words of stack <em>[R0-R3]</em>. That I will show later in <em>trapinit()</em>, but idea that we can set different stack addresses for each interrupt types – that are those arrays we added to <em>Mach: ulong fiqstack[4]; ulong irqstack[4]; ulong abtstack[4]; ulong undstack[4];</em></p>
+<p>Later it switches to <strong>svc</strong> mode and cpu gets stack with address which is set for svc mode.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-asm" data-lang="asm"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1</span><span>_vswitch:						<span style="color:#75715e">/* switch to svc mode */</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2</span><span>	<span style="color:#a6e22e">MOVW</span>		<span style="color:#66d9ef">SPSR</span>,	<span style="color:#66d9ef">R1</span>		<span style="color:#75715e">/* state of cpu, cpsr */</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3</span><span>	<span style="color:#a6e22e">MOVW</span>		<span style="color:#66d9ef">R14</span>,	<span style="color:#66d9ef">R2</span>		<span style="color:#75715e">/* return code */</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4</span><span>	<span style="color:#a6e22e">MOVW</span>		<span style="color:#66d9ef">SP</span>,	<span style="color:#66d9ef">R3</span>			<span style="color:#75715e">/* stack */</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6</span><span>	<span style="color:#a6e22e">MOVW</span>		<span style="color:#66d9ef">CPSR</span>,	<span style="color:#66d9ef">R14</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7</span><span>	<span style="color:#a6e22e">BIC</span>			<span style="color:#66d9ef">$PsrMask</span>, <span style="color:#66d9ef">R14</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8</span><span>	<span style="color:#a6e22e">ORR</span>			<span style="color:#66d9ef">$</span>(<span style="color:#66d9ef">PsrDirq</span><span style="color:#960050;background-color:#1e0010">|</span><span style="color:#66d9ef">PsrDfiq</span><span style="color:#960050;background-color:#1e0010">|</span><span style="color:#66d9ef">PsrMsvc</span>), <span style="color:#66d9ef">R14</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9</span><span>	<span style="color:#a6e22e">MOVW</span>		<span style="color:#66d9ef">R14</span>, <span style="color:#66d9ef">CPSR</span>		<span style="color:#75715e">/* switch! */</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11</span><span>	<span style="color:#a6e22e">MOVW</span>		<span style="color:#66d9ef">R0</span>, <span style="color:#66d9ef">R0</span>			<span style="color:#75715e">/* gratuitous noop */</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13</span><span>	<span style="color:#a6e22e">MOVM.DB.W</span>	[<span style="color:#66d9ef">R0-R2</span>], (<span style="color:#66d9ef">SP</span>)	<span style="color:#75715e">/* set ureg-&gt;{type, psr, pc}; */</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14</span><span>								<span style="color:#75715e">/* SP points to ureg-&gt;type  */</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15</span><span>	<span style="color:#a6e22e">MOVW</span>		<span style="color:#66d9ef">R3</span>, -<span style="color:#ae81ff">12</span>(<span style="color:#66d9ef">SP</span>)
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16</span><span>	<span style="color:#a6e22e">MOVM.IA</span>		(<span style="color:#66d9ef">R3</span>), [<span style="color:#66d9ef">R0-R3</span>]	<span style="color:#75715e">/* restore [R0-R3] from previous mode */</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18</span><span>_vsaveu:
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19</span><span>	<span style="color:#a6e22e">MOVW.W</span>		<span style="color:#66d9ef">R11</span>, -<span style="color:#ae81ff">4</span>(<span style="color:#66d9ef">SP</span>)		<span style="color:#75715e">/* save link */</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21</span><span>	<span style="color:#a6e22e">SUB</span>			<span style="color:#66d9ef">$8</span>, <span style="color:#66d9ef">SP</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22</span><span>	<span style="color:#a6e22e">MOVM.DB.W</span>	[<span style="color:#66d9ef">R0-R12</span>], (<span style="color:#66d9ef">SP</span>)
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24</span><span>	<span style="color:#a6e22e">MOVW</span>		<span style="color:#66d9ef">$setR12</span>(<span style="color:#66d9ef">SB</span>), <span style="color:#66d9ef">R12</span><span style="color:#75715e">/* Make sure we&#39;ve got the kernel&#39;s SB */</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">25</span><span>	<span style="color:#a6e22e">MOVW</span>		<span style="color:#66d9ef">SP</span>, <span style="color:#66d9ef">R0</span>			<span style="color:#75715e">/* first arg is pointer to ureg */</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">26</span><span>	<span style="color:#a6e22e">SUB</span>			<span style="color:#66d9ef">$</span>(<span style="color:#ae81ff">4</span>*<span style="color:#ae81ff">2</span>), <span style="color:#66d9ef">SP</span>		<span style="color:#75715e">/* space for argument+link (for debugger) */</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">27</span><span>	<span style="color:#a6e22e">MOVW</span>		<span style="color:#66d9ef">$0xdeaddead</span>, <span style="color:#66d9ef">R11</span><span style="color:#75715e">/* marker */</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">28</span><span>	<span style="color:#a6e22e">BL</span>			<span style="color:#66d9ef">trap</span>(<span style="color:#66d9ef">SB</span>)
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">29</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">30</span><span>_vrfe:							<span style="color:#75715e">/* Restore Regs */</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">31</span><span>	<span style="color:#a6e22e">MOVW</span>		<span style="color:#66d9ef">CPSR</span>, <span style="color:#66d9ef">R0</span>		<span style="color:#75715e">/* splhi on return */</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">32</span><span>	<span style="color:#a6e22e">ORR</span>			<span style="color:#66d9ef">$</span>(<span style="color:#66d9ef">PsrDirq</span><span style="color:#960050;background-color:#1e0010">|</span><span style="color:#66d9ef">PsrDfiq</span>), <span style="color:#66d9ef">R0</span>, <span style="color:#66d9ef">R1</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">33</span><span>	<span style="color:#a6e22e">MOVW</span>		<span style="color:#66d9ef">R1</span>, <span style="color:#66d9ef">CPSR</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">34</span><span>	<span style="color:#a6e22e">ADD</span>			<span style="color:#66d9ef">$</span>(<span style="color:#ae81ff">8</span><span style="color:#960050;background-color:#1e0010">+</span><span style="color:#ae81ff">4</span>*<span style="color:#ae81ff">15</span>), <span style="color:#66d9ef">SP</span>	<span style="color:#75715e">/* [r0-R14]+argument+link */</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">35</span><span>	<span style="color:#a6e22e">MOVW</span>		(<span style="color:#66d9ef">SP</span>), <span style="color:#66d9ef">R14</span>		<span style="color:#75715e">/* restore link */</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">36</span><span>	<span style="color:#a6e22e">MOVW</span>		<span style="color:#ae81ff">8</span>(<span style="color:#66d9ef">SP</span>), <span style="color:#66d9ef">R0</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">37</span><span>	<span style="color:#a6e22e">MOVW</span>		<span style="color:#66d9ef">R0</span>, <span style="color:#66d9ef">SPSR</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">38</span><span>	<span style="color:#a6e22e">MOVM.DB.S</span>   (<span style="color:#66d9ef">SP</span>), [<span style="color:#66d9ef">R0-R14</span>]	<span style="color:#75715e">/* restore user registers */</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">39</span><span>	<span style="color:#a6e22e">MOVW</span>		<span style="color:#66d9ef">R0</span>, <span style="color:#66d9ef">R0</span>			<span style="color:#75715e">/* gratuitous nop */</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">40</span><span>	<span style="color:#a6e22e">ADD</span>			<span style="color:#66d9ef">$12</span>, <span style="color:#66d9ef">SP</span>			<span style="color:#75715e">/* skip saved link+type+SPSR*/</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">41</span><span>	<span style="color:#a6e22e">RFE</span>							<span style="color:#75715e">/* MOVM.IA.S.W (SP), [PC] */</span>
+</span></span></code></pre></div><p>In codes above we can use <em>R0-R3</em> as we saved then in Mach object. With 4 registers we can perform disabling interrupts (svc), next CPU state saving into Ureg object, adjusting <em>SB</em> and finally pass the control to <em>trap()</em> C-routine of kernel to process the exception.</p>
+<p>On return from <em>trap()</em> – <strong>_vrfe</strong>, it does opposite, restore registres from Ureg object, enables interrupts and pass control back to the point where execution was interrupted.</p>
+<p>FILES:</p>
+<ul>
+<li><a href="intr.s">os/rpi/intr.s</a></li>
+<li><a href="trap.c">os/rpi/trap.c</a></li>
+<li><a href="mkfile">os/rpi/mkfile</a></li>
+</ul>
+
+        </p>
+        
+    </div>
+
+    <div class="prev-next">
+        
+    </div>
+
+    
+    
+    
+</div>
+
+
+
+    
+
+        </main><footer class="footer">
+    
+    
+
+    
+    <span>
+        Made using <a target="_blank" href="https://gohugo.io/">HUGO</a>
+    </span>
+</footer>
+</body>
+</html>

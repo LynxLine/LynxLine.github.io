@@ -6,8 +6,15 @@
     <description>Recent content in Inferno OS on LynxLine</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 13 Apr 2013 11:27:58 +0200</lastBuildDate>
+    <lastBuildDate>Sat, 13 Apr 2013 12:03:37 +0200</lastBuildDate>
     <atom:link href="https://lynxline.com/tags/inferno-os/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Lab 12, interrupts, part 1</title>
+      <link>https://lynxline.com/posts/lab-12-interrupts-part-1/</link>
+      <pubDate>Sat, 13 Apr 2013 12:03:37 +0200</pubDate>
+      <guid>https://lynxline.com/posts/lab-12-interrupts-part-1/</guid>
+      <description>Time to create content of io.h with references to control registers, irq nums etc:&#xA;1#define IOBASE&#x9;0x20000000&#x9;/* base of io regs */ 2#define INTREGS&#x9;(IOBASE+0x00B200) 3#define POWERREGS&#x9;(IOBASE+0x100000) 4#define PL011REGS&#x9;(IOBASE+0x201000) 5 6#define UART_PL01x_FR_TXFF&#x9;0x20 7 8typedef struct Intregs Intregs; 9 10/* interrupt control registers */ 11struct Intregs { 12&#x9;u32int ARMpending; 13&#x9;u32int GPUpending[2]; 14&#x9;u32int FIQctl; 15&#x9;u32int GPUenable[2]; 16&#x9;u32int ARMenable; 17&#x9;u32int GPUdisable[2]; 18&#x9;u32int ARMdisable; 19}; 20 21enum { 22&#x9;IRQtimer0&#x9;= 0, 23&#x9;IRQtimer1&#x9;= 1, 24&#x9;IRQtimer2&#x9;= 2, 25&#x9;IRQtimer3&#x9;= 3, 26&#x9;IRQclock&#x9;= IRQtimer3, 27&#x9;IRQdma0&#x9;= 16, 28#define IRQDMA(chan)&#x9;(IRQdma0+(chan)) 29&#x9;IRQaux&#x9;= 29, 30&#x9;IRQmmc&#x9;= 62, 31&#x9;IRQbasic&#x9;= 64, 32&#x9;IRQtimerArm&#x9;= IRQbasic + 0, 33&#x9;DmaD2M&#x9;= 0,&#x9;/* device to memory */ 34&#x9;DmaM2D&#x9;= 1,&#x9;/* memory to device */ 35&#x9;DmaM2M&#x9;= 2,&#x9;/* memory to memory */ 36&#x9;DmaChanEmmc&#x9;= 4,&#x9;/* can only use 2-5, 11-12 */ 37&#x9;DmaDevEmmc&#x9;= 11 38}; Then in Mach struct we need to add stacks – they will be used as short memory blocks for stack:</description>
+    </item>
     <item>
       <title>Lab 11, _div, testing print</title>
       <link>https://lynxline.com/posts/lab-11-_div-testing-print/</link>

@@ -16,6 +16,13 @@
       <description>init</description>
     </item>
     <item>
+      <title>Lab 11, _div, testing print</title>
+      <link>https://lynxline.com/posts/lab-11-_div-testing-print/</link>
+      <pubDate>Sat, 13 Apr 2013 11:27:58 +0200</pubDate>
+      <guid>https://lynxline.com/posts/lab-11-_div-testing-print/</guid>
+      <description>Interesting point we missed in lab10. Those are stubs that we have in main(): _div, _divu, _mod, _modu&#xA;Amazingly, I do not know what it is :),&#xA;Plan9/Inferno people, can you give a help regarding purpose of these references and way how they affect? (I will update the lab as I get more info about this)&#xA;It is clear that without them fixed you can not have print() call working and other stuff in the kernel.</description>
+    </item>
+    <item>
       <title>Lab 10, Bss, memory pools, malloc</title>
       <link>https://lynxline.com/posts/lab-10-bss-menpools-malloc/</link>
       <pubDate>Sat, 16 Feb 2013 09:45:03 +0200</pubDate>

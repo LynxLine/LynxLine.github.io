@@ -30,6 +30,13 @@
       <description>init</description>
     </item>
     <item>
+      <title>Lab 14, interrupts, part 3</title>
+      <link>https://lynxline.com/posts/lab-14-interrupts-part-3/</link>
+      <pubDate>Tue, 16 Apr 2013 10:18:04 +0200</pubDate>
+      <guid>https://lynxline.com/posts/lab-14-interrupts-part-3/</guid>
+      <description>Now we can study the C part of handling interrupts. But before we start remember that we need to install stack pointers to appropriate modes:&#xA;1void 2trapinit(void) 3{ 4&#x9;Vpage0 *vpage0; 5&#x9;/* set up the exception vectors */ 6&#x9;vpage0 = (Vpage0*)HVECTORS; 7&#x9;memmove(vpage0-&amp;gt;vectors, vectors, sizeof(vpage0-&amp;gt;vectors)); 8&#x9;memmove(vpage0-&amp;gt;vtable, vtable, sizeof(vpage0-&amp;gt;vtable)); 9 10&#x9;setr13(PsrMfiq, m-&amp;gt;fiqstack+nelem(m-&amp;gt;fiqstack)); 11&#x9;setr13(PsrMirq, m-&amp;gt;irqstack+nelem(m-&amp;gt;irqstack)); 12&#x9;setr13(PsrMabt, m-&amp;gt;abtstack+nelem(m-&amp;gt;abtstack)); 13&#x9;setr13(PsrMund, m-&amp;gt;undstack+nelem(m-&amp;gt;undstack)); 14} 1TEXT setr13(SB), $-4 2&#x9;MOVW&#x9;4(FP), R1 3&#x9;MOVW&#x9;CPSR, R2 4&#x9;BIC&#x9;$PsrMask, R2, R3 5&#x9;ORR&#x9;R0, R3 6&#x9;MOVW&#x9;R3, CPSR&#x9;/* switch to new mode */ 7&#x9;MOVW&#x9;SP, R0&#x9;/* return old sp */ 8&#x9;MOVW&#x9;R1, SP&#x9;/* install new one */ 9&#x9;MOVW&#x9;R2, CPSR&#x9;/* switch back to old mode */ 10&#x9;RET Have a look at *trap(Ureg ).</description>
+    </item>
+    <item>
       <title>Lab 13, interrupts, part 2</title>
       <link>https://lynxline.com/posts/lab-13-interrupts-part2/</link>
       <pubDate>Sun, 14 Apr 2013 12:45:00 +0200</pubDate>

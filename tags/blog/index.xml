@@ -6,8 +6,15 @@
     <description>Recent content in Blog on LynxLine</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 16 Apr 2013 10:18:04 +0200</lastBuildDate>
+    <lastBuildDate>Wed, 17 Apr 2013 10:18:04 +0200</lastBuildDate>
     <atom:link href="https://lynxline.com/tags/blog/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Lab 15, Eve, Hello World from Limbo!</title>
+      <link>https://lynxline.com/posts/lab-15-eve-hello-world-from-limbo/</link>
+      <pubDate>Wed, 17 Apr 2013 10:18:04 +0200</pubDate>
+      <guid>https://lynxline.com/posts/lab-15-eve-hello-world-from-limbo/</guid>
+      <description>It is our 15-th Lab and it is the time came to make birth of the process Eve, run Dis virtual machine and our first Limbo program!&#xA;First create file archrpi.c where we all R-Pi platform specific code. We need to implement kprocchild() call:&#xA;1static void 2linkproc(void) 3{ 4&#x9;spllo(); 5&#x9;if (waserror()) 6&#x9;print(&amp;#34;error() underflow: %r\n&amp;#34;); 7&#x9;else (*up-&amp;gt;kpfun)(up-&amp;gt;arg); 8&#x9;pexit(&amp;#34;end proc&amp;#34;, 1); 9} 10 11void 12kprocchild(Proc *p, void (*func)(void*), void *arg) 13{ 14&#x9;p-&amp;gt;sched.</description>
+    </item>
     <item>
       <title>Lab 14, interrupts, part 3</title>
       <link>https://lynxline.com/posts/lab-14-interrupts-part-3/</link>

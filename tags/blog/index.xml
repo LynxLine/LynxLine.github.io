@@ -6,8 +6,15 @@
     <description>Recent content in Blog on LynxLine</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 17 Apr 2013 10:18:04 +0200</lastBuildDate>
+    <lastBuildDate>Wed, 17 Jul 2013 09:08:00 +0200</lastBuildDate>
     <atom:link href="https://lynxline.com/tags/blog/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Lab 16, Adding clocks, timers, converging to 9pi codes</title>
+      <link>https://lynxline.com/posts/lab-16/</link>
+      <pubDate>Wed, 17 Jul 2013 09:08:00 +0200</pubDate>
+      <guid>https://lynxline.com/posts/lab-16/</guid>
+      <description>We are starting new season of the labs. Season 2 will be named as “Close to hardware”. And we start from important point to have clocks and timers working. But first we made a decision to make our codes close to 9pi source codes, especially assembler parts. But we found it little complicated as UReg struct on Plan 9 have r14 and link as union while Inferno has them separate. We can not change Ureg in arm/include as we would break another ports.</description>
+    </item>
     <item>
       <title>Lab 15, Eve, Hello World from Limbo!</title>
       <link>https://lynxline.com/posts/lab-15-eve-hello-world-from-limbo/</link>

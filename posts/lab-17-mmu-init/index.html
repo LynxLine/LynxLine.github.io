@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <style>
+        :root {
+            --accent-color: #FF4D4D;
+        }
+    </style>
+
+    
+    
+    
+    
+    
+    
+
+    
+    <title>Lab 17, mmu init</title>
+    <meta name="description" content="">
+    <meta name="keywords" content='Blog, Inferno OS, Raspberry Pi, Research'>
+
+    <meta property="og:url" content="https://lynxline.com/posts/lab-17-mmu-init/">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Lab 17, mmu init">
+    <meta property="og:description" content="">
+    <meta property="og:image" content="https://lynxline.com/images/lynx.jpg">
+    <meta property="og:image:secure_url" content="https://lynxline.com/images/lynx.jpg">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Lab 17, mmu init">
+    <meta name="twitter:description" content="">
+    <meta property="twitter:domain" content="https://lynxline.com/posts/lab-17-mmu-init/">
+    <meta property="twitter:url" content="https://lynxline.com/posts/lab-17-mmu-init/">
+    <meta name="twitter:image" content="https://lynxline.com/images/lynx.jpg">
+
+    
+    <link rel="canonical" href="https://lynxline.com/posts/lab-17-mmu-init/" />
+
+    
+    <link rel="stylesheet" type="text/css" href="/css/normalize.min.css" media="print">
+
+    
+    <link rel="stylesheet" type="text/css" href="/css/main.min.css">
+
+    
+    <link id="dark-theme" rel="stylesheet" href="/css/dark.min.css">
+
+    
+    <script src="/js/bundle.min.c60dbb422ed053b0761160e3a3f08b9af2060f00adc8f12c0ff21a8cf55b3d8e.js" integrity="sha256-xg27Qi7QU7B2EWDjo/CLmvIGDwCtyPEsD/IajPVbPY4="></script>
+
+    
+    
+</head>
+<body>
+        <script type="text/javascript">
+            
+            setThemeByUserPref();
+        </script><header class="header">
+    <nav class="header-nav">
+
+        
+        <div class="avatar">
+            <a href="https://lynxline.com/">
+                <img src='/images/lynx.jpg' alt="avatar" />
+            </a>
+        </div>
+        
+
+        <div class="nav-title">
+            <a class="nav-brand" href="https://lynxline.com/">LynxLine</a>
+        </div>
+
+        <div class="nav-links">
+            
+            <div class="nav-link">
+                <a href="https://lynxline.com/services/"><span data-feather='zap'></span> Services </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://lynxline.com/posts/"><span data-feather='layers'></span> Posts </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://lynxline.com/tags/"><span data-feather='tag'></span> Tags </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://lynxline.com/contact/"><span data-feather='mail'></span> Contact </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://github.com"><span data-feather='github'></span>  </a>
+            </div>
+            
+
+            <span class="nav-icons-divider"></span>
+            <div class="nav-link dark-theme-toggle">
+                <span id="dark-theme-toggle-screen-reader-target" class="sr-only"></span>
+                <a>
+                    <span id="theme-toggle-icon" data-feather="moon"></span>
+                </a>
+            </div>
+
+            <div class="nav-link" id="hamburger-menu-toggle">
+                <span id="hamburger-menu-toggle-screen-reader-target" class="sr-only">menu</span>
+                <a>
+                    <span data-feather="menu"></span>
+                </a>
+            </div>
+
+            
+            <ul class="nav-hamburger-list visibility-hidden">
+                
+                <li class="nav-item">
+                    <a href="https://lynxline.com/services/"><span data-feather='zap'></span> Services </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://lynxline.com/posts/"><span data-feather='layers'></span> Posts </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://lynxline.com/tags/"><span data-feather='tag'></span> Tags </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://lynxline.com/contact/"><span data-feather='mail'></span> Contact </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://github.com"><span data-feather='github'></span>  </a>
+                </li>
+                
+                <li class="nav-item dark-theme-toggle">
+                    <span id="dark-theme-toggle-screen-reader-target" class="sr-only">theme</span>
+                    <a>
+                        <span id="theme-toggle-icon" data-feather="moon"></span>
+                    </a>
+                </li>
+            </ul>
+
+        </div>
+    </nav>
+</header>
+<main id="content">
+    <div class="post container">
+    <div class="post-header-section">
+        <h1>Lab 17, mmu init</h1>
+        <small role="doc-subtitle"></small>
+        <p class="post-date">November 15, 2013
+        
+        </p>
+
+        <ul class="post-tags">
+        
+            <li class="post-tag"><a href="https://lynxline.com/tags/blog">Blog</a></li>
+        
+            <li class="post-tag"><a href="https://lynxline.com/tags/inferno-os">Inferno OS</a></li>
+        
+            <li class="post-tag"><a href="https://lynxline.com/tags/raspberry-pi">Raspberry Pi</a></li>
+        
+            <li class="post-tag"><a href="https://lynxline.com/tags/research">Research</a></li>
+        
+        </ul>
+    </div>
+
+    <div class="post-content">
+        <p>
+            <p>What is fun about Inferno OS that our CPU may not have <a href="http://en.wikipedia.org/wiki/Memory_management_unit">MMU</a> support and still we are able to port Inferno to such architecture. That’s because Inferno OS implements Dis virtual machine and all users processes are actually Dis byte-codes interpreters on <a href="http://en.wikipedia.org/wiki/Just-in-time_compilation">JIT</a> compiled. So address space is virtual by software layer and it is very good for portability of the system.</p>
+<p>Anyway, still it is good to have the MMU initialized (may be needed later to work with framebuffer) and it looks simple enough to do.</p>
+<p>So idea that we map 1:1 all memory that we have SDRAM banks, then we also map IO address space and also low-high interrupt vectors. Also some adjustments to <strong>load.s</strong> to have <em>mmuinit()</em> to called before <em>main()</em>:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1</span><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">mmuinit</span>(<span style="color:#66d9ef">void</span>)
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2</span><span>{
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3</span><span>    PTE <span style="color:#f92672">*</span>l1, <span style="color:#f92672">*</span>l2;
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4</span><span>    uintptr pa, va;
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6</span><span>    l1 <span style="color:#f92672">=</span> (PTE<span style="color:#f92672">*</span>)<span style="color:#a6e22e">PADDR</span>(L1);
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7</span><span>    l2 <span style="color:#f92672">=</span> (PTE<span style="color:#f92672">*</span>)<span style="color:#a6e22e">PADDR</span>(L2);
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9</span><span>    <span style="color:#75715e">/* map all of ram at KZERO */</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10</span><span>    va <span style="color:#f92672">=</span> KZERO;
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11</span><span>    <span style="color:#66d9ef">for</span>(pa <span style="color:#f92672">=</span> PHYSDRAM; pa <span style="color:#f92672">&lt;</span> PHYSDRAM<span style="color:#f92672">+</span>DRAMSIZE; pa <span style="color:#f92672">+=</span> MiB){
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12</span><span>        l1[<span style="color:#a6e22e">L1X</span>(va)] <span style="color:#f92672">=</span> pa<span style="color:#f92672">|</span>Dom0<span style="color:#f92672">|</span><span style="color:#a6e22e">L1AP</span>(Krw)<span style="color:#f92672">|</span>Section<span style="color:#f92672">|</span>Cached<span style="color:#f92672">|</span>Buffered;
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13</span><span>        va <span style="color:#f92672">+=</span> MiB;
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14</span><span>    }
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16</span><span>    <span style="color:#75715e">/* identity map first MB of ram so mmu can be enabled */</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17</span><span>    l1[<span style="color:#a6e22e">L1X</span>(PHYSDRAM)] <span style="color:#f92672">=</span> PHYSDRAM<span style="color:#f92672">|</span>Dom0<span style="color:#f92672">|</span><span style="color:#a6e22e">L1AP</span>(Krw)<span style="color:#f92672">|</span>Section<span style="color:#f92672">|</span>Cached<span style="color:#f92672">|</span>Buffered;
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19</span><span>    <span style="color:#75715e">/* map i/o registers */</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20</span><span>    va <span style="color:#f92672">=</span> VIRTIO;
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21</span><span>    <span style="color:#66d9ef">for</span>(pa <span style="color:#f92672">=</span> PHYSIO; pa <span style="color:#f92672">&lt;</span> PHYSIO<span style="color:#f92672">+</span>IOSIZE; pa <span style="color:#f92672">+=</span> MiB){
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22</span><span>        l1[<span style="color:#a6e22e">L1X</span>(va)] <span style="color:#f92672">=</span> pa<span style="color:#f92672">|</span>Dom0<span style="color:#f92672">|</span><span style="color:#a6e22e">L1AP</span>(Krw)<span style="color:#f92672">|</span>Section;
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23</span><span>        va <span style="color:#f92672">+=</span> MiB;
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24</span><span>    }
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">25</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">26</span><span>    <span style="color:#75715e">/* double map exception vectors at top of virtual memory */</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">27</span><span>    va <span style="color:#f92672">=</span> HVECTORS;
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">28</span><span>    l1[<span style="color:#a6e22e">L1X</span>(va)] <span style="color:#f92672">=</span> (uintptr)l2<span style="color:#f92672">|</span>Dom0<span style="color:#f92672">|</span>Coarse;
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">29</span><span>    l2[<span style="color:#a6e22e">L2X</span>(va)] <span style="color:#f92672">=</span> PHYSDRAM<span style="color:#f92672">|</span><span style="color:#a6e22e">L2AP</span>(Krw)<span style="color:#f92672">|</span>Small;
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">30</span><span>}
+</span></span></code></pre></div><p>There are also minor changes to <strong>dat.h</strong>, <strong>mem.h</strong>, etc</p>
+<p>FILES:</p>
+<ul>
+<li><a href="rpi-lab17.zip">rpi-lab17.zip</a></li>
+</ul>
+
+        </p>
+        
+    </div>
+
+    <div class="prev-next">
+        
+    </div>
+
+    
+    
+    
+</div>
+
+
+
+    
+
+        </main><footer class="footer">
+    
+    
+
+    
+    <span>
+        Made using <a target="_blank" href="https://gohugo.io/">HUGO</a>
+    </span>
+</footer>
+</body>
+</html>

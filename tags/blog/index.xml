@@ -6,8 +6,15 @@
     <description>Recent content in Blog on LynxLine</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 15 Nov 2013 09:13:29 +0200</lastBuildDate>
+    <lastBuildDate>Mon, 18 Nov 2013 09:13:37 +0200</lastBuildDate>
     <atom:link href="https://lynxline.com/tags/blog/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Lab 18, we have a screen!</title>
+      <link>https://lynxline.com/posts/lab-18-we-have-a-screen/</link>
+      <pubDate>Mon, 18 Nov 2013 09:13:37 +0200</pubDate>
+      <guid>https://lynxline.com/posts/lab-18-we-have-a-screen/</guid>
+      <description>Before the Lab the development was going in total darkness…, um I meant using serial ftdi usb cable. But time comes to have a light!, no, a screen. Amazingly it wasn’t so complicated. Yes, we just used codes from 9pi project (thanks to Richard Miller). Our expected result is:&#xA;To achieve we need first to expand our “rpi” configuration and add draw and screen to dev section, tk draw memlayer memdraw into the lib section and draw and tk to mod:</description>
+    </item>
     <item>
       <title>Lab 17, mmu init</title>
       <link>https://lynxline.com/posts/lab-17-mmu-init/</link>

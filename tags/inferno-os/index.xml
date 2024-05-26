@@ -6,8 +6,15 @@
     <description>Recent content in Inferno OS on LynxLine</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 18 Nov 2013 09:13:37 +0200</lastBuildDate>
+    <lastBuildDate>Sun, 01 Dec 2013 14:27:34 +0200</lastBuildDate>
     <atom:link href="https://lynxline.com/tags/inferno-os/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Lab 19, keyboard through serial, fixes to get Ls</title>
+      <link>https://lynxline.com/posts/lab-19-keyboard-through-serial-fixes-to-get-ls/</link>
+      <pubDate>Sun, 01 Dec 2013 14:27:34 +0200</pubDate>
+      <guid>https://lynxline.com/posts/lab-19-keyboard-through-serial-fixes-to-get-ls/</guid>
+      <description>In previous Lab I got a screen working, but still no way to send commands into Raspberry computer. My guess that for time being it just simple enough to make the keyboard input coming from serial cable, so then I can play with Sh on raspberry and do some simple experiments onboard until I will have the Usb subsystem working and it recognize keyboard connected to RPi.&#xA;To work with input from Pl011 we should have it in non-blocking way.</description>
+    </item>
     <item>
       <title>Lab 18, we have a screen!</title>
       <link>https://lynxline.com/posts/lab-18-we-have-a-screen/</link>

@@ -6,8 +6,15 @@
     <description>Recent content in Blog on LynxLine</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 01 Dec 2013 14:27:34 +0200</lastBuildDate>
+    <lastBuildDate>Mon, 09 Dec 2013 12:02:49 +0200</lastBuildDate>
     <atom:link href="https://lynxline.com/tags/blog/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Lab 20, devusb, usbdwc and firq, first step to usb</title>
+      <link>https://lynxline.com/posts/lab-20-devusb-usbdwc-and-firq-first-step-to-usb/</link>
+      <pubDate>Mon, 09 Dec 2013 12:02:49 +0200</pubDate>
+      <guid>https://lynxline.com/posts/lab-20-devusb-usbdwc-and-firq-first-step-to-usb/</guid>
+      <description>To have our Inferno to communicate with external world we need to have the USB supported as most important parts including ethernet controller and keyboard are behind the USB subsystem. I had a look what parts the Inferno already had for usb support and what was implemented in 9pi. So I decided just to compile-in the Plan9 usb support as devusb.c and usbdwc.c from 9pi. Fortunately due to sharing almost same API of syscalls, the devusb is compiled perfectly and usbdwc needed just two fixes.</description>
+    </item>
     <item>
       <title>Lab 19, keyboard through serial, fixes to get Ls</title>
       <link>https://lynxline.com/posts/lab-19-keyboard-through-serial-fixes-to-get-ls/</link>

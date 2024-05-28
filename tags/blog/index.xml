@@ -6,8 +6,15 @@
     <description>Recent content in Blog on LynxLine</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 09 Dec 2013 12:02:49 +0200</lastBuildDate>
+    <lastBuildDate>Sun, 15 Dec 2013 12:02:49 +0200</lastBuildDate>
     <atom:link href="https://lynxline.com/tags/blog/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Lab 21, porting usbd, fixed in allocb, see usb in actions</title>
+      <link>https://lynxline.com/posts/lab-21-porting-usbd-fixed-in-allocb-see-usb-in-actions/</link>
+      <pubDate>Sun, 15 Dec 2013 12:02:49 +0200</pubDate>
+      <guid>https://lynxline.com/posts/lab-21-porting-usbd-fixed-in-allocb-see-usb-in-actions/</guid>
+      <description>From previous lab 20 we got /dev/usb connected in our system, but what to do with it? Different systems handling usb in different ways, but Inferno and Plan9 has /dev/usb just as communication filesystem which should managed not by kernel but user-space process usbd which by communication with the file server manages the connectivity and start appropriate drivers for connected usb devices.&#xA;My first attempt was to have a look at original Inferno OS used to see possibilities to just reuse it.</description>
+    </item>
     <item>
       <title>Lab 20, devusb, usbdwc and firq, first step to usb</title>
       <link>https://lynxline.com/posts/lab-20-devusb-usbdwc-and-firq-first-step-to-usb/</link>

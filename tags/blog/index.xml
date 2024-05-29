@@ -6,8 +6,15 @@
     <description>Recent content in Blog on LynxLine</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 15 Dec 2013 12:02:49 +0200</lastBuildDate>
+    <lastBuildDate>Thu, 26 Dec 2013 09:52:13 +0200</lastBuildDate>
     <atom:link href="https://lynxline.com/tags/blog/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Lab 22, Usb keyboard</title>
+      <link>https://lynxline.com/posts/lab-22-usb-keyboard/</link>
+      <pubDate>Thu, 26 Dec 2013 09:52:13 +0200</pubDate>
+      <guid>https://lynxline.com/posts/lab-22-usb-keyboard/</guid>
+      <description>In previous lab we approached very close to get working Usb devices. In this lab we will try to get Usb keyboard working:&#xA;First some preparations: as we need automatic drivers loading, we overwrite existing Usb codes in Inferno repository with our files affecting appl/cmd/usb and appl/lib/usb. Our Usbd which we have written as standalone limbo file, we will split into header usb.m, library with API, usb.b and functionality related to hubs and ports logic and driver loading we leave in usbd.</description>
+    </item>
     <item>
       <title>Lab 21, porting usbd, fixed in allocb, see usb in actions</title>
       <link>https://lynxline.com/posts/lab-21-porting-usbd-fixed-in-allocb-see-usb-in-actions/</link>

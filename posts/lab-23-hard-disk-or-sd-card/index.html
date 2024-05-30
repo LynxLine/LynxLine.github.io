@@ -170,7 +170,7 @@
         <p>
             <p>Before this Lab, the only way to bypass information to our Raspberry Pi machine, was the TFTP which downloads kernel from development machine (used Mac). Because kernel also includes root filesystem, we can embed some files there to have minimal read-only filesystem which allows to run dis files and do some testing, like experimenting with USB support, etc.</p>
 <p>Sure, there were no way to do something and keep results on storage as there is no one. In this lab we try to create a partition to have possibility to save files.</p>
-<p>xxx</p>
+<p><img src="lab-23-1.png" alt="fig1"></p>
 <p>Let’s start:
 First I compared files in <strong>port/</strong> versus same in Plan9. Inferno’s versions were more old, so I used <strong>sd.h</strong> and <strong>devsd.c</strong> from Plan9. Inferno does not have <strong>port/sdmmc.c</strong>, so this one was also added. Examined with compilation in Inferno environment and applied few trivial changes (like <em>up-&gt;errstr</em> to <em>up-&gt;env-&gt;errstr</em>). That was minor.</p>
 <p>Now codes specific to Raspberry: we borrow from 9pi. We need <strong>dma.c</strong> as it is time that we use the DMA for fast data transfer from SD. <strong>emmc.c</strong> written by Richard Miller for 9pi for bcm2835 mass media controller. Modify <strong>rpi</strong> spec file to include <em>sd</em> in <em>dev</em> section, <em>dma</em> and <em>sdmmc emmc</em> into <em>misc</em> section. Add <strong>/dis/disk/*.dis</strong>, <strong>zeros</strong>, <strong>dd</strong> to embedded filesystem.</p>

@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <style>
+        :root {
+            --accent-color: #FF4D4D;
+        }
+    </style>
+
+    
+    
+    
+    
+    
+    
+
+    
+    <title>Lab 24, network, part 1</title>
+    <meta name="description" content="">
+    <meta name="keywords" content='Blog, Inferno OS, Raspberry Pi, Research'>
+
+    <meta property="og:url" content="https://lynxline.com/posts/lab-24-network-part-1/">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Lab 24, network, part 1">
+    <meta property="og:description" content="">
+    <meta property="og:image" content="https://lynxline.com/images/lynx.jpg">
+    <meta property="og:image:secure_url" content="https://lynxline.com/images/lynx.jpg">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Lab 24, network, part 1">
+    <meta name="twitter:description" content="">
+    <meta property="twitter:domain" content="https://lynxline.com/posts/lab-24-network-part-1/">
+    <meta property="twitter:url" content="https://lynxline.com/posts/lab-24-network-part-1/">
+    <meta name="twitter:image" content="https://lynxline.com/images/lynx.jpg">
+
+    
+    <link rel="canonical" href="https://lynxline.com/posts/lab-24-network-part-1/" />
+
+    
+    <link rel="stylesheet" type="text/css" href="/css/normalize.min.css" media="print">
+
+    
+    <link rel="stylesheet" type="text/css" href="/css/main.min.css">
+
+    
+    <link id="dark-theme" rel="stylesheet" href="/css/dark.min.css">
+
+    
+    <script src="/js/bundle.min.c60dbb422ed053b0761160e3a3f08b9af2060f00adc8f12c0ff21a8cf55b3d8e.js" integrity="sha256-xg27Qi7QU7B2EWDjo/CLmvIGDwCtyPEsD/IajPVbPY4="></script>
+
+    
+    
+</head>
+<body>
+        <script type="text/javascript">
+            
+            setThemeByUserPref();
+        </script><header class="header">
+    <nav class="header-nav">
+
+        
+        <div class="avatar">
+            <a href="https://lynxline.com/">
+                <img src='/images/lynx.jpg' alt="avatar" />
+            </a>
+        </div>
+        
+
+        <div class="nav-title">
+            <a class="nav-brand" href="https://lynxline.com/">LynxLine</a>
+        </div>
+
+        <div class="nav-links">
+            
+            <div class="nav-link">
+                <a href="https://lynxline.com/services/"><span data-feather='zap'></span> Services </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://lynxline.com/posts/"><span data-feather='layers'></span> Posts </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://lynxline.com/tags/"><span data-feather='tag'></span> Tags </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://lynxline.com/contact/"><span data-feather='mail'></span> Contact </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://github.com"><span data-feather='github'></span>  </a>
+            </div>
+            
+
+            <span class="nav-icons-divider"></span>
+            <div class="nav-link dark-theme-toggle">
+                <span id="dark-theme-toggle-screen-reader-target" class="sr-only"></span>
+                <a>
+                    <span id="theme-toggle-icon" data-feather="moon"></span>
+                </a>
+            </div>
+
+            <div class="nav-link" id="hamburger-menu-toggle">
+                <span id="hamburger-menu-toggle-screen-reader-target" class="sr-only">menu</span>
+                <a>
+                    <span data-feather="menu"></span>
+                </a>
+            </div>
+
+            
+            <ul class="nav-hamburger-list visibility-hidden">
+                
+                <li class="nav-item">
+                    <a href="https://lynxline.com/services/"><span data-feather='zap'></span> Services </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://lynxline.com/posts/"><span data-feather='layers'></span> Posts </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://lynxline.com/tags/"><span data-feather='tag'></span> Tags </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://lynxline.com/contact/"><span data-feather='mail'></span> Contact </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://github.com"><span data-feather='github'></span>  </a>
+                </li>
+                
+                <li class="nav-item dark-theme-toggle">
+                    <span id="dark-theme-toggle-screen-reader-target" class="sr-only">theme</span>
+                    <a>
+                        <span id="theme-toggle-icon" data-feather="moon"></span>
+                    </a>
+                </li>
+            </ul>
+
+        </div>
+    </nav>
+</header>
+<main id="content">
+    <div class="post container">
+    <div class="post-header-section">
+        <h1>Lab 24, network, part 1</h1>
+        <small role="doc-subtitle"></small>
+        <p class="post-date">February 9, 2014
+        
+        </p>
+
+        <ul class="post-tags">
+        
+            <li class="post-tag"><a href="https://lynxline.com/tags/blog">Blog</a></li>
+        
+            <li class="post-tag"><a href="https://lynxline.com/tags/inferno-os">Inferno OS</a></li>
+        
+            <li class="post-tag"><a href="https://lynxline.com/tags/raspberry-pi">Raspberry Pi</a></li>
+        
+            <li class="post-tag"><a href="https://lynxline.com/tags/research">Research</a></li>
+        
+        </ul>
+    </div>
+
+    <div class="post-content">
+        <p>
+            <p>This lab will be short; we will add all network modules needed for network layout and make a roadmap how to make the Raspberry Pi ethernet driver.
+First have a look at other ports and inferno and find what is needed to compile with network support.</p>
+<ol>
+<li>dev section needs:</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-diff" data-lang="diff"><span style="display:flex;"><span><span style="color:#a6e22e">+       ip  ip ipv6 ipaux iproute arp netlog ptclbsum iprouter plan9 nullmedium pktmedium netaux
+</span></span></span><span style="display:flex;"><span><span style="color:#a6e22e">+       ether netif netaux
+</span></span></span></code></pre></div><ol start="2">
+<li>add ip section</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-diff" data-lang="diff"><span style="display:flex;"><span><span style="color:#a6e22e">+ip
+</span></span></span><span style="display:flex;"><span><span style="color:#a6e22e">+       il
+</span></span></span><span style="display:flex;"><span><span style="color:#a6e22e">+       tcp
+</span></span></span><span style="display:flex;"><span><span style="color:#a6e22e">+       udp
+</span></span></span><span style="display:flex;"><span><span style="color:#a6e22e">+       ipifc
+</span></span></span><span style="display:flex;"><span><span style="color:#a6e22e">+       icmp
+</span></span></span><span style="display:flex;"><span><span style="color:#a6e22e">+       icmp6
+</span></span></span></code></pre></div><ol start="3">
+<li>mod section needs:</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-diff" data-lang="diff"><span style="display:flex;"><span><span style="color:#a6e22e">+       crypt
+</span></span></span><span style="display:flex;"><span><span style="color:#a6e22e">+       ipints
+</span></span></span></code></pre></div><p>Then we will add etherusb.c from 9pi project (according to 9pi: it takes over the
+job of copying packets between the usb pipe and the kernel ether i/o
+queues, to save the extra overhead of doing it in user mode in the
+usb/ether driver.) Later we may not need it, but for now take it just to have complete compilation.</p>
+<p>Then link section:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-diff" data-lang="diff"><span style="display:flex;"><span>link
+</span></span><span style="display:flex;"><span>        usbdwc
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">+       etherusb
+</span></span></span><span style="display:flex;"><span><span style="color:#a6e22e">+       ethermedium
+</span></span></span><span style="display:flex;"><span><span style="color:#a6e22e">+       loopbackmedium
+</span></span></span></code></pre></div><p>In <strong>archpi.c</strong> we will add ethernet initialization:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-diff" data-lang="diff"><span style="display:flex;"><span> #include &#34;dat.h&#34;
+</span></span><span style="display:flex;"><span> #include &#34;fns.h&#34;
+</span></span><span style="display:flex;"><span> 
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">+#include &#34;../port/netif.h&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#a6e22e">+#include &#34;etherif.h&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#a6e22e">+
+</span></span></span><span style="display:flex;"><span><span style="color:#a6e22e"></span> static void
+</span></span><span style="display:flex;"><span> linkproc(void)
+</span></span><span style="display:flex;"><span> {
+</span></span><span style="display:flex;"><span>...
+</span></span><span style="display:flex;"><span> void
+</span></span><span style="display:flex;"><span> validaddr(void*, ulong, int) {}
+</span></span><span style="display:flex;"><span> 
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">+int
+</span></span></span><span style="display:flex;"><span><span style="color:#a6e22e">+archether(unsigned ctlrno, Ether *ether)
+</span></span></span><span style="display:flex;"><span><span style="color:#a6e22e">+{
+</span></span></span><span style="display:flex;"><span><span style="color:#a6e22e">+    switch(ctlrno) {
+</span></span></span><span style="display:flex;"><span><span style="color:#a6e22e">+    case 0:
+</span></span></span><span style="display:flex;"><span><span style="color:#a6e22e">+        ether-&gt;type = &#34;usb&#34;;
+</span></span></span><span style="display:flex;"><span><span style="color:#a6e22e">+        ether-&gt;ctlrno = ctlrno;
+</span></span></span><span style="display:flex;"><span><span style="color:#a6e22e">+        ether-&gt;irq = -1;
+</span></span></span><span style="display:flex;"><span><span style="color:#a6e22e">+        ether-&gt;nopt = 0;
+</span></span></span><span style="display:flex;"><span><span style="color:#a6e22e">+        ether-&gt;mbps = 100;
+</span></span></span><span style="display:flex;"><span><span style="color:#a6e22e">+        return 1;
+</span></span></span><span style="display:flex;"><span><span style="color:#a6e22e">+    }
+</span></span></span><span style="display:flex;"><span><span style="color:#a6e22e">+    return -1;
+</span></span></span><span style="display:flex;"><span><span style="color:#a6e22e">+}
+</span></span></span><span style="display:flex;"><span><span style="color:#a6e22e">+
+</span></span></span><span style="display:flex;"><span><span style="color:#a6e22e">+/*
+</span></span></span><span style="display:flex;"><span><span style="color:#a6e22e">+ * stub for ../omap/devether.c
+</span></span></span><span style="display:flex;"><span><span style="color:#a6e22e">+ */
+</span></span></span><span style="display:flex;"><span><span style="color:#a6e22e">+int
+</span></span></span><span style="display:flex;"><span><span style="color:#a6e22e">+isaconfig(char *class, int ctlrno, ISAConf *isa)
+</span></span></span><span style="display:flex;"><span><span style="color:#a6e22e">+{
+</span></span></span><span style="display:flex;"><span><span style="color:#a6e22e">+    USED(ctlrno);
+</span></span></span><span style="display:flex;"><span><span style="color:#a6e22e">+    USED(isa);
+</span></span></span><span style="display:flex;"><span><span style="color:#a6e22e">+    return strcmp(class, &#34;ether&#34;) == 0;
+</span></span></span><span style="display:flex;"><span><span style="color:#a6e22e">+}
+</span></span></span></code></pre></div><p>That’s enough for now. We can compile everything, we will have appropriate modules, but no ethernet driver yet.
+As next actions I see two ways of implementing/porting it.</p>
+<ol>
+<li>Raspberry Pi Usb driver for Plan9 written in C to be ported to Limbo</li>
+<li>Raspberry Pi Usb driver for Plan9 written in C just used as some fileserver which is initialized from Usb Limbo layout (which /dev/usb files to use to read/write, etc)</li>
+</ol>
+
+        </p>
+        
+    </div>
+
+    <div class="prev-next">
+        
+    </div>
+
+    
+    
+    
+</div>
+
+
+
+    
+
+        </main><footer class="footer">
+    
+    
+
+    
+    <span>
+        Made using <a target="_blank" href="https://gohugo.io/">HUGO</a>
+    </span>
+</footer>
+</body>
+</html>

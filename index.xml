@@ -30,6 +30,13 @@
       <description>init</description>
     </item>
     <item>
+      <title>Lab 24, network, part 1</title>
+      <link>https://lynxline.com/posts/lab-24-network-part-1/</link>
+      <pubDate>Sun, 09 Feb 2014 09:15:24 +0200</pubDate>
+      <guid>https://lynxline.com/posts/lab-24-network-part-1/</guid>
+      <description>This lab will be short; we will add all network modules needed for network layout and make a roadmap how to make the Raspberry Pi ethernet driver. First have a look at other ports and inferno and find what is needed to compile with network support.&#xA;dev section needs: + ip ip ipv6 ipaux iproute arp netlog ptclbsum iprouter plan9 nullmedium pktmedium netaux + ether netif netaux add ip section +ip + il + tcp + udp + ipifc + icmp + icmp6 mod section needs: + crypt + ipints Then we will add etherusb.</description>
+    </item>
+    <item>
       <title>Lab 23, hard disk or SD card</title>
       <link>https://lynxline.com/posts/lab-23-hard-disk-or-sd-card/</link>
       <pubDate>Thu, 02 Jan 2014 09:01:28 +0200</pubDate>

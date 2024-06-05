@@ -16,6 +16,13 @@
       <description>init</description>
     </item>
     <item>
+      <title>Lab 25, network, part 2</title>
+      <link>https://lynxline.com/posts/lab-25-network-part-2/</link>
+      <pubDate>Sun, 23 Feb 2014 12:23:17 +0200</pubDate>
+      <guid>https://lynxline.com/posts/lab-25-network-part-2/</guid>
+      <description>After the Lab 24 when we prepared the layout I took serious study of the ways to implement the ethernet driver. And I found that there is actual convergence of 2 ways of implementation that I saw in previous lab. Comparing to implementation of ethernet driver in C (ether.c, smsc.c) it is enough to have code worked up to call of kernelproxy() which just bypass control to etherusb.c – send a “bind” command into the control file and bypass as arguments usb end point files for input and output data streams.</description>
+    </item>
+    <item>
       <title>Lab 24, network, part 1</title>
       <link>https://lynxline.com/posts/lab-24-network-part-1/</link>
       <pubDate>Sun, 09 Feb 2014 09:15:24 +0200</pubDate>

@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <style>
+        :root {
+            --accent-color: #FF4D4D;
+        }
+    </style>
+
+    
+    
+    
+    
+    
+    
+
+    
+    <title>Lab 25, network, part 2</title>
+    <meta name="description" content="">
+    <meta name="keywords" content='Blog, Inferno OS, Raspberry Pi, Research'>
+
+    <meta property="og:url" content="https://lynxline.com/posts/lab-25-network-part-2/">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Lab 25, network, part 2">
+    <meta property="og:description" content="">
+    <meta property="og:image" content="https://lynxline.com/images/lynx.jpg">
+    <meta property="og:image:secure_url" content="https://lynxline.com/images/lynx.jpg">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Lab 25, network, part 2">
+    <meta name="twitter:description" content="">
+    <meta property="twitter:domain" content="https://lynxline.com/posts/lab-25-network-part-2/">
+    <meta property="twitter:url" content="https://lynxline.com/posts/lab-25-network-part-2/">
+    <meta name="twitter:image" content="https://lynxline.com/images/lynx.jpg">
+
+    
+    <link rel="canonical" href="https://lynxline.com/posts/lab-25-network-part-2/" />
+
+    
+    <link rel="stylesheet" type="text/css" href="/css/normalize.min.css" media="print">
+
+    
+    <link rel="stylesheet" type="text/css" href="/css/main.min.css">
+
+    
+    <link id="dark-theme" rel="stylesheet" href="/css/dark.min.css">
+
+    
+    <script src="/js/bundle.min.c60dbb422ed053b0761160e3a3f08b9af2060f00adc8f12c0ff21a8cf55b3d8e.js" integrity="sha256-xg27Qi7QU7B2EWDjo/CLmvIGDwCtyPEsD/IajPVbPY4="></script>
+
+    
+    
+</head>
+<body>
+        <script type="text/javascript">
+            
+            setThemeByUserPref();
+        </script><header class="header">
+    <nav class="header-nav">
+
+        
+        <div class="avatar">
+            <a href="https://lynxline.com/">
+                <img src='/images/lynx.jpg' alt="avatar" />
+            </a>
+        </div>
+        
+
+        <div class="nav-title">
+            <a class="nav-brand" href="https://lynxline.com/">LynxLine</a>
+        </div>
+
+        <div class="nav-links">
+            
+            <div class="nav-link">
+                <a href="https://lynxline.com/services/"><span data-feather='zap'></span> Services </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://lynxline.com/posts/"><span data-feather='layers'></span> Posts </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://lynxline.com/tags/"><span data-feather='tag'></span> Tags </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://lynxline.com/contact/"><span data-feather='mail'></span> Contact </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://github.com"><span data-feather='github'></span>  </a>
+            </div>
+            
+
+            <span class="nav-icons-divider"></span>
+            <div class="nav-link dark-theme-toggle">
+                <span id="dark-theme-toggle-screen-reader-target" class="sr-only"></span>
+                <a>
+                    <span id="theme-toggle-icon" data-feather="moon"></span>
+                </a>
+            </div>
+
+            <div class="nav-link" id="hamburger-menu-toggle">
+                <span id="hamburger-menu-toggle-screen-reader-target" class="sr-only">menu</span>
+                <a>
+                    <span data-feather="menu"></span>
+                </a>
+            </div>
+
+            
+            <ul class="nav-hamburger-list visibility-hidden">
+                
+                <li class="nav-item">
+                    <a href="https://lynxline.com/services/"><span data-feather='zap'></span> Services </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://lynxline.com/posts/"><span data-feather='layers'></span> Posts </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://lynxline.com/tags/"><span data-feather='tag'></span> Tags </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://lynxline.com/contact/"><span data-feather='mail'></span> Contact </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://github.com"><span data-feather='github'></span>  </a>
+                </li>
+                
+                <li class="nav-item dark-theme-toggle">
+                    <span id="dark-theme-toggle-screen-reader-target" class="sr-only">theme</span>
+                    <a>
+                        <span id="theme-toggle-icon" data-feather="moon"></span>
+                    </a>
+                </li>
+            </ul>
+
+        </div>
+    </nav>
+</header>
+<main id="content">
+    <div class="post container">
+    <div class="post-header-section">
+        <h1>Lab 25, network, part 2</h1>
+        <small role="doc-subtitle"></small>
+        <p class="post-date">February 23, 2014
+        
+        </p>
+
+        <ul class="post-tags">
+        
+            <li class="post-tag"><a href="https://lynxline.com/tags/blog">Blog</a></li>
+        
+            <li class="post-tag"><a href="https://lynxline.com/tags/inferno-os">Inferno OS</a></li>
+        
+            <li class="post-tag"><a href="https://lynxline.com/tags/raspberry-pi">Raspberry Pi</a></li>
+        
+            <li class="post-tag"><a href="https://lynxline.com/tags/research">Research</a></li>
+        
+        </ul>
+    </div>
+
+    <div class="post-content">
+        <p>
+            <p>After the Lab 24 when we prepared the layout I took serious study of the ways to implement the ethernet driver. And I found that there is actual convergence of 2 ways of implementation that I saw in previous lab. Comparing to implementation of ethernet driver in C (<strong>ether.c</strong>, <strong>smsc.c</strong>) it is enough to have code worked up to call of <em>kernelproxy()</em> which just bypass control to <strong>etherusb.c</strong> – send a “bind” command into the control file and bypass as arguments usb end point files for input and output data streams.</p>
+<p>If so, then I have no need to implement the file-server support of “ether” device in limbo as it will handled by <strong>etherusb.c</strong> which we already have ready (of course to find this simple solution fisrt I ported even more C code to Limbo).</p>
+<p>I took parts from Plan9 of <strong>ether.c</strong> and <strong>smsc.c</strong> and start converting into Limbo, which wasn’t so complicated task. Actually I combined then into single file <strong>ethersmsc.b</strong>.</p>
+<p>When I had attempt to start Raspberry with this new ethernet driver but to my wonder I found that Mac address is just zeros. Strange, but by asking experts and checking info, yes that’s correct: eeprom of ethernet chip on Raspberry does not have the MAC there embedded. Instead it is kept in VideoCore chip and can be received by MailBox interface.</p>
+<p>The communication with VideoCore is already implemeneted in <strong>vcore.c</strong> which we have from 9pi project. But my attempt to receive MAC showed something very strange – it didn’t work at all. Channel 1 of mailbox interface – Framebuffer works perfect why Channel 8 – getting properties from chip does not work at all.</p>
+<p>Almost two days of debugging, different trys, attempts while I realized that I probably have very old firmware. Oops. When I did try get new firware files (<a href="https://github.com/raspberrypi/firmware/tree/master/boot">https://github.com/raspberrypi/firmware/tree/master/boot</a>) I found another stumbling block: U-Boot no more working!</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-txt" data-lang="txt"><span style="display:flex;"><span>** Unable to use mmc 0:1 for fatload **
+</span></span></code></pre></div><p>Well, my U-Boot was from friend of mine and from 2012 (yep, old). As next I need to compile U-Boot myself. Version from repository didn’t compile for some reason, so I tried the release 2013-10.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-txt" data-lang="txt"><span style="display:flex;"><span># emerge --ask crossdev
+</span></span><span style="display:flex;"><span># crossdev -S -v -t armv6j-hardfloat-linux-gnueabi
+</span></span><span style="display:flex;"><span># cd u-boot
+</span></span><span style="display:flex;"><span># make ARCH=arm CROSS_COMPILE=armv6j-hardfloat-linux-gnueabi- rpi_b_config
+</span></span><span style="display:flex;"><span># make ARCH=arm CROSS_COMPILE=armv6j-hardfloat-linux-gnueabi-
+</span></span></code></pre></div><p>Complete!
+But I as result I have elf file while I need an image file. For this special tool:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-txt" data-lang="txt"><span style="display:flex;"><span># emerge sys-boot/raspberrypi-mkimage
+</span></span></code></pre></div><p>Next attempts to boot didn’t work again. Ah, I need to process <strong>u-boot.bin</strong> but not just <strong>u-boot</strong> file:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-txt" data-lang="txt"><span style="display:flex;"><span># imagetool-uncompressed.py u-boot.bin /mnt/SD/u-boot.bin
+</span></span></code></pre></div><p>Finally! It boot! But wait:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-txt" data-lang="txt"><span style="display:flex;"><span>## Executing script at 00000000
+</span></span><span style="display:flex;"><span>Unknown command &#39;usb&#39; - try &#39;help&#39;
+</span></span></code></pre></div><p>Why? After searches I found that even up to current moment they haven’t integrated Usb codes for raspberry into U-Boot :(
+I have to go back. The very recent but with Usb is the repository <a href="https://github.com/gonzoua/u-boot-pi">https://github.com/gonzoua/u-boot-pi</a>. Also looks from 2012 but I have hope.</p>
+<p>Again, compile cycle and I got U-Boot with Usb finally and with new firmware!</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-txt" data-lang="txt"><span style="display:flex;"><span>In:    serial
+</span></span><span style="display:flex;"><span>Out:   lcd
+</span></span><span style="display:flex;"><span>Err:   lcd
+</span></span><span style="display:flex;"><span>mbox: Timeout waiting for response
+</span></span><span style="display:flex;"><span>bcm2835: Could not set USB power state
+</span></span><span style="display:flex;"><span>Net:   Net Initialization Skipped
+</span></span><span style="display:flex;"><span>No ethernet found.
+</span></span><span style="display:flex;"><span>Hit any key to stop autoboot:  0 
+</span></span><span style="display:flex;"><span>reading uEnv.txt
+</span></span><span style="display:flex;"><span>** Unable to read file uEnv.txt **
+</span></span><span style="display:flex;"><span>reading boot.scr
+</span></span><span style="display:flex;"><span>247 bytes read in 8516 ms (0 Bytes/s)
+</span></span><span style="display:flex;"><span>Running bootscript from mmc0 ...
+</span></span><span style="display:flex;"><span>## Executing script at 00200000
+</span></span><span style="display:flex;"><span>(Re)start USB...
+</span></span><span style="display:flex;"><span>USB0:   Core Release: 2.80a
+</span></span><span style="display:flex;"><span>scanning bus 0 for devices... Error condition at line 653:  XACTERR
+</span></span><span style="display:flex;"><span>Error condition at line 653:  XACTERR
+</span></span><span style="display:flex;"><span>Error condition at line 653:  XACTERR
+</span></span><span style="display:flex;"><span>USB device descriptor short read (expected 18, got 0)
+</span></span><span style="display:flex;"><span>4 USB Device(s) found
+</span></span><span style="display:flex;"><span>       scanning usb for storage devices... 0 Storage Device(s) found
+</span></span><span style="display:flex;"><span>       scanning usb for ethernet devices... 1 Ethernet Device(s) found
+</span></span><span style="display:flex;"><span>Waiting for Ethernet connection... done.
+</span></span><span style="display:flex;"><span>BOOTP broadcast 1
+</span></span><span style="display:flex;"><span>*** Unhandled DHCP Option in OFFER/ACK: 95
+</span></span><span style="display:flex;"><span>*** Unhandled DHCP Option in OFFER/ACK: 95
+</span></span><span style="display:flex;"><span>DHCP client bound to address 10.0.55.107
+</span></span><span style="display:flex;"><span>Waiting for Ethernet connection... done.
+</span></span><span style="display:flex;"><span>Using sms0 device
+</span></span><span style="display:flex;"><span>TFTP from server 10.0.55.110; our IP address is 10.0.55.107
+</span></span><span style="display:flex;"><span>Filename &#39;irpi&#39;.
+</span></span><span style="display:flex;"><span>Load address: 0x7fe0
+</span></span></code></pre></div><p>And an attempt to get stored MAC Address with MailBox from VideoCore and success!</p>
+<p><strong>mac: b827ebd9eafd</strong></p>
+<p>To bypass it from kernel to Usb driver we will just create environment variable in main.c funcion <em>init0()</em>:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#a6e22e">snprint</span>(buf, <span style="color:#66d9ef">sizeof</span>(buf), <span style="color:#e6db74">&#34;%s&#34;</span>, <span style="color:#a6e22e">getethermac</span>());
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">ksetenv</span>(<span style="color:#e6db74">&#34;ethermac&#34;</span>, buf, <span style="color:#ae81ff">0</span>);
+</span></span></code></pre></div><p>Also bind “/env” as we haven’t done it yet in <strong>rpiinit.b</strong>.
+Testing and looks okay, I see the MAC in ifc</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-txt" data-lang="txt"><span style="display:flex;"><span>; cd /net/ether0
+</span></span><span style="display:flex;"><span>; ls
+</span></span><span style="display:flex;"><span>addr
+</span></span><span style="display:flex;"><span>clone
+</span></span><span style="display:flex;"><span>ifstats
+</span></span><span style="display:flex;"><span>stats
+</span></span><span style="display:flex;"><span>; cat addr
+</span></span><span style="display:flex;"><span>b827ebd9eafdx; cat stats
+</span></span><span style="display:flex;"><span>in: 470
+</span></span><span style="display:flex;"><span>link: 0
+</span></span><span style="display:flex;"><span>out: 6
+</span></span><span style="display:flex;"><span>crc errs: 0
+</span></span><span style="display:flex;"><span>overflows: 0
+</span></span><span style="display:flex;"><span>soft overflows: 0
+</span></span><span style="display:flex;"><span>framing errs: 0
+</span></span><span style="display:flex;"><span>buffer errs: 0
+</span></span><span style="display:flex;"><span>output errs: 0
+</span></span><span style="display:flex;"><span>prom: 0
+</span></span><span style="display:flex;"><span>mbps: 100
+</span></span><span style="display:flex;"><span>addr: b827ebd9eaf
+</span></span></code></pre></div><p>Now time to get IP with DHCP. To do so I decided for now just put code into driver:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#75715e">// default initialization:
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// let&#39;s get ip with dhcp
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">confether</span>() {
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">fd</span>: <span style="color:#a6e22e">ref</span> <span style="color:#a6e22e">Sys</span><span style="color:#f92672">-</span>&gt;<span style="color:#a6e22e">FD</span>;
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">ethername</span> <span style="color:#f92672">:=</span> <span style="color:#e6db74">&#34;ether0&#34;</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">fd</span> = <span style="color:#a6e22e">sys</span><span style="color:#f92672">-</span>&gt;<span style="color:#a6e22e">open</span>(<span style="color:#e6db74">&#34;/net/ipifc/clone&#34;</span>, <span style="color:#a6e22e">sys</span><span style="color:#f92672">-</span>&gt;<span style="color:#a6e22e">OWRITE</span>);
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">if</span>(<span style="color:#a6e22e">fd</span> <span style="color:#f92672">==</span> <span style="color:#66d9ef">nil</span>) {
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">sys</span><span style="color:#f92672">-</span>&gt;print(<span style="color:#e6db74">&#34;init: open /net/ipifc/clone: %r\n&#34;</span>);
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">return</span>;
+</span></span><span style="display:flex;"><span>	}
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">if</span>(<span style="color:#a6e22e">sys</span><span style="color:#f92672">-</span>&gt;<span style="color:#a6e22e">fprint</span>(<span style="color:#a6e22e">fd</span>, <span style="color:#e6db74">&#34;bind ether %s&#34;</span>, <span style="color:#a6e22e">ethername</span>) &lt; <span style="color:#ae81ff">0</span>) {
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">sys</span><span style="color:#f92672">-</span>&gt;print(<span style="color:#e6db74">&#34;could not bind ether0 interface: %r\n&#34;</span>);
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">return</span>;
+</span></span><span style="display:flex;"><span>	}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">fd</span> = <span style="color:#a6e22e">sys</span><span style="color:#f92672">-</span>&gt;<span style="color:#a6e22e">open</span>(<span style="color:#e6db74">&#34;/net/ipifc/0/ctl&#34;</span>, <span style="color:#a6e22e">Sys</span><span style="color:#f92672">-</span>&gt;<span style="color:#a6e22e">OWRITE</span>);
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">if</span>(<span style="color:#a6e22e">fd</span> <span style="color:#f92672">==</span> <span style="color:#66d9ef">nil</span>){
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">sys</span><span style="color:#f92672">-</span>&gt;print(<span style="color:#e6db74">&#34;init: can&#39;t reopen /net/ipifc/0/ctl: %r\n&#34;</span>);
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">return</span>;
+</span></span><span style="display:flex;"><span>	}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">dhcpclient</span> = <span style="color:#a6e22e">load</span> <span style="color:#a6e22e">Dhcpclient</span> <span style="color:#a6e22e">Dhcpclient</span><span style="color:#f92672">-</span>&gt;<span style="color:#a6e22e">PATH</span>;
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">if</span>(<span style="color:#a6e22e">dhcpclient</span> <span style="color:#f92672">==</span> <span style="color:#66d9ef">nil</span>){
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">sys</span><span style="color:#f92672">-</span>&gt;print(<span style="color:#e6db74">&#34;can&#39;t load dhcpclient: %r\n&#34;</span>);
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">return</span>;
+</span></span><span style="display:flex;"><span>	}
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">dhcpclient</span><span style="color:#f92672">-</span>&gt;<span style="color:#a6e22e">init</span>();
+</span></span><span style="display:flex;"><span>	(<span style="color:#66d9ef">nil</span>, <span style="color:#66d9ef">nil</span>, <span style="color:#a6e22e">err</span>) <span style="color:#f92672">:=</span> <span style="color:#a6e22e">dhcpclient</span><span style="color:#f92672">-</span>&gt;<span style="color:#a6e22e">dhcp</span>(<span style="color:#e6db74">&#34;/net&#34;</span>, <span style="color:#a6e22e">fd</span>, <span style="color:#e6db74">&#34;/net/ether0/addr&#34;</span>, <span style="color:#66d9ef">nil</span>, <span style="color:#66d9ef">nil</span>);
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">if</span>(<span style="color:#a6e22e">err</span> <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nil</span>){
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">sys</span><span style="color:#f92672">-</span>&gt;print(<span style="color:#e6db74">&#34;dhcp: %s\n&#34;</span>, <span style="color:#a6e22e">err</span>);
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">return</span>;
+</span></span><span style="display:flex;"><span>	}
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>Rebooting again, and</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-txt" data-lang="txt"><span style="display:flex;"><span>; cd /net/ipifc/0
+</span></span><span style="display:flex;"><span>; ls
+</span></span><span style="display:flex;"><span>ctl
+</span></span><span style="display:flex;"><span>data
+</span></span><span style="display:flex;"><span>err
+</span></span><span style="display:flex;"><span>listen
+</span></span><span style="display:flex;"><span>local
+</span></span><span style="display:flex;"><span>remote
+</span></span><span style="display:flex;"><span>snoop
+</span></span><span style="display:flex;"><span>status
+</span></span><span style="display:flex;"><span>; cat local
+</span></span><span style="display:flex;"><span>10.0.55.105 -&gt; 255.255.255.255 10.0.0.0 10.255.255.255 10.0.55.0 10.0.55.255 10.0.55.105
+</span></span><span style="display:flex;"><span>;
+</span></span></code></pre></div><p>Great! Try to ping from both sides:</p>
+<p>Linux:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-txt" data-lang="txt"><span style="display:flex;"><span># ping 10.0.55.105
+</span></span><span style="display:flex;"><span>PING 10.0.55.105 (10.0.55.105) 56(84) bytes of data.
+</span></span><span style="display:flex;"><span>64 bytes from 10.0.55.105: icmp_seq=1 ttl=255 time=0.843 ms
+</span></span><span style="display:flex;"><span>64 bytes from 10.0.55.105: icmp_seq=2 ttl=255 time=0.419 ms
+</span></span><span style="display:flex;"><span>64 bytes from 10.0.55.105: icmp_seq=3 ttl=255 time=0.389 ms
+</span></span><span style="display:flex;"><span>64 bytes from 10.0.55.105: icmp_seq=4 ttl=255 time=0.407 ms
+</span></span></code></pre></div><p>Raspberry:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-txt" data-lang="txt"><span style="display:flex;"><span>; ip/ping -n 4 10.0.55.110
+</span></span><span style="display:flex;"><span>sending 4 64 byte messages 1000 ms apart
+</span></span><span style="display:flex;"><span>0: rtt 20000 µs, avg rtt 20000 µs, ttl = 64
+</span></span><span style="display:flex;"><span>1: rtt 20000 µs, avg rtt 20000 µs, ttl = 64
+</span></span><span style="display:flex;"><span>2: rtt 20000 µs, avg rtt 20000 µs, ttl = 64
+</span></span><span style="display:flex;"><span>3: rtt 10000 µs, avg rtt 17500 µs, ttl = 64
+</span></span><span style="display:flex;"><span>;
+</span></span></code></pre></div>
+        </p>
+        
+    </div>
+
+    <div class="prev-next">
+        
+    </div>
+
+    
+    
+    
+</div>
+
+
+
+    
+
+        </main><footer class="footer">
+    
+    
+
+    
+    <span>
+        Made using <a target="_blank" href="https://gohugo.io/">HUGO</a>
+    </span>
+</footer>
+</body>
+</html>

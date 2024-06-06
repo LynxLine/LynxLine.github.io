@@ -6,8 +6,15 @@
     <description>Recent content in Raspberry Pi on LynxLine</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 01 Mar 2014 10:06:09 +0200</lastBuildDate>
+    <lastBuildDate>Sun, 02 Mar 2014 10:14:13 +0200</lastBuildDate>
     <atom:link href="https://lynxline.com/tags/raspberry-pi/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Labs: Porting Inferno OS to Raspberry Pi</title>
+      <link>https://lynxline.com/posts/labs-portintg-inferno-os-to-raspberry-pi/</link>
+      <pubDate>Sun, 02 Mar 2014 10:14:13 +0200</pubDate>
+      <guid>https://lynxline.com/posts/labs-portintg-inferno-os-to-raspberry-pi/</guid>
+      <description>It is a small and exciting project just for fun as “Porting Inferno OS to Raspberry Pi”. Of course to run it there as native, not hosted. It was always declared that this OS is very simple for porting to new platforms, so let’s just research this and reach new distilled experiences of system programming. Also this OS is very small, simple and easy to tweak for research purposes.</description>
+    </item>
     <item>
       <title>Lab 26, floating point</title>
       <link>https://lynxline.com/posts/lab-26-floating-point/</link>

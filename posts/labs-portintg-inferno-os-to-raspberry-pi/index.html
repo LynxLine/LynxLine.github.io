@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <style>
+        :root {
+            --accent-color: #FF4D4D;
+        }
+    </style>
+
+    
+    
+    
+    
+    
+    
+
+    
+    <title>Labs: Porting Inferno OS to Raspberry Pi</title>
+    <meta name="description" content="">
+    <meta name="keywords" content='Blog, Inferno OS, Raspberry Pi, Research'>
+
+    <meta property="og:url" content="https://lynxline.com/posts/labs-portintg-inferno-os-to-raspberry-pi/">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Labs: Porting Inferno OS to Raspberry Pi">
+    <meta property="og:description" content="">
+    <meta property="og:image" content="https://lynxline.com/images/lynx.jpg">
+    <meta property="og:image:secure_url" content="https://lynxline.com/images/lynx.jpg">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Labs: Porting Inferno OS to Raspberry Pi">
+    <meta name="twitter:description" content="">
+    <meta property="twitter:domain" content="https://lynxline.com/posts/labs-portintg-inferno-os-to-raspberry-pi/">
+    <meta property="twitter:url" content="https://lynxline.com/posts/labs-portintg-inferno-os-to-raspberry-pi/">
+    <meta name="twitter:image" content="https://lynxline.com/images/lynx.jpg">
+
+    
+    <link rel="canonical" href="https://lynxline.com/posts/labs-portintg-inferno-os-to-raspberry-pi/" />
+
+    
+    <link rel="stylesheet" type="text/css" href="/css/normalize.min.css" media="print">
+
+    
+    <link rel="stylesheet" type="text/css" href="/css/main.min.css">
+
+    
+    <link id="dark-theme" rel="stylesheet" href="/css/dark.min.css">
+
+    
+    <script src="/js/bundle.min.c60dbb422ed053b0761160e3a3f08b9af2060f00adc8f12c0ff21a8cf55b3d8e.js" integrity="sha256-xg27Qi7QU7B2EWDjo/CLmvIGDwCtyPEsD/IajPVbPY4="></script>
+
+    
+    
+</head>
+<body>
+        <script type="text/javascript">
+            
+            setThemeByUserPref();
+        </script><header class="header">
+    <nav class="header-nav">
+
+        
+        <div class="avatar">
+            <a href="https://lynxline.com/">
+                <img src='/images/lynx.jpg' alt="avatar" />
+            </a>
+        </div>
+        
+
+        <div class="nav-title">
+            <a class="nav-brand" href="https://lynxline.com/">LynxLine</a>
+        </div>
+
+        <div class="nav-links">
+            
+            <div class="nav-link">
+                <a href="https://lynxline.com/services/"><span data-feather='zap'></span> Services </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://lynxline.com/posts/"><span data-feather='layers'></span> Posts </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://lynxline.com/tags/"><span data-feather='tag'></span> Tags </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://lynxline.com/contact/"><span data-feather='mail'></span> Contact </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://github.com"><span data-feather='github'></span>  </a>
+            </div>
+            
+
+            <span class="nav-icons-divider"></span>
+            <div class="nav-link dark-theme-toggle">
+                <span id="dark-theme-toggle-screen-reader-target" class="sr-only"></span>
+                <a>
+                    <span id="theme-toggle-icon" data-feather="moon"></span>
+                </a>
+            </div>
+
+            <div class="nav-link" id="hamburger-menu-toggle">
+                <span id="hamburger-menu-toggle-screen-reader-target" class="sr-only">menu</span>
+                <a>
+                    <span data-feather="menu"></span>
+                </a>
+            </div>
+
+            
+            <ul class="nav-hamburger-list visibility-hidden">
+                
+                <li class="nav-item">
+                    <a href="https://lynxline.com/services/"><span data-feather='zap'></span> Services </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://lynxline.com/posts/"><span data-feather='layers'></span> Posts </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://lynxline.com/tags/"><span data-feather='tag'></span> Tags </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://lynxline.com/contact/"><span data-feather='mail'></span> Contact </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://github.com"><span data-feather='github'></span>  </a>
+                </li>
+                
+                <li class="nav-item dark-theme-toggle">
+                    <span id="dark-theme-toggle-screen-reader-target" class="sr-only">theme</span>
+                    <a>
+                        <span id="theme-toggle-icon" data-feather="moon"></span>
+                    </a>
+                </li>
+            </ul>
+
+        </div>
+    </nav>
+</header>
+<main id="content">
+    <div class="post container">
+    <div class="post-header-section">
+        <h1>Labs: Porting Inferno OS to Raspberry Pi</h1>
+        <small role="doc-subtitle"></small>
+        <p class="post-date">March 2, 2014
+        
+        </p>
+
+        <ul class="post-tags">
+        
+            <li class="post-tag"><a href="https://lynxline.com/tags/blog">Blog</a></li>
+        
+            <li class="post-tag"><a href="https://lynxline.com/tags/inferno-os">Inferno OS</a></li>
+        
+            <li class="post-tag"><a href="https://lynxline.com/tags/raspberry-pi">Raspberry Pi</a></li>
+        
+            <li class="post-tag"><a href="https://lynxline.com/tags/research">Research</a></li>
+        
+        </ul>
+    </div>
+
+    <div class="post-content">
+        <p>
+            <p><img src="img-1.png" alt="fig1"></p>
+<p>It is a small and exciting project just for fun as “Porting Inferno OS to Raspberry Pi”. Of course to run it there as native, not hosted. It was always declared that this OS is very simple for porting to new platforms, so let’s just research this and reach new distilled experiences of system programming. Also this OS is very small, simple and easy to tweak for research purposes.</p>
+<p>It is organized it as some set of small labs with very detailed steps of what is done to reach results and make everything easy to reproduce.</p>
+<p>To keep track of codebase of the Inferno OS on Raspberry Pi Labs we created the google code project to keep the repository and do other stuff related to the labs managements:</p>
+<p>Links: <a href="https://github.com/yshurik/inferno-rpi">https://github.com/yshurik/inferno-rpi</a></p>
+<p><em>Season 1: Road to boot…</em></p>
+<table>
+<thead>
+<tr>
+<th>N</th>
+<th>Name</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1.</td>
+<td><a href="../lab-1-compiler">Lab 1, Compiler</a></td>
+</tr>
+<tr>
+<td>2.</td>
+<td><a href="../lab-2-hardware">Lab 2, Hardware</a></td>
+</tr>
+<tr>
+<td>3.</td>
+<td><a href="../lab-3-r-pi-booting-process">Lab 3, R-Pi Booting process</a></td>
+</tr>
+<tr>
+<td>4.</td>
+<td><a href="../lab-4-loading-kernel">Lab 4, Loading kernel</a></td>
+</tr>
+<tr>
+<td>5.</td>
+<td><a href="../lab-5-hello-world">Lab 5, Hello World</a></td>
+</tr>
+<tr>
+<td>6.</td>
+<td><a href="../lab-6-compile-something">Lab 6, Compile something</a></td>
+</tr>
+<tr>
+<td>7.</td>
+<td><a href="../lab-7-linking-more-initialization">Lab 7, linking, planning next</a></td>
+</tr>
+<tr>
+<td>8.</td>
+<td><a href="../lab-8-memory-model">Lab 8, memory model</a></td>
+</tr>
+<tr>
+<td>9.</td>
+<td><a href="../lab-9-coding-assembler-part">Lab 9, coding assembler part</a></td>
+</tr>
+<tr>
+<td>10.</td>
+<td><a href="../lab-10-bss-menpools-malloc">Lab 10, Bss, memory pools, malloc</a></td>
+</tr>
+<tr>
+<td>11.</td>
+<td><a href="../lab-11-_div-testing-print">Lab 11, _div, testing print</a></td>
+</tr>
+<tr>
+<td>12.</td>
+<td><a href="../lab-12-interrupts-part-1">Lab 12, interrupts, part 1</a></td>
+</tr>
+<tr>
+<td>13.</td>
+<td><a href="../lab-13-interrupts-part2">Lab 13, interrupts, part 2</a></td>
+</tr>
+<tr>
+<td>14.</td>
+<td><a href="../lab-14-interrupts-part-3">Lab 14, interrupts, part 3</a></td>
+</tr>
+<tr>
+<td>15.</td>
+<td><a href="../lab-15-eve-hello-world-from-limbo">Lab 15, Eve, Hello World from Limbo!</a></td>
+</tr>
+</tbody>
+</table>
+<p><em>Season 2: Close to hardware…</em></p>
+<table>
+<thead>
+<tr>
+<th>N</th>
+<th>Name</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>16.</td>
+<td><a href="../lab-16">Lab 16, Adding clocks, timers, converging to 9pi codes</a></td>
+</tr>
+<tr>
+<td>17.</td>
+<td><a href="../lab-17-mmu-init">Lab 17, initialization of MMU</a></td>
+</tr>
+<tr>
+<td>18.</td>
+<td><a href="../lab-18-we-have-a-screen">Lab 18, we have a screen!</a></td>
+</tr>
+<tr>
+<td>19.</td>
+<td><a href="../lab-19-keyboard-through-serial-fixes-to-get-ls">Lab 19, keyboard through serial, fixes to get Ls</a></td>
+</tr>
+<tr>
+<td>20.</td>
+<td><a href="../lab-20-devusb-usbdwc-and-firq-first-step-to-usb">Lab 20, devusb, usbdwc and firq, first step to usb</a></td>
+</tr>
+<tr>
+<td>21.</td>
+<td><a href="../lab-21-porting-usbd-fixed-in-allocb-see-usb-in-actions">Lab 21, porting usbd, fixed in allocb, see usb in actions</a></td>
+</tr>
+<tr>
+<td>22.</td>
+<td><a href="../lab-22-usb-keyboard">Lab 22, Usb keyboard</a></td>
+</tr>
+<tr>
+<td>23.</td>
+<td><a href="../lab-23-hard-disk-or-sd-card">Lab 23, hard disk or SD card</a></td>
+</tr>
+<tr>
+<td>24.</td>
+<td><a href="../lab-24-network-part-1">Lab 24, network, part 1</a></td>
+</tr>
+<tr>
+<td>25.</td>
+<td><a href="../lab-25-network-part-2">Lab 25, network, part 2</a></td>
+</tr>
+<tr>
+<td>26.</td>
+<td><a href="../lab-26-floating-point">Lab 26, floating point</a></td>
+</tr>
+</tbody>
+</table>
+
+        </p>
+        
+    </div>
+
+    <div class="prev-next">
+        
+    </div>
+
+    
+    
+    
+</div>
+
+
+
+    
+
+        </main><footer class="footer">
+    
+    
+
+    
+    <span>
+        Made using <a target="_blank" href="https://gohugo.io/">HUGO</a>
+    </span>
+</footer>
+</body>
+</html>

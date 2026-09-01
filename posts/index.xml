@@ -16,6 +16,20 @@
       <description>init</description>
     </item>
     <item>
+      <title>Create QPdfJs</title>
+      <link>https://lynxline.com/posts/create-qpdfjs/</link>
+      <pubDate>Thu, 27 Apr 2017 20:05:44 +0200</pubDate>
+      <guid>https://lynxline.com/posts/create-qpdfjs/</guid>
+      <description>Today I would like to show the power of Qt technology. The framework was born more than a decade ago but still due to a lot of efforts from talented developers and Qt community keep us surprising.&#xA;I would like to show an example of developing an application with very small efforts and have it on the intersection of desktop application programming and the web programming.&#xA;Few weeks ago I was looking for approach to convert an pdf document to a image with consideration of having it in batch mode in future.</description>
+    </item>
+    <item>
+      <title>SQLite tree structures and queries to get sub-trees</title>
+      <link>https://lynxline.com/posts/sqlite-tree-structures-and-queries-to-get-sub-trees/</link>
+      <pubDate>Fri, 03 Jun 2016 22:13:05 +0200</pubDate>
+      <guid>https://lynxline.com/posts/sqlite-tree-structures-and-queries-to-get-sub-trees/</guid>
+      <description>&lt;p&gt;SQLite is wonderful!&lt;/p&gt;&#xA;&lt;p&gt;Just today I found that SQLite support queries with a recurse to get the inner sub-trees:&lt;/p&gt;</description>
+    </item>
+    <item>
       <title>Labs: Porting Inferno OS to Raspberry Pi</title>
       <link>https://lynxline.com/posts/labs-portintg-inferno-os-to-raspberry-pi/</link>
       <pubDate>Sun, 02 Mar 2014 10:14:13 +0200</pubDate>

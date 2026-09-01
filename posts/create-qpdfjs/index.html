@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <style>
+        :root {
+            --accent-color: #FF4D4D;
+        }
+    </style>
+
+    
+    
+    
+    
+    
+    
+
+    
+    <title>Create QPdfJs</title>
+    <meta name="description" content="Power of Qt: Making a PDF viewer desktop application in a few hours with QWebEngine and PDF.js">
+    <meta name="keywords" content='Development, Qt, PDF.js'>
+
+    <meta property="og:url" content="https://lynxline.com/posts/create-qpdfjs/">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Create QPdfJs">
+    <meta property="og:description" content="Power of Qt: Making a PDF viewer desktop application in a few hours with QWebEngine and PDF.js">
+    <meta property="og:image" content="https://lynxline.com/images/lynx.jpg">
+    <meta property="og:image:secure_url" content="https://lynxline.com/images/lynx.jpg">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Create QPdfJs">
+    <meta name="twitter:description" content="Power of Qt: Making a PDF viewer desktop application in a few hours with QWebEngine and PDF.js">
+    <meta property="twitter:domain" content="https://lynxline.com/posts/create-qpdfjs/">
+    <meta property="twitter:url" content="https://lynxline.com/posts/create-qpdfjs/">
+    <meta name="twitter:image" content="https://lynxline.com/images/lynx.jpg">
+
+    
+    <link rel="canonical" href="https://lynxline.com/posts/create-qpdfjs/" />
+
+    
+    <link rel="stylesheet" type="text/css" href="/css/normalize.min.css" media="print">
+
+    
+    <link rel="stylesheet" type="text/css" href="/css/main.min.css">
+
+    
+    <link id="dark-theme" rel="stylesheet" href="/css/dark.min.css">
+
+    
+    <script src="/js/bundle.min.224c8e70fed292d18d7d9ae1b36797c99144e0be1117e2ea2c428379c8496551.js" integrity="sha256-IkyOcP7SktGNfZrhs2eXyZFE4L4RF&#43;LqLEKDechJZVE="></script>
+
+    
+    
+</head>
+<body>
+        <script type="text/javascript">
+            
+            setThemeByUserPref();
+        </script><header class="header">
+    <nav class="header-nav">
+
+        
+        <div class="avatar">
+            <a href="https://lynxline.com/">
+                <img src='/images/lynx.jpg' alt="avatar" />
+            </a>
+        </div>
+        
+
+        <div class="nav-title">
+            <a class="nav-brand" href="https://lynxline.com/">LynxLine</a>
+        </div>
+
+        <div class="nav-links">
+            
+            <div class="nav-link">
+                <a href="https://lynxline.com/services/"><span data-feather='zap'></span> Services </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://lynxline.com/posts/"><span data-feather='layers'></span> Posts </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://lynxline.com/tags/"><span data-feather='tag'></span> Tags </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://lynxline.com/contact/"><span data-feather='mail'></span> Contact </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://github.com"><span data-feather='github'></span>  </a>
+            </div>
+            
+
+            <span class="nav-icons-divider"></span>
+            <div class="nav-link dark-theme-toggle">
+                <span id="dark-theme-toggle-screen-reader-target" class="sr-only"></span>
+                <a>
+                    <span id="theme-toggle-icon" data-feather="moon"></span>
+                </a>
+            </div>
+
+            <div class="nav-link" id="hamburger-menu-toggle">
+                <span id="hamburger-menu-toggle-screen-reader-target" class="sr-only">menu</span>
+                <a>
+                    <span data-feather="menu"></span>
+                </a>
+            </div>
+
+            
+            <ul class="nav-hamburger-list visibility-hidden">
+                
+                <li class="nav-item">
+                    <a href="https://lynxline.com/services/"><span data-feather='zap'></span> Services </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://lynxline.com/posts/"><span data-feather='layers'></span> Posts </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://lynxline.com/tags/"><span data-feather='tag'></span> Tags </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://lynxline.com/contact/"><span data-feather='mail'></span> Contact </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://github.com"><span data-feather='github'></span>  </a>
+                </li>
+                
+                <li class="nav-item dark-theme-toggle">
+                    <span id="dark-theme-toggle-screen-reader-target" class="sr-only">theme</span>
+                    <a>
+                        <span id="theme-toggle-icon" data-feather="moon"></span>
+                    </a>
+                </li>
+            </ul>
+
+        </div>
+    </nav>
+</header>
+<main id="content">
+    <div class="post container">
+    <div class="post-header-section">
+        <h1>Create QPdfJs</h1>
+        <small role="doc-subtitle">Power of Qt: Making a PDF viewer desktop application in a few hours with QWebEngine and PDF.js</small>
+        <p class="post-date">April 27, 2017
+        
+        </p>
+
+        <ul class="post-tags">
+        
+            <li class="post-tag"><a href="https://lynxline.com/tags/development">Development</a></li>
+        
+            <li class="post-tag"><a href="https://lynxline.com/tags/qt">Qt</a></li>
+        
+            <li class="post-tag"><a href="https://lynxline.com/tags/pdf.js">PDF.js</a></li>
+        
+        </ul>
+    </div>
+
+    <div class="post-content">
+        <p>
+            <p>Today I would like to show the power of Qt technology. The framework was born more than a decade ago but still due to a lot of efforts from talented developers and Qt community keep us surprising.</p>
+<p>I would like to show an example of developing an application with very small efforts and have it on the intersection of desktop application programming and the web programming.</p>
+<p>Few weeks ago I was looking for approach to convert an pdf document to a image with consideration of having it in batch mode in future. Of course there is ImageMagic with convert utility, but unlucky I found that this tool is not so good as I expected - it just does not render correctly bunch of files and what is inappropriate some illustrations were just broken.</p>
+<p>I started to look around for some tools and actually there are a lot of them but every of them has some own specifics like no batch mode, or if commercial then distributions and license specialities.</p>
+<p>To my mind no one of them fit perfectly, so I got an idea - how Qt as mature technology can help me here? It is very simple in Qt to create PDF document with QPrinter functionality but what about reverse way - render PDF to some image? Then it came to my mind that PDF.js is also well developed technology that allows to do PDF rendering.</p>
+<p>Can we make these two technologies to meet? Actually yes! Qt has component called QWebEngineView. Let´s demonstration how to code this:</p>
+<p>Based on the <em>QMainWindow</em> class:</p>
+<pre><code>m_webView = new QWebEngineView(this);
+m_webView-&gt;load(url);
+setCentralWidget(m_webView);
+</code></pre>
+<p>This will present a window that contains a webpage inside. Now let´s have a look at PDF.js. The project is quite large and presents a heavy footprint, but there is an option to build a <em>minfied</em> version that can easily be included into other websites. Here is how we retrieved and built it:</p>
+<pre><code>$ git clone git://github.com/mozilla/pdf.js.git
+$ cd pdf.js
+$ brew install npm
+$ npm install -g gulp-cli
+$ npm install
+$ gulp minified
+</code></pre>
+<p>The result is a &ldquo;compiled&rdquo; version of pdf.js in the folder <em>build/minified</em>, then we copy it to our project folder. Now set the url to point to the local file <em>minified/web/viewer.html</em></p>
+<pre><code>auto url = QUrl::fromLocalFile(app_path+&quot;/minified/web/viewer.html&quot;);
+</code></pre>
+<p>Now build &amp; run:</p>
+<p><img src="image_0.png" alt="image alt text"></p>
+<p>This worked perfectly right out of the box, so my concept is valid, however it is showing their example PDF file, how does it bypass the filename and inject our own into the javascript engine? There is another clever bit of Qt technology called QWebChannel. The idea is that on C++/Qt side we instantiate <em>QWebChannel</em> object and set this channel to a webpage. With that channel we can register objects that can be accessed from a JavaScript scope:</p>
+<pre><code>auto url = QUrl::fromLocalFile(app_path+&quot;/minified/web/viewer.html&quot;);
+
+m_communicator = new Communicator(this);
+m_communicator-&gt;setUrl(pdf_path);
+
+m_webView = new QWebEngineView(this);
+
+QWebChannel * channel = new QWebChannel(this);
+channel-&gt;registerObject(QStringLiteral(&quot;communicator&quot;), m_communicator);
+m_webView-&gt;page()-&gt;setWebChannel(channel);
+m_webView-&gt;load(url);
+
+setCentralWidget(m_webView);
+</code></pre>
+<p>The above code allows us to access the communicator object from JavaScript. Now we need to make some changes to <em>viewer.html/viewer.js</em> and add <em>qwebchannel.js</em> to allow communication on other side, but that is simple enough:</p>
+<ol>
+<li>For <em>viewer.html</em> just add a reference to <em>qwebchannel.js</em></li>
+</ol>
+<!-- raw HTML omitted -->
+<ol start="2">
+<li>For <em>viewer.js</em> add the initialization of <em>QWebChannel</em> and bypass the filename just below the definition of the original url pointing to that example pdf file:</li>
+</ol>
+<p>Code:</p>
+<pre><code>var DEFAULT_URL = 'compressed.tracemonkey-pldi-09.pdf'; 
+new QWebChannel(qt.webChannelTransport 
+       ,function(channel) {
+	       var comm = channel.objects.communicator;
+	       DEFAULT_URL = comm.url;
+...
+</code></pre>
+<p>Here is the secret sauce in how this all works. Before page loading, we attach a web channel and register the <em>communicator</em> object. Then when viewer.html is loaded for the first time, we have a defined <em>QWebChannel</em> JS class. Just after the declaration of DEFAULT_URL we create JS <em>QWebChannel</em> and once it is instantiated and communication is established, an attached function is called which reads the <strong>url</strong> from <em>communicator</em> object. This <strong>url</strong> is used instead of the example pdf file.</p>
+<p>When the PDF.js code changes are done, just rebuild the <em>minified</em> version:</p>
+<pre><code>$ gulp minified
+</code></pre>
+<p>Now we copy the <em>minified</em> to our project home. From here we can make changes like allowing the application to accept command line arguments, or profile a list of available PDF files that you want to process, whatever it is you need.</p>
+<p><img src="image_1.png" alt="image alt text"></p>
+<p>And there you have it, a completed PDF viewer desktop application just in few hours (not counting research).</p>
+<p>Project github: <a href="https://github.com/yshurik/qpdfjs">https://github.com/yshurik/qpdfjs</a></p>
+<p>PS: And this post is my first attempt to create a site based on Hugo+GitHubPages. Pretty impressive!</p>
+
+        </p>
+        
+    </div>
+
+    <div class="prev-next">
+        
+    </div>
+
+    
+    
+    
+</div>
+
+
+
+    
+
+        </main><footer class="footer">
+    
+    
+
+    
+    <span>
+        Made using <a target="_blank" href="https://gohugo.io/">HUGO</a>
+    </span>
+</footer>
+</body>
+</html>

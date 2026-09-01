@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Boost on LynxLine</title>
+    <link>https://lynxline.com/tags/boost/</link>
+    <description>Recent content in Boost on LynxLine</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 18 Jan 2014 22:00:00 +0200</lastBuildDate>
+    <atom:link href="https://lynxline.com/tags/boost/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Jongling models beetween threads</title>
+      <link>https://lynxline.com/posts/jongling-models-beetween-threads/</link>
+      <pubDate>Sat, 18 Jan 2014 22:00:00 +0200</pubDate>
+      <guid>https://lynxline.com/posts/jongling-models-beetween-threads/</guid>
+      <description>&lt;p&gt;We know that in Qt the models are not thread-safe – they totally depend on your implementation.&lt;/p&gt;&#xA;&lt;p&gt;So what we may do to bypass model between threads?&lt;/p&gt;&#xA;&lt;p&gt;Guess that we have some models which implementation we can not adjust much or can not make thread-safe.&lt;/p&gt;&#xA;&lt;p&gt;Danger is that if some model is used somewhere (pointer to model, saved QModelIndex, etc), then when we move model object to another thread, for some resource consuming processing,&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>About Boost Multi-index Containers</title>
+      <link>https://lynxline.com/posts/about-boost-multi-index-containers/</link>
+      <pubDate>Sat, 29 Dec 2012 00:00:00 +0200</pubDate>
+      <guid>https://lynxline.com/posts/about-boost-multi-index-containers/</guid>
+      <description>&lt;p&gt;I really like Qt Template Library (QTL), but still have lack of some important functionality which is usually called multi-index. Anyway there is very powerful implementation existing in Boost. I really need these templates to establish relations between different data structures. I often use it as internal “engine” for different Proxy models that I use to manipulate models.&lt;/p&gt;&#xA;&lt;p&gt;So, I would like to remind and give quick recepies about such powerful module in Boost as multi_index_container. We know and intensively use standard STL templates for storing and access to data as lists, vectors, maps, hashes. There are a lot of information about them and very well explained.&lt;/p&gt;&#xA;&lt;p&gt;Things get complicated when there is a need to store and access to objects by more then one set of keys or their combinations. Usually developers start from creation of two maps or hashes plus a log of synchronization of then, but later with increase of keys codes became much more complicated due to synchronization of hashes, insertions, key renames, removes etc. Also it is getting very hard to understand the computation complexity of every operation taken with such storage. And of course creation of such “bicycles” leads to high amount of bugs, needs of optimizations, etc.&lt;/p&gt;&#xA;&lt;p&gt;Of course everything is invented before us and in Boost libraries you will find a module for solving these problems – boost::multi_index. Great advantage – speed, multi_index is very fast. But documentation for this module is, let’s say, complicated for understanding and especially for quick start, so newbies try to avoid the use of the module. And of course compiler messages about error due to use of multi_index templates give high amount of confusion.&lt;/p&gt;&#xA;&lt;p&gt;I would like to remove confusion and give simple cases that will be good recipes of use. I will use it together with Qt classes for demo:&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

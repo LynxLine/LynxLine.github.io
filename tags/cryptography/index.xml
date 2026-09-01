@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Cryptography on LynxLine</title>
+    <link>https://lynxline.com/tags/cryptography/</link>
+    <description>Recent content in Cryptography on LynxLine</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 13 Sep 2013 22:00:00 +0200</lastBuildDate>
+    <atom:link href="https://lynxline.com/tags/cryptography/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Qt and use of Cryptography – simple!</title>
+      <link>https://lynxline.com/posts/qt-and-use-of-cryptography-simple/</link>
+      <pubDate>Fri, 13 Sep 2013 22:00:00 +0200</pubDate>
+      <guid>https://lynxline.com/posts/qt-and-use-of-cryptography-simple/</guid>
+      <description>&lt;p&gt;In the light of latest news (Snowden et all) it is very clear that all developers should really take care of safety of all communications that your application could perform. In the world of desktop application developments it is often is decided to be postponed and just use plain text protocols or so and later switch to use of SSL. Surely we should pay more attention to use ciphers when any need of QtNetwork is considered.&lt;/p&gt;&#xA;&lt;p&gt;But what about using something different than just SSL? Let’s take a look at use of PGP in Qt Application. It is so good that there is great framework is already in place QCA (&lt;a href=&#34;http://delta.affinix.com/qca/&#34;&gt;http://delta.affinix.com/qca/&lt;/a&gt;). All we need is just to take a look at API and find a simple way of making ciphers.&lt;/p&gt;&#xA;&lt;p&gt;Let’s design very simple desktop application which can crypt some input text. I assume that have already installed &lt;em&gt;GnuPG&lt;/em&gt;, generated keys, configured &lt;em&gt;gpg-agent&lt;/em&gt;, installed and checked working &lt;em&gt;pinentry-qt/pinentry-gtk&lt;/em&gt;(we are on linux now). Then you have installed &lt;strong&gt;qca&lt;/strong&gt; and &lt;strong&gt;qca-gnupg&lt;/strong&gt;&lt;/p&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;emerge --ask qca qca-gnupg&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Just start &lt;em&gt;Qt Creator&lt;/em&gt;, choose to make Qt Gui application, add to pro file a linking to qca:&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

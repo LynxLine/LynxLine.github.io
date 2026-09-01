@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <style>
+        :root {
+            --accent-color: #FF4D4D;
+        }
+    </style>
+
+    
+    
+    
+    
+    
+    
+
+    
+    <title>Stack vs Heap, Pimpl, performance</title>
+    <meta name="description" content="">
+    <meta name="keywords" content='Blog, C, Qt, Research'>
+
+    <meta property="og:url" content="https://lynxline.com/posts/stack-vs-heap-pimpl-performance/">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Stack vs Heap, Pimpl, performance">
+    <meta property="og:description" content="">
+    <meta property="og:image" content="https://lynxline.com/images/lynx.jpg">
+    <meta property="og:image:secure_url" content="https://lynxline.com/images/lynx.jpg">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Stack vs Heap, Pimpl, performance">
+    <meta name="twitter:description" content="">
+    <meta property="twitter:domain" content="https://lynxline.com/posts/stack-vs-heap-pimpl-performance/">
+    <meta property="twitter:url" content="https://lynxline.com/posts/stack-vs-heap-pimpl-performance/">
+    <meta name="twitter:image" content="https://lynxline.com/images/lynx.jpg">
+
+    
+    <link rel="canonical" href="https://lynxline.com/posts/stack-vs-heap-pimpl-performance/" />
+
+    
+    <link rel="stylesheet" type="text/css" href="/css/normalize.min.css" media="print">
+
+    
+    <link rel="stylesheet" type="text/css" href="/css/main.min.css">
+
+    
+    <link id="dark-theme" rel="stylesheet" href="/css/dark.min.css">
+
+    
+    <script src="/js/bundle.min.224c8e70fed292d18d7d9ae1b36797c99144e0be1117e2ea2c428379c8496551.js" integrity="sha256-IkyOcP7SktGNfZrhs2eXyZFE4L4RF&#43;LqLEKDechJZVE="></script>
+
+    
+    
+</head>
+<body>
+        <script type="text/javascript">
+            
+            setThemeByUserPref();
+        </script><header class="header">
+    <nav class="header-nav">
+
+        
+        <div class="avatar">
+            <a href="https://lynxline.com/">
+                <img src='/images/lynx.jpg' alt="avatar" />
+            </a>
+        </div>
+        
+
+        <div class="nav-title">
+            <a class="nav-brand" href="https://lynxline.com/">LynxLine</a>
+        </div>
+
+        <div class="nav-links">
+            
+            <div class="nav-link">
+                <a href="https://lynxline.com/services/"><span data-feather='zap'></span> Services </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://lynxline.com/posts/"><span data-feather='layers'></span> Posts </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://lynxline.com/tags/"><span data-feather='tag'></span> Tags </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://lynxline.com/contact/"><span data-feather='mail'></span> Contact </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://github.com"><span data-feather='github'></span>  </a>
+            </div>
+            
+
+            <span class="nav-icons-divider"></span>
+            <div class="nav-link dark-theme-toggle">
+                <span id="dark-theme-toggle-screen-reader-target" class="sr-only"></span>
+                <a>
+                    <span id="theme-toggle-icon" data-feather="moon"></span>
+                </a>
+            </div>
+
+            <div class="nav-link" id="hamburger-menu-toggle">
+                <span id="hamburger-menu-toggle-screen-reader-target" class="sr-only">menu</span>
+                <a>
+                    <span data-feather="menu"></span>
+                </a>
+            </div>
+
+            
+            <ul class="nav-hamburger-list visibility-hidden">
+                
+                <li class="nav-item">
+                    <a href="https://lynxline.com/services/"><span data-feather='zap'></span> Services </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://lynxline.com/posts/"><span data-feather='layers'></span> Posts </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://lynxline.com/tags/"><span data-feather='tag'></span> Tags </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://lynxline.com/contact/"><span data-feather='mail'></span> Contact </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://github.com"><span data-feather='github'></span>  </a>
+                </li>
+                
+                <li class="nav-item dark-theme-toggle">
+                    <span id="dark-theme-toggle-screen-reader-target" class="sr-only">theme</span>
+                    <a>
+                        <span id="theme-toggle-icon" data-feather="moon"></span>
+                    </a>
+                </li>
+            </ul>
+
+        </div>
+    </nav>
+</header>
+<main id="content">
+    <div class="post container">
+    <div class="post-header-section">
+        <h1>Stack vs Heap, Pimpl, performance</h1>
+        <small role="doc-subtitle"></small>
+        <p class="post-date">February 7, 2012
+        
+        </p>
+
+        <ul class="post-tags">
+        
+            <li class="post-tag"><a href="https://lynxline.com/tags/blog">Blog</a></li>
+        
+            <li class="post-tag"><a href="https://lynxline.com/tags/c">C</a></li>
+        
+            <li class="post-tag"><a href="https://lynxline.com/tags/qt">Qt</a></li>
+        
+            <li class="post-tag"><a href="https://lynxline.com/tags/research">Research</a></li>
+        
+        </ul>
+    </div>
+
+    <div class="post-content">
+        <p>
+            <p>This post is mostly about C++ but because it involves practices often used with Qt programming too, I tagged it with Qt. Also should be interesting for C++ gurus</p>
+<p>So, you know that Qt uses Pimpl (<a href="http://www.qtcentre.org/wiki/index.php?title=Private_implementation">Private Implementation</a> or <a href="http://en.wikipedia.org/wiki/Opaque_pointer#C.2B.2B">Opaque pointer</a>) which is very effective mechanism to keep binary compatibility between Qt versions. I use it very often too, but mostly not because of binary compatibility needs, but because of possibility of hiding internals and implementations especialities into cpp files.</p>
+<p>And there is something even more important, such practice allows to avoid including 3-rd party headers from your headers – your API – you know, it can often happen that you need some “utility” api, but because of including the header it leads to bring bunch of unexpected includes coming from this “utility”. Even worse, these 3-rd party headers that you probably can not even control, bring unexpected defines, pragmas etc that can makes you puzzled for hours to understand <em>why?, how? and in which order?</em> it conflicts with your coding.</p>
+<p>Using <em>d</em> pointer (Private Implementation) allows really avoid including these unneeded headers, but recently in huge project it makes me to think about performance issues.</p>
+<p>Usually it looks like:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#75715e">// HEADER *****************
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">DynObj</span> {
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>    DynObj();
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">virtual</span> <span style="color:#f92672">~</span>DynObj();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">private</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>    Private <span style="color:#f92672">*</span> d;
+</span></span><span style="display:flex;"><span>};
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// SOURCE *****************
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">DynObj</span><span style="color:#f92672">::</span>Private {
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">//internals
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>};
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>DynObj<span style="color:#f92672">::</span>DynObj() { d <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Private; }
+</span></span><span style="display:flex;"><span>DynObj<span style="color:#f92672">::~</span>DynObj() { <span style="color:#66d9ef">delete</span> d; }
+</span></span></code></pre></div><p>It is very effective for all advantages that I described above except one: if this is expected to be some lightweight object then when you instantiate one you actually get two memory allocation operations: one is for object itself and second one for the <em>Private</em> object. And if you have control for first allocation – stack or heap, you do not have control of second one – always heap.</p>
+<p>In my case I used billions of these objects as parameters of methods, return values, local variables etc. Problem is that even if you expect that the object will be allocated in stack, still due to <em>Private</em> sub-object it will request “new” and “delete” so heap is involved in any case, but surely using just stack should be faster. How much? Let’s do some lab to measure.</p>
+<p>Lab definition:</p>
+<ol>
+<li>
+<p>Define two classes, one is just standard class using <em>d-pointer</em>, second should be fully allocated in stack if needed</p>
+</li>
+<li>
+<p>Still both should use idea of <em>Private Implementation</em>, so need some tricks for second class</p>
+</li>
+<li>
+<p>Measure time spent on allocation of objects of two types</p>
+</li>
+</ol>
+<p>So, we would like to have <em>Private Implementation</em>, but use kind of <em>d-pointer</em>, so when object allocation requests memory it should give enough amount of bytes with reserved space to fit <em>Private</em> object later. Of course we can just define <em>quint8 d_bytes[d_size];</em>, but compiler can not calculate d_size without knowing details of implementation of <em>Private</em>, but it breaks idea of closing internals into cpp only.</p>
+<p>We can do just some tricking, we declare some magic number <em>static const int d_size;</em>, but in cpp we use static assert to compare this magic number with real size of <em>Private</em>.</p>
+<p>Code to do such static assert is:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#66d9ef">namespace</span> <span style="color:#66d9ef">static_assert</span> {
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">template</span> <span style="color:#f92672">&lt;</span><span style="color:#66d9ef">bool</span><span style="color:#f92672">&gt;</span> <span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">is_fail</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">template</span> <span style="color:#f92672">&lt;&gt;</span> <span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">is_fail</span><span style="color:#f92672">&lt;</span>true<span style="color:#f92672">&gt;</span> { <span style="color:#66d9ef">enum</span> { value <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span> }; };
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">template</span> <span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span> def,<span style="color:#66d9ef">int</span> real<span style="color:#f92672">&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">check_d_size</span> <span style="color:#f92672">:</span> <span style="color:#f92672">::</span><span style="color:#66d9ef">static_assert</span><span style="color:#f92672">::</span>is_fail<span style="color:#f92672">&lt;</span>(<span style="color:#66d9ef">bool</span>)(def <span style="color:#f92672">==</span> real)<span style="color:#f92672">&gt;</span> {};
+</span></span></code></pre></div><p>Then in constructor we can place code:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span>check_d_size<span style="color:#f92672">&lt;</span>d_size,<span style="color:#66d9ef">sizeof</span>(Private)<span style="color:#f92672">&gt;</span>();
+</span></span></code></pre></div><p>And on compilation we will get error like that:</p>
+<p><code>../cpp-dyn-vs-stack/main.cpp: In instantiation of 'check_d_size&lt;31, 32&gt;':</code></p>
+<p>Now easy to know right magic number.</p>
+<p>BTW: Surely <strong>totally unportable</strong> trick! But fine for our lab and measurements.</p>
+<p>Another issue: we have enough memory reserved in object, but we need initialize it in right way – use constructor, but with ready memory. Like that:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">StackObj</span> {
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>    StackObj() {
+</span></span><span style="display:flex;"><span>        check_d_size<span style="color:#f92672">&lt;</span>d_size,<span style="color:#66d9ef">sizeof</span>(Private)<span style="color:#f92672">&gt;</span>();
+</span></span><span style="display:flex;"><span>        d <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span>(d_bytes) Private;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">virtual</span> <span style="color:#f92672">~</span>StackObj() { d<span style="color:#f92672">-&gt;~</span>Private(); }
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">private</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Private</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">inline</span> <span style="color:#66d9ef">void</span> <span style="color:#f92672">*</span> <span style="color:#66d9ef">operator</span> <span style="color:#66d9ef">new</span>(size_t, quint8 <span style="color:#f92672">*</span> mem) { <span style="color:#66d9ef">return</span> mem; }
+</span></span><span style="display:flex;"><span>        ...
+</span></span><span style="display:flex;"><span>    };
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">private</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>    Private <span style="color:#f92672">*</span> d;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">const</span> <span style="color:#66d9ef">int</span> d_size <span style="color:#f92672">=</span> <span style="color:#ae81ff">32</span>;
+</span></span><span style="display:flex;"><span>    quint8 d_bytes[d_size];
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div><p>Now if our StackObj is placed in stack then 1. appropriate memory is reserved, 2. <em>Private</em> sub-object is initialized in right way with all constructors of internals etc. And we still can keep implementation with internals in cpp and leave only API in header without 3-rd party includes.</p>
+<p>Time to measures:</p>
+<ul>
+<li>
+<p>allocate 100,000 objects in stack using heap for <em>Private</em>: <strong>24 msecs</strong></p>
+</li>
+<li>
+<p>allocate 100,000 objects in stack using stack for <em>Private</em>: <strong>8 msecs</strong></p>
+</li>
+</ul>
+<p>Wow! 3-times difference.</p>
+<p>So, keep track what you can put in stack and what in heap if you count your computing time!</p>
+<p>Full listing:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;iostream&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;string&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;QTime&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;QDebug&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">using</span> <span style="color:#66d9ef">namespace</span> std;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">DynObj</span> {
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>    DynObj() { d <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Private; }
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">virtual</span> <span style="color:#f92672">~</span>DynObj() { <span style="color:#66d9ef">delete</span> d; }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">private</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Private</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">int</span> i;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">int</span> j;
+</span></span><span style="display:flex;"><span>        DynObj <span style="color:#f92672">*</span> p;
+</span></span><span style="display:flex;"><span>        std<span style="color:#f92672">::</span>string str;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Check</span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">public</span><span style="color:#f92672">:</span> Check() { <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">bool</span> b<span style="color:#f92672">=</span>true; <span style="color:#66d9ef">if</span> (b) { qDebug() <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;ok new dyn&#34;</span>; b <span style="color:#f92672">=</span> <span style="color:#f92672">!</span>b; } }
+</span></span><span style="display:flex;"><span>               <span style="color:#f92672">~</span>Check() { <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">bool</span> b<span style="color:#f92672">=</span>true; <span style="color:#66d9ef">if</span> (b) { qDebug() <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;ok del dyn&#34;</span>; b <span style="color:#f92672">=</span> <span style="color:#f92672">!</span>b; } }
+</span></span><span style="display:flex;"><span>        } chk;
+</span></span><span style="display:flex;"><span>    };
+</span></span><span style="display:flex;"><span>    Private <span style="color:#f92672">*</span> d;
+</span></span><span style="display:flex;"><span>};
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">namespace</span> <span style="color:#66d9ef">static_assert</span> {
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">template</span> <span style="color:#f92672">&lt;</span><span style="color:#66d9ef">bool</span><span style="color:#f92672">&gt;</span> <span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">is_fail</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">template</span> <span style="color:#f92672">&lt;&gt;</span> <span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">is_fail</span><span style="color:#f92672">&lt;</span>true<span style="color:#f92672">&gt;</span> { <span style="color:#66d9ef">enum</span> { value <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span> }; };
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">template</span> <span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span> def,<span style="color:#66d9ef">int</span> real<span style="color:#f92672">&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">check_d_size</span> <span style="color:#f92672">:</span> <span style="color:#f92672">::</span><span style="color:#66d9ef">static_assert</span><span style="color:#f92672">::</span>is_fail<span style="color:#f92672">&lt;</span>(<span style="color:#66d9ef">bool</span>)(def <span style="color:#f92672">==</span> real)<span style="color:#f92672">&gt;</span> {};
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">StackObj</span> {
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>    StackObj() {
+</span></span><span style="display:flex;"><span>        check_d_size<span style="color:#f92672">&lt;</span>d_size,<span style="color:#66d9ef">sizeof</span>(Private)<span style="color:#f92672">&gt;</span>();
+</span></span><span style="display:flex;"><span>        d <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span>(d_bytes) Private;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">virtual</span> <span style="color:#f92672">~</span>StackObj() { d<span style="color:#f92672">-&gt;~</span>Private(); }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">private</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Private</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">inline</span> <span style="color:#66d9ef">void</span> <span style="color:#f92672">*</span> <span style="color:#66d9ef">operator</span> <span style="color:#66d9ef">new</span>(size_t, quint8 <span style="color:#f92672">*</span> mem) { <span style="color:#66d9ef">return</span> mem; }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">int</span> i;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">int</span> j;
+</span></span><span style="display:flex;"><span>        DynObj <span style="color:#f92672">*</span> p;
+</span></span><span style="display:flex;"><span>        std<span style="color:#f92672">::</span>string str;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Check</span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">public</span><span style="color:#f92672">:</span> Check() { <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">bool</span> b<span style="color:#f92672">=</span>true; <span style="color:#66d9ef">if</span> (b) { qDebug() <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;ok new stack&#34;</span>; b <span style="color:#f92672">=</span> <span style="color:#f92672">!</span>b; } }
+</span></span><span style="display:flex;"><span>               <span style="color:#f92672">~</span>Check() { <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">bool</span> b<span style="color:#f92672">=</span>true; <span style="color:#66d9ef">if</span> (b) { qDebug() <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;ok del stack&#34;</span>; b <span style="color:#f92672">=</span> <span style="color:#f92672">!</span>b; } }
+</span></span><span style="display:flex;"><span>        } chk;
+</span></span><span style="display:flex;"><span>    };
+</span></span><span style="display:flex;"><span>    Private <span style="color:#f92672">*</span> d;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">const</span> <span style="color:#66d9ef">int</span> d_size <span style="color:#f92672">=</span> <span style="color:#ae81ff">32</span>;
+</span></span><span style="display:flex;"><span>    quint8 d_bytes[d_size];
+</span></span><span style="display:flex;"><span>};
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>()
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    QTime t <span style="color:#f92672">=</span> QTime<span style="color:#f92672">::</span>currentTime();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    { DynObj ar_dyn[<span style="color:#ae81ff">100000</span>]; }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    qDebug() <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;use dyn, call time, msecs&#34;</span> <span style="color:#f92672">&lt;&lt;</span> t.msecsTo(QTime<span style="color:#f92672">::</span>currentTime());
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    t <span style="color:#f92672">=</span> QTime<span style="color:#f92672">::</span>currentTime();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    { StackObj ar_stack[<span style="color:#ae81ff">100000</span>]; }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    qDebug() <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;use stack, call time, msecs&#34;</span> <span style="color:#f92672">&lt;&lt;</span> t.msecsTo(QTime<span style="color:#f92672">::</span>currentTime());
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div>
+        </p>
+        
+    </div>
+
+    <div class="prev-next">
+        
+    </div>
+
+    
+    
+    
+</div>
+
+
+
+    
+
+        </main><footer class="footer">
+    
+    
+
+    
+    <span>
+        Made using <a target="_blank" href="https://gohugo.io/">HUGO</a>
+    </span>
+</footer>
+</body>
+</html>

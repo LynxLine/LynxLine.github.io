@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <style>
+        :root {
+            --accent-color: #FF4D4D;
+        }
+    </style>
+
+    
+    
+    
+    
+    
+    
+
+    
+    <title>Overhead cost of using Qt models</title>
+    <meta name="description" content="">
+    <meta name="keywords" content='Blog, C, Models, Qt, Research'>
+
+    <meta property="og:url" content="https://lynxline.com/posts/overhead-cost-of-using-qt-models/">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Overhead cost of using Qt models">
+    <meta property="og:description" content="">
+    <meta property="og:image" content="https://lynxline.com/images/lynx.jpg">
+    <meta property="og:image:secure_url" content="https://lynxline.com/images/lynx.jpg">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Overhead cost of using Qt models">
+    <meta name="twitter:description" content="">
+    <meta property="twitter:domain" content="https://lynxline.com/posts/overhead-cost-of-using-qt-models/">
+    <meta property="twitter:url" content="https://lynxline.com/posts/overhead-cost-of-using-qt-models/">
+    <meta name="twitter:image" content="https://lynxline.com/images/lynx.jpg">
+
+    
+    <link rel="canonical" href="https://lynxline.com/posts/overhead-cost-of-using-qt-models/" />
+
+    
+    <link rel="stylesheet" type="text/css" href="/css/normalize.min.css" media="print">
+
+    
+    <link rel="stylesheet" type="text/css" href="/css/main.min.css">
+
+    
+    <link id="dark-theme" rel="stylesheet" href="/css/dark.min.css">
+
+    
+    <script src="/js/bundle.min.224c8e70fed292d18d7d9ae1b36797c99144e0be1117e2ea2c428379c8496551.js" integrity="sha256-IkyOcP7SktGNfZrhs2eXyZFE4L4RF&#43;LqLEKDechJZVE="></script>
+
+    
+    
+</head>
+<body>
+        <script type="text/javascript">
+            
+            setThemeByUserPref();
+        </script><header class="header">
+    <nav class="header-nav">
+
+        
+        <div class="avatar">
+            <a href="https://lynxline.com/">
+                <img src='/images/lynx.jpg' alt="avatar" />
+            </a>
+        </div>
+        
+
+        <div class="nav-title">
+            <a class="nav-brand" href="https://lynxline.com/">LynxLine</a>
+        </div>
+
+        <div class="nav-links">
+            
+            <div class="nav-link">
+                <a href="https://lynxline.com/services/"><span data-feather='zap'></span> Services </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://lynxline.com/posts/"><span data-feather='layers'></span> Posts </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://lynxline.com/tags/"><span data-feather='tag'></span> Tags </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://lynxline.com/contact/"><span data-feather='mail'></span> Contact </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://github.com"><span data-feather='github'></span>  </a>
+            </div>
+            
+
+            <span class="nav-icons-divider"></span>
+            <div class="nav-link dark-theme-toggle">
+                <span id="dark-theme-toggle-screen-reader-target" class="sr-only"></span>
+                <a>
+                    <span id="theme-toggle-icon" data-feather="moon"></span>
+                </a>
+            </div>
+
+            <div class="nav-link" id="hamburger-menu-toggle">
+                <span id="hamburger-menu-toggle-screen-reader-target" class="sr-only">menu</span>
+                <a>
+                    <span data-feather="menu"></span>
+                </a>
+            </div>
+
+            
+            <ul class="nav-hamburger-list visibility-hidden">
+                
+                <li class="nav-item">
+                    <a href="https://lynxline.com/services/"><span data-feather='zap'></span> Services </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://lynxline.com/posts/"><span data-feather='layers'></span> Posts </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://lynxline.com/tags/"><span data-feather='tag'></span> Tags </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://lynxline.com/contact/"><span data-feather='mail'></span> Contact </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://github.com"><span data-feather='github'></span>  </a>
+                </li>
+                
+                <li class="nav-item dark-theme-toggle">
+                    <span id="dark-theme-toggle-screen-reader-target" class="sr-only">theme</span>
+                    <a>
+                        <span id="theme-toggle-icon" data-feather="moon"></span>
+                    </a>
+                </li>
+            </ul>
+
+        </div>
+    </nav>
+</header>
+<main id="content">
+    <div class="post container">
+    <div class="post-header-section">
+        <h1>Overhead cost of using Qt models</h1>
+        <small role="doc-subtitle"></small>
+        <p class="post-date">February 19, 2013
+        
+        </p>
+
+        <ul class="post-tags">
+        
+            <li class="post-tag"><a href="https://lynxline.com/tags/blog">Blog</a></li>
+        
+            <li class="post-tag"><a href="https://lynxline.com/tags/c">C</a></li>
+        
+            <li class="post-tag"><a href="https://lynxline.com/tags/models">Models</a></li>
+        
+            <li class="post-tag"><a href="https://lynxline.com/tags/qt">Qt</a></li>
+        
+            <li class="post-tag"><a href="https://lynxline.com/tags/research">Research</a></li>
+        
+        </ul>
+    </div>
+
+    <div class="post-content">
+        <p>
+            <p>I decided to run very simple test to have glance on performance of Qt models and overhead cost of using them.</p>
+<p>Something very simple as make 1M random strings with random size (note: <em>rnd_str(int)</em> return some random string with specified size)</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span>	<span style="color:#66d9ef">int</span> n <span style="color:#f92672">=</span> <span style="color:#ae81ff">1000000</span>;
+</span></span><span style="display:flex;"><span>	QStandardItemModel <span style="color:#a6e22e">std</span>(n, <span style="color:#ae81ff">1</span>);
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">for</span>(<span style="color:#66d9ef">int</span> row <span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>; row <span style="color:#f92672">&lt;</span>n; <span style="color:#f92672">++</span>row)
+</span></span><span style="display:flex;"><span>		std.setData(std.index(row,<span style="color:#ae81ff">0</span>), rnd_str(rand() <span style="color:#f92672">%</span> <span style="color:#ae81ff">16</span>));
+</span></span></code></pre></div><p>versus just vector of strings</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span>	QVector<span style="color:#f92672">&lt;</span>QString<span style="color:#f92672">&gt;</span> vec;
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">for</span>(<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>; i<span style="color:#f92672">&lt;</span> n; <span style="color:#f92672">++</span>i)
+</span></span><span style="display:flex;"><span>		vec.push_back(rnd_str(rand() <span style="color:#f92672">%</span> <span style="color:#ae81ff">16</span>));
+</span></span></code></pre></div><p>Then just compare time of iterating through them:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span>	QTime t <span style="color:#f92672">=</span> QTime<span style="color:#f92672">::</span>currentTime();
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">for</span>(<span style="color:#66d9ef">int</span> row <span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>; row<span style="color:#f92672">&lt;</span> n; <span style="color:#f92672">++</span>row)
+</span></span><span style="display:flex;"><span>		std.index(row,<span style="color:#ae81ff">0</span>).data().toString();
+</span></span><span style="display:flex;"><span>	qDebug() <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;mod msecs&#34;</span> <span style="color:#f92672">&lt;&lt;</span> t.msecsTo(QTime<span style="color:#f92672">::</span>currentTime());
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	t <span style="color:#f92672">=</span> QTime<span style="color:#f92672">::</span>currentTime();
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">for</span>(<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>; i<span style="color:#f92672">&lt;</span> n; <span style="color:#f92672">++</span>i)
+</span></span><span style="display:flex;"><span>		vec[i];
+</span></span><span style="display:flex;"><span>	qDebug() <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;vec msecs&#34;</span> <span style="color:#f92672">&lt;&lt;</span> t.msecsTo(QTime<span style="color:#f92672">::</span>currentTime());
+</span></span></code></pre></div><p>Results: 138 msecs (model) vs 18 msecs (vector)</p>
+<p>Consider another methodology, let&rsquo;s sort both: model by <em>QSortFilterProxyModel</em> and vector by <em>qSort()</em>:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span>	t <span style="color:#f92672">=</span> QTime<span style="color:#f92672">::</span>currentTime();
+</span></span><span style="display:flex;"><span>	QSortFilterProxyModel srt;
+</span></span><span style="display:flex;"><span>	srt.setSourceModel(<span style="color:#f92672">&amp;</span>std);
+</span></span><span style="display:flex;"><span>	srt.sort(<span style="color:#ae81ff">0</span>);
+</span></span><span style="display:flex;"><span>	qDebug() <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;mod sort&#34;</span> <span style="color:#f92672">&lt;&lt;</span> t.msecsTo(QTime<span style="color:#f92672">::</span>currentTime());
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	t <span style="color:#f92672">=</span> QTime<span style="color:#f92672">::</span>currentTime();
+</span></span><span style="display:flex;"><span>	qSort(vec);
+</span></span><span style="display:flex;"><span>	qDebug() <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;vec sort&#34;</span> <span style="color:#f92672">&lt;&lt;</span> t.msecsTo(QTime<span style="color:#f92672">::</span>currentTime());
+</span></span></code></pre></div><p>Results: 7317 msecs (model) vs 1057 msecs (vector)</p>
+<p>Assuming that QSortFilterProxyModel is implemented as much efficient as possible we see that result ~7:1 correlates with previous compares.</p>
+<p>So <strong>accessing</strong> (I emphasize that only accessing) with Qt models may be about 7 times slower than you can reach with stl/qtl.</p>
+<p>To my mind to serve Gui it is not critical at all, but if sorting is part of that, then we really may loose performance 7 times. (or any other model manipulations that involve iterations through all items and we have tons of them)</p>
+<p>Conclusion and some ideas to squeeze maximum performance from models: for example my implemented models may have some UserRole for accessing <em>const QVector &amp;</em> (of known data type), and then if such model need sorting, I may implement my custom sort model which checks such UserRole for const access to vector and get a sorted through referencing pointers? Will I get performance of sort 7 times? Interesting&hellip;</p>
+<p>I think it to be continued&hellip;</p>
+
+        </p>
+        
+    </div>
+
+    <div class="prev-next">
+        
+    </div>
+
+    
+    
+    
+</div>
+
+
+
+    
+
+        </main><footer class="footer">
+    
+    
+
+    
+    <span>
+        Made using <a target="_blank" href="https://gohugo.io/">HUGO</a>
+    </span>
+</footer>
+</body>
+</html>

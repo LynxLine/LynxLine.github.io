@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <style>
+        :root {
+            --accent-color: #FF4D4D;
+        }
+    </style>
+
+    
+    
+    
+    
+    
+    
+
+    
+    <title>Designing tree-like models</title>
+    <meta name="description" content="">
+    <meta name="keywords" content='Blog, C, Models, Qt, Research'>
+
+    <meta property="og:url" content="https://lynxline.com/posts/designing-tree-like-models/">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Designing tree-like models">
+    <meta property="og:description" content="">
+    <meta property="og:image" content="https://lynxline.com/images/lynx.jpg">
+    <meta property="og:image:secure_url" content="https://lynxline.com/images/lynx.jpg">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Designing tree-like models">
+    <meta name="twitter:description" content="">
+    <meta property="twitter:domain" content="https://lynxline.com/posts/designing-tree-like-models/">
+    <meta property="twitter:url" content="https://lynxline.com/posts/designing-tree-like-models/">
+    <meta name="twitter:image" content="https://lynxline.com/images/lynx.jpg">
+
+    
+    <link rel="canonical" href="https://lynxline.com/posts/designing-tree-like-models/" />
+
+    
+    <link rel="stylesheet" type="text/css" href="/css/normalize.min.css" media="print">
+
+    
+    <link rel="stylesheet" type="text/css" href="/css/main.min.css">
+
+    
+    <link id="dark-theme" rel="stylesheet" href="/css/dark.min.css">
+
+    
+    <script src="/js/bundle.min.224c8e70fed292d18d7d9ae1b36797c99144e0be1117e2ea2c428379c8496551.js" integrity="sha256-IkyOcP7SktGNfZrhs2eXyZFE4L4RF&#43;LqLEKDechJZVE="></script>
+
+    
+    
+</head>
+<body>
+        <script type="text/javascript">
+            
+            setThemeByUserPref();
+        </script><header class="header">
+    <nav class="header-nav">
+
+        
+        <div class="avatar">
+            <a href="https://lynxline.com/">
+                <img src='/images/lynx.jpg' alt="avatar" />
+            </a>
+        </div>
+        
+
+        <div class="nav-title">
+            <a class="nav-brand" href="https://lynxline.com/">LynxLine</a>
+        </div>
+
+        <div class="nav-links">
+            
+            <div class="nav-link">
+                <a href="https://lynxline.com/services/"><span data-feather='zap'></span> Services </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://lynxline.com/posts/"><span data-feather='layers'></span> Posts </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://lynxline.com/tags/"><span data-feather='tag'></span> Tags </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://lynxline.com/contact/"><span data-feather='mail'></span> Contact </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://github.com"><span data-feather='github'></span>  </a>
+            </div>
+            
+
+            <span class="nav-icons-divider"></span>
+            <div class="nav-link dark-theme-toggle">
+                <span id="dark-theme-toggle-screen-reader-target" class="sr-only"></span>
+                <a>
+                    <span id="theme-toggle-icon" data-feather="moon"></span>
+                </a>
+            </div>
+
+            <div class="nav-link" id="hamburger-menu-toggle">
+                <span id="hamburger-menu-toggle-screen-reader-target" class="sr-only">menu</span>
+                <a>
+                    <span data-feather="menu"></span>
+                </a>
+            </div>
+
+            
+            <ul class="nav-hamburger-list visibility-hidden">
+                
+                <li class="nav-item">
+                    <a href="https://lynxline.com/services/"><span data-feather='zap'></span> Services </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://lynxline.com/posts/"><span data-feather='layers'></span> Posts </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://lynxline.com/tags/"><span data-feather='tag'></span> Tags </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://lynxline.com/contact/"><span data-feather='mail'></span> Contact </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://github.com"><span data-feather='github'></span>  </a>
+                </li>
+                
+                <li class="nav-item dark-theme-toggle">
+                    <span id="dark-theme-toggle-screen-reader-target" class="sr-only">theme</span>
+                    <a>
+                        <span id="theme-toggle-icon" data-feather="moon"></span>
+                    </a>
+                </li>
+            </ul>
+
+        </div>
+    </nav>
+</header>
+<main id="content">
+    <div class="post container">
+    <div class="post-header-section">
+        <h1>Designing tree-like models</h1>
+        <small role="doc-subtitle"></small>
+        <p class="post-date">April 12, 2013
+        
+        </p>
+
+        <ul class="post-tags">
+        
+            <li class="post-tag"><a href="https://lynxline.com/tags/blog">Blog</a></li>
+        
+            <li class="post-tag"><a href="https://lynxline.com/tags/c">C</a></li>
+        
+            <li class="post-tag"><a href="https://lynxline.com/tags/models">Models</a></li>
+        
+            <li class="post-tag"><a href="https://lynxline.com/tags/qt">Qt</a></li>
+        
+            <li class="post-tag"><a href="https://lynxline.com/tags/research">Research</a></li>
+        
+        </ul>
+    </div>
+
+    <div class="post-content">
+        <p>
+            <p>We found that developers are often confused about implementing tree-like models using Qt classes. Now we can show some tricks and considerations about the way of designing them.</p>
+<p>First for some refreshment, let’s remind what you have for addressing the elements in the model. This is <em>QModelIndex</em>, which have pointer to model that created the index object, row and column and plus a some pointer or id (<em>qint64</em>) which can be used for addressing.</p>
+<p><strong>1.</strong></p>
+<p>Let’s start from simplest case – no parents-children, so just a some two-dimension table. It is clear that you just use the <em>row</em> and <em>column</em> and no worry about pointer or id in index objects, so it can be just a zero – unused. Implementation of <em>index()/parent()</em> is extremely simple, parent is always QModelIndex() (empty onject), index is just created as <em>createIndex(row,col,0)</em>. But it is important that <em>rowCount(parent)</em> returns 0 for valid parents, otherwise you are making infinitely deep model:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span>QModelIndex <span style="color:#a6e22e">index</span>(<span style="color:#66d9ef">int</span> r,<span style="color:#66d9ef">int</span> c, <span style="color:#66d9ef">const</span> QModelIndex <span style="color:#f92672">&amp;</span>) <span style="color:#66d9ef">const</span> 
+</span></span><span style="display:flex;"><span>    { <span style="color:#66d9ef">return</span> createIndex(r,c,<span style="color:#ae81ff">0</span>); }
+</span></span><span style="display:flex;"><span>QModelIndex <span style="color:#a6e22e">parent</span>(<span style="color:#66d9ef">const</span> QModelIndex <span style="color:#f92672">&amp;</span>) <span style="color:#66d9ef">const</span> 
+</span></span><span style="display:flex;"><span>    { <span style="color:#66d9ef">return</span> QModelIndex(); }
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">rowCount</span>(<span style="color:#66d9ef">const</span> QModelIndex <span style="color:#f92672">&amp;</span> p) 
+</span></span><span style="display:flex;"><span>    { <span style="color:#66d9ef">return</span> p.isValid() <span style="color:#f92672">?</span> <span style="color:#ae81ff">0</span> <span style="color:#f92672">:</span> m_rowsNum; }
+</span></span></code></pre></div><p>I guess everything is simple and self-explanatory. If the model represent some array of elements, then no real need to use <em>internalId/internalPointer</em> as you already have <em>row</em> and <em>column</em> for sufficient addressing.</p>
+<p>Another benefit that you have no need to instantiate elements (no pointer), but you can addressing them with model index and create those object later – like only when user is really scrolled to them and <em>data()</em> is accessed, just lazy initialization, well, you can create object even later than the <em>data()</em> is accessed.</p>
+<p><strong>2.</strong></p>
+<p>Let’s now move to little complication. We have two-level model – every root element can have a children, but these children do not have any nested, so just two levels.</p>
+<p>We have more information to build sufficient addressing. That is very common type of constructed models.</p>
+<p>Let’s first consider how calls <em>index()</em> and <em>parent()</em> are used. Two simple cases:</p>
+<p><strong>first</strong> – when you click on “+” of folded root element to expand nested children, the tree-view requests <em>rowCount()</em> of the root element, and then to get info to draw them it needs to build address from <em>row</em>,<em>column</em> and <em>parent</em> – these 3 items are enough for addressing;</p>
+<p><strong>second</strong> case – when you have some index, but do not know where it is in hierarchy, you can just call <em>parent()</em>, to identify the place of the element. Tree-view may use the second case when for example you click onto some element – view need to get the info about the parent by having just index object, or you for example you call view-&gt;expand(index); – view need to find which item and in which branch should be expanded.</p>
+<p>You may see a conclusion from usages above that your model should implement methods <em>index()</em> and <em>parent()</em> to have complexity of <strong>O(const)</strong> because otherwise tree-views will be slowing down fast as more elements appears in model and when more deep level.</p>
+<p>Returning to our example of two-level model, you can reveal that we can just use <em>internalId</em> as indication of row of parent item. Example:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span>QModelIndex <span style="color:#a6e22e">index</span>(<span style="color:#66d9ef">int</span> r,<span style="color:#66d9ef">int</span> c, <span style="color:#66d9ef">const</span> QModelIndex <span style="color:#f92672">&amp;</span> p) <span style="color:#66d9ef">const</span> 
+</span></span><span style="display:flex;"><span>    { <span style="color:#66d9ef">return</span> createIndex(r,c, p.isValid() <span style="color:#f92672">?</span> p.row() <span style="color:#f92672">:</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>); }
+</span></span><span style="display:flex;"><span>QModelIndex <span style="color:#a6e22e">parent</span>(<span style="color:#66d9ef">const</span> QModelIndex <span style="color:#f92672">&amp;</span> i) <span style="color:#66d9ef">const</span> 
+</span></span><span style="display:flex;"><span>    { <span style="color:#66d9ef">return</span> i.internalId() <span style="color:#f92672">&gt;=</span><span style="color:#ae81ff">0</span> <span style="color:#f92672">?</span> createIndex(i.internalId(),<span style="color:#ae81ff">0</span>) 
+</span></span><span style="display:flex;"><span>                                <span style="color:#f92672">:</span> QModelIndex(); }
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">rowCount</span>(<span style="color:#66d9ef">const</span> QModelIndex <span style="color:#f92672">&amp;</span> p) 
+</span></span><span style="display:flex;"><span>    { <span style="color:#66d9ef">return</span> <span style="color:#f92672">!</span>p.isValid() <span style="color:#f92672">?</span> m_rowsOf.size() <span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>                 <span style="color:#f92672">!</span>p.parent().isValid() <span style="color:#f92672">?</span> m_rowsOf[p.row()] <span style="color:#f92672">:</span> <span style="color:#ae81ff">0</span>; }
+</span></span></code></pre></div><p>Again we are not using pointers to elements themselves, but you can do this – then take in account that every element preferably should have pointer to parent and pointers to children – only then you can implement <em>index()</em>/<em>parent()</em> with <strong>O(const)</strong>. Otherwise if you spend computation time to get parent or children pointers you will see lagging in views and related.</p>
+<p><strong>3.</strong></p>
+<p>When you have tree-like models that have defined number of levels, you may need to use pointers, or still use previous approach, but modified in the way that you split qint64 <em>internalId</em> to shorter size numbers. Example: 3-level model, then you split qint64 to two qint32 numbers which identify parent and grand-parent.</p>
+<p>This approach can very efficient in such example. Imagine that you have C-structres which are just mapped from file into memory.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">Root</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">char</span>[<span style="color:#ae81ff">100</span>] name;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">char</span>[<span style="color:#ae81ff">100</span>] value;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">Sub</span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">char</span>[<span style="color:#ae81ff">100</span>] code;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">File</span> {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">char</span>[<span style="color:#ae81ff">100</span>] name;
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">int</span> mode;
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">int</span> attr;
+</span></span><span style="display:flex;"><span>        } 
+</span></span><span style="display:flex;"><span>        files[<span style="color:#ae81ff">100</span>];
+</span></span><span style="display:flex;"><span>    } subs[<span style="color:#ae81ff">3000</span>];
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>roots[<span style="color:#ae81ff">100000</span>];
+</span></span></code></pre></div><p>To use pointers for addressing you have to create at least 100000<em>3000</em>100 objects which have pointers to parent and children elements just for referencing the elements of array – some bridge between model and to the array = memory consumption, cpu spent to initializations, etc.</p>
+<p>Instead you can use approach of using <em>internalId</em> which is split into two numbers, and then no need to create any additional object, addressing is just automatic, <strong>O(const)</strong>, so yes, <em>even with Qt you can just map bytes from file into memory</em> – such arrays of structures and model is just ready to be shown in view without cpu spent on preparations.</p>
+<p>Of course when more then three levels but defined number, you will have less bits for every number, so you may want to switch to pointers at some case.</p>
+<p><strong>4.</strong></p>
+<p>When you have tree-like models that have undefined number of levels, for example tree of folders/files, you probably have no choice than use only pointers.</p>
+        </p>
+        
+    </div>
+
+    <div class="prev-next">
+        
+    </div>
+
+    
+    
+    
+</div>
+
+
+
+    
+
+        </main><footer class="footer">
+    
+    
+
+    
+    <span>
+        Made using <a target="_blank" href="https://gohugo.io/">HUGO</a>
+    </span>
+</footer>
+</body>
+</html>

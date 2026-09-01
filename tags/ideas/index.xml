@@ -15,5 +15,26 @@
       <guid>https://lynxline.com/posts/sqlite-tree-structures-and-queries-to-get-sub-trees/</guid>
       <description>&lt;p&gt;SQLite is wonderful!&lt;/p&gt;&#xA;&lt;p&gt;Just today I found that SQLite support queries with a recurse to get the inner sub-trees:&lt;/p&gt;</description>
     </item>
+    <item>
+      <title>Thinking about user interfaces, part 3</title>
+      <link>https://lynxline.com/posts/thinking-about-user-interfaces-part-3/</link>
+      <pubDate>Fri, 25 Dec 2015 18:00:00 +0200</pubDate>
+      <guid>https://lynxline.com/posts/thinking-about-user-interfaces-part-3/</guid>
+      <description>Part 1&#xA;Part 2&#xA;Now interesting question, are there user interfaces which based on “verbs”.&#xA;Well, I know at least one called drakon-editor: http://drakon-editor.sourceforge.net/&#xA;That is extremely powerful tool or a user interface which allow to design algorithms:&#xA;So you can see, that looks as really totally verb-based user interface. It is very efficient but same time is also limited as do not provide way of defining structures of datas which are processed.</description>
+    </item>
+    <item>
+      <title>Thinking about user interfaces, part 2</title>
+      <link>https://lynxline.com/posts/thinking-about-user-interfaces-part-2/</link>
+      <pubDate>Mon, 21 Dec 2015 23:00:00 +0200</pubDate>
+      <guid>https://lynxline.com/posts/thinking-about-user-interfaces-part-2/</guid>
+      <description>Part 1&#xA;Now have a look at existing command line interface:&#xA;What really human see on the screen?&#xA;A specialist would say that from bottom (from input/cursor) to up the human sees a story of computer operations.&#xA;My correction would be that human sees a story of his mental activities shown on the screen. These activities are represented by result of computations, but main point is that what you see on the screen is a storyline of your mental actions :)</description>
+    </item>
+    <item>
+      <title>Thinking about user interfaces</title>
+      <link>https://lynxline.com/posts/thinking-about-user-interfaces/</link>
+      <pubDate>Sun, 20 Dec 2015 22:00:00 +0200</pubDate>
+      <guid>https://lynxline.com/posts/thinking-about-user-interfaces/</guid>
+      <description>Had some time to look into implementation of gui in inferno and take some thoughts.&#xA;First maybe about history of graphics user iterfaces and how they brought us to the current situation.&#xA;How a computer iteracts to an user?&#xA;Very first implementations of are just clones of typewriting process – user types on keyboard and same time computer types on paper roll actions. Due to this first commands are pretty small like “ls” “ps” “cd” etc.</description>
+    </item>
   </channel>
 </rss>

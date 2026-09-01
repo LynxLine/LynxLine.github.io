@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>PyQt on LynxLine</title>
+    <link>https://lynxline.com/tags/pyqt/</link>
+    <description>Recent content in PyQt on LynxLine</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 19 Jul 2010 15:00:00 +0200</lastBuildDate>
+    <atom:link href="https://lynxline.com/tags/pyqt/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Qt Python SuperHybrids</title>
+      <link>https://lynxline.com/posts/qt-python-superhybrids/</link>
+      <pubDate>Mon, 19 Jul 2010 15:00:00 +0200</pubDate>
+      <guid>https://lynxline.com/posts/qt-python-superhybrids/</guid>
+      <description>&lt;p&gt;You may know about PyQt – python bindings to Qt frameworks. They are great and allow to prototype gui Qt based code in very fast way. To my mind you can develop faster in 1.5-2 times comparing to same development cycle with Qt. Well, development is little different – you do not have compilation stage, but need to be more cautions about testing to be sure that all branches of executed code are tested, because you never know until they are executed at least once.&lt;/p&gt;&#xA;&lt;p&gt;Currently you can find PyQt even for Maemo – &lt;a href=&#34;http://forums.internettablettalk.com/showthread.php?s=3d53f32b5fe63a5fbd4b64211a4d4676&amp;amp;t=42754&#34;&gt;link&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;&lt;img src=&#34;PyQt-Maemo.jpg&#34; alt=&#34;PyQt-Maemo&#34;&gt;&lt;/p&gt;&#xA;&lt;p&gt;Anyway, PyQt is great, python programming is fast, but one of frequently asked questions is –&lt;br&gt;&#xA;&lt;em&gt;How can I integrate python scripting in my application and operate Qt Api from my scripts?, and why not?&lt;/em&gt;&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

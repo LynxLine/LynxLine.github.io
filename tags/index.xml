@@ -79,10 +79,129 @@
       <description></description>
     </item>
     <item>
+      <title>Projects</title>
+      <link>https://lynxline.com/tags/projects/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://lynxline.com/tags/projects/</guid>
+      <description></description>
+    </item>
+    <item>
       <title>Raspberry Pi</title>
       <link>https://lynxline.com/tags/raspberry-pi/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://lynxline.com/tags/raspberry-pi/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Release</title>
+      <link>https://lynxline.com/tags/release/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://lynxline.com/tags/release/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Embedding</title>
+      <link>https://lynxline.com/tags/embedding/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://lynxline.com/tags/embedding/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Boost</title>
+      <link>https://lynxline.com/tags/boost/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://lynxline.com/tags/boost/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>C</title>
+      <link>https://lynxline.com/tags/c/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://lynxline.com/tags/c/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Models</title>
+      <link>https://lynxline.com/tags/models/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://lynxline.com/tags/models/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Web</title>
+      <link>https://lynxline.com/tags/web/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://lynxline.com/tags/web/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Cryptography</title>
+      <link>https://lynxline.com/tags/cryptography/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://lynxline.com/tags/cryptography/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Trac</title>
+      <link>https://lynxline.com/tags/trac/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://lynxline.com/tags/trac/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Undo</title>
+      <link>https://lynxline.com/tags/undo/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://lynxline.com/tags/undo/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Mac App Store</title>
+      <link>https://lynxline.com/tags/mac-app-store/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://lynxline.com/tags/mac-app-store/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>QtSpeech</title>
+      <link>https://lynxline.com/tags/qtspeech/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://lynxline.com/tags/qtspeech/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>TogMeg</title>
+      <link>https://lynxline.com/tags/togmeg/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://lynxline.com/tags/togmeg/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>TTS</title>
+      <link>https://lynxline.com/tags/tts/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://lynxline.com/tags/tts/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Hybrids</title>
+      <link>https://lynxline.com/tags/hybrids/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://lynxline.com/tags/hybrids/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>PySide</title>
+      <link>https://lynxline.com/tags/pyside/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://lynxline.com/tags/pyside/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>PyQt</title>
+      <link>https://lynxline.com/tags/pyqt/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://lynxline.com/tags/pyqt/</guid>
       <description></description>
     </item>
   </channel>

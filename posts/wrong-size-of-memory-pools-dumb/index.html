@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <style>
+        :root {
+            --accent-color: #FF4D4D;
+        }
+    </style>
+
+    
+    
+    
+    
+    
+    
+
+    
+    <title>Wrong size of memory pools – dumb</title>
+    <meta name="description" content="">
+    <meta name="keywords" content='Blog, Inferno OS, Misc, Raspberry Pi, Research'>
+
+    <meta property="og:url" content="https://lynxline.com/posts/wrong-size-of-memory-pools-dumb/">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Wrong size of memory pools – dumb">
+    <meta property="og:description" content="">
+    <meta property="og:image" content="https://lynxline.com/images/lynx.jpg">
+    <meta property="og:image:secure_url" content="https://lynxline.com/images/lynx.jpg">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Wrong size of memory pools – dumb">
+    <meta name="twitter:description" content="">
+    <meta property="twitter:domain" content="https://lynxline.com/posts/wrong-size-of-memory-pools-dumb/">
+    <meta property="twitter:url" content="https://lynxline.com/posts/wrong-size-of-memory-pools-dumb/">
+    <meta name="twitter:image" content="https://lynxline.com/images/lynx.jpg">
+
+    
+    <link rel="canonical" href="https://lynxline.com/posts/wrong-size-of-memory-pools-dumb/" />
+
+    
+    <link rel="stylesheet" type="text/css" href="/css/normalize.min.css" media="print">
+
+    
+    <link rel="stylesheet" type="text/css" href="/css/main.min.css">
+
+    
+    <link id="dark-theme" rel="stylesheet" href="/css/dark.min.css">
+
+    
+    <script src="/js/bundle.min.224c8e70fed292d18d7d9ae1b36797c99144e0be1117e2ea2c428379c8496551.js" integrity="sha256-IkyOcP7SktGNfZrhs2eXyZFE4L4RF&#43;LqLEKDechJZVE="></script>
+
+    
+    
+</head>
+<body>
+        <script type="text/javascript">
+            
+            setThemeByUserPref();
+        </script><header class="header">
+    <nav class="header-nav">
+
+        
+        <div class="avatar">
+            <a href="https://lynxline.com/">
+                <img src='/images/lynx.jpg' alt="avatar" />
+            </a>
+        </div>
+        
+
+        <div class="nav-title">
+            <a class="nav-brand" href="https://lynxline.com/">LynxLine</a>
+        </div>
+
+        <div class="nav-links">
+            
+            <div class="nav-link">
+                <a href="https://lynxline.com/services/"><span data-feather='zap'></span> Services </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://lynxline.com/posts/"><span data-feather='layers'></span> Posts </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://lynxline.com/tags/"><span data-feather='tag'></span> Tags </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://lynxline.com/contact/"><span data-feather='mail'></span> Contact </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://github.com"><span data-feather='github'></span>  </a>
+            </div>
+            
+
+            <span class="nav-icons-divider"></span>
+            <div class="nav-link dark-theme-toggle">
+                <span id="dark-theme-toggle-screen-reader-target" class="sr-only"></span>
+                <a>
+                    <span id="theme-toggle-icon" data-feather="moon"></span>
+                </a>
+            </div>
+
+            <div class="nav-link" id="hamburger-menu-toggle">
+                <span id="hamburger-menu-toggle-screen-reader-target" class="sr-only">menu</span>
+                <a>
+                    <span data-feather="menu"></span>
+                </a>
+            </div>
+
+            
+            <ul class="nav-hamburger-list visibility-hidden">
+                
+                <li class="nav-item">
+                    <a href="https://lynxline.com/services/"><span data-feather='zap'></span> Services </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://lynxline.com/posts/"><span data-feather='layers'></span> Posts </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://lynxline.com/tags/"><span data-feather='tag'></span> Tags </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://lynxline.com/contact/"><span data-feather='mail'></span> Contact </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://github.com"><span data-feather='github'></span>  </a>
+                </li>
+                
+                <li class="nav-item dark-theme-toggle">
+                    <span id="dark-theme-toggle-screen-reader-target" class="sr-only">theme</span>
+                    <a>
+                        <span id="theme-toggle-icon" data-feather="moon"></span>
+                    </a>
+                </li>
+            </ul>
+
+        </div>
+    </nav>
+</header>
+<main id="content">
+    <div class="post container">
+    <div class="post-header-section">
+        <h1>Wrong size of memory pools – dumb</h1>
+        <small role="doc-subtitle"></small>
+        <p class="post-date">January 7, 2016
+        
+        </p>
+
+        <ul class="post-tags">
+        
+            <li class="post-tag"><a href="https://lynxline.com/tags/blog">Blog</a></li>
+        
+            <li class="post-tag"><a href="https://lynxline.com/tags/inferno-os">Inferno OS</a></li>
+        
+            <li class="post-tag"><a href="https://lynxline.com/tags/misc">Misc</a></li>
+        
+            <li class="post-tag"><a href="https://lynxline.com/tags/raspberry-pi">Raspberry Pi</a></li>
+        
+            <li class="post-tag"><a href="https://lynxline.com/tags/research">Research</a></li>
+        
+        </ul>
+    </div>
+
+    <div class="post-content">
+        <p>
+            <p>Occasionally I had a look at <code>/dev/memory</code>:</p>
+<p>What I saw there?</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>; cat /dev/memory
+</span></span><span style="display:flex;"><span>    <span style="color:#ae81ff">2282656</span>    <span style="color:#ae81ff">14018478</span>     <span style="color:#ae81ff">2314496</span>       <span style="color:#ae81ff">14149</span>        <span style="color:#ae81ff">6246</span>          <span style="color:#ae81ff">18</span>    <span style="color:#ae81ff">11735810</span> main
+</span></span><span style="display:flex;"><span>     <span style="color:#ae81ff">492768</span>     <span style="color:#ae81ff">7009239</span>      <span style="color:#ae81ff">499488</span>      <span style="color:#ae81ff">110133</span>      <span style="color:#ae81ff">106946</span>           <span style="color:#ae81ff">4</span>     <span style="color:#ae81ff">6516459</span> heap
+</span></span><span style="display:flex;"><span>       <span style="color:#ae81ff">4960</span>    <span style="color:#ae81ff">14018478</span>        <span style="color:#ae81ff">4960</span>           <span style="color:#ae81ff">8</span>           <span style="color:#ae81ff">1</span>           <span style="color:#ae81ff">1</span>    <span style="color:#ae81ff">14013506</span> image
+</span></span><span style="display:flex;"><span>;
+</span></span></code></pre></div><p>What? I run my Inferno just on 14+7+14 = 33MB memory? (yep and it still runs ok ;) )</p>
+<p>The code that define size of memory pools was just copied from other ports:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span>	ulong nb;
+</span></span><span style="display:flex;"><span>	ulong mpb,hpb,ipb;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	nb <span style="color:#f92672">=</span> conf.npage<span style="color:#f92672">*</span>BY2PG;
+</span></span><span style="display:flex;"><span>	mpb <span style="color:#f92672">=</span> (nb<span style="color:#f92672">*</span>main_pool_pcnt)<span style="color:#f92672">/</span><span style="color:#ae81ff">100</span>;
+</span></span><span style="display:flex;"><span>	hpb <span style="color:#f92672">=</span> (nb<span style="color:#f92672">*</span>heap_pool_pcnt)<span style="color:#f92672">/</span><span style="color:#ae81ff">100</span>;
+</span></span><span style="display:flex;"><span>	ipb <span style="color:#f92672">=</span> (nb<span style="color:#f92672">*</span>image_pool_pcnt)<span style="color:#f92672">/</span><span style="color:#ae81ff">100</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	poolsize(mainmem, mpb, <span style="color:#ae81ff">0</span>);
+</span></span><span style="display:flex;"><span>	poolsize(heapmem, hpb, <span style="color:#ae81ff">0</span>);
+</span></span><span style="display:flex;"><span>	poolsize(imagmem, ipb, <span style="color:#ae81ff">0</span>);
+</span></span></code></pre></div><p>See something dumb? :)</p>
+<p>240MB memory is not safe to use in calculations because <strong>ulong</strong> cab be easily overflow to 4GB :)</p>
+<p>Yep – 240MB * 50 (%) = 12 000 000 000.</p>
+<p><strong>Oops, all previous releases of inferno-rpi have only 33MB RAM. SORRY :)</strong></p>
+<p>Surely fixed and coming in next release soon…</p>
+<p>Now it is right:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>; cat /dev/memory
+</span></span><span style="display:flex;"><span>    <span style="color:#ae81ff">2400480</span>    <span style="color:#ae81ff">99917824</span>     <span style="color:#ae81ff">2434464</span>       <span style="color:#ae81ff">14596</span>        <span style="color:#ae81ff">6408</span>          <span style="color:#ae81ff">18</span>    <span style="color:#ae81ff">97517332</span> main
+</span></span><span style="display:flex;"><span>     <span style="color:#ae81ff">498688</span>    <span style="color:#ae81ff">49958912</span>      <span style="color:#ae81ff">500576</span>      <span style="color:#ae81ff">110906</span>      <span style="color:#ae81ff">107649</span>           <span style="color:#ae81ff">4</span>    <span style="color:#ae81ff">49460212</span> heap
+</span></span><span style="display:flex;"><span>       <span style="color:#ae81ff">4960</span>    <span style="color:#ae81ff">99917824</span>        <span style="color:#ae81ff">4960</span>           <span style="color:#ae81ff">8</span>           <span style="color:#ae81ff">1</span>           <span style="color:#ae81ff">1</span>    <span style="color:#ae81ff">99912852</span> image
+</span></span><span style="display:flex;"><span>; 
+</span></span></code></pre></div>
+        </p>
+        
+    </div>
+
+    <div class="prev-next">
+        
+    </div>
+
+    
+    
+    
+</div>
+
+
+
+    
+
+        </main><footer class="footer">
+    
+    
+
+    
+    <span>
+        Made using <a target="_blank" href="https://gohugo.io/">HUGO</a>
+    </span>
+</footer>
+</body>
+</html>

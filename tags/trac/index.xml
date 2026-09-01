@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Trac on LynxLine</title>
+    <link>https://lynxline.com/tags/trac/</link>
+    <description>Recent content in Trac on LynxLine</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 20 Oct 2012 22:00:00 +0200</lastBuildDate>
+    <atom:link href="https://lynxline.com/tags/trac/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Trac&#43;Perforce</title>
+      <link>https://lynxline.com/posts/tracperforce/</link>
+      <pubDate>Sat, 20 Oct 2012 22:00:00 +0200</pubDate>
+      <guid>https://lynxline.com/posts/tracperforce/</guid>
+      <description>People who are using Trac and have a need of possibility binding it with Perforce repository can find that appropriate plugin is dead and no support is possible. So I would like to do some refresh – I was able to do some fixing and made these plugins available for use with Trac 1.0 for win32. Attaching to the post.&#xA;pyprotocols-0.9.3-py2.7-win32&#xA;PyPerforce-0.4-py2.7-win32&#xA;TracPerforce-0.5dev-py2.7</description>
+    </item>
+  </channel>
+</rss>

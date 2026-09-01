@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <style>
+        :root {
+            --accent-color: #FF4D4D;
+        }
+    </style>
+
+    
+    
+    
+    
+    
+    
+
+    
+    <title>Qt and use of Cryptography – simple!</title>
+    <meta name="description" content="">
+    <meta name="keywords" content='Blog, C, Cryptography, Qt, Research'>
+
+    <meta property="og:url" content="https://lynxline.com/posts/qt-and-use-of-cryptography-simple/">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Qt and use of Cryptography – simple!">
+    <meta property="og:description" content="">
+    <meta property="og:image" content="https://lynxline.com/images/lynx.jpg">
+    <meta property="og:image:secure_url" content="https://lynxline.com/images/lynx.jpg">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Qt and use of Cryptography – simple!">
+    <meta name="twitter:description" content="">
+    <meta property="twitter:domain" content="https://lynxline.com/posts/qt-and-use-of-cryptography-simple/">
+    <meta property="twitter:url" content="https://lynxline.com/posts/qt-and-use-of-cryptography-simple/">
+    <meta name="twitter:image" content="https://lynxline.com/images/lynx.jpg">
+
+    
+    <link rel="canonical" href="https://lynxline.com/posts/qt-and-use-of-cryptography-simple/" />
+
+    
+    <link rel="stylesheet" type="text/css" href="/css/normalize.min.css" media="print">
+
+    
+    <link rel="stylesheet" type="text/css" href="/css/main.min.css">
+
+    
+    <link id="dark-theme" rel="stylesheet" href="/css/dark.min.css">
+
+    
+    <script src="/js/bundle.min.224c8e70fed292d18d7d9ae1b36797c99144e0be1117e2ea2c428379c8496551.js" integrity="sha256-IkyOcP7SktGNfZrhs2eXyZFE4L4RF&#43;LqLEKDechJZVE="></script>
+
+    
+    
+</head>
+<body>
+        <script type="text/javascript">
+            
+            setThemeByUserPref();
+        </script><header class="header">
+    <nav class="header-nav">
+
+        
+        <div class="avatar">
+            <a href="https://lynxline.com/">
+                <img src='/images/lynx.jpg' alt="avatar" />
+            </a>
+        </div>
+        
+
+        <div class="nav-title">
+            <a class="nav-brand" href="https://lynxline.com/">LynxLine</a>
+        </div>
+
+        <div class="nav-links">
+            
+            <div class="nav-link">
+                <a href="https://lynxline.com/services/"><span data-feather='zap'></span> Services </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://lynxline.com/posts/"><span data-feather='layers'></span> Posts </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://lynxline.com/tags/"><span data-feather='tag'></span> Tags </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://lynxline.com/contact/"><span data-feather='mail'></span> Contact </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://github.com"><span data-feather='github'></span>  </a>
+            </div>
+            
+
+            <span class="nav-icons-divider"></span>
+            <div class="nav-link dark-theme-toggle">
+                <span id="dark-theme-toggle-screen-reader-target" class="sr-only"></span>
+                <a>
+                    <span id="theme-toggle-icon" data-feather="moon"></span>
+                </a>
+            </div>
+
+            <div class="nav-link" id="hamburger-menu-toggle">
+                <span id="hamburger-menu-toggle-screen-reader-target" class="sr-only">menu</span>
+                <a>
+                    <span data-feather="menu"></span>
+                </a>
+            </div>
+
+            
+            <ul class="nav-hamburger-list visibility-hidden">
+                
+                <li class="nav-item">
+                    <a href="https://lynxline.com/services/"><span data-feather='zap'></span> Services </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://lynxline.com/posts/"><span data-feather='layers'></span> Posts </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://lynxline.com/tags/"><span data-feather='tag'></span> Tags </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://lynxline.com/contact/"><span data-feather='mail'></span> Contact </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://github.com"><span data-feather='github'></span>  </a>
+                </li>
+                
+                <li class="nav-item dark-theme-toggle">
+                    <span id="dark-theme-toggle-screen-reader-target" class="sr-only">theme</span>
+                    <a>
+                        <span id="theme-toggle-icon" data-feather="moon"></span>
+                    </a>
+                </li>
+            </ul>
+
+        </div>
+    </nav>
+</header>
+<main id="content">
+    <div class="post container">
+    <div class="post-header-section">
+        <h1>Qt and use of Cryptography – simple!</h1>
+        <small role="doc-subtitle"></small>
+        <p class="post-date">September 13, 2013
+        
+        </p>
+
+        <ul class="post-tags">
+        
+            <li class="post-tag"><a href="https://lynxline.com/tags/blog">Blog</a></li>
+        
+            <li class="post-tag"><a href="https://lynxline.com/tags/c">C</a></li>
+        
+            <li class="post-tag"><a href="https://lynxline.com/tags/cryptography">Cryptography</a></li>
+        
+            <li class="post-tag"><a href="https://lynxline.com/tags/qt">Qt</a></li>
+        
+            <li class="post-tag"><a href="https://lynxline.com/tags/research">Research</a></li>
+        
+        </ul>
+    </div>
+
+    <div class="post-content">
+        <p>
+            <p>In the light of latest news (Snowden et all) it is very clear that all developers should really take care of safety of all communications that your application could perform. In the world of desktop application developments it is often is decided to be postponed and just use plain text protocols or so and later switch to use of SSL. Surely we should pay more attention to use ciphers when any need of QtNetwork is considered.</p>
+<p>But what about using something different than just SSL? Let’s take a look at use of PGP in Qt Application. It is so good that there is great framework is already in place QCA (<a href="http://delta.affinix.com/qca/">http://delta.affinix.com/qca/</a>). All we need is just to take a look at API and find a simple way of making ciphers.</p>
+<p>Let’s design very simple desktop application which can crypt some input text. I assume that have already installed <em>GnuPG</em>, generated keys, configured <em>gpg-agent</em>, installed and checked working <em>pinentry-qt/pinentry-gtk</em>(we are on linux now). Then you have installed <strong>qca</strong> and <strong>qca-gnupg</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>emerge --ask qca qca-gnupg
+</span></span></code></pre></div><p>Just start <em>Qt Creator</em>, choose to make Qt Gui application, add to pro file a linking to qca:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>LIBS <span style="color:#f92672">+=</span> -L/usr/lib/qca2 -lqca
+</span></span><span style="display:flex;"><span>INCLUDEPATH <span style="color:#f92672">+=</span> /usr/include/qca2/QtCrypto
+</span></span></code></pre></div><p>And create simple form, connect button with our custom “encrypt” slots:</p>
+<p><a href="http://lynxline.com/wp-content/uploads/2013/09/form.png"><img src="form.png" alt="form"></a></p>
+<p>In main.cpp we just need to initialize QtCrypt:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;QtCrypto&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;QApplication&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&#34;CryptWin.h&#34;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>(<span style="color:#66d9ef">int</span> argc, <span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span>argv[]) {
+</span></span><span style="display:flex;"><span>	QCA<span style="color:#f92672">::</span>Initializer init;
+</span></span><span style="display:flex;"><span>	QApplication a(argc, argv);
+</span></span><span style="display:flex;"><span>	CryptWindow w;
+</span></span><span style="display:flex;"><span>	w.show();
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">return</span> a.exec();
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>Then in constructor of window we need to get a list of keys to initialize comboboxes:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span>	QCA<span style="color:#f92672">::</span>KeyStoreManager<span style="color:#f92672">::</span>start();
+</span></span><span style="display:flex;"><span>	QCA<span style="color:#f92672">::</span>KeyStoreManager ksm(<span style="color:#66d9ef">this</span>);
+</span></span><span style="display:flex;"><span>	ksm.waitForBusyFinished();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	QCA<span style="color:#f92672">::</span>KeyStore pgpks( QString(<span style="color:#e6db74">&#34;qca-gnupg&#34;</span>), <span style="color:#f92672">&amp;</span>ksm );
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	foreach(<span style="color:#66d9ef">const</span> QCA<span style="color:#f92672">::</span>KeyStoreEntry kse, pgpks.entryList()) {
+</span></span><span style="display:flex;"><span>		QString text <span style="color:#f92672">=</span> kse.name()<span style="color:#f92672">+</span><span style="color:#e6db74">&#34; &#34;</span><span style="color:#f92672">+</span>kse.id();
+</span></span><span style="display:flex;"><span>		QVariant v; v.setValue(kse);
+</span></span><span style="display:flex;"><span>		ui<span style="color:#f92672">-&gt;</span>cb_to<span style="color:#f92672">-&gt;</span>addItem(text, v);
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span>kse.pgpSecretKey().isNull())
+</span></span><span style="display:flex;"><span>			ui<span style="color:#f92672">-&gt;</span>cb_my<span style="color:#f92672">-&gt;</span>addItem(text, v);
+</span></span><span style="display:flex;"><span>	}
+</span></span></code></pre></div><p>First(top) combobox gets all keys which have pgp secret keys – <em>sender</em>, second(bottom) combobox gets all keys that have only public part – <em>receiver</em>. Keys itself we embed into comboboxes by QVariant data argument.</p>
+<p>Time to write a slot to react on <em>“Encrypt”</em> button:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#66d9ef">void</span> CryptWindow<span style="color:#f92672">::</span>encrypt() {
+</span></span><span style="display:flex;"><span>	QVariant v_my <span style="color:#f92672">=</span> ui<span style="color:#f92672">-&gt;</span>cb_my<span style="color:#f92672">-&gt;</span>itemData(ui<span style="color:#f92672">-&gt;</span>cb_my<span style="color:#f92672">-&gt;</span>currentIndex());
+</span></span><span style="display:flex;"><span>	QVariant v_to <span style="color:#f92672">=</span> ui<span style="color:#f92672">-&gt;</span>cb_to<span style="color:#f92672">-&gt;</span>itemData(ui<span style="color:#f92672">-&gt;</span>cb_to<span style="color:#f92672">-&gt;</span>currentIndex());
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span>v_my.isValid()) { ui<span style="color:#f92672">-&gt;</span>pte_dst<span style="color:#f92672">-&gt;</span>setPlainText(<span style="color:#e6db74">&#34;Invalid src&#34;</span>); <span style="color:#66d9ef">return</span>; }
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span>v_to.isValid()) { ui<span style="color:#f92672">-&gt;</span>pte_dst<span style="color:#f92672">-&gt;</span>setPlainText(<span style="color:#e6db74">&#34;Invalid dst&#34;</span>); <span style="color:#66d9ef">return</span>; }
+</span></span><span style="display:flex;"><span>	QCA<span style="color:#f92672">::</span>KeyStoreEntry kse_my <span style="color:#f92672">=</span> v_my.value<span style="color:#f92672">&lt;</span>QCA<span style="color:#f92672">::</span>KeyStoreEntry<span style="color:#f92672">&gt;</span>();
+</span></span><span style="display:flex;"><span>	QCA<span style="color:#f92672">::</span>KeyStoreEntry kse_to <span style="color:#f92672">=</span> v_to.value<span style="color:#f92672">&lt;</span>QCA<span style="color:#f92672">::</span>KeyStoreEntry<span style="color:#f92672">&gt;</span>();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	QCA<span style="color:#f92672">::</span>SecureMessageKey to;
+</span></span><span style="display:flex;"><span>	to.setPGPSecretKey( kse_my.pgpSecretKey() );
+</span></span><span style="display:flex;"><span>	to.setPGPPublicKey( kse_to.pgpPublicKey() );
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	QCA<span style="color:#f92672">::</span>OpenPGP pgp;
+</span></span><span style="display:flex;"><span>	QCA<span style="color:#f92672">::</span>SecureMessage msg(<span style="color:#f92672">&amp;</span>pgp);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	msg.setRecipient(to);
+</span></span><span style="display:flex;"><span>	msg.setFormat(QCA<span style="color:#f92672">::</span>SecureMessage<span style="color:#f92672">::</span>Ascii);
+</span></span><span style="display:flex;"><span>	msg.startEncrypt();
+</span></span><span style="display:flex;"><span>	msg.update(ui<span style="color:#f92672">-&gt;</span>pte_src<span style="color:#f92672">-&gt;</span>toPlainText().toUtf8());
+</span></span><span style="display:flex;"><span>	msg.end();
+</span></span><span style="display:flex;"><span>	msg.waitForFinished(<span style="color:#ae81ff">2000</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	QByteArray crpt <span style="color:#f92672">=</span> msg.read();
+</span></span><span style="display:flex;"><span>	ui<span style="color:#f92672">-&gt;</span>pte_dst<span style="color:#f92672">-&gt;</span>setPlainText(QString<span style="color:#f92672">::</span>fromUtf8(crpt));
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>Try to run and test our simple demo application (sure you may be asked for your key password through <em>gpg-agent</em>):</p>
+<p><a href="http://lynxline.com/wp-content/uploads/2013/09/result.png"><img src="result.png" alt="result"></a></p>
+<p>Isn’t it so simple and cool? As next the cipher is to be used with QtNetwork, etc…</p>
+<p><strong>FILES:</strong></p>
+<p><a href="http://lynxline.com/wp-content/uploads/2013/09/Crypt.pro">Crypt.pro</a></p>
+<p><a href="http://lynxline.com/wp-content/uploads/2013/09/main.cpp">main.cpp</a></p>
+<p><a href="http://lynxline.com/wp-content/uploads/2013/09/CryptWin.ui">CryptWin.ui</a></p>
+<p><a href="http://lynxline.com/wp-content/uploads/2013/09/CryptWin.h">CryptWin.h</a></p>
+<p><a href="http://lynxline.com/wp-content/uploads/2013/09/CryptWin.cpp">CryptWin.cpp</a></p>
+        </p>
+        
+    </div>
+
+    <div class="prev-next">
+        
+    </div>
+
+    
+    
+    
+</div>
+
+
+
+    
+
+        </main><footer class="footer">
+    
+    
+
+    
+    <span>
+        Made using <a target="_blank" href="https://gohugo.io/">HUGO</a>
+    </span>
+</footer>
+</body>
+</html>

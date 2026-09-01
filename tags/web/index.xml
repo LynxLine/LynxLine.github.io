@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Web on LynxLine</title>
+    <link>https://lynxline.com/tags/web/</link>
+    <description>Recent content in Web on LynxLine</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 10 Dec 2013 00:00:00 +0200</lastBuildDate>
+    <atom:link href="https://lynxline.com/tags/web/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Small news about Inferno-Rpi Labs</title>
+      <link>https://lynxline.com/posts/small-news-about-inferno-rpi-labs/</link>
+      <pubDate>Tue, 10 Dec 2013 00:00:00 +0200</pubDate>
+      <guid>https://lynxline.com/posts/small-news-about-inferno-rpi-labs/</guid>
+      <description>Just small update:&#xA;To keep track of codebase of the Inferno OS on Raspberry Pi Labs we created the google code project to keep the repository and do other stuff related to the labs managements:&#xA;https://code.google.com/p/inferno-rpi/&#xA;All Labs-Commits:&#xA;https://code.google.com/p/inferno-rpi/source/list</description>
+    </item>
+    <item>
+      <title>Trac&#43;Perforce</title>
+      <link>https://lynxline.com/posts/tracperforce/</link>
+      <pubDate>Sat, 20 Oct 2012 22:00:00 +0200</pubDate>
+      <guid>https://lynxline.com/posts/tracperforce/</guid>
+      <description>People who are using Trac and have a need of possibility binding it with Perforce repository can find that appropriate plugin is dead and no support is possible. So I would like to do some refresh – I was able to do some fixing and made these plugins available for use with Trac 1.0 for win32. Attaching to the post.&#xA;pyprotocols-0.9.3-py2.7-win32&#xA;PyPerforce-0.4-py2.7-win32&#xA;TracPerforce-0.5dev-py2.7</description>
+    </item>
+    <item>
+      <title>New Site Design</title>
+      <link>https://lynxline.com/posts/new-site-design/</link>
+      <pubDate>Tue, 02 Feb 2010 00:00:00 +0200</pubDate>
+      <guid>https://lynxline.com/posts/new-site-design/</guid>
+      <description></description>
+    </item>
+  </channel>
+</rss>

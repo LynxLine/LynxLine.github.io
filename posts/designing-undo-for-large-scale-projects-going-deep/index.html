@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <style>
+        :root {
+            --accent-color: #FF4D4D;
+        }
+    </style>
+
+    
+    
+    
+    
+    
+    
+
+    
+    <title>Designing Undo for large-scale projects. Going deep.</title>
+    <meta name="description" content="">
+    <meta name="keywords" content='C, Misc, Qt, Research, Undo'>
+
+    <meta property="og:url" content="https://lynxline.com/posts/designing-undo-for-large-scale-projects-going-deep/">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Designing Undo for large-scale projects. Going deep.">
+    <meta property="og:description" content="">
+    <meta property="og:image" content="https://lynxline.com/images/lynx.jpg">
+    <meta property="og:image:secure_url" content="https://lynxline.com/images/lynx.jpg">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Designing Undo for large-scale projects. Going deep.">
+    <meta name="twitter:description" content="">
+    <meta property="twitter:domain" content="https://lynxline.com/posts/designing-undo-for-large-scale-projects-going-deep/">
+    <meta property="twitter:url" content="https://lynxline.com/posts/designing-undo-for-large-scale-projects-going-deep/">
+    <meta name="twitter:image" content="https://lynxline.com/images/lynx.jpg">
+
+    
+    <link rel="canonical" href="https://lynxline.com/posts/designing-undo-for-large-scale-projects-going-deep/" />
+
+    
+    <link rel="stylesheet" type="text/css" href="/css/normalize.min.css" media="print">
+
+    
+    <link rel="stylesheet" type="text/css" href="/css/main.min.css">
+
+    
+    <link id="dark-theme" rel="stylesheet" href="/css/dark.min.css">
+
+    
+    <script src="/js/bundle.min.224c8e70fed292d18d7d9ae1b36797c99144e0be1117e2ea2c428379c8496551.js" integrity="sha256-IkyOcP7SktGNfZrhs2eXyZFE4L4RF&#43;LqLEKDechJZVE="></script>
+
+    
+    
+</head>
+<body>
+        <script type="text/javascript">
+            
+            setThemeByUserPref();
+        </script><header class="header">
+    <nav class="header-nav">
+
+        
+        <div class="avatar">
+            <a href="https://lynxline.com/">
+                <img src='/images/lynx.jpg' alt="avatar" />
+            </a>
+        </div>
+        
+
+        <div class="nav-title">
+            <a class="nav-brand" href="https://lynxline.com/">LynxLine</a>
+        </div>
+
+        <div class="nav-links">
+            
+            <div class="nav-link">
+                <a href="https://lynxline.com/services/"><span data-feather='zap'></span> Services </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://lynxline.com/posts/"><span data-feather='layers'></span> Posts </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://lynxline.com/tags/"><span data-feather='tag'></span> Tags </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://lynxline.com/contact/"><span data-feather='mail'></span> Contact </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://github.com"><span data-feather='github'></span>  </a>
+            </div>
+            
+
+            <span class="nav-icons-divider"></span>
+            <div class="nav-link dark-theme-toggle">
+                <span id="dark-theme-toggle-screen-reader-target" class="sr-only"></span>
+                <a>
+                    <span id="theme-toggle-icon" data-feather="moon"></span>
+                </a>
+            </div>
+
+            <div class="nav-link" id="hamburger-menu-toggle">
+                <span id="hamburger-menu-toggle-screen-reader-target" class="sr-only">menu</span>
+                <a>
+                    <span data-feather="menu"></span>
+                </a>
+            </div>
+
+            
+            <ul class="nav-hamburger-list visibility-hidden">
+                
+                <li class="nav-item">
+                    <a href="https://lynxline.com/services/"><span data-feather='zap'></span> Services </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://lynxline.com/posts/"><span data-feather='layers'></span> Posts </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://lynxline.com/tags/"><span data-feather='tag'></span> Tags </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://lynxline.com/contact/"><span data-feather='mail'></span> Contact </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://github.com"><span data-feather='github'></span>  </a>
+                </li>
+                
+                <li class="nav-item dark-theme-toggle">
+                    <span id="dark-theme-toggle-screen-reader-target" class="sr-only">theme</span>
+                    <a>
+                        <span id="theme-toggle-icon" data-feather="moon"></span>
+                    </a>
+                </li>
+            </ul>
+
+        </div>
+    </nav>
+</header>
+<main id="content">
+    <div class="post container">
+    <div class="post-header-section">
+        <h1>Designing Undo for large-scale projects. Going deep.</h1>
+        <small role="doc-subtitle"></small>
+        <p class="post-date">April 2, 2012
+        
+        </p>
+
+        <ul class="post-tags">
+        
+            <li class="post-tag"><a href="https://lynxline.com/tags/c">C</a></li>
+        
+            <li class="post-tag"><a href="https://lynxline.com/tags/misc">Misc</a></li>
+        
+            <li class="post-tag"><a href="https://lynxline.com/tags/qt">Qt</a></li>
+        
+            <li class="post-tag"><a href="https://lynxline.com/tags/research">Research</a></li>
+        
+            <li class="post-tag"><a href="https://lynxline.com/tags/undo">Undo</a></li>
+        
+        </ul>
+    </div>
+
+    <div class="post-content">
+        <p>
+            <p>That is huge architect-level article about designing undo in large-scale project, welcome under <em>more</em> label…</p>
+<h2 id="pre-requirements">Pre-requirements</h2>
+<p>First it makes sense to talk about some pre requirements. It worths that application classes and relations between them can be really split into two parts – one is business logic and second is user interface. As example you can consider project where you can exclude all gui codes from compilation just by removing such files and it still compiles fine and as result you get a command-line tool which has same functionality as gui application but managed through command-line options for example.</p>
+<p>That’s probably an ideal example, but often it is enough to have an architecture of project which is close to described idea, and I suggest as you took large-scale project in your account and responsibility you probably already moved into the direction to have the user interface codes separated from real logic of application which does what user requires.</p>
+<p>Also I would suggest that you have combined several modules which provides some functionality, or they may be kind of “cores” for some logics. Then they may have or may not have own user interfaces. Those modules can be developed by different people in different times.</p>
+<p>So your task is some kind of an architecturing all these modules, objects, codes to work really well together and the application should provide an easy way for user to just undo any change that he applied to the data without any harm to the state of user data. Surely if you would like users to love your application which can do really complicated things then users should not afraid of pressing undo/redo.</p>
+<p>I sure you may state examples of such applications where the idea of undo is discredited at all. Such application declares undo functionality but it works so unstable and just leads users to save datas every time when they do something that they may feel will harm datas if they try undo/redo, and as it is not stable they have to do it very often.</p>
+<p>By separation of logic and gui the project may look like this:</p>
+<p><a href="http://lynxline.com/wp-content/uploads/2012/03/illustrate-5.png"><img src="illustrate-5-288x300.png" alt=""></a></p>
+<p>It looks as composed as two parts where “logic” part is not dependent on gui. Gui still may add some “logic” which is more related to operating all gui states etc.</p>
+<h2 id="where-to-apply">Where to apply</h2>
+<p>Then for analyzing the project you should decide where are points of applying your efforts. Let’s consider some examples: ****</p>
+<p><strong>1.</strong> One – it is an application of hundred different actions that user can apply by using menu items, keyboard shortcuts, complex iterations with data structures etc, but same time on the “data model” level it can have very few actions to operate with data – like: the core of project are just few data models.</p>
+<p><strong>2.</strong> Second – it is an application of very few but advanced methods available for user iterations but on “core” level you have hundred of data structures, they relations and more.</p>
+<p><strong>3.</strong> Third example may be a large-scale project have hundred of user interactions and tons of tangled internals.</p>
+<p><a href="http://lynxline.com/wp-content/uploads/2012/03/illustrate-5m.png"><img src="illustrate-5m-1024x529.png" alt=""></a></p>
+<p>In first example it is clear enough that you may reimplement few virtual methods of “core” logic to have them transparently cover by undo. That’s something that I described in <a href="http://lynxline.com/undo-in-complex-qt-projects/">Undo in complex Qt projects</a> but maybe not deep enough.</p>
+<p>For second example you can probably easily implement undo coverage in points where user applys his actions – in GUI level just as reaction to user interactions. But again because logic of “core” level expected to be very tricky (we do large-scale app isn’t?) you may face with problem that there is no direct “reverse” operation even implemented, and you have to do it in right way and then also keep it maintained and in sync with direct operation. Situation may went bad if the “core” have progressing changes which you then always have to reflect to undo. Also though now application have very few user interactions, still you plan to add new functionalities in new version, isn’t? So you may encounter huge number of changes that you have to apply to code. Almost same in third example where you have combination of both.</p>
+<p>So I hope you see my point why undo should not be implemented in a way to just to cover user interaction where they are invoked.</p>
+<p>Again from considerations above you may see a lot of problematic point that hard to resolve at first sight.</p>
+<h2 id="storing-changes">Storing changes</h2>
+<p>First consider way of “storaging” undo data/commands in stack. There are three ways:</p>
+<p><strong>1.</strong> <em>Whole document</em> is serialized on every user interaction and restored to state on undo – may work for something small, but totally <strong>unproductive</strong> for us. ****</p>
+<p>**2. **<em>Every object can be serialized separately in own small piece of data</em> and restore. Here you should be very very careful to avoid having ANY pointer in undo commands. Because, as something is serialized in undo, then removed, later by undo restored into a new object (deserialized) and we have an <em>another pointer</em>!!! for <em>new</em> object which comes from undo stack – so all other undo commands now have wrong pointer.</p>
+<p><strong>3.</strong> <em>Keep objects and they properties in undo commands</em> – this one may be <em>most productive</em> as you need to have change existing code not much. So you operate with <strong>smart pointers only</strong> (<em>boost/std::shared_ptr</em>, <em>QSharedPointer</em> etc) Easy to explain why – as some object is removed from your document at all, there is only one reference left to keep your object <strong>alive</strong> – reference from undo stack. As you clear undo stack or by interactions go by other branch, then all collected information is free to be released and then your objects are deleted – <em>exactly precise moment of time</em>.</p>
+<p>Again be very careful not to mix means 2 and 3, sometime it may work, but it is very easy to break when you are changing your code. So better to chose just one of these methods.</p>
+<h2 id="too-many-calls-to-cover">Too many calls to cover</h2>
+<p>Second, if you have hundred of methods which change something in your objects, like: <em>Obj1::setSomething1(Arg1 arg), Obj1::setSomething2(Arg2 arg) …</em> and more and more. Not a good idea to write separate undo command for each, isn’t?</p>
+<p>Let’s use all power of C++ templates. You know that it is very easy to write generic code which can be applied to generic objects which have same api, but we need to make an generic algorithm to apply to “any” method which requires undo. Let’s write it like this:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#66d9ef">template</span><span style="color:#f92672">&lt;</span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Item</span>, <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Value</span>, <span style="color:#66d9ef">typename</span> Set<span style="color:#f92672">&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> Undo(Item <span style="color:#f92672">*</span> i, Value to, Value from, Set set) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (from <span style="color:#f92672">==</span> to) <span style="color:#66d9ef">return</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// get shared pointer as shared_from_this or your other way
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    shared_ptr<span style="color:#f92672">&lt;</span>Item<span style="color:#f92672">&gt;</span> ip <span style="color:#f92672">=</span> i<span style="color:#f92672">-&gt;</span>shared_from_this<span style="color:#f92672">&lt;</span>Item<span style="color:#f92672">&gt;</span>();
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span>ip) { set(i,to); <span style="color:#66d9ef">return</span>; }
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// way to access current undo stack
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    QUndoStack <span style="color:#f92672">*</span> st <span style="color:#f92672">=</span> ...
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span>st) { set(i,to); <span style="color:#66d9ef">return</span>; }
+</span></span><span style="display:flex;"><span>    st<span style="color:#f92672">-&gt;</span>push(<span style="color:#66d9ef">new</span> UndoValueCmd<span style="color:#f92672">&lt;</span>Item,Value,Set<span style="color:#f92672">&gt;</span>(ip,to,from,set));
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>Unclear? I guess it is, let’s show how UndoValueCmd looks like:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#66d9ef">template</span> <span style="color:#f92672">&lt;</span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Item</span>, <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Value</span>, <span style="color:#66d9ef">typename</span> Set<span style="color:#f92672">&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">UndoValueCmd</span> <span style="color:#f92672">:</span> <span style="color:#66d9ef">public</span> QUndoCommand {
+</span></span><span style="display:flex;"><span>    shared_ptr<span style="color:#f92672">&lt;</span>Item<span style="color:#f92672">&gt;</span> i; Value to,from; Set set;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>    UndoValueCmd(shared_ptr<span style="color:#f92672">&lt;</span>Item<span style="color:#f92672">&gt;</span> ip, Value t, Value f, Set s)
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">:</span>i(ip), to(t),from(f),set(s) {}
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">redo</span>() <span style="color:#66d9ef">override</span> { set(i.get(), to); }
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">undo</span>() <span style="color:#66d9ef">override</span> { set(i.get(), from); }
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div><p>I guess still not clear enough, so let’s show how to cover some method:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">ModelUndo</span> <span style="color:#f92672">:</span> <span style="color:#66d9ef">public</span> Model {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">typedef</span> Model Base;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">typedef</span> ModelUndo This;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>    ...
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">void</span> setRect(QRectF r) <span style="color:#66d9ef">override</span>
+</span></span><span style="display:flex;"><span>        { Undo(<span style="color:#66d9ef">this</span>,r,rect(), std<span style="color:#f92672">::</span>mem_fun(<span style="color:#f92672">&amp;</span>This<span style="color:#f92672">::</span>b_setRect)); }
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">setComments</span>(QString v) <span style="color:#66d9ef">override</span>
+</span></span><span style="display:flex;"><span>        { Undo(<span style="color:#66d9ef">this</span>,v,comments(), std<span style="color:#f92672">::</span>mem_fun(<span style="color:#f92672">&amp;</span>This<span style="color:#f92672">::</span>b_setComments)); }
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">private</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>    ...
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">void</span> b_setRect(QRectF r) { Base<span style="color:#f92672">::</span>setRect(r); }
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">b_setComments</span>(QString v) { Base<span style="color:#f92672">::</span>setComments(v); }
+</span></span></code></pre></div><p>We inherited class <em>Model</em> and covered virtual methods of super class: <em>setRect()</em> and <em>setComments()</em> by undo – all changes to rect and comments are stored to undo stack. And because methods are virtual, it tracks changes even in “logic” module when it makes calls: <em>model-&gt;setComments(“”)</em>.</p>
+<p>Why it works? and why do we need these “b_” methods? Answer is simple enough: we use <strong>std::mem_fun</strong> to make a wrapping object for specific method – create a <strong>functor</strong> – because we need to use the method later – when apply for undo or redo. This functor is stored in undo command as reference which method of object we need to call (see calls like this: <em>set(i.get(), from);</em>), But in C++ when we call member function in this way we can not bypass table of virtual functions. So no matter which functor we will make – <strong>std::mem_fun(&amp;This::setComments)</strong> or <strong>std::mem_fun(&amp;Base::setComments)</strong> – you can not bypass virtualization, and as result we get a recursion :(. But we can pass a private method <strong>This::b_setComments</strong> which by calling <strong>Base::setComments</strong> will bypass the virtualization!</p>
+<p><strong>Note from 2016:</strong> Surely the <strong>b_</strong> methods should be replaced with <strong>lambdas</strong> as we have modern compilers.</p>
+<p>Summarize: every time when we need to cover some <em>setSomething()</em> method then instead of writing new undo command class we need to call just <em>Undo()</em> call and write simple <em>b_setSomething()</em> which is more like just “definition” of what we would like to undo. So, simple to maintain, simple to expand.</p>
+<h2 id="non-linear-behavior">Non-linear behavior</h2>
+<p>This is most valuable point of the whole article, so sure it is at the very end of text</p>
+<p>Let’s explain what I mean by <em>non-linear behavior</em>. If we have more closer look at example above you may see that application of that is very limited and it is applicable only if there are no cross-calss, cross-usages of methods of each other. Very simple example: imagine that “logic” implementation of <em>Model::setRect()</em> also changes <em>comments</em>:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#66d9ef">void</span> Model<span style="color:#f92672">::</span>setRect(QRectF r) {
+</span></span><span style="display:flex;"><span>    m_rect <span style="color:#f92672">=</span> r;
+</span></span><span style="display:flex;"><span>    setComments(tr(<span style="color:#e6db74">&#34;Hey!, rect width is now %1&#34;</span>).arg(r.width()));
+</span></span><span style="display:flex;"><span>    update();
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>On first sight, if we consider just very first <em>redo</em> it looks okay, by calling <em>ModelUndo::setRect()</em> we have pushed undo command to record changes of <em>rect</em> and same time because it will cast for <em>setComments()</em>, the reimplemented <em>ModelUndo::setComments()</em> also push undo command to record changes about <em>comments</em>.</p>
+<p>But if we follow how it works when user pressed “<strong>undo</strong>” we will see real disaster!. The implementation of <em>undo()</em> for rect changes will cast <em>Model::setRect()</em> to restore previous rect that was before, but due to implementation of <em>Model::setRect()</em> <strong>it will push new undo command into the stack</strong>!</p>
+<p>User will see that when he presses undo(Ctrl+Z) previous “redo” part of undo stack is dropped away and new unexpected undo actions appears in stack!</p>
+<p>Such behavior (non-linear) is actually happens much much often in applications and actually it cause all complications in implementing undo in large-scale applications. That’s why developers see that they can not implement “coverage” of logic level and instead they go to the level “above” gui and try to implement coverage there, but as result they are duplicating a lot of code from logic level and even do it multiple times as logic code is interlinked and later they fail in the maintenance of application and make it almost impossible to grow it and expand with new functionalities as complexity of undo code is just growing exponentially. Often even the adding more people to devteam makes the situation worse.</p>
+<p>How we can solve this? You may notice that existing undo frameworks can not offer a generic solutions for such cases. But solution is simple enough but it requires you to implement “<strong>nested undo</strong>“. Let’s show a code of undo command for <em>setRect()</em> which resolves the problem:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">SetRectUndo</span> <span style="color:#f92672">:</span> <span style="color:#66d9ef">public</span> QUndoCommand {
+</span></span><span style="display:flex;"><span>    QUndoStack stRedo, stUndo; 
+</span></span><span style="display:flex;"><span>    Model <span style="color:#f92672">*</span> m; QRectF rNew, rOld;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>    SetRectUndo(Model <span style="color:#f92672">*</span> _m, QRectF r_new, QRectF r_old)<span style="color:#f92672">:</span> 
+</span></span><span style="display:flex;"><span>        m(_m), rNew(r_new), rOld(r_old) {}
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">redo</span>() {
+</span></span><span style="display:flex;"><span>        QUndoStack <span style="color:#f92672">*</span> cur <span style="color:#f92672">=</span> currentUndoStack();
+</span></span><span style="display:flex;"><span>        setCurrentUndoStack(<span style="color:#f92672">&amp;</span>stRedo);
+</span></span><span style="display:flex;"><span>        stRedo.beginMacro(<span style="color:#e6db74">&#34;nested&#34;</span>);
+</span></span><span style="display:flex;"><span>        m<span style="color:#f92672">-&gt;</span>Model<span style="color:#f92672">::</span>setRect(rNew);
+</span></span><span style="display:flex;"><span>        stRedo.endMacro();
+</span></span><span style="display:flex;"><span>        setCurrentUndoStack(cur);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">undo</span>() {
+</span></span><span style="display:flex;"><span>        QUndoStack <span style="color:#f92672">*</span> cur <span style="color:#f92672">=</span> currentUndoStack();
+</span></span><span style="display:flex;"><span>        setCurrentUndoStack(<span style="color:#f92672">&amp;</span>stUndo);
+</span></span><span style="display:flex;"><span>        stUndo.beginMacro(<span style="color:#e6db74">&#34;nested&#34;</span>);
+</span></span><span style="display:flex;"><span>        m<span style="color:#f92672">-&gt;</span>Model<span style="color:#f92672">::</span>setRect(rOld);
+</span></span><span style="display:flex;"><span>        stUndo.endMacro();
+</span></span><span style="display:flex;"><span>        setCurrentUndoStack(cur);
+</span></span><span style="display:flex;"><span>        stUndo.clear();
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">while</span>(stRedo.canUndo()) stRedo.undo();
+</span></span><span style="display:flex;"><span>        stRedo.clear();
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div><p>Let’s follow <em>setRect()</em> initiated by user actions: first it makes current undo stack <strong>stRedo</strong>, start macro and then cast <em>Model::setRect()</em>. In implementation of <em>Model::setRect()</em> it cast <em>setComments()</em> which leads to reimplemented <em>ModelUndo::setComments()</em> which pushes new undo command, but into <strong>stRedo</strong>.</p>
+<p>Let’s follow pressing <strong>Ctrl+Z</strong> by user. We go into <em>SetRectUndo::undo()</em>, where it changes current undo stack into <strong>stUndo</strong>, then it cast for <em>Model::setRect()</em> to restore old rect, but same times it cast <em>setComments()</em>, which by reimplementation pushes new undo command but into <strong>stUndo</strong>, – stack of application(or document) is not spoiled by new undo command. Then it clears <strong>stUndo</strong>, as we are not interested in it. Finally, at the end we undo everything what is located in <strong>stRedo</strong> – you may remember that it has an undo command to change comments which were before <em>setRect()</em> initiated by user actions.</p>
+<p><em>It reverts to exactly same state of datas existing before user action even with non-linear behavior. Good.</em></p>
+<p>Please note that depending on the way of interlinking of calls you may need to do some adjustments to code above to fix the order of calls and restoring nested stacks, but still that can be usually resolved simple enough appropriate to your codes.</p>
+<h2 id="summary">Summary</h2>
+<p>We researched above such problems as ways of tracking undo, places of applying efforts to implement it in effective way, covering of numerous methods by using templating approaches and finally covering of non-linear behaviors.</p>
+<p>As result you may choose such architecture of your application:</p>
+<p><a href="http://lynxline.com/wp-content/uploads/2012/04/Illustrate-8.png"><img src="Illustrate-8.png" alt=""></a></p>
+<p>Then you have undo layer between logic and gui, covering all changes in user datas with respect to non-linear behavior.</p>
+<p>Also you can notice that by just few defines in code you can switch off the whole <em>undo layer</em>, because this is really just layer created by inheritance, and then test behavior of your application without undo involved. For testing purposes it makes sense as you can easily allocate places where your bugs comes from and if they are related to undo effects at all.</p>
+<p>How would you use undo now as top-level/integration gui developer? That is the place where your dream comes true! All what you need to do is just marking beginMacro() and endMacro() for places that should be covered by undo:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#66d9ef">void</span> DocumentWindow<span style="color:#f92672">::</span>onActionSomethingComplicated() 
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    currentUndoStack()<span style="color:#f92672">-&gt;</span>beginMacro(tr(<span style="color:#e6db74">&#34;Do something complicated here&#34;</span>));
+</span></span><span style="display:flex;"><span>    Obj1 <span style="color:#f92672">*</span> obj1 <span style="color:#f92672">=</span> document()<span style="color:#f92672">-&gt;</span>createXxxObject(<span style="color:#e6db74">&#34;yyy&#34;</span>);
+</span></span><span style="display:flex;"><span>    obj1<span style="color:#f92672">-&gt;</span>addSubObject(document()<span style="color:#f92672">-&gt;</span>newLevel(<span style="color:#ae81ff">1</span>));
+</span></span><span style="display:flex;"><span>    ....
+</span></span><span style="display:flex;"><span>    ....
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// whatever you can do with user datas
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    ....
+</span></span><span style="display:flex;"><span>    currentUndoStack()<span style="color:#f92672">-&gt;</span>endMacro();
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p><em>Then user presses Ctrl+Z and magic works…</em></p>
+        </p>
+        
+    </div>
+
+    <div class="prev-next">
+        
+    </div>
+
+    
+    
+    
+</div>
+
+
+
+    
+
+        </main><footer class="footer">
+    
+    
+
+    
+    <span>
+        Made using <a target="_blank" href="https://gohugo.io/">HUGO</a>
+    </span>
+</footer>
+</body>
+</html>

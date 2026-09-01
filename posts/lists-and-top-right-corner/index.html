@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <style>
+        :root {
+            --accent-color: #FF4D4D;
+        }
+    </style>
+
+    
+    
+    
+    
+    
+    
+
+    
+    <title>Lists and Top Right corner</title>
+    <meta name="description" content="">
+    <meta name="keywords" content='Blog, Qt'>
+
+    <meta property="og:url" content="https://lynxline.com/posts/lists-and-top-right-corner/">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Lists and Top Right corner">
+    <meta property="og:description" content="">
+    <meta property="og:image" content="https://lynxline.com/images/lynx.jpg">
+    <meta property="og:image:secure_url" content="https://lynxline.com/images/lynx.jpg">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Lists and Top Right corner">
+    <meta name="twitter:description" content="">
+    <meta property="twitter:domain" content="https://lynxline.com/posts/lists-and-top-right-corner/">
+    <meta property="twitter:url" content="https://lynxline.com/posts/lists-and-top-right-corner/">
+    <meta name="twitter:image" content="https://lynxline.com/images/lynx.jpg">
+
+    
+    <link rel="canonical" href="https://lynxline.com/posts/lists-and-top-right-corner/" />
+
+    
+    <link rel="stylesheet" type="text/css" href="/css/normalize.min.css" media="print">
+
+    
+    <link rel="stylesheet" type="text/css" href="/css/main.min.css">
+
+    
+    <link id="dark-theme" rel="stylesheet" href="/css/dark.min.css">
+
+    
+    <script src="/js/bundle.min.224c8e70fed292d18d7d9ae1b36797c99144e0be1117e2ea2c428379c8496551.js" integrity="sha256-IkyOcP7SktGNfZrhs2eXyZFE4L4RF&#43;LqLEKDechJZVE="></script>
+
+    
+    
+</head>
+<body>
+        <script type="text/javascript">
+            
+            setThemeByUserPref();
+        </script><header class="header">
+    <nav class="header-nav">
+
+        
+        <div class="avatar">
+            <a href="https://lynxline.com/">
+                <img src='/images/lynx.jpg' alt="avatar" />
+            </a>
+        </div>
+        
+
+        <div class="nav-title">
+            <a class="nav-brand" href="https://lynxline.com/">LynxLine</a>
+        </div>
+
+        <div class="nav-links">
+            
+            <div class="nav-link">
+                <a href="https://lynxline.com/services/"><span data-feather='zap'></span> Services </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://lynxline.com/posts/"><span data-feather='layers'></span> Posts </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://lynxline.com/tags/"><span data-feather='tag'></span> Tags </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://lynxline.com/contact/"><span data-feather='mail'></span> Contact </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://github.com"><span data-feather='github'></span>  </a>
+            </div>
+            
+
+            <span class="nav-icons-divider"></span>
+            <div class="nav-link dark-theme-toggle">
+                <span id="dark-theme-toggle-screen-reader-target" class="sr-only"></span>
+                <a>
+                    <span id="theme-toggle-icon" data-feather="moon"></span>
+                </a>
+            </div>
+
+            <div class="nav-link" id="hamburger-menu-toggle">
+                <span id="hamburger-menu-toggle-screen-reader-target" class="sr-only">menu</span>
+                <a>
+                    <span data-feather="menu"></span>
+                </a>
+            </div>
+
+            
+            <ul class="nav-hamburger-list visibility-hidden">
+                
+                <li class="nav-item">
+                    <a href="https://lynxline.com/services/"><span data-feather='zap'></span> Services </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://lynxline.com/posts/"><span data-feather='layers'></span> Posts </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://lynxline.com/tags/"><span data-feather='tag'></span> Tags </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://lynxline.com/contact/"><span data-feather='mail'></span> Contact </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://github.com"><span data-feather='github'></span>  </a>
+                </li>
+                
+                <li class="nav-item dark-theme-toggle">
+                    <span id="dark-theme-toggle-screen-reader-target" class="sr-only">theme</span>
+                    <a>
+                        <span id="theme-toggle-icon" data-feather="moon"></span>
+                    </a>
+                </li>
+            </ul>
+
+        </div>
+    </nav>
+</header>
+<main id="content">
+    <div class="post container">
+    <div class="post-header-section">
+        <h1>Lists and Top Right corner</h1>
+        <small role="doc-subtitle"></small>
+        <p class="post-date">April 5, 2008
+        
+        </p>
+
+        <ul class="post-tags">
+        
+            <li class="post-tag"><a href="https://lynxline.com/tags/blog">Blog</a></li>
+        
+            <li class="post-tag"><a href="https://lynxline.com/tags/qt">Qt</a></li>
+        
+        </ul>
+    </div>
+
+    <div class="post-content">
+        <p>
+            <p>QListView Mac</p>
+<p>If you have lists or tables in your application you can see that Qt widgets have scroll bar for full height of widget instead of only viewport area. What to do to make it looks like native mac widget? It is easy. Remember that QAbstractScrollArea has method: addScrollBarWidget()</p>
+<p>So, we create small widget, apply header style and put it in scroll bar area.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span>QWidget <span style="color:#f92672">*</span> w <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> QToolButton;
+</span></span><span style="display:flex;"><span>w<span style="color:#f92672">-&gt;</span>setFixedHeight(horizontalHeader()<span style="color:#f92672">-&gt;</span>height());
+</span></span><span style="display:flex;"><span>w<span style="color:#f92672">-&gt;</span>setAutoFillBackground(true);
+</span></span><span style="display:flex;"><span>w<span style="color:#f92672">-&gt;</span>setStyleSheet(<span style="color:#e6db74">&#34;QToolButton {\
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        border: 1px solid #a0a0a0;\
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        border-top: 0px;\
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        border-left: 0px;\
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        border-right: 0px;\
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        background-color: qlineargradient(x1:0, y1:0, x2:0, y2:1,\
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">            stop:0 #ffffff, stop:0.5 #e0e0e0, stop:1 #ffffff);\
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    }&#34;</span>);
+</span></span><span style="display:flex;"><span>addScrollBarWidget(w, Qt<span style="color:#f92672">::</span>AlignTop);
+</span></span></code></pre></div><p>Because this is QToolButton, you can expand functionality later to have for example menu to select visible columns, etc.</p>
+<p>But if you would like to have it system-independent and apply system QStyle, I recommend to sub-class QToolButton (or QWidget, as you wish) and implement such paintEvent() method:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#66d9ef">void</span> ColumnSelectorButton<span style="color:#f92672">::</span>paintEvent(QPaintEvent <span style="color:#f92672">*</span> pe)
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int</span> w <span style="color:#f92672">=</span> width();
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int</span> h <span style="color:#f92672">=</span> height();
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#ifdef Q_WS_MAC
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    w<span style="color:#f92672">++</span>;
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#endif
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span>    QPainter <span style="color:#a6e22e">p</span>(<span style="color:#66d9ef">this</span>);
+</span></span><span style="display:flex;"><span>    p.setClipRect(pe<span style="color:#f92672">-&gt;</span>rect());
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    QStyleOptionHeader opt;
+</span></span><span style="display:flex;"><span>    opt.initFrom(m_header);
+</span></span><span style="display:flex;"><span>    opt.state <span style="color:#f92672">|=</span> QStyle<span style="color:#f92672">::</span>State_Horizontal <span style="color:#f92672">|</span>
+</span></span><span style="display:flex;"><span>                 QStyle<span style="color:#f92672">::</span>State_Enabled <span style="color:#f92672">|</span>
+</span></span><span style="display:flex;"><span>                 QStyle<span style="color:#f92672">::</span>State_Raised;
+</span></span><span style="display:flex;"><span>    opt.rect <span style="color:#f92672">=</span> QRect(<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">0</span>, w,h);
+</span></span><span style="display:flex;"><span>    style()<span style="color:#f92672">-&gt;</span>drawControl(QStyle<span style="color:#f92672">::</span>CE_Header, <span style="color:#f92672">&amp;</span>opt, <span style="color:#f92672">&amp;</span>p, m_header);
+</span></span><span style="display:flex;"><span>    p.end();
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>Note that because you paint with drawControl, you do not need to apply style sheet to this widget anymore. Instead it uses even style sheet of QHeaderView automatically, and this is great. (I applied w++ on Mac because else it paints right border line from style sheet of header, see my previous blog entry about headers)</p>
+        </p>
+        
+    </div>
+
+    <div class="prev-next">
+        
+    </div>
+
+    
+    
+    
+</div>
+
+
+
+    
+
+        </main><footer class="footer">
+    
+    
+
+    
+    <span>
+        Made using <a target="_blank" href="https://gohugo.io/">HUGO</a>
+    </span>
+</footer>
+</body>
+</html>

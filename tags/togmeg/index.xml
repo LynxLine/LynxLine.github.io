@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>TogMeg on LynxLine</title>
+    <link>https://lynxline.com/tags/togmeg/</link>
+    <description>Recent content in TogMeg on LynxLine</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 29 Jun 2011 21:00:00 +0200</lastBuildDate>
+    <atom:link href="https://lynxline.com/tags/togmeg/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Submiting a Qt App to Mac App Store</title>
+      <link>https://lynxline.com/posts/submiting-to-mac-app-store/</link>
+      <pubDate>Wed, 29 Jun 2011 21:00:00 +0200</pubDate>
+      <guid>https://lynxline.com/posts/submiting-to-mac-app-store/</guid>
+      <description>&lt;p&gt;Maybe you already thought about creation a Qt application for Mac App Store or submitting an existing one. While I am on vacations I made a probe of such possibility – you may know that Apple and Nokia developing now different ecosystems of languages/libraries and you may expect to have troubles of bypassing Qt application into Mac App Store. Anyway I found that it is not so complicated as expected, though it took time to do all preparations, my application passed and was published in store with first attempt.&lt;/p&gt;&#xA;&lt;p&gt;For long time I had one application in my attic. It was an interesting experiment for studying and remembering foreign words. This application do kind of training by repeating words and force you to type correct spelling while application pronounce it to you using TTS (surely you need high-quality voice engine – I used voices from Infovox iVox). That was pretty effective and helped me a lot for studying new words and forming active vocabulary for Norwegian. Because of hearing, reading and typing it makes very effective associations in your brains. The application is cross-platform and requires only QtGui, QtXml and QtCore, also qt plugins are not need.&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;http://lynxline.com/wp-content/uploads/2011/06/TogMeg-Screenshot-1.png&#34;&gt;&lt;img src=&#34;TogMeg-Screenshot-1-300x238.png&#34; alt=&#34;&#34;&gt;&lt;/a&gt;&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

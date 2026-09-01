@@ -6,8 +6,134 @@
     <description>Recent content in Inferno OS on LynxLine</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 02 Mar 2014 10:14:13 +0200</lastBuildDate>
+    <lastBuildDate>Mon, 08 Feb 2016 21:00:00 +0200</lastBuildDate>
     <atom:link href="https://lynxline.com/tags/inferno-os/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Inferno-rpi-0.6 release</title>
+      <link>https://lynxline.com/posts/inferno-rpi-0-6-release/</link>
+      <pubDate>Mon, 08 Feb 2016 21:00:00 +0200</pubDate>
+      <guid>https://lynxline.com/posts/inferno-rpi-0-6-release/</guid>
+      <description>Releasing Inferno-rpi-0.6&#xA;Changes:&#xA;Added devi2c&#xA;Added devspi&#xA;Added devgpio (GPIO)&#xA;Minor changes/adjustements&#xA;Boot to kernel-nogui.bin by default. Change config.txt or enter ; wm/wm&#xA;Download:&#xA;https://bitbucket.org/infpi/inferno-rpi/downloads/inferno-rpi-0.6.zip Installation:&#xA;Download latest zip package from https://bitbucket.org/infpi/inferno-rpi/downloads&#xA;Pepare SD card with first DOS partition with size less than 250 MB (vfat32 support is not complete)&#xA;Unzip all files to SD (boot.scr, kernel.bin, … – should in root of SD)&#xA;Boot Raspberry Pi&#xA;By default it starts “styxlisten -A tcp!</description>
+    </item>
+    <item>
+      <title>Inferno-rpi-0.5 release</title>
+      <link>https://lynxline.com/posts/inferno-rpi-0-5-release/</link>
+      <pubDate>Sat, 09 Jan 2016 17:00:00 +0200</pubDate>
+      <guid>https://lynxline.com/posts/inferno-rpi-0-5-release/</guid>
+      <description>Releasing Inferno-rpi-0.5&#xA;Changes:&#xA;Fixed wrong calculatons of memory pool sizes.&#xA;Support of Pi-1 models with 512MB RAM.&#xA;Update of sources from 9pi project: usbdwc, emmc, etherusb.&#xA;Added uartmini module from 9pi.&#xA;Use Mntgen by default for /n, /n/local, /n/remote&#xA;Boot to kernel-nogui.bin by default. Change config.txt or enter ; wm/wm&#xA;Download:&#xA;https://bitbucket.org/infpi/inferno-rpi/downloads/inferno-rpi-0.5.zip Installation:&#xA;Download latest zip package from https://bitbucket.org/infpi/inferno-rpi/downloads&#xA;Pepare SD card with first DOS partition with size less than 250 MB (vfat32 support is not complete)</description>
+    </item>
+    <item>
+      <title>Wrong size of memory pools – dumb</title>
+      <link>https://lynxline.com/posts/wrong-size-of-memory-pools-dumb/</link>
+      <pubDate>Thu, 07 Jan 2016 22:00:00 +0200</pubDate>
+      <guid>https://lynxline.com/posts/wrong-size-of-memory-pools-dumb/</guid>
+      <description>Occasionally I had a look at /dev/memory:&#xA;What I saw there?&#xA;; cat /dev/memory 2282656 14018478 2314496 14149 6246 18 11735810 main 492768 7009239 499488 110133 106946 4 6516459 heap 4960 14018478 4960 8 1 1 14013506 image ; What? I run my Inferno just on 14+7+14 = 33MB memory? (yep and it still runs ok ;) )&#xA;The code that define size of memory pools was just copied from other ports:</description>
+    </item>
+    <item>
+      <title>Thinking about user interfaces, part 3</title>
+      <link>https://lynxline.com/posts/thinking-about-user-interfaces-part-3/</link>
+      <pubDate>Fri, 25 Dec 2015 18:00:00 +0200</pubDate>
+      <guid>https://lynxline.com/posts/thinking-about-user-interfaces-part-3/</guid>
+      <description>Part 1&#xA;Part 2&#xA;Now interesting question, are there user interfaces which based on “verbs”.&#xA;Well, I know at least one called drakon-editor: http://drakon-editor.sourceforge.net/&#xA;That is extremely powerful tool or a user interface which allow to design algorithms:&#xA;So you can see, that looks as really totally verb-based user interface. It is very efficient but same time is also limited as do not provide way of defining structures of datas which are processed.</description>
+    </item>
+    <item>
+      <title>Thinking about user interfaces, part 2</title>
+      <link>https://lynxline.com/posts/thinking-about-user-interfaces-part-2/</link>
+      <pubDate>Mon, 21 Dec 2015 23:00:00 +0200</pubDate>
+      <guid>https://lynxline.com/posts/thinking-about-user-interfaces-part-2/</guid>
+      <description>Part 1&#xA;Now have a look at existing command line interface:&#xA;What really human see on the screen?&#xA;A specialist would say that from bottom (from input/cursor) to up the human sees a story of computer operations.&#xA;My correction would be that human sees a story of his mental activities shown on the screen. These activities are represented by result of computations, but main point is that what you see on the screen is a storyline of your mental actions :)</description>
+    </item>
+    <item>
+      <title>Thinking about user interfaces</title>
+      <link>https://lynxline.com/posts/thinking-about-user-interfaces/</link>
+      <pubDate>Sun, 20 Dec 2015 22:00:00 +0200</pubDate>
+      <guid>https://lynxline.com/posts/thinking-about-user-interfaces/</guid>
+      <description>Had some time to look into implementation of gui in inferno and take some thoughts.&#xA;First maybe about history of graphics user iterfaces and how they brought us to the current situation.&#xA;How a computer iteracts to an user?&#xA;Very first implementations of are just clones of typewriting process – user types on keyboard and same time computer types on paper roll actions. Due to this first commands are pretty small like “ls” “ps” “cd” etc.</description>
+    </item>
+    <item>
+      <title>Inferno-rpi-0.4 release</title>
+      <link>https://lynxline.com/posts/inferno-rpi-0-4-release/</link>
+      <pubDate>Mon, 07 Dec 2015 22:00:00 +0200</pubDate>
+      <guid>https://lynxline.com/posts/inferno-rpi-0-4-release/</guid>
+      <description>Releasing Inferno-rpi-0.4&#xA;Changes:&#xA;Significant performance improvement due to fixed error in process scheduling/idle&#xA;Boot time is about ONE second :)&#xA;Download:&#xA;https://bitbucket.org/infpi/inferno-rpi/downloads/inferno-rpi-0.4.zip Installation:&#xA;Download latest zip package from https://bitbucket.org/infpi/inferno-rpi/downloads&#xA;Pepare SD card with first DOS partition with size less than 250 MB (vfat32 support is not complete)&#xA;Unzip all files to SD (boot.scr, kernel.bin, … – should in root of SD)&#xA;Boot Raspberry Pi&#xA;By default it starts “styxlisten -A tcp!</description>
+    </item>
+    <item>
+      <title>Performance, loop 4, solution</title>
+      <link>https://lynxline.com/posts/performance-loop-4-solution/</link>
+      <pubDate>Sun, 06 Dec 2015 13:00:00 +0200</pubDate>
+      <guid>https://lynxline.com/posts/performance-loop-4-solution/</guid>
+      <description>I decided to make some simple and temporal solution (but maybe permanent? :) )&#xA;In os/port/dis.c in vmachine() have static var indicates when GC was completed last time and start new routine of GC only when at least 500 msecs passed:&#xA;void vmachine(void*) { Prog *r; Osenv *o; int cycles; static ulong lastgcmsec =0; startup(); while(waserror()) { if(up-&amp;gt;type != Interp) panic(&amp;#34;vmachine: non-interp kproc&amp;#34;); if(up-&amp;gt;iprog != nil) acquire(); if(handler(up-&amp;gt;env-&amp;gt;errstr) == 0) { propex(currun(), up-&amp;gt;env-&amp;gt;errstr); progexit(); } up-&amp;gt;env = &amp;amp;up-&amp;gt;defenv; } cycles = 0; for(;;) { if(tready(nil) == 0) { ulong now = TK2MS(MACHP(0)-&amp;gt;ticks); if ((now - lastgcmsec) &amp;gt;500 /* || lowmem() */) { strcpy(up-&amp;gt;text, &amp;#34;gc&amp;#34;); execatidle(); lastgcmsec = TK2MS(MACHP(0)-&amp;gt;ticks); } strcpy(up-&amp;gt;text, &amp;#34;idle&amp;#34;); sleep(&amp;amp;isched.</description>
+    </item>
+    <item>
+      <title>Performance, loop 2</title>
+      <link>https://lynxline.com/posts/performance-loop-2/</link>
+      <pubDate>Sun, 06 Dec 2015 11:00:00 +0200</pubDate>
+      <guid>https://lynxline.com/posts/performance-loop-2/</guid>
+      <description>There are still problem with performance, after some experiments i distilled it to next case:&#xA;Execution of&#xA;time math/sieve 1000000 &amp;gt;/dev/null&#xA;takes about 170 secs&#xA;Execution of modified math/sieve with commented print() takes only about 3 secs.&#xA;So there is a real problem of using syscalls which operates with filesystems. (because even print()/fprint() leads to kwrite() syscall)</description>
+    </item>
+    <item>
+      <title>Performance, loop 3</title>
+      <link>https://lynxline.com/posts/performance-loop-3/</link>
+      <pubDate>Sun, 06 Dec 2015 11:00:00 +0200</pubDate>
+      <guid>https://lynxline.com/posts/performance-loop-3/</guid>
+      <description>When look deeper into tracing what happens when print() is casted&#xA;I tried to minimize all codes – copied code of sieve into rpiinit.b, removed everything extra, so whole rpi start does only math/sieve.&#xA;Then if press ^T^Tp (Ctrl+T,Ctrl+T,p) I see in console list of processes (not dis progs, but processes):&#xA;idleticks:0 f3e148: 1: interp 0:09.580 pc 0004ef18 New/Ready qpc 00000000 pri 7 f3e5b8: 2: consdbg 0:00.080 pc 000083e4 kproc/Running qpc 00000000 pri 3 f3ea28: 3: dis 0:33.</description>
+    </item>
+    <item>
+      <title>Problem with dossrv</title>
+      <link>https://lynxline.com/posts/problem-with-dossrv/</link>
+      <pubDate>Tue, 24 Nov 2015 18:00:00 +0200</pubDate>
+      <guid>https://lynxline.com/posts/problem-with-dossrv/</guid>
+      <description>Just made new attempt with new SD card and found that with defaults: 4GB dos formatted (full sd) is not mounted during boot. With booting kernel-nogui.img I got a console and had a look.&#xA;Looks like dossrv has problems with supporting large partitions.&#xA;So for now if you would like to boot 0.3 release please make small first 100MB dos partition and write distro files there.&#xA;I may need to have a look at dossrv fault later.</description>
+    </item>
+    <item>
+      <title>Inferno-rpi-0.3 release</title>
+      <link>https://lynxline.com/posts/inferno-rpi-0-3-release/</link>
+      <pubDate>Thu, 19 Nov 2015 22:00:00 +0200</pubDate>
+      <guid>https://lynxline.com/posts/inferno-rpi-0-3-release/</guid>
+      <description>Releasing Inferno-rpi-0.3&#xA;Changes:&#xA;Enabled JIT&#xA;Included recent updated of Inferno-Os&#xA;Memory split 240/16&#xA;devcons is added&#xA;Download:&#xA;https://bitbucket.org/infpi/inferno-rpi/downloads/inferno-rpi-0.3.zip Installation:&#xA;Download latest zip package from https://bitbucket.org/infpi/inferno-rpi/downloads&#xA;Pepare SD card with just one DOS partition (just format into the dos)&#xA;Unzip all files to SD (boot.scr, kernel.bin, … – should in root of SD)&#xA;Boot Raspberry Pi&#xA;By default it starts “styxlisten -A tcp!*!564 export /“, so you can mount it on other host by “mount -A tcp!</description>
+    </item>
+    <item>
+      <title>JIT is ON</title>
+      <link>https://lynxline.com/posts/jit-is-on/</link>
+      <pubDate>Wed, 18 Nov 2015 22:00:00 +0200</pubDate>
+      <guid>https://lynxline.com/posts/jit-is-on/</guid>
+      <description>My research about JIT in inferno-rpi is ended. The cause was obvious but until you does not know about and search through sources, doing debugging, tracing, experimenting – you would not know what it is.&#xA;So it is simple – DIS op codes are compiled into ARM machine routines and when compilation is finished it bypasses CPU execution to the address where ARM codes are now. But on the SoC, the instructions cache is not informed automatically that codes about to run are probably in write buffers and not in sync with RAM.</description>
+    </item>
+    <item>
+      <title>JIT is off</title>
+      <link>https://lynxline.com/posts/jit-is-off/</link>
+      <pubDate>Tue, 17 Nov 2015 22:00:00 +0200</pubDate>
+      <guid>https://lynxline.com/posts/jit-is-off/</guid>
+      <description>I decided to have a look at the problem of speed – it is really visible that inferno os on raspberry is slow. My fisrt opinion was about probably disabled caches, but I was wrong – it works fine.&#xA;After keeping searching I realized that Inferno-Rpi is actually has JIT off. Oops!&#xA;That is controlled by “int cflag =0” in rpi config, which was copied from I guess “ipiaq” config or similar.</description>
+    </item>
+    <item>
+      <title>Inferno-Rpi: project moved</title>
+      <link>https://lynxline.com/posts/inferno-rpi-project-moved/</link>
+      <pubDate>Sun, 15 Nov 2015 18:00:00 +0200</pubDate>
+      <guid>https://lynxline.com/posts/inferno-rpi-project-moved/</guid>
+      <description>Due to the closure of google code, the project is now moved to: https://bitbucket.org/infpi/inferno-rpi&#xA;Also added some minor changes and merged with latest inferno-os codebase changes. So returning a little to the project activity and think to keep the project based on dos partition which will be very simple for demo purposes.&#xA;Also think to keep in sync repo on github: https://github.com/yshurik/inferno-rpi</description>
+    </item>
+    <item>
+      <title>Inferno-Rpi boot from dos partition</title>
+      <link>https://lynxline.com/posts/inferno-rpi-boot-from-dos-partition/</link>
+      <pubDate>Tue, 13 May 2014 18:00:00 +0200</pubDate>
+      <guid>https://lynxline.com/posts/inferno-rpi-boot-from-dos-partition/</guid>
+      <description>Just to simplify installation I decided to put all needed files onto fat partition and bind them in init script.&#xA;So everything is much simple as all your files are on fat partition and easy accessible if you put SD into another computer to copy move etc files. No need to play with partitions and use kfs file system.&#xA;Make a SD with fat boot partition (let’s say 100MB), unzip files there and boot Rpi.</description>
+    </item>
+    <item>
+      <title>Inferno raspberry pi image – beta release (beta1)</title>
+      <link>https://lynxline.com/posts/inferno-raspberry-pi-image-beta1/</link>
+      <pubDate>Sat, 03 May 2014 01:00:00 +0200</pubDate>
+      <guid>https://lynxline.com/posts/inferno-raspberry-pi-image-beta1/</guid>
+      <description>We are happy to announce the beta release of native port of Inferno OS to Raspberry Pi.&#xA;There are some important points reached for this stage:&#xA;Mouse driver&#xA;Working wm/wm&#xA;Default memory split 240/16&#xA;A lot of small fixes and polishing&#xA;Download Link (~23MB)&#xA;Repository: http://code.google.com/p/inferno-rpi/</description>
+    </item>
+    <item>
+      <title>Inferno raspberry pi image – alpha release (alpha1)</title>
+      <link>https://lynxline.com/posts/inferno-raspberry-pi-image-alpha-release1/</link>
+      <pubDate>Sun, 02 Mar 2014 21:00:00 +0200</pubDate>
+      <guid>https://lynxline.com/posts/inferno-raspberry-pi-image-alpha-release1/</guid>
+      <description>So, we reached the point when we are able to package some small distribution.&#xA;It can:&#xA;Boot Kernel&#xA;Mount file system (kfs)&#xA;Init Usb subsystem&#xA;Load Keyboard driver (usb)&#xA;Load Ethernet driver (usb)&#xA;Initialize Net subsystem, obtain IP via DHCP&#xA;Start ndb/cs&#xA;Launch shell – console&#xA;It can not:&#xA;No mouse driver yet&#xA;Can not launch wm/wm (maybe due to mouse)&#xA;Download Link (~18MB)</description>
+    </item>
     <item>
       <title>Labs: Porting Inferno OS to Raspberry Pi</title>
       <link>https://lynxline.com/posts/labs-portintg-inferno-os-to-raspberry-pi/</link>
@@ -56,6 +182,13 @@
       <pubDate>Sun, 15 Dec 2013 12:02:49 +0200</pubDate>
       <guid>https://lynxline.com/posts/lab-21-porting-usbd-fixed-in-allocb-see-usb-in-actions/</guid>
       <description>From previous lab 20 we got /dev/usb connected in our system, but what to do with it? Different systems handling usb in different ways, but Inferno and Plan9 has /dev/usb just as communication filesystem which should managed not by kernel but user-space process usbd which by communication with the file server manages the connectivity and start appropriate drivers for connected usb devices.&#xA;My first attempt was to have a look at original Inferno OS used to see possibilities to just reuse it.</description>
+    </item>
+    <item>
+      <title>Small news about Inferno-Rpi Labs</title>
+      <link>https://lynxline.com/posts/small-news-about-inferno-rpi-labs/</link>
+      <pubDate>Tue, 10 Dec 2013 00:00:00 +0200</pubDate>
+      <guid>https://lynxline.com/posts/small-news-about-inferno-rpi-labs/</guid>
+      <description>Just small update:&#xA;To keep track of codebase of the Inferno OS on Raspberry Pi Labs we created the google code project to keep the repository and do other stuff related to the labs managements:&#xA;https://code.google.com/p/inferno-rpi/&#xA;All Labs-Commits:&#xA;https://code.google.com/p/inferno-rpi/source/list</description>
     </item>
     <item>
       <title>Lab 20, devusb, usbdwc and firq, first step to usb</title>
@@ -196,6 +329,20 @@
       <pubDate>Fri, 16 Nov 2012 21:18:41 +0200</pubDate>
       <guid>https://lynxline.com/posts/lab-1-compiler/</guid>
       <description>Let’s start with tools that we need to just build the OS for ARM. First clone official inferno os repository from google code repository:&#xA;1# hg clone https://code.google.com/p/inferno-os/ What we need to move further? We need the ARM cross compiler, linker, etc. For this, let’s just compile inferno targeting mac as host (we are on mac now, so we will get hosted inferno for mac as result):&#xA;1# cd inferno-os/ 2# INF_ROOT=`pwd` perl -i -pe &amp;#39;s/^ROOT=.</description>
+    </item>
+    <item>
+      <title>Porting Inferno OS to Raspberry Pi</title>
+      <link>https://lynxline.com/posts/porting-inferno-os-to-raspberry-pi/</link>
+      <pubDate>Fri, 16 Nov 2012 12:00:00 +0200</pubDate>
+      <guid>https://lynxline.com/posts/porting-inferno-os-to-raspberry-pi/</guid>
+      <description>We started a small and exciting project just for fun as “Porting Inferno OS to Raspberry Pi”. Of course we would like to run it there as native, not hosted. It was always declared that this OS is very simple for porting to new platforms, so let’s just research this and reach new distilled experiences of system programming. Also this OS is very small, simple and easy to tweak for research purposes.</description>
+    </item>
+    <item>
+      <title>Inferno OS</title>
+      <link>https://lynxline.com/posts/inferno-os/</link>
+      <pubDate>Sun, 11 Nov 2012 22:00:00 +0200</pubDate>
+      <guid>https://lynxline.com/posts/inferno-os/</guid>
+      <description>We are planning some posts about Inferno operating system. Stay tuned!</description>
     </item>
   </channel>
 </rss>

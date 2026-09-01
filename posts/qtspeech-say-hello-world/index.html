@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <style>
+        :root {
+            --accent-color: #FF4D4D;
+        }
+    </style>
+
+    
+    
+    
+    
+    
+    
+
+    
+    <title>QtSpeech, say “Hello World!”</title>
+    <meta name="description" content="">
+    <meta name="keywords" content='Blog, Projects, Qt, QtSpeech, Research, TTS'>
+
+    <meta property="og:url" content="https://lynxline.com/posts/qtspeech-say-hello-world/">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="QtSpeech, say “Hello World!”">
+    <meta property="og:description" content="">
+    <meta property="og:image" content="https://lynxline.com/images/lynx.jpg">
+    <meta property="og:image:secure_url" content="https://lynxline.com/images/lynx.jpg">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="QtSpeech, say “Hello World!”">
+    <meta name="twitter:description" content="">
+    <meta property="twitter:domain" content="https://lynxline.com/posts/qtspeech-say-hello-world/">
+    <meta property="twitter:url" content="https://lynxline.com/posts/qtspeech-say-hello-world/">
+    <meta name="twitter:image" content="https://lynxline.com/images/lynx.jpg">
+
+    
+    <link rel="canonical" href="https://lynxline.com/posts/qtspeech-say-hello-world/" />
+
+    
+    <link rel="stylesheet" type="text/css" href="/css/normalize.min.css" media="print">
+
+    
+    <link rel="stylesheet" type="text/css" href="/css/main.min.css">
+
+    
+    <link id="dark-theme" rel="stylesheet" href="/css/dark.min.css">
+
+    
+    <script src="/js/bundle.min.224c8e70fed292d18d7d9ae1b36797c99144e0be1117e2ea2c428379c8496551.js" integrity="sha256-IkyOcP7SktGNfZrhs2eXyZFE4L4RF&#43;LqLEKDechJZVE="></script>
+
+    
+    
+</head>
+<body>
+        <script type="text/javascript">
+            
+            setThemeByUserPref();
+        </script><header class="header">
+    <nav class="header-nav">
+
+        
+        <div class="avatar">
+            <a href="https://lynxline.com/">
+                <img src='/images/lynx.jpg' alt="avatar" />
+            </a>
+        </div>
+        
+
+        <div class="nav-title">
+            <a class="nav-brand" href="https://lynxline.com/">LynxLine</a>
+        </div>
+
+        <div class="nav-links">
+            
+            <div class="nav-link">
+                <a href="https://lynxline.com/services/"><span data-feather='zap'></span> Services </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://lynxline.com/posts/"><span data-feather='layers'></span> Posts </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://lynxline.com/tags/"><span data-feather='tag'></span> Tags </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://lynxline.com/contact/"><span data-feather='mail'></span> Contact </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://github.com"><span data-feather='github'></span>  </a>
+            </div>
+            
+
+            <span class="nav-icons-divider"></span>
+            <div class="nav-link dark-theme-toggle">
+                <span id="dark-theme-toggle-screen-reader-target" class="sr-only"></span>
+                <a>
+                    <span id="theme-toggle-icon" data-feather="moon"></span>
+                </a>
+            </div>
+
+            <div class="nav-link" id="hamburger-menu-toggle">
+                <span id="hamburger-menu-toggle-screen-reader-target" class="sr-only">menu</span>
+                <a>
+                    <span data-feather="menu"></span>
+                </a>
+            </div>
+
+            
+            <ul class="nav-hamburger-list visibility-hidden">
+                
+                <li class="nav-item">
+                    <a href="https://lynxline.com/services/"><span data-feather='zap'></span> Services </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://lynxline.com/posts/"><span data-feather='layers'></span> Posts </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://lynxline.com/tags/"><span data-feather='tag'></span> Tags </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://lynxline.com/contact/"><span data-feather='mail'></span> Contact </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://github.com"><span data-feather='github'></span>  </a>
+                </li>
+                
+                <li class="nav-item dark-theme-toggle">
+                    <span id="dark-theme-toggle-screen-reader-target" class="sr-only">theme</span>
+                    <a>
+                        <span id="theme-toggle-icon" data-feather="moon"></span>
+                    </a>
+                </li>
+            </ul>
+
+        </div>
+    </nav>
+</header>
+<main id="content">
+    <div class="post container">
+    <div class="post-header-section">
+        <h1>QtSpeech, say “Hello World!”</h1>
+        <small role="doc-subtitle"></small>
+        <p class="post-date">February 10, 2011
+        
+        </p>
+
+        <ul class="post-tags">
+        
+            <li class="post-tag"><a href="https://lynxline.com/tags/blog">Blog</a></li>
+        
+            <li class="post-tag"><a href="https://lynxline.com/tags/projects">Projects</a></li>
+        
+            <li class="post-tag"><a href="https://lynxline.com/tags/qt">Qt</a></li>
+        
+            <li class="post-tag"><a href="https://lynxline.com/tags/qtspeech">QtSpeech</a></li>
+        
+            <li class="post-tag"><a href="https://lynxline.com/tags/research">Research</a></li>
+        
+            <li class="post-tag"><a href="https://lynxline.com/tags/tts">TTS</a></li>
+        
+        </ul>
+    </div>
+
+    <div class="post-content">
+        <p>
+            <p>I am glad to announce new small project that got first release – <a href="http://gitorious.org/qt-speech">QtSpeech</a>.</p>
+<p>This is library providing Qt-like interface to system TTS (text-to-speech) engines to allow your application to say “Hello World!”.</p>
+<p>Current API is very simple.</p>
+<p>First you need to include <!-- raw HTML omitted -->. Then if your application just needed to say something synchronously (execution will wait in the point until speech is finished) you can use such code:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;QtSpeech&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>...
+</span></span><span style="display:flex;"><span>QtSpeech voice;
+</span></span><span style="display:flex;"><span>voice.say(<span style="color:#e6db74">&#34;Hello World!&#34;</span>);
+</span></span></code></pre></div><p>If you would like to do this in asynchronous way (so your application is not blocked meanwhile) just use tell() call:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span>QtSpeech <span style="color:#f92672">*</span> voice <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> QtSpeech(<span style="color:#66d9ef">this</span>);
+</span></span><span style="display:flex;"><span>voice<span style="color:#f92672">-&gt;</span>tell(<span style="color:#e6db74">&#34;Hello asynchronous world!&#34;</span>);
+</span></span></code></pre></div><p>If you need to invoke a slot at the end, use:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span>voice<span style="color:#f92672">-&gt;</span>tell(<span style="color:#e6db74">&#34;Hello!&#34;</span>, <span style="color:#66d9ef">this</span>, SLOT(onSpeechFinished()));
+</span></span></code></pre></div><p>Also you have possibility to get list of voices and choose voice from available in your system:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span>QtSpeech<span style="color:#f92672">::</span>VoiceNames vs <span style="color:#f92672">=</span> QtSpeech<span style="color:#f92672">::</span>names()
+</span></span></code></pre></div><p>Current implementation support <strong>Windows</strong> using SAPI and <strong>Mac</strong>. I have plans to extend API to include more functionality but will try to choose what is common on all platforms.</p>
+<p>Link to repository in Gitorius: <a href="http://gitorious.org/qt-speech">http://gitorious.org/qt-speech</a></p>
+<p><strong>UPDATE</strong>: Unix/Linux got implementation too! Based on Festival, so only English at the moment, but it is a great start to have TTS working in Qt applications too in Linux systems!</p>
+        </p>
+        
+    </div>
+
+    <div class="prev-next">
+        
+    </div>
+
+    
+    
+    
+</div>
+
+
+
+    
+
+        </main><footer class="footer">
+    
+    
+
+    
+    <span>
+        Made using <a target="_blank" href="https://gohugo.io/">HUGO</a>
+    </span>
+</footer>
+</body>
+</html>

@@ -15,5 +15,40 @@
       <guid>https://lynxline.com/posts/sqlite-tree-structures-and-queries-to-get-sub-trees/</guid>
       <description>&lt;p&gt;SQLite is wonderful!&lt;/p&gt;&#xA;&lt;p&gt;Just today I found that SQLite support queries with a recurse to get the inner sub-trees:&lt;/p&gt;</description>
     </item>
+    <item>
+      <title>Wrong size of memory pools – dumb</title>
+      <link>https://lynxline.com/posts/wrong-size-of-memory-pools-dumb/</link>
+      <pubDate>Thu, 07 Jan 2016 22:00:00 +0200</pubDate>
+      <guid>https://lynxline.com/posts/wrong-size-of-memory-pools-dumb/</guid>
+      <description>Occasionally I had a look at /dev/memory:&#xA;What I saw there?&#xA;; cat /dev/memory 2282656 14018478 2314496 14149 6246 18 11735810 main 492768 7009239 499488 110133 106946 4 6516459 heap 4960 14018478 4960 8 1 1 14013506 image ; What? I run my Inferno just on 14+7+14 = 33MB memory? (yep and it still runs ok ;) )&#xA;The code that define size of memory pools was just copied from other ports:</description>
+    </item>
+    <item>
+      <title>Thinking about user interfaces</title>
+      <link>https://lynxline.com/posts/thinking-about-user-interfaces/</link>
+      <pubDate>Sun, 20 Dec 2015 22:00:00 +0200</pubDate>
+      <guid>https://lynxline.com/posts/thinking-about-user-interfaces/</guid>
+      <description>Had some time to look into implementation of gui in inferno and take some thoughts.&#xA;First maybe about history of graphics user iterfaces and how they brought us to the current situation.&#xA;How a computer iteracts to an user?&#xA;Very first implementations of are just clones of typewriting process – user types on keyboard and same time computer types on paper roll actions. Due to this first commands are pretty small like “ls” “ps” “cd” etc.</description>
+    </item>
+    <item>
+      <title>Inferno raspberry pi image – alpha release (alpha1)</title>
+      <link>https://lynxline.com/posts/inferno-raspberry-pi-image-alpha-release1/</link>
+      <pubDate>Sun, 02 Mar 2014 21:00:00 +0200</pubDate>
+      <guid>https://lynxline.com/posts/inferno-raspberry-pi-image-alpha-release1/</guid>
+      <description>So, we reached the point when we are able to package some small distribution.&#xA;It can:&#xA;Boot Kernel&#xA;Mount file system (kfs)&#xA;Init Usb subsystem&#xA;Load Keyboard driver (usb)&#xA;Load Ethernet driver (usb)&#xA;Initialize Net subsystem, obtain IP via DHCP&#xA;Start ndb/cs&#xA;Launch shell – console&#xA;It can not:&#xA;No mouse driver yet&#xA;Can not launch wm/wm (maybe due to mouse)&#xA;Download Link (~18MB)</description>
+    </item>
+    <item>
+      <title>Trac&#43;Perforce</title>
+      <link>https://lynxline.com/posts/tracperforce/</link>
+      <pubDate>Sat, 20 Oct 2012 22:00:00 +0200</pubDate>
+      <guid>https://lynxline.com/posts/tracperforce/</guid>
+      <description>People who are using Trac and have a need of possibility binding it with Perforce repository can find that appropriate plugin is dead and no support is possible. So I would like to do some refresh – I was able to do some fixing and made these plugins available for use with Trac 1.0 for win32. Attaching to the post.&#xA;pyprotocols-0.9.3-py2.7-win32&#xA;PyPerforce-0.4-py2.7-win32&#xA;TracPerforce-0.5dev-py2.7</description>
+    </item>
+    <item>
+      <title>Designing Undo for large-scale projects. Going deep.</title>
+      <link>https://lynxline.com/posts/designing-undo-for-large-scale-projects-going-deep/</link>
+      <pubDate>Mon, 02 Apr 2012 13:00:00 +0200</pubDate>
+      <guid>https://lynxline.com/posts/designing-undo-for-large-scale-projects-going-deep/</guid>
+      <description>&lt;p&gt;That is huge architect-level article about designing undo in large-scale project, welcome under &lt;em&gt;more&lt;/em&gt; label…&lt;/p&gt;</description>
+    </item>
   </channel>
 </rss>

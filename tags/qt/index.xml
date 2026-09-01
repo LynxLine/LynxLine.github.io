@@ -15,5 +15,166 @@
       <guid>https://lynxline.com/posts/create-qpdfjs/</guid>
       <description>Today I would like to show the power of Qt technology. The framework was born more than a decade ago but still due to a lot of efforts from talented developers and Qt community keep us surprising.&#xA;I would like to show an example of developing an application with very small efforts and have it on the intersection of desktop application programming and the web programming.&#xA;Few weeks ago I was looking for approach to convert an pdf document to a image with consideration of having it in batch mode in future.</description>
     </item>
+    <item>
+      <title>Jongling models beetween threads</title>
+      <link>https://lynxline.com/posts/jongling-models-beetween-threads/</link>
+      <pubDate>Sat, 18 Jan 2014 22:00:00 +0200</pubDate>
+      <guid>https://lynxline.com/posts/jongling-models-beetween-threads/</guid>
+      <description>&lt;p&gt;We know that in Qt the models are not thread-safe – they totally depend on your implementation.&lt;/p&gt;&#xA;&lt;p&gt;So what we may do to bypass model between threads?&lt;/p&gt;&#xA;&lt;p&gt;Guess that we have some models which implementation we can not adjust much or can not make thread-safe.&lt;/p&gt;&#xA;&lt;p&gt;Danger is that if some model is used somewhere (pointer to model, saved QModelIndex, etc), then when we move model object to another thread, for some resource consuming processing,&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Qt and use of Cryptography – simple!</title>
+      <link>https://lynxline.com/posts/qt-and-use-of-cryptography-simple/</link>
+      <pubDate>Fri, 13 Sep 2013 22:00:00 +0200</pubDate>
+      <guid>https://lynxline.com/posts/qt-and-use-of-cryptography-simple/</guid>
+      <description>&lt;p&gt;In the light of latest news (Snowden et all) it is very clear that all developers should really take care of safety of all communications that your application could perform. In the world of desktop application developments it is often is decided to be postponed and just use plain text protocols or so and later switch to use of SSL. Surely we should pay more attention to use ciphers when any need of QtNetwork is considered.&lt;/p&gt;&#xA;&lt;p&gt;But what about using something different than just SSL? Let’s take a look at use of PGP in Qt Application. It is so good that there is great framework is already in place QCA (&lt;a href=&#34;http://delta.affinix.com/qca/&#34;&gt;http://delta.affinix.com/qca/&lt;/a&gt;). All we need is just to take a look at API and find a simple way of making ciphers.&lt;/p&gt;&#xA;&lt;p&gt;Let’s design very simple desktop application which can crypt some input text. I assume that have already installed &lt;em&gt;GnuPG&lt;/em&gt;, generated keys, configured &lt;em&gt;gpg-agent&lt;/em&gt;, installed and checked working &lt;em&gt;pinentry-qt/pinentry-gtk&lt;/em&gt;(we are on linux now). Then you have installed &lt;strong&gt;qca&lt;/strong&gt; and &lt;strong&gt;qca-gnupg&lt;/strong&gt;&lt;/p&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;emerge --ask qca qca-gnupg&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Just start &lt;em&gt;Qt Creator&lt;/em&gt;, choose to make Qt Gui application, add to pro file a linking to qca:&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Designing tree-like models</title>
+      <link>https://lynxline.com/posts/designing-tree-like-models/</link>
+      <pubDate>Fri, 12 Apr 2013 00:00:00 +0200</pubDate>
+      <guid>https://lynxline.com/posts/designing-tree-like-models/</guid>
+      <description>&lt;p&gt;We found that developers are often confused about implementing tree-like models using Qt classes. Now we can show some tricks and considerations about the way of designing them.&lt;/p&gt;&#xA;&lt;p&gt;First for some refreshment, let’s remind what you have for addressing the elements in the model. This is &lt;em&gt;QModelIndex&lt;/em&gt;, which have pointer to model that created the index object, row and column and plus a some pointer or id (&lt;em&gt;qint64&lt;/em&gt;) which can be used for addressing.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Overhead cost of using Qt models</title>
+      <link>https://lynxline.com/posts/overhead-cost-of-using-qt-models/</link>
+      <pubDate>Tue, 19 Feb 2013 23:00:00 +0200</pubDate>
+      <guid>https://lynxline.com/posts/overhead-cost-of-using-qt-models/</guid>
+      <description>I decided to run very simple test to have glance on performance of Qt models and overhead cost of using them.&#xA;Something very simple as make 1M random strings with random size (note: rnd_str(int) return some random string with specified size)&#xA;int n = 1000000; QStandardItemModel std(n, 1); for(int row =0; row &amp;lt;n; ++row) std.setData(std.index(row,0), rnd_str(rand() % 16)); versus just vector of strings&#xA;QVector&amp;lt;QString&amp;gt; vec; for(int i =0; i&amp;lt; n; ++i) vec.</description>
+    </item>
+    <item>
+      <title>About Boost Multi-index Containers</title>
+      <link>https://lynxline.com/posts/about-boost-multi-index-containers/</link>
+      <pubDate>Sat, 29 Dec 2012 00:00:00 +0200</pubDate>
+      <guid>https://lynxline.com/posts/about-boost-multi-index-containers/</guid>
+      <description>&lt;p&gt;I really like Qt Template Library (QTL), but still have lack of some important functionality which is usually called multi-index. Anyway there is very powerful implementation existing in Boost. I really need these templates to establish relations between different data structures. I often use it as internal “engine” for different Proxy models that I use to manipulate models.&lt;/p&gt;&#xA;&lt;p&gt;So, I would like to remind and give quick recepies about such powerful module in Boost as multi_index_container. We know and intensively use standard STL templates for storing and access to data as lists, vectors, maps, hashes. There are a lot of information about them and very well explained.&lt;/p&gt;&#xA;&lt;p&gt;Things get complicated when there is a need to store and access to objects by more then one set of keys or their combinations. Usually developers start from creation of two maps or hashes plus a log of synchronization of then, but later with increase of keys codes became much more complicated due to synchronization of hashes, insertions, key renames, removes etc. Also it is getting very hard to understand the computation complexity of every operation taken with such storage. And of course creation of such “bicycles” leads to high amount of bugs, needs of optimizations, etc.&lt;/p&gt;&#xA;&lt;p&gt;Of course everything is invented before us and in Boost libraries you will find a module for solving these problems – boost::multi_index. Great advantage – speed, multi_index is very fast. But documentation for this module is, let’s say, complicated for understanding and especially for quick start, so newbies try to avoid the use of the module. And of course compiler messages about error due to use of multi_index templates give high amount of confusion.&lt;/p&gt;&#xA;&lt;p&gt;I would like to remove confusion and give simple cases that will be good recipes of use. I will use it together with Qt classes for demo:&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Designing Undo for large-scale projects. Going deep.</title>
+      <link>https://lynxline.com/posts/designing-undo-for-large-scale-projects-going-deep/</link>
+      <pubDate>Mon, 02 Apr 2012 13:00:00 +0200</pubDate>
+      <guid>https://lynxline.com/posts/designing-undo-for-large-scale-projects-going-deep/</guid>
+      <description>&lt;p&gt;That is huge architect-level article about designing undo in large-scale project, welcome under &lt;em&gt;more&lt;/em&gt; label…&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Stack vs Heap, Pimpl, performance</title>
+      <link>https://lynxline.com/posts/stack-vs-heap-pimpl-performance/</link>
+      <pubDate>Tue, 07 Feb 2012 01:00:00 +0200</pubDate>
+      <guid>https://lynxline.com/posts/stack-vs-heap-pimpl-performance/</guid>
+      <description>&lt;p&gt;This post is mostly about C++ but because it involves practices often used with Qt programming too, I tagged it with Qt. Also should be interesting for C++ gurus&lt;/p&gt;&#xA;&lt;p&gt;So, you know that Qt uses Pimpl (&lt;a href=&#34;http://www.qtcentre.org/wiki/index.php?title=Private_implementation&#34;&gt;Private Implementation&lt;/a&gt; or &lt;a href=&#34;http://en.wikipedia.org/wiki/Opaque_pointer#C.2B.2B&#34;&gt;Opaque pointer&lt;/a&gt;) which is very effective mechanism to keep binary compatibility between Qt versions. I use it very often too, but mostly not because of binary compatibility needs, but because of possibility of hiding internals and implementations especialities into cpp files.&lt;/p&gt;&#xA;&lt;p&gt;And there is something even more important, such practice allows to avoid including 3-rd party headers from your headers – your API – you know, it can often happen that you need some “utility” api, but because of including the header it leads to bring bunch of unexpected includes coming from this “utility”. Even worse, these 3-rd party headers that you probably can not even control, bring unexpected defines, pragmas etc that can makes you puzzled for hours to understand &lt;em&gt;why?, how? and in which order?&lt;/em&gt; it conflicts with your coding.&lt;/p&gt;&#xA;&lt;p&gt;Using &lt;em&gt;d&lt;/em&gt; pointer (Private Implementation) allows really avoid including these unneeded headers, but recently in huge project it makes me to think about performance issues.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Jongling Qt models 2, Composition Gem</title>
+      <link>https://lynxline.com/posts/jongling-qt-models-2-composition-gem/</link>
+      <pubDate>Mon, 19 Sep 2011 14:00:00 +0200</pubDate>
+      <guid>https://lynxline.com/posts/jongling-qt-models-2-composition-gem/</guid>
+      <description>We are back to models again :). In Qt you may find a lot of flexibilities for Model-View programming. Especially due to proxies to do filtering, sorting or even rearranging data (see Jongling Qt models) to be organized in any way that is good for you. You can have one data source model which you then split in “flows” of data with chains of proxy models which have ends at views.</description>
+    </item>
+    <item>
+      <title>Submiting a Qt App to Mac App Store</title>
+      <link>https://lynxline.com/posts/submiting-to-mac-app-store/</link>
+      <pubDate>Wed, 29 Jun 2011 21:00:00 +0200</pubDate>
+      <guid>https://lynxline.com/posts/submiting-to-mac-app-store/</guid>
+      <description>&lt;p&gt;Maybe you already thought about creation a Qt application for Mac App Store or submitting an existing one. While I am on vacations I made a probe of such possibility – you may know that Apple and Nokia developing now different ecosystems of languages/libraries and you may expect to have troubles of bypassing Qt application into Mac App Store. Anyway I found that it is not so complicated as expected, though it took time to do all preparations, my application passed and was published in store with first attempt.&lt;/p&gt;&#xA;&lt;p&gt;For long time I had one application in my attic. It was an interesting experiment for studying and remembering foreign words. This application do kind of training by repeating words and force you to type correct spelling while application pronounce it to you using TTS (surely you need high-quality voice engine – I used voices from Infovox iVox). That was pretty effective and helped me a lot for studying new words and forming active vocabulary for Norwegian. Because of hearing, reading and typing it makes very effective associations in your brains. The application is cross-platform and requires only QtGui, QtXml and QtCore, also qt plugins are not need.&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;http://lynxline.com/wp-content/uploads/2011/06/TogMeg-Screenshot-1.png&#34;&gt;&lt;img src=&#34;TogMeg-Screenshot-1-300x238.png&#34; alt=&#34;&#34;&gt;&lt;/a&gt;&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>QtSpeech, say “Hello World!”</title>
+      <link>https://lynxline.com/posts/qtspeech-say-hello-world/</link>
+      <pubDate>Thu, 10 Feb 2011 16:00:00 +0200</pubDate>
+      <guid>https://lynxline.com/posts/qtspeech-say-hello-world/</guid>
+      <description>&lt;p&gt;I am glad to announce new small project that got first release – &lt;a href=&#34;http://gitorious.org/qt-speech&#34;&gt;QtSpeech&lt;/a&gt;.&lt;/p&gt;&#xA;&lt;p&gt;This is library providing Qt-like interface to system TTS (text-to-speech) engines to allow your application to say “Hello World!”.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>SuperHybrids part 2, now Qt &#43; PySide</title>
+      <link>https://lynxline.com/posts/superhybrids-part-2-now-qt-pyside/</link>
+      <pubDate>Mon, 04 Oct 2010 11:00:00 +0200</pubDate>
+      <guid>https://lynxline.com/posts/superhybrids-part-2-now-qt-pyside/</guid>
+      <description>&lt;p&gt;I would like to return to a topic that I opened few months ago – about creation of “&lt;strong&gt;hybrid&lt;/strong&gt;” applications consisting of one part of c++ code and another part is python based, plus both part access each other with Qt-like Api, so they understand QString, etc and can exchange qt signals between those two parts. Even more, c++ part of application can generate python qt-like code to execute during &lt;em&gt;runtime&lt;/em&gt;, he-he… In &lt;a href=&#34;qt-python-superhybrids&#34;&gt;my previous post&lt;/a&gt; I explained how to implement this based on PyQt libraries. Also it can be interpreted as embedding PySide into Qt applications.&lt;/p&gt;&#xA;&lt;p&gt;I got a lot of questions about this ideas, but one of frequent questions was about doing same with PySide. Well, PySide is &lt;strong&gt;LGPL&lt;/strong&gt; so this makes the framework applicable for much more projects. So, let’s have a try of doing same but with &lt;strong&gt;PySide&lt;/strong&gt; now.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Jongling Qt models</title>
+      <link>https://lynxline.com/posts/jongling-qt-models/</link>
+      <pubDate>Mon, 30 Aug 2010 11:00:00 +0200</pubDate>
+      <guid>https://lynxline.com/posts/jongling-qt-models/</guid>
+      <description>&lt;p&gt;When you work intensively with data in your application then soon or not but you will realize that the best way of keeping them is some model object inherits from QAbstractItemModel, then data are hidden inside implementation of model. Adding, removing and modification are accessible through your API of the model class and it calls for appropriate model modifications (like beginInsertRows/endInsertRows). If you implement it in the way, then it is ideal for developer to use it in vews, operate with datas, implementing undo (see previous post: &lt;a href=&#34;http://lynxline.com/undo-in-complex-qt-projects/&#34;&gt;Undo in complex Qt projects&lt;/a&gt;).&lt;/p&gt;&#xA;&lt;p&gt;It is often situation when all application data are some kind of hierarchical tree of objects and properties. So, all of them can be kept in just one tree-like model class, but I see that developers do not use the approach and it happens because they do not see how some selective piece of data can be shown or have expectations of implementing own view classes, which is not trivial though and you may spent too much efforts there. Instead a lot of code related to synchronization between models can appear and it leads to complication of logic.&lt;/p&gt;&#xA;&lt;p&gt;Same time, it can be resolved by implementation proxy models and use just standard view classes from Qt which are very effective. And I would like to show here that it is really simple:&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Undo in complex Qt projects</title>
+      <link>https://lynxline.com/posts/undo-in-complex-qt-projects/</link>
+      <pubDate>Wed, 28 Jul 2010 11:00:00 +0200</pubDate>
+      <guid>https://lynxline.com/posts/undo-in-complex-qt-projects/</guid>
+      <description>&lt;p&gt;&lt;strong&gt;UPDATE&lt;/strong&gt;: You may consider studying more advanced techniques described in second “undo” article: &lt;a href=&#34;http://lynxline.com/designing-undo-for-large-scale-projects-going-deep/&#34;&gt;Designing Undo for large-scale projects. Going deep.&lt;/a&gt;&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Qt Python SuperHybrids</title>
+      <link>https://lynxline.com/posts/qt-python-superhybrids/</link>
+      <pubDate>Mon, 19 Jul 2010 15:00:00 +0200</pubDate>
+      <guid>https://lynxline.com/posts/qt-python-superhybrids/</guid>
+      <description>&lt;p&gt;You may know about PyQt – python bindings to Qt frameworks. They are great and allow to prototype gui Qt based code in very fast way. To my mind you can develop faster in 1.5-2 times comparing to same development cycle with Qt. Well, development is little different – you do not have compilation stage, but need to be more cautions about testing to be sure that all branches of executed code are tested, because you never know until they are executed at least once.&lt;/p&gt;&#xA;&lt;p&gt;Currently you can find PyQt even for Maemo – &lt;a href=&#34;http://forums.internettablettalk.com/showthread.php?s=3d53f32b5fe63a5fbd4b64211a4d4676&amp;amp;t=42754&#34;&gt;link&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;&lt;img src=&#34;PyQt-Maemo.jpg&#34; alt=&#34;PyQt-Maemo&#34;&gt;&lt;/p&gt;&#xA;&lt;p&gt;Anyway, PyQt is great, python programming is fast, but one of frequently asked questions is –&lt;br&gt;&#xA;&lt;em&gt;How can I integrate python scripting in my application and operate Qt Api from my scripts?, and why not?&lt;/em&gt;&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Encode BuildId or Version into Application</title>
+      <link>https://lynxline.com/posts/encode-buildid-or-version-into-application/</link>
+      <pubDate>Wed, 09 Jun 2010 14:00:00 +0200</pubDate>
+      <guid>https://lynxline.com/posts/encode-buildid-or-version-into-application/</guid>
+      <description>There is very convenient way to encode identification of builds into applications. Then, for instance, you can show in about dialog something like: Version 20100609. Here is snippet of code:&#xA;QString buildId() { QString embeddedDate(__DATE__); QString m = embeddedDate.left(3); QStringList months; months &amp;lt;&amp;lt; &amp;#34;Jan&amp;#34; &amp;lt;&amp;lt; &amp;#34;Feb&amp;#34; &amp;lt;&amp;lt; &amp;#34;Mar&amp;#34; &amp;lt;&amp;lt; &amp;#34;Apr&amp;#34; &amp;lt;&amp;lt; &amp;#34;May&amp;#34; &amp;lt;&amp;lt; &amp;#34;Jun&amp;#34; &amp;lt;&amp;lt; &amp;#34;Jul&amp;#34; &amp;lt;&amp;lt; &amp;#34;Aug&amp;#34; &amp;lt;&amp;lt; &amp;#34;Sep&amp;#34; &amp;lt;&amp;lt; &amp;#34;Oct&amp;#34; &amp;lt;&amp;lt; &amp;#34;Nov&amp;#34; &amp;lt;&amp;lt; &amp;#34;Dec&amp;#34;; int month = months.indexOf(m) + 1; int day = embeddedDate.</description>
+    </item>
+    <item>
+      <title>Mac: mini font</title>
+      <link>https://lynxline.com/posts/mac-mini-font/</link>
+      <pubDate>Wed, 14 Apr 2010 12:00:00 +0200</pubDate>
+      <guid>https://lynxline.com/posts/mac-mini-font/</guid>
+      <description>&lt;p&gt;On Mac you can often see the usage of two system fonts in applications. Second one “Mini” is convenient to use when you would like to have a lot of “mini” controls – mostly you can get it by applying Qt::WA_MacMiniSize. Well then the font is coming from mac style, but what if the font is needed as QFont object?&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Copy Folder on Mac and Windows</title>
+      <link>https://lynxline.com/posts/copy-folder-on-mac-and-windows/</link>
+      <pubDate>Mon, 23 Nov 2009 11:00:00 +0200</pubDate>
+      <guid>https://lynxline.com/posts/copy-folder-on-mac-and-windows/</guid>
+      <description>&lt;p&gt;Developers can often encounter next problem: there is required files and folders manipulations which needed to be implemented in application. For one side there is enough API to do it Qt, but maybe it is too much code to handle all reads/writes, then you need to worry about some progress message, then it could be that additional thread is required because of blocking operations. So the simple operation can make “just copying” code complicated enough.&lt;/p&gt;&#xA;&lt;p&gt;Why not use Explorer on Windows or Fnder on Mac?&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Show in Finder / Show in Explorer</title>
+      <link>https://lynxline.com/posts/show-in-finder-show-in-explorer/</link>
+      <pubDate>Thu, 10 Sep 2009 12:00:00 +0200</pubDate>
+      <guid>https://lynxline.com/posts/show-in-finder-show-in-explorer/</guid>
+      <description>&lt;p&gt;It happens often when for integration purposes or for making easy way to navigate to files you need to have such action “Show in Finder” on mac or “Show in Explorer” on windows. Well, the code is pretty simple:&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Styling Lists on Mac</title>
+      <link>https://lynxline.com/posts/styling-lists-on-mac/</link>
+      <pubDate>Sat, 19 Apr 2008 20:00:00 +0200</pubDate>
+      <guid>https://lynxline.com/posts/styling-lists-on-mac/</guid>
+      <description>&lt;p&gt;Here is QTreeView on Mac that I usually use for lists in my applications. Actually it is designed to be in Mac style, but still it is different and you feel that it is not good and looks like alien in Mac. Let’s do something with style sheets:&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Continue Preferences Window</title>
+      <link>https://lynxline.com/posts/continue-preferences-window/</link>
+      <pubDate>Fri, 11 Apr 2008 12:00:00 +0200</pubDate>
+      <guid>https://lynxline.com/posts/continue-preferences-window/</guid>
+      <description>&lt;p&gt;Let’s continue our previous blog post regarding preferences window. Of course it looks great and native look-and-feel on Mac, but what about having styles for both platforms to make user feel comfortably. I tried to apply Firefox-like style of preferences window, you can see screenshot above.&lt;/p&gt;&#xA;&lt;p&gt;Code:&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Preferences Window</title>
+      <link>https://lynxline.com/posts/preferences-window/</link>
+      <pubDate>Sun, 06 Apr 2008 23:00:00 +0200</pubDate>
+      <guid>https://lynxline.com/posts/preferences-window/</guid>
+      <description>How to implement Preferences Window in Qt that look and feel like pure Mac application? Well, first problem is, that it should be window instead of dialog, even QMainWindow to have unifiedTitleAndToolBarOnMac property (allowed only for QMainWindow now). So let’s define and implement it as QMainWindow.&#xA;Problem #2: We have empty menu bar when activates this window – we can use next trick: in our main window class we define such method like void createFileMenu(QMenu *), this method should fill QMenu with actions, separators and sub-menus, and let’s use this method for both windows, then we can easily create menu bar in Preferences Window and fill it with actions from Main Window.</description>
+    </item>
+    <item>
+      <title>Lists and Top Right corner</title>
+      <link>https://lynxline.com/posts/lists-and-top-right-corner/</link>
+      <pubDate>Sat, 05 Apr 2008 13:00:00 +0200</pubDate>
+      <guid>https://lynxline.com/posts/lists-and-top-right-corner/</guid>
+      <description>&lt;p&gt;QListView Mac&lt;/p&gt;&#xA;&lt;p&gt;If you have lists or tables in your application you can see that Qt widgets have scroll bar for full height of widget instead of only viewport area. What to do to make it looks like native mac widget? It is easy. Remember that QAbstractScrollArea has method: addScrollBarWidget()&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>List Headers in Mac style</title>
+      <link>https://lynxline.com/posts/list-headers-in-mac-style/</link>
+      <pubDate>Fri, 04 Apr 2008 00:00:00 +0200</pubDate>
+      <guid>https://lynxline.com/posts/list-headers-in-mac-style/</guid>
+      <description>&lt;p&gt;Using QListView or QTableView you can see that style is not what you can expect on Mac platform. As solution you can use next qstylesheet code to apply&lt;/p&gt;&#xA;&lt;p&gt;to your widgets:&lt;/p&gt;</description>
+    </item>
   </channel>
 </rss>

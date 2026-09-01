@@ -44,6 +44,132 @@
       <description>&lt;p&gt;SQLite is wonderful!&lt;/p&gt;&#xA;&lt;p&gt;Just today I found that SQLite support queries with a recurse to get the inner sub-trees:&lt;/p&gt;</description>
     </item>
     <item>
+      <title>Inferno-rpi-0.6 release</title>
+      <link>https://lynxline.com/posts/inferno-rpi-0-6-release/</link>
+      <pubDate>Mon, 08 Feb 2016 21:00:00 +0200</pubDate>
+      <guid>https://lynxline.com/posts/inferno-rpi-0-6-release/</guid>
+      <description>Releasing Inferno-rpi-0.6&#xA;Changes:&#xA;Added devi2c&#xA;Added devspi&#xA;Added devgpio (GPIO)&#xA;Minor changes/adjustements&#xA;Boot to kernel-nogui.bin by default. Change config.txt or enter ; wm/wm&#xA;Download:&#xA;https://bitbucket.org/infpi/inferno-rpi/downloads/inferno-rpi-0.6.zip Installation:&#xA;Download latest zip package from https://bitbucket.org/infpi/inferno-rpi/downloads&#xA;Pepare SD card with first DOS partition with size less than 250 MB (vfat32 support is not complete)&#xA;Unzip all files to SD (boot.scr, kernel.bin, … – should in root of SD)&#xA;Boot Raspberry Pi&#xA;By default it starts “styxlisten -A tcp!</description>
+    </item>
+    <item>
+      <title>Inferno-rpi-0.5 release</title>
+      <link>https://lynxline.com/posts/inferno-rpi-0-5-release/</link>
+      <pubDate>Sat, 09 Jan 2016 17:00:00 +0200</pubDate>
+      <guid>https://lynxline.com/posts/inferno-rpi-0-5-release/</guid>
+      <description>Releasing Inferno-rpi-0.5&#xA;Changes:&#xA;Fixed wrong calculatons of memory pool sizes.&#xA;Support of Pi-1 models with 512MB RAM.&#xA;Update of sources from 9pi project: usbdwc, emmc, etherusb.&#xA;Added uartmini module from 9pi.&#xA;Use Mntgen by default for /n, /n/local, /n/remote&#xA;Boot to kernel-nogui.bin by default. Change config.txt or enter ; wm/wm&#xA;Download:&#xA;https://bitbucket.org/infpi/inferno-rpi/downloads/inferno-rpi-0.5.zip Installation:&#xA;Download latest zip package from https://bitbucket.org/infpi/inferno-rpi/downloads&#xA;Pepare SD card with first DOS partition with size less than 250 MB (vfat32 support is not complete)</description>
+    </item>
+    <item>
+      <title>Wrong size of memory pools – dumb</title>
+      <link>https://lynxline.com/posts/wrong-size-of-memory-pools-dumb/</link>
+      <pubDate>Thu, 07 Jan 2016 22:00:00 +0200</pubDate>
+      <guid>https://lynxline.com/posts/wrong-size-of-memory-pools-dumb/</guid>
+      <description>Occasionally I had a look at /dev/memory:&#xA;What I saw there?&#xA;; cat /dev/memory 2282656 14018478 2314496 14149 6246 18 11735810 main 492768 7009239 499488 110133 106946 4 6516459 heap 4960 14018478 4960 8 1 1 14013506 image ; What? I run my Inferno just on 14+7+14 = 33MB memory? (yep and it still runs ok ;) )&#xA;The code that define size of memory pools was just copied from other ports:</description>
+    </item>
+    <item>
+      <title>Thinking about user interfaces, part 3</title>
+      <link>https://lynxline.com/posts/thinking-about-user-interfaces-part-3/</link>
+      <pubDate>Fri, 25 Dec 2015 18:00:00 +0200</pubDate>
+      <guid>https://lynxline.com/posts/thinking-about-user-interfaces-part-3/</guid>
+      <description>Part 1&#xA;Part 2&#xA;Now interesting question, are there user interfaces which based on “verbs”.&#xA;Well, I know at least one called drakon-editor: http://drakon-editor.sourceforge.net/&#xA;That is extremely powerful tool or a user interface which allow to design algorithms:&#xA;So you can see, that looks as really totally verb-based user interface. It is very efficient but same time is also limited as do not provide way of defining structures of datas which are processed.</description>
+    </item>
+    <item>
+      <title>Thinking about user interfaces, part 2</title>
+      <link>https://lynxline.com/posts/thinking-about-user-interfaces-part-2/</link>
+      <pubDate>Mon, 21 Dec 2015 23:00:00 +0200</pubDate>
+      <guid>https://lynxline.com/posts/thinking-about-user-interfaces-part-2/</guid>
+      <description>Part 1&#xA;Now have a look at existing command line interface:&#xA;What really human see on the screen?&#xA;A specialist would say that from bottom (from input/cursor) to up the human sees a story of computer operations.&#xA;My correction would be that human sees a story of his mental activities shown on the screen. These activities are represented by result of computations, but main point is that what you see on the screen is a storyline of your mental actions :)</description>
+    </item>
+    <item>
+      <title>Thinking about user interfaces</title>
+      <link>https://lynxline.com/posts/thinking-about-user-interfaces/</link>
+      <pubDate>Sun, 20 Dec 2015 22:00:00 +0200</pubDate>
+      <guid>https://lynxline.com/posts/thinking-about-user-interfaces/</guid>
+      <description>Had some time to look into implementation of gui in inferno and take some thoughts.&#xA;First maybe about history of graphics user iterfaces and how they brought us to the current situation.&#xA;How a computer iteracts to an user?&#xA;Very first implementations of are just clones of typewriting process – user types on keyboard and same time computer types on paper roll actions. Due to this first commands are pretty small like “ls” “ps” “cd” etc.</description>
+    </item>
+    <item>
+      <title>Inferno-rpi-0.4 release</title>
+      <link>https://lynxline.com/posts/inferno-rpi-0-4-release/</link>
+      <pubDate>Mon, 07 Dec 2015 22:00:00 +0200</pubDate>
+      <guid>https://lynxline.com/posts/inferno-rpi-0-4-release/</guid>
+      <description>Releasing Inferno-rpi-0.4&#xA;Changes:&#xA;Significant performance improvement due to fixed error in process scheduling/idle&#xA;Boot time is about ONE second :)&#xA;Download:&#xA;https://bitbucket.org/infpi/inferno-rpi/downloads/inferno-rpi-0.4.zip Installation:&#xA;Download latest zip package from https://bitbucket.org/infpi/inferno-rpi/downloads&#xA;Pepare SD card with first DOS partition with size less than 250 MB (vfat32 support is not complete)&#xA;Unzip all files to SD (boot.scr, kernel.bin, … – should in root of SD)&#xA;Boot Raspberry Pi&#xA;By default it starts “styxlisten -A tcp!</description>
+    </item>
+    <item>
+      <title>Performance, loop 4, solution</title>
+      <link>https://lynxline.com/posts/performance-loop-4-solution/</link>
+      <pubDate>Sun, 06 Dec 2015 13:00:00 +0200</pubDate>
+      <guid>https://lynxline.com/posts/performance-loop-4-solution/</guid>
+      <description>I decided to make some simple and temporal solution (but maybe permanent? :) )&#xA;In os/port/dis.c in vmachine() have static var indicates when GC was completed last time and start new routine of GC only when at least 500 msecs passed:&#xA;void vmachine(void*) { Prog *r; Osenv *o; int cycles; static ulong lastgcmsec =0; startup(); while(waserror()) { if(up-&amp;gt;type != Interp) panic(&amp;#34;vmachine: non-interp kproc&amp;#34;); if(up-&amp;gt;iprog != nil) acquire(); if(handler(up-&amp;gt;env-&amp;gt;errstr) == 0) { propex(currun(), up-&amp;gt;env-&amp;gt;errstr); progexit(); } up-&amp;gt;env = &amp;amp;up-&amp;gt;defenv; } cycles = 0; for(;;) { if(tready(nil) == 0) { ulong now = TK2MS(MACHP(0)-&amp;gt;ticks); if ((now - lastgcmsec) &amp;gt;500 /* || lowmem() */) { strcpy(up-&amp;gt;text, &amp;#34;gc&amp;#34;); execatidle(); lastgcmsec = TK2MS(MACHP(0)-&amp;gt;ticks); } strcpy(up-&amp;gt;text, &amp;#34;idle&amp;#34;); sleep(&amp;amp;isched.</description>
+    </item>
+    <item>
+      <title>Performance, loop 2</title>
+      <link>https://lynxline.com/posts/performance-loop-2/</link>
+      <pubDate>Sun, 06 Dec 2015 11:00:00 +0200</pubDate>
+      <guid>https://lynxline.com/posts/performance-loop-2/</guid>
+      <description>There are still problem with performance, after some experiments i distilled it to next case:&#xA;Execution of&#xA;time math/sieve 1000000 &amp;gt;/dev/null&#xA;takes about 170 secs&#xA;Execution of modified math/sieve with commented print() takes only about 3 secs.&#xA;So there is a real problem of using syscalls which operates with filesystems. (because even print()/fprint() leads to kwrite() syscall)</description>
+    </item>
+    <item>
+      <title>Performance, loop 3</title>
+      <link>https://lynxline.com/posts/performance-loop-3/</link>
+      <pubDate>Sun, 06 Dec 2015 11:00:00 +0200</pubDate>
+      <guid>https://lynxline.com/posts/performance-loop-3/</guid>
+      <description>When look deeper into tracing what happens when print() is casted&#xA;I tried to minimize all codes – copied code of sieve into rpiinit.b, removed everything extra, so whole rpi start does only math/sieve.&#xA;Then if press ^T^Tp (Ctrl+T,Ctrl+T,p) I see in console list of processes (not dis progs, but processes):&#xA;idleticks:0 f3e148: 1: interp 0:09.580 pc 0004ef18 New/Ready qpc 00000000 pri 7 f3e5b8: 2: consdbg 0:00.080 pc 000083e4 kproc/Running qpc 00000000 pri 3 f3ea28: 3: dis 0:33.</description>
+    </item>
+    <item>
+      <title>Problem with dossrv</title>
+      <link>https://lynxline.com/posts/problem-with-dossrv/</link>
+      <pubDate>Tue, 24 Nov 2015 18:00:00 +0200</pubDate>
+      <guid>https://lynxline.com/posts/problem-with-dossrv/</guid>
+      <description>Just made new attempt with new SD card and found that with defaults: 4GB dos formatted (full sd) is not mounted during boot. With booting kernel-nogui.img I got a console and had a look.&#xA;Looks like dossrv has problems with supporting large partitions.&#xA;So for now if you would like to boot 0.3 release please make small first 100MB dos partition and write distro files there.&#xA;I may need to have a look at dossrv fault later.</description>
+    </item>
+    <item>
+      <title>Inferno-rpi-0.3 release</title>
+      <link>https://lynxline.com/posts/inferno-rpi-0-3-release/</link>
+      <pubDate>Thu, 19 Nov 2015 22:00:00 +0200</pubDate>
+      <guid>https://lynxline.com/posts/inferno-rpi-0-3-release/</guid>
+      <description>Releasing Inferno-rpi-0.3&#xA;Changes:&#xA;Enabled JIT&#xA;Included recent updated of Inferno-Os&#xA;Memory split 240/16&#xA;devcons is added&#xA;Download:&#xA;https://bitbucket.org/infpi/inferno-rpi/downloads/inferno-rpi-0.3.zip Installation:&#xA;Download latest zip package from https://bitbucket.org/infpi/inferno-rpi/downloads&#xA;Pepare SD card with just one DOS partition (just format into the dos)&#xA;Unzip all files to SD (boot.scr, kernel.bin, … – should in root of SD)&#xA;Boot Raspberry Pi&#xA;By default it starts “styxlisten -A tcp!*!564 export /“, so you can mount it on other host by “mount -A tcp!</description>
+    </item>
+    <item>
+      <title>JIT is ON</title>
+      <link>https://lynxline.com/posts/jit-is-on/</link>
+      <pubDate>Wed, 18 Nov 2015 22:00:00 +0200</pubDate>
+      <guid>https://lynxline.com/posts/jit-is-on/</guid>
+      <description>My research about JIT in inferno-rpi is ended. The cause was obvious but until you does not know about and search through sources, doing debugging, tracing, experimenting – you would not know what it is.&#xA;So it is simple – DIS op codes are compiled into ARM machine routines and when compilation is finished it bypasses CPU execution to the address where ARM codes are now. But on the SoC, the instructions cache is not informed automatically that codes about to run are probably in write buffers and not in sync with RAM.</description>
+    </item>
+    <item>
+      <title>JIT is off</title>
+      <link>https://lynxline.com/posts/jit-is-off/</link>
+      <pubDate>Tue, 17 Nov 2015 22:00:00 +0200</pubDate>
+      <guid>https://lynxline.com/posts/jit-is-off/</guid>
+      <description>I decided to have a look at the problem of speed – it is really visible that inferno os on raspberry is slow. My fisrt opinion was about probably disabled caches, but I was wrong – it works fine.&#xA;After keeping searching I realized that Inferno-Rpi is actually has JIT off. Oops!&#xA;That is controlled by “int cflag =0” in rpi config, which was copied from I guess “ipiaq” config or similar.</description>
+    </item>
+    <item>
+      <title>Inferno-Rpi: project moved</title>
+      <link>https://lynxline.com/posts/inferno-rpi-project-moved/</link>
+      <pubDate>Sun, 15 Nov 2015 18:00:00 +0200</pubDate>
+      <guid>https://lynxline.com/posts/inferno-rpi-project-moved/</guid>
+      <description>Due to the closure of google code, the project is now moved to: https://bitbucket.org/infpi/inferno-rpi&#xA;Also added some minor changes and merged with latest inferno-os codebase changes. So returning a little to the project activity and think to keep the project based on dos partition which will be very simple for demo purposes.&#xA;Also think to keep in sync repo on github: https://github.com/yshurik/inferno-rpi</description>
+    </item>
+    <item>
+      <title>Inferno-Rpi boot from dos partition</title>
+      <link>https://lynxline.com/posts/inferno-rpi-boot-from-dos-partition/</link>
+      <pubDate>Tue, 13 May 2014 18:00:00 +0200</pubDate>
+      <guid>https://lynxline.com/posts/inferno-rpi-boot-from-dos-partition/</guid>
+      <description>Just to simplify installation I decided to put all needed files onto fat partition and bind them in init script.&#xA;So everything is much simple as all your files are on fat partition and easy accessible if you put SD into another computer to copy move etc files. No need to play with partitions and use kfs file system.&#xA;Make a SD with fat boot partition (let’s say 100MB), unzip files there and boot Rpi.</description>
+    </item>
+    <item>
+      <title>Inferno raspberry pi image – beta release (beta1)</title>
+      <link>https://lynxline.com/posts/inferno-raspberry-pi-image-beta1/</link>
+      <pubDate>Sat, 03 May 2014 01:00:00 +0200</pubDate>
+      <guid>https://lynxline.com/posts/inferno-raspberry-pi-image-beta1/</guid>
+      <description>We are happy to announce the beta release of native port of Inferno OS to Raspberry Pi.&#xA;There are some important points reached for this stage:&#xA;Mouse driver&#xA;Working wm/wm&#xA;Default memory split 240/16&#xA;A lot of small fixes and polishing&#xA;Download Link (~23MB)&#xA;Repository: http://code.google.com/p/inferno-rpi/</description>
+    </item>
+    <item>
+      <title>Inferno raspberry pi image – alpha release (alpha1)</title>
+      <link>https://lynxline.com/posts/inferno-raspberry-pi-image-alpha-release1/</link>
+      <pubDate>Sun, 02 Mar 2014 21:00:00 +0200</pubDate>
+      <guid>https://lynxline.com/posts/inferno-raspberry-pi-image-alpha-release1/</guid>
+      <description>So, we reached the point when we are able to package some small distribution.&#xA;It can:&#xA;Boot Kernel&#xA;Mount file system (kfs)&#xA;Init Usb subsystem&#xA;Load Keyboard driver (usb)&#xA;Load Ethernet driver (usb)&#xA;Initialize Net subsystem, obtain IP via DHCP&#xA;Start ndb/cs&#xA;Launch shell – console&#xA;It can not:&#xA;No mouse driver yet&#xA;Can not launch wm/wm (maybe due to mouse)&#xA;Download Link (~18MB)</description>
+    </item>
+    <item>
       <title>Labs: Porting Inferno OS to Raspberry Pi</title>
       <link>https://lynxline.com/posts/labs-portintg-inferno-os-to-raspberry-pi/</link>
       <pubDate>Sun, 02 Mar 2014 10:14:13 +0200</pubDate>
@@ -72,6 +198,13 @@
       <description>This lab will be short; we will add all network modules needed for network layout and make a roadmap how to make the Raspberry Pi ethernet driver. First have a look at other ports and inferno and find what is needed to compile with network support.&#xA;dev section needs: + ip ip ipv6 ipaux iproute arp netlog ptclbsum iprouter plan9 nullmedium pktmedium netaux + ether netif netaux add ip section +ip + il + tcp + udp + ipifc + icmp + icmp6 mod section needs: + crypt + ipints Then we will add etherusb.</description>
     </item>
     <item>
+      <title>Jongling models beetween threads</title>
+      <link>https://lynxline.com/posts/jongling-models-beetween-threads/</link>
+      <pubDate>Sat, 18 Jan 2014 22:00:00 +0200</pubDate>
+      <guid>https://lynxline.com/posts/jongling-models-beetween-threads/</guid>
+      <description>&lt;p&gt;We know that in Qt the models are not thread-safe – they totally depend on your implementation.&lt;/p&gt;&#xA;&lt;p&gt;So what we may do to bypass model between threads?&lt;/p&gt;&#xA;&lt;p&gt;Guess that we have some models which implementation we can not adjust much or can not make thread-safe.&lt;/p&gt;&#xA;&lt;p&gt;Danger is that if some model is used somewhere (pointer to model, saved QModelIndex, etc), then when we move model object to another thread, for some resource consuming processing,&lt;/p&gt;</description>
+    </item>
+    <item>
       <title>Lab 23, hard disk or SD card</title>
       <link>https://lynxline.com/posts/lab-23-hard-disk-or-sd-card/</link>
       <pubDate>Thu, 02 Jan 2014 09:01:28 +0200</pubDate>
@@ -91,6 +224,13 @@
       <pubDate>Sun, 15 Dec 2013 12:02:49 +0200</pubDate>
       <guid>https://lynxline.com/posts/lab-21-porting-usbd-fixed-in-allocb-see-usb-in-actions/</guid>
       <description>From previous lab 20 we got /dev/usb connected in our system, but what to do with it? Different systems handling usb in different ways, but Inferno and Plan9 has /dev/usb just as communication filesystem which should managed not by kernel but user-space process usbd which by communication with the file server manages the connectivity and start appropriate drivers for connected usb devices.&#xA;My first attempt was to have a look at original Inferno OS used to see possibilities to just reuse it.</description>
+    </item>
+    <item>
+      <title>Small news about Inferno-Rpi Labs</title>
+      <link>https://lynxline.com/posts/small-news-about-inferno-rpi-labs/</link>
+      <pubDate>Tue, 10 Dec 2013 00:00:00 +0200</pubDate>
+      <guid>https://lynxline.com/posts/small-news-about-inferno-rpi-labs/</guid>
+      <description>Just small update:&#xA;To keep track of codebase of the Inferno OS on Raspberry Pi Labs we created the google code project to keep the repository and do other stuff related to the labs managements:&#xA;https://code.google.com/p/inferno-rpi/&#xA;All Labs-Commits:&#xA;https://code.google.com/p/inferno-rpi/source/list</description>
     </item>
     <item>
       <title>Lab 20, devusb, usbdwc and firq, first step to usb</title>
@@ -119,6 +259,13 @@
       <pubDate>Fri, 15 Nov 2013 09:13:29 +0200</pubDate>
       <guid>https://lynxline.com/posts/lab-17-mmu-init/</guid>
       <description>What is fun about Inferno OS that our CPU may not have MMU support and still we are able to port Inferno to such architecture. That’s because Inferno OS implements Dis virtual machine and all users processes are actually Dis byte-codes interpreters on JIT compiled. So address space is virtual by software layer and it is very good for portability of the system.&#xA;Anyway, still it is good to have the MMU initialized (may be needed later to work with framebuffer) and it looks simple enough to do.</description>
+    </item>
+    <item>
+      <title>Qt and use of Cryptography – simple!</title>
+      <link>https://lynxline.com/posts/qt-and-use-of-cryptography-simple/</link>
+      <pubDate>Fri, 13 Sep 2013 22:00:00 +0200</pubDate>
+      <guid>https://lynxline.com/posts/qt-and-use-of-cryptography-simple/</guid>
+      <description>&lt;p&gt;In the light of latest news (Snowden et all) it is very clear that all developers should really take care of safety of all communications that your application could perform. In the world of desktop application developments it is often is decided to be postponed and just use plain text protocols or so and later switch to use of SSL. Surely we should pay more attention to use ciphers when any need of QtNetwork is considered.&lt;/p&gt;&#xA;&lt;p&gt;But what about using something different than just SSL? Let’s take a look at use of PGP in Qt Application. It is so good that there is great framework is already in place QCA (&lt;a href=&#34;http://delta.affinix.com/qca/&#34;&gt;http://delta.affinix.com/qca/&lt;/a&gt;). All we need is just to take a look at API and find a simple way of making ciphers.&lt;/p&gt;&#xA;&lt;p&gt;Let’s design very simple desktop application which can crypt some input text. I assume that have already installed &lt;em&gt;GnuPG&lt;/em&gt;, generated keys, configured &lt;em&gt;gpg-agent&lt;/em&gt;, installed and checked working &lt;em&gt;pinentry-qt/pinentry-gtk&lt;/em&gt;(we are on linux now). Then you have installed &lt;strong&gt;qca&lt;/strong&gt; and &lt;strong&gt;qca-gnupg&lt;/strong&gt;&lt;/p&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;emerge --ask qca qca-gnupg&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Just start &lt;em&gt;Qt Creator&lt;/em&gt;, choose to make Qt Gui application, add to pro file a linking to qca:&lt;/p&gt;</description>
     </item>
     <item>
       <title>Lab 16, Adding clocks, timers, converging to 9pi codes</title>
@@ -163,6 +310,20 @@
       <description>Interesting point we missed in lab10. Those are stubs that we have in main(): _div, _divu, _mod, _modu&#xA;Amazingly, I do not know what it is :),&#xA;Plan9/Inferno people, can you give a help regarding purpose of these references and way how they affect? (I will update the lab as I get more info about this)&#xA;It is clear that without them fixed you can not have print() call working and other stuff in the kernel.</description>
     </item>
     <item>
+      <title>Designing tree-like models</title>
+      <link>https://lynxline.com/posts/designing-tree-like-models/</link>
+      <pubDate>Fri, 12 Apr 2013 00:00:00 +0200</pubDate>
+      <guid>https://lynxline.com/posts/designing-tree-like-models/</guid>
+      <description>&lt;p&gt;We found that developers are often confused about implementing tree-like models using Qt classes. Now we can show some tricks and considerations about the way of designing them.&lt;/p&gt;&#xA;&lt;p&gt;First for some refreshment, let’s remind what you have for addressing the elements in the model. This is &lt;em&gt;QModelIndex&lt;/em&gt;, which have pointer to model that created the index object, row and column and plus a some pointer or id (&lt;em&gt;qint64&lt;/em&gt;) which can be used for addressing.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Overhead cost of using Qt models</title>
+      <link>https://lynxline.com/posts/overhead-cost-of-using-qt-models/</link>
+      <pubDate>Tue, 19 Feb 2013 23:00:00 +0200</pubDate>
+      <guid>https://lynxline.com/posts/overhead-cost-of-using-qt-models/</guid>
+      <description>I decided to run very simple test to have glance on performance of Qt models and overhead cost of using them.&#xA;Something very simple as make 1M random strings with random size (note: rnd_str(int) return some random string with specified size)&#xA;int n = 1000000; QStandardItemModel std(n, 1); for(int row =0; row &amp;lt;n; ++row) std.setData(std.index(row,0), rnd_str(rand() % 16)); versus just vector of strings&#xA;QVector&amp;lt;QString&amp;gt; vec; for(int i =0; i&amp;lt; n; ++i) vec.</description>
+    </item>
+    <item>
       <title>Lab 10, Bss, memory pools, malloc</title>
       <link>https://lynxline.com/posts/lab-10-bss-menpools-malloc/</link>
       <pubDate>Sat, 16 Feb 2013 09:45:03 +0200</pubDate>
@@ -182,6 +343,13 @@
       <pubDate>Thu, 24 Jan 2013 20:18:59 +0200</pubDate>
       <guid>https://lynxline.com/posts/lab-8-memory-model/</guid>
       <description>Now time to have a look at memory model. The BCM2835 gives next picture:&#xA;Actually when U-Boot pass the control, we have memory model equal to just physical addresses (middle column), so we just do not do anything we can perfectly sit with memory model equal with physical.&#xA;So then, our kernel is loaded at 0x8000, which is 32KB, and we are going to use the low 0-0x8000 memory part for kernel structures and kernel stack (which is not expected to be too much)</description>
+    </item>
+    <item>
+      <title>About Boost Multi-index Containers</title>
+      <link>https://lynxline.com/posts/about-boost-multi-index-containers/</link>
+      <pubDate>Sat, 29 Dec 2012 00:00:00 +0200</pubDate>
+      <guid>https://lynxline.com/posts/about-boost-multi-index-containers/</guid>
+      <description>&lt;p&gt;I really like Qt Template Library (QTL), but still have lack of some important functionality which is usually called multi-index. Anyway there is very powerful implementation existing in Boost. I really need these templates to establish relations between different data structures. I often use it as internal “engine” for different Proxy models that I use to manipulate models.&lt;/p&gt;&#xA;&lt;p&gt;So, I would like to remind and give quick recepies about such powerful module in Boost as multi_index_container. We know and intensively use standard STL templates for storing and access to data as lists, vectors, maps, hashes. There are a lot of information about them and very well explained.&lt;/p&gt;&#xA;&lt;p&gt;Things get complicated when there is a need to store and access to objects by more then one set of keys or their combinations. Usually developers start from creation of two maps or hashes plus a log of synchronization of then, but later with increase of keys codes became much more complicated due to synchronization of hashes, insertions, key renames, removes etc. Also it is getting very hard to understand the computation complexity of every operation taken with such storage. And of course creation of such “bicycles” leads to high amount of bugs, needs of optimizations, etc.&lt;/p&gt;&#xA;&lt;p&gt;Of course everything is invented before us and in Boost libraries you will find a module for solving these problems – boost::multi_index. Great advantage – speed, multi_index is very fast. But documentation for this module is, let’s say, complicated for understanding and especially for quick start, so newbies try to avoid the use of the module. And of course compiler messages about error due to use of multi_index templates give high amount of confusion.&lt;/p&gt;&#xA;&lt;p&gt;I would like to remove confusion and give simple cases that will be good recipes of use. I will use it together with Qt classes for demo:&lt;/p&gt;</description>
     </item>
     <item>
       <title>Lab 7, linking, planning next</title>
@@ -231,6 +399,160 @@
       <pubDate>Fri, 16 Nov 2012 21:18:41 +0200</pubDate>
       <guid>https://lynxline.com/posts/lab-1-compiler/</guid>
       <description>Let’s start with tools that we need to just build the OS for ARM. First clone official inferno os repository from google code repository:&#xA;1# hg clone https://code.google.com/p/inferno-os/ What we need to move further? We need the ARM cross compiler, linker, etc. For this, let’s just compile inferno targeting mac as host (we are on mac now, so we will get hosted inferno for mac as result):&#xA;1# cd inferno-os/ 2# INF_ROOT=`pwd` perl -i -pe &amp;#39;s/^ROOT=.</description>
+    </item>
+    <item>
+      <title>Porting Inferno OS to Raspberry Pi</title>
+      <link>https://lynxline.com/posts/porting-inferno-os-to-raspberry-pi/</link>
+      <pubDate>Fri, 16 Nov 2012 12:00:00 +0200</pubDate>
+      <guid>https://lynxline.com/posts/porting-inferno-os-to-raspberry-pi/</guid>
+      <description>We started a small and exciting project just for fun as “Porting Inferno OS to Raspberry Pi”. Of course we would like to run it there as native, not hosted. It was always declared that this OS is very simple for porting to new platforms, so let’s just research this and reach new distilled experiences of system programming. Also this OS is very small, simple and easy to tweak for research purposes.</description>
+    </item>
+    <item>
+      <title>Inferno OS</title>
+      <link>https://lynxline.com/posts/inferno-os/</link>
+      <pubDate>Sun, 11 Nov 2012 22:00:00 +0200</pubDate>
+      <guid>https://lynxline.com/posts/inferno-os/</guid>
+      <description>We are planning some posts about Inferno operating system. Stay tuned!</description>
+    </item>
+    <item>
+      <title>Trac&#43;Perforce</title>
+      <link>https://lynxline.com/posts/tracperforce/</link>
+      <pubDate>Sat, 20 Oct 2012 22:00:00 +0200</pubDate>
+      <guid>https://lynxline.com/posts/tracperforce/</guid>
+      <description>People who are using Trac and have a need of possibility binding it with Perforce repository can find that appropriate plugin is dead and no support is possible. So I would like to do some refresh – I was able to do some fixing and made these plugins available for use with Trac 1.0 for win32. Attaching to the post.&#xA;pyprotocols-0.9.3-py2.7-win32&#xA;PyPerforce-0.4-py2.7-win32&#xA;TracPerforce-0.5dev-py2.7</description>
+    </item>
+    <item>
+      <title>Designing Undo for large-scale projects. Going deep.</title>
+      <link>https://lynxline.com/posts/designing-undo-for-large-scale-projects-going-deep/</link>
+      <pubDate>Mon, 02 Apr 2012 13:00:00 +0200</pubDate>
+      <guid>https://lynxline.com/posts/designing-undo-for-large-scale-projects-going-deep/</guid>
+      <description>&lt;p&gt;That is huge architect-level article about designing undo in large-scale project, welcome under &lt;em&gt;more&lt;/em&gt; label…&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Stack vs Heap, Pimpl, performance</title>
+      <link>https://lynxline.com/posts/stack-vs-heap-pimpl-performance/</link>
+      <pubDate>Tue, 07 Feb 2012 01:00:00 +0200</pubDate>
+      <guid>https://lynxline.com/posts/stack-vs-heap-pimpl-performance/</guid>
+      <description>&lt;p&gt;This post is mostly about C++ but because it involves practices often used with Qt programming too, I tagged it with Qt. Also should be interesting for C++ gurus&lt;/p&gt;&#xA;&lt;p&gt;So, you know that Qt uses Pimpl (&lt;a href=&#34;http://www.qtcentre.org/wiki/index.php?title=Private_implementation&#34;&gt;Private Implementation&lt;/a&gt; or &lt;a href=&#34;http://en.wikipedia.org/wiki/Opaque_pointer#C.2B.2B&#34;&gt;Opaque pointer&lt;/a&gt;) which is very effective mechanism to keep binary compatibility between Qt versions. I use it very often too, but mostly not because of binary compatibility needs, but because of possibility of hiding internals and implementations especialities into cpp files.&lt;/p&gt;&#xA;&lt;p&gt;And there is something even more important, such practice allows to avoid including 3-rd party headers from your headers – your API – you know, it can often happen that you need some “utility” api, but because of including the header it leads to bring bunch of unexpected includes coming from this “utility”. Even worse, these 3-rd party headers that you probably can not even control, bring unexpected defines, pragmas etc that can makes you puzzled for hours to understand &lt;em&gt;why?, how? and in which order?&lt;/em&gt; it conflicts with your coding.&lt;/p&gt;&#xA;&lt;p&gt;Using &lt;em&gt;d&lt;/em&gt; pointer (Private Implementation) allows really avoid including these unneeded headers, but recently in huge project it makes me to think about performance issues.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Jongling Qt models 2, Composition Gem</title>
+      <link>https://lynxline.com/posts/jongling-qt-models-2-composition-gem/</link>
+      <pubDate>Mon, 19 Sep 2011 14:00:00 +0200</pubDate>
+      <guid>https://lynxline.com/posts/jongling-qt-models-2-composition-gem/</guid>
+      <description>We are back to models again :). In Qt you may find a lot of flexibilities for Model-View programming. Especially due to proxies to do filtering, sorting or even rearranging data (see Jongling Qt models) to be organized in any way that is good for you. You can have one data source model which you then split in “flows” of data with chains of proxy models which have ends at views.</description>
+    </item>
+    <item>
+      <title>Submiting a Qt App to Mac App Store</title>
+      <link>https://lynxline.com/posts/submiting-to-mac-app-store/</link>
+      <pubDate>Wed, 29 Jun 2011 21:00:00 +0200</pubDate>
+      <guid>https://lynxline.com/posts/submiting-to-mac-app-store/</guid>
+      <description>&lt;p&gt;Maybe you already thought about creation a Qt application for Mac App Store or submitting an existing one. While I am on vacations I made a probe of such possibility – you may know that Apple and Nokia developing now different ecosystems of languages/libraries and you may expect to have troubles of bypassing Qt application into Mac App Store. Anyway I found that it is not so complicated as expected, though it took time to do all preparations, my application passed and was published in store with first attempt.&lt;/p&gt;&#xA;&lt;p&gt;For long time I had one application in my attic. It was an interesting experiment for studying and remembering foreign words. This application do kind of training by repeating words and force you to type correct spelling while application pronounce it to you using TTS (surely you need high-quality voice engine – I used voices from Infovox iVox). That was pretty effective and helped me a lot for studying new words and forming active vocabulary for Norwegian. Because of hearing, reading and typing it makes very effective associations in your brains. The application is cross-platform and requires only QtGui, QtXml and QtCore, also qt plugins are not need.&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;http://lynxline.com/wp-content/uploads/2011/06/TogMeg-Screenshot-1.png&#34;&gt;&lt;img src=&#34;TogMeg-Screenshot-1-300x238.png&#34; alt=&#34;&#34;&gt;&lt;/a&gt;&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>QtSpeech, say “Hello World!”</title>
+      <link>https://lynxline.com/posts/qtspeech-say-hello-world/</link>
+      <pubDate>Thu, 10 Feb 2011 16:00:00 +0200</pubDate>
+      <guid>https://lynxline.com/posts/qtspeech-say-hello-world/</guid>
+      <description>&lt;p&gt;I am glad to announce new small project that got first release – &lt;a href=&#34;http://gitorious.org/qt-speech&#34;&gt;QtSpeech&lt;/a&gt;.&lt;/p&gt;&#xA;&lt;p&gt;This is library providing Qt-like interface to system TTS (text-to-speech) engines to allow your application to say “Hello World!”.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>SuperHybrids part 2, now Qt &#43; PySide</title>
+      <link>https://lynxline.com/posts/superhybrids-part-2-now-qt-pyside/</link>
+      <pubDate>Mon, 04 Oct 2010 11:00:00 +0200</pubDate>
+      <guid>https://lynxline.com/posts/superhybrids-part-2-now-qt-pyside/</guid>
+      <description>&lt;p&gt;I would like to return to a topic that I opened few months ago – about creation of “&lt;strong&gt;hybrid&lt;/strong&gt;” applications consisting of one part of c++ code and another part is python based, plus both part access each other with Qt-like Api, so they understand QString, etc and can exchange qt signals between those two parts. Even more, c++ part of application can generate python qt-like code to execute during &lt;em&gt;runtime&lt;/em&gt;, he-he… In &lt;a href=&#34;qt-python-superhybrids&#34;&gt;my previous post&lt;/a&gt; I explained how to implement this based on PyQt libraries. Also it can be interpreted as embedding PySide into Qt applications.&lt;/p&gt;&#xA;&lt;p&gt;I got a lot of questions about this ideas, but one of frequent questions was about doing same with PySide. Well, PySide is &lt;strong&gt;LGPL&lt;/strong&gt; so this makes the framework applicable for much more projects. So, let’s have a try of doing same but with &lt;strong&gt;PySide&lt;/strong&gt; now.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Jongling Qt models</title>
+      <link>https://lynxline.com/posts/jongling-qt-models/</link>
+      <pubDate>Mon, 30 Aug 2010 11:00:00 +0200</pubDate>
+      <guid>https://lynxline.com/posts/jongling-qt-models/</guid>
+      <description>&lt;p&gt;When you work intensively with data in your application then soon or not but you will realize that the best way of keeping them is some model object inherits from QAbstractItemModel, then data are hidden inside implementation of model. Adding, removing and modification are accessible through your API of the model class and it calls for appropriate model modifications (like beginInsertRows/endInsertRows). If you implement it in the way, then it is ideal for developer to use it in vews, operate with datas, implementing undo (see previous post: &lt;a href=&#34;http://lynxline.com/undo-in-complex-qt-projects/&#34;&gt;Undo in complex Qt projects&lt;/a&gt;).&lt;/p&gt;&#xA;&lt;p&gt;It is often situation when all application data are some kind of hierarchical tree of objects and properties. So, all of them can be kept in just one tree-like model class, but I see that developers do not use the approach and it happens because they do not see how some selective piece of data can be shown or have expectations of implementing own view classes, which is not trivial though and you may spent too much efforts there. Instead a lot of code related to synchronization between models can appear and it leads to complication of logic.&lt;/p&gt;&#xA;&lt;p&gt;Same time, it can be resolved by implementation proxy models and use just standard view classes from Qt which are very effective. And I would like to show here that it is really simple:&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Undo in complex Qt projects</title>
+      <link>https://lynxline.com/posts/undo-in-complex-qt-projects/</link>
+      <pubDate>Wed, 28 Jul 2010 11:00:00 +0200</pubDate>
+      <guid>https://lynxline.com/posts/undo-in-complex-qt-projects/</guid>
+      <description>&lt;p&gt;&lt;strong&gt;UPDATE&lt;/strong&gt;: You may consider studying more advanced techniques described in second “undo” article: &lt;a href=&#34;http://lynxline.com/designing-undo-for-large-scale-projects-going-deep/&#34;&gt;Designing Undo for large-scale projects. Going deep.&lt;/a&gt;&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Qt Python SuperHybrids</title>
+      <link>https://lynxline.com/posts/qt-python-superhybrids/</link>
+      <pubDate>Mon, 19 Jul 2010 15:00:00 +0200</pubDate>
+      <guid>https://lynxline.com/posts/qt-python-superhybrids/</guid>
+      <description>&lt;p&gt;You may know about PyQt – python bindings to Qt frameworks. They are great and allow to prototype gui Qt based code in very fast way. To my mind you can develop faster in 1.5-2 times comparing to same development cycle with Qt. Well, development is little different – you do not have compilation stage, but need to be more cautions about testing to be sure that all branches of executed code are tested, because you never know until they are executed at least once.&lt;/p&gt;&#xA;&lt;p&gt;Currently you can find PyQt even for Maemo – &lt;a href=&#34;http://forums.internettablettalk.com/showthread.php?s=3d53f32b5fe63a5fbd4b64211a4d4676&amp;amp;t=42754&#34;&gt;link&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;&lt;img src=&#34;PyQt-Maemo.jpg&#34; alt=&#34;PyQt-Maemo&#34;&gt;&lt;/p&gt;&#xA;&lt;p&gt;Anyway, PyQt is great, python programming is fast, but one of frequently asked questions is –&lt;br&gt;&#xA;&lt;em&gt;How can I integrate python scripting in my application and operate Qt Api from my scripts?, and why not?&lt;/em&gt;&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Encode BuildId or Version into Application</title>
+      <link>https://lynxline.com/posts/encode-buildid-or-version-into-application/</link>
+      <pubDate>Wed, 09 Jun 2010 14:00:00 +0200</pubDate>
+      <guid>https://lynxline.com/posts/encode-buildid-or-version-into-application/</guid>
+      <description>There is very convenient way to encode identification of builds into applications. Then, for instance, you can show in about dialog something like: Version 20100609. Here is snippet of code:&#xA;QString buildId() { QString embeddedDate(__DATE__); QString m = embeddedDate.left(3); QStringList months; months &amp;lt;&amp;lt; &amp;#34;Jan&amp;#34; &amp;lt;&amp;lt; &amp;#34;Feb&amp;#34; &amp;lt;&amp;lt; &amp;#34;Mar&amp;#34; &amp;lt;&amp;lt; &amp;#34;Apr&amp;#34; &amp;lt;&amp;lt; &amp;#34;May&amp;#34; &amp;lt;&amp;lt; &amp;#34;Jun&amp;#34; &amp;lt;&amp;lt; &amp;#34;Jul&amp;#34; &amp;lt;&amp;lt; &amp;#34;Aug&amp;#34; &amp;lt;&amp;lt; &amp;#34;Sep&amp;#34; &amp;lt;&amp;lt; &amp;#34;Oct&amp;#34; &amp;lt;&amp;lt; &amp;#34;Nov&amp;#34; &amp;lt;&amp;lt; &amp;#34;Dec&amp;#34;; int month = months.indexOf(m) + 1; int day = embeddedDate.</description>
+    </item>
+    <item>
+      <title>Mac: mini font</title>
+      <link>https://lynxline.com/posts/mac-mini-font/</link>
+      <pubDate>Wed, 14 Apr 2010 12:00:00 +0200</pubDate>
+      <guid>https://lynxline.com/posts/mac-mini-font/</guid>
+      <description>&lt;p&gt;On Mac you can often see the usage of two system fonts in applications. Second one “Mini” is convenient to use when you would like to have a lot of “mini” controls – mostly you can get it by applying Qt::WA_MacMiniSize. Well then the font is coming from mac style, but what if the font is needed as QFont object?&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>New Site Design</title>
+      <link>https://lynxline.com/posts/new-site-design/</link>
+      <pubDate>Tue, 02 Feb 2010 00:00:00 +0200</pubDate>
+      <guid>https://lynxline.com/posts/new-site-design/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Copy Folder on Mac and Windows</title>
+      <link>https://lynxline.com/posts/copy-folder-on-mac-and-windows/</link>
+      <pubDate>Mon, 23 Nov 2009 11:00:00 +0200</pubDate>
+      <guid>https://lynxline.com/posts/copy-folder-on-mac-and-windows/</guid>
+      <description>&lt;p&gt;Developers can often encounter next problem: there is required files and folders manipulations which needed to be implemented in application. For one side there is enough API to do it Qt, but maybe it is too much code to handle all reads/writes, then you need to worry about some progress message, then it could be that additional thread is required because of blocking operations. So the simple operation can make “just copying” code complicated enough.&lt;/p&gt;&#xA;&lt;p&gt;Why not use Explorer on Windows or Fnder on Mac?&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Show in Finder / Show in Explorer</title>
+      <link>https://lynxline.com/posts/show-in-finder-show-in-explorer/</link>
+      <pubDate>Thu, 10 Sep 2009 12:00:00 +0200</pubDate>
+      <guid>https://lynxline.com/posts/show-in-finder-show-in-explorer/</guid>
+      <description>&lt;p&gt;It happens often when for integration purposes or for making easy way to navigate to files you need to have such action “Show in Finder” on mac or “Show in Explorer” on windows. Well, the code is pretty simple:&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Styling Lists on Mac</title>
+      <link>https://lynxline.com/posts/styling-lists-on-mac/</link>
+      <pubDate>Sat, 19 Apr 2008 20:00:00 +0200</pubDate>
+      <guid>https://lynxline.com/posts/styling-lists-on-mac/</guid>
+      <description>&lt;p&gt;Here is QTreeView on Mac that I usually use for lists in my applications. Actually it is designed to be in Mac style, but still it is different and you feel that it is not good and looks like alien in Mac. Let’s do something with style sheets:&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Continue Preferences Window</title>
+      <link>https://lynxline.com/posts/continue-preferences-window/</link>
+      <pubDate>Fri, 11 Apr 2008 12:00:00 +0200</pubDate>
+      <guid>https://lynxline.com/posts/continue-preferences-window/</guid>
+      <description>&lt;p&gt;Let’s continue our previous blog post regarding preferences window. Of course it looks great and native look-and-feel on Mac, but what about having styles for both platforms to make user feel comfortably. I tried to apply Firefox-like style of preferences window, you can see screenshot above.&lt;/p&gt;&#xA;&lt;p&gt;Code:&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Preferences Window</title>
+      <link>https://lynxline.com/posts/preferences-window/</link>
+      <pubDate>Sun, 06 Apr 2008 23:00:00 +0200</pubDate>
+      <guid>https://lynxline.com/posts/preferences-window/</guid>
+      <description>How to implement Preferences Window in Qt that look and feel like pure Mac application? Well, first problem is, that it should be window instead of dialog, even QMainWindow to have unifiedTitleAndToolBarOnMac property (allowed only for QMainWindow now). So let’s define and implement it as QMainWindow.&#xA;Problem #2: We have empty menu bar when activates this window – we can use next trick: in our main window class we define such method like void createFileMenu(QMenu *), this method should fill QMenu with actions, separators and sub-menus, and let’s use this method for both windows, then we can easily create menu bar in Preferences Window and fill it with actions from Main Window.</description>
+    </item>
+    <item>
+      <title>Lists and Top Right corner</title>
+      <link>https://lynxline.com/posts/lists-and-top-right-corner/</link>
+      <pubDate>Sat, 05 Apr 2008 13:00:00 +0200</pubDate>
+      <guid>https://lynxline.com/posts/lists-and-top-right-corner/</guid>
+      <description>&lt;p&gt;QListView Mac&lt;/p&gt;&#xA;&lt;p&gt;If you have lists or tables in your application you can see that Qt widgets have scroll bar for full height of widget instead of only viewport area. What to do to make it looks like native mac widget? It is easy. Remember that QAbstractScrollArea has method: addScrollBarWidget()&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>List Headers in Mac style</title>
+      <link>https://lynxline.com/posts/list-headers-in-mac-style/</link>
+      <pubDate>Fri, 04 Apr 2008 00:00:00 +0200</pubDate>
+      <guid>https://lynxline.com/posts/list-headers-in-mac-style/</guid>
+      <description>&lt;p&gt;Using QListView or QTableView you can see that style is not what you can expect on Mac platform. As solution you can use next qstylesheet code to apply&lt;/p&gt;&#xA;&lt;p&gt;to your widgets:&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>

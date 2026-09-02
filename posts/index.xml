@@ -6,8 +6,15 @@
     <description>Recent content in Posts on LynxLine</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 03 Mar 2024 11:21:28 +0100</lastBuildDate>
+    <lastBuildDate>Wed, 02 Sep 2026 12:00:00 +0200</lastBuildDate>
     <atom:link href="https://lynxline.com/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>The i-have-adhd Skill for Claude Code</title>
+      <link>https://lynxline.com/posts/i-have-adhd-claude-skill/</link>
+      <pubDate>Wed, 02 Sep 2026 12:00:00 +0200</pubDate>
+      <guid>https://lynxline.com/posts/i-have-adhd-claude-skill/</guid>
+      <description>Every AI assistant has the same tic: three paragraphs of throat-clearing before it tells you the thing you actually asked. &amp;ldquo;Let me look into that&amp;hellip; I should also mention&amp;hellip; here&amp;rsquo;s a summary of what I found&amp;hellip;&amp;rdquo; By the time the answer shows up, you&amp;rsquo;ve lost the thread.&#xA;ayghri/i-have-adhd is a Claude Code skill that just turns that behavior off. Once it&amp;rsquo;s active it rewrites how the model talks:&#xA;Answer or next action comes first, always Multi-step work gets numbered, one bounded action per step No preamble, no recap, no closing summary Progress carries across turns instead of resetting each time Time estimates are concrete, not &amp;ldquo;soon&amp;rdquo; or &amp;ldquo;shortly&amp;rdquo; It was built for ADHD accessibility, but it&amp;rsquo;s picked up thousands of installs from people who just want tools that don&amp;rsquo;t bury the lede.</description>
+    </item>
     <item>
       <title>Init</title>
       <link>https://lynxline.com/posts/first_post/</link>

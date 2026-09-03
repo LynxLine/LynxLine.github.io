@@ -17,26 +17,26 @@
     
 
     
-    <title>C</title>
+    <title>Chasing an Infinite Loop in notbit</title>
     <meta name="description" content="">
-    <meta name="keywords" content=''>
+    <meta name="keywords" content='C, Bitmessage, Debugging'>
 
-    <meta property="og:url" content="https://lynxline.com/tags/c/">
+    <meta property="og:url" content="https://lynxline.com/posts/notbit-infinite-loop/">
     <meta property="og:type" content="website">
-    <meta property="og:title" content="C">
+    <meta property="og:title" content="Chasing an Infinite Loop in notbit">
     <meta property="og:description" content="">
     <meta property="og:image" content="https://lynxline.com/images/lynx.jpg">
     <meta property="og:image:secure_url" content="https://lynxline.com/images/lynx.jpg">
 
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="C">
+    <meta name="twitter:title" content="Chasing an Infinite Loop in notbit">
     <meta name="twitter:description" content="">
-    <meta property="twitter:domain" content="https://lynxline.com/tags/c/">
-    <meta property="twitter:url" content="https://lynxline.com/tags/c/">
+    <meta property="twitter:domain" content="https://lynxline.com/posts/notbit-infinite-loop/">
+    <meta property="twitter:url" content="https://lynxline.com/posts/notbit-infinite-loop/">
     <meta name="twitter:image" content="https://lynxline.com/images/lynx.jpg">
 
     
-    <link rel="canonical" href="https://lynxline.com/tags/c/" />
+    <link rel="canonical" href="https://lynxline.com/posts/notbit-infinite-loop/" />
 
     
     <link rel="stylesheet" type="text/css" href="/css/normalize.min.css" media="print">
@@ -145,66 +145,47 @@
     </nav>
 </header>
 <main id="content">
-    <div class="container list-posts">
+    <div class="post container">
+    <div class="post-header-section">
+        <h1>Chasing an Infinite Loop in notbit</h1>
+        <small role="doc-subtitle"></small>
+        <p class="post-date">December 14, 2020
+        
+        </p>
 
-    <h1 class="list-title">C</h1>
+        <ul class="post-tags">
+        
+            <li class="post-tag"><a href="https://lynxline.com/tags/c">C</a></li>
+        
+            <li class="post-tag"><a href="https://lynxline.com/tags/bitmessage">Bitmessage</a></li>
+        
+            <li class="post-tag"><a href="https://lynxline.com/tags/debugging">Debugging</a></li>
+        
+        </ul>
+    </div>
 
-    
+    <div class="post-content">
+        <p>
+            <p>It&rsquo;s genuinely great to have a Bitmessage client like <a href="https://github.com/bpeel/notbit">notbit</a> — no Python, no GUI, just a small C daemon you run from a terminal. Most Bitmessage clients drag in a whole GUI toolkit and a Python runtime; notbit needs none of that.</p>
+<p>It did have an ugly bug though: it would lock up at 100% CPU after running a while, with nothing in the logs pointing at why. It only happened once or a few times a day, which made it miserable to chase. The cause turned out to be in <code>check_timer_sources()</code>: a timer source gets removed and reinserted in the same list pass, and the two operations corrupt the linked list into a small self-referencing loop — the next pass through it spins forever.</p>
+<p>Good to see it&rsquo;s fixed now.</p>
 
-    <h2 class="posts-year">2020</h2><article class="post-title">
-    <a href="https://lynxline.com/posts/notbit-infinite-loop/" class="post-link">Chasing an Infinite Loop in notbit</a>
-    <div class="flex-break"></div>
-    <span class="post-date">December 14, 2020</span>
-</article>
+        </p>
+        
+    </div>
 
-    
-
-    <h2 class="posts-year">2014</h2><article class="post-title">
-    <a href="https://lynxline.com/posts/jongling-models-beetween-threads/" class="post-link">Jongling models beetween threads</a>
-    <div class="flex-break"></div>
-    <span class="post-date">January 18, 2014</span>
-</article>
-
-    
-
-    <h2 class="posts-year">2013</h2><article class="post-title">
-    <a href="https://lynxline.com/posts/qt-and-use-of-cryptography-simple/" class="post-link">Qt and use of Cryptography – simple!</a>
-    <div class="flex-break"></div>
-    <span class="post-date">September 13, 2013</span>
-</article>
-<article class="post-title">
-    <a href="https://lynxline.com/posts/designing-tree-like-models/" class="post-link">Designing tree-like models</a>
-    <div class="flex-break"></div>
-    <span class="post-date">April 12, 2013</span>
-</article>
-<article class="post-title">
-    <a href="https://lynxline.com/posts/overhead-cost-of-using-qt-models/" class="post-link">Overhead cost of using Qt models</a>
-    <div class="flex-break"></div>
-    <span class="post-date">February 19, 2013</span>
-</article>
+    <div class="prev-next">
+        
+    </div>
 
     
-
-    <h2 class="posts-year">2012</h2><article class="post-title">
-    <a href="https://lynxline.com/posts/about-boost-multi-index-containers/" class="post-link">About Boost Multi-index Containers</a>
-    <div class="flex-break"></div>
-    <span class="post-date">December 29, 2012</span>
-</article>
-<article class="post-title">
-    <a href="https://lynxline.com/posts/designing-undo-for-large-scale-projects-going-deep/" class="post-link">Designing Undo for large-scale projects. Going deep.</a>
-    <div class="flex-break"></div>
-    <span class="post-date">April 2, 2012</span>
-</article>
-<article class="post-title">
-    <a href="https://lynxline.com/posts/stack-vs-heap-pimpl-performance/" class="post-link">Stack vs Heap, Pimpl, performance</a>
-    <div class="flex-break"></div>
-    <span class="post-date">February 7, 2012</span>
-</article>
-
     
-
+    
 </div>
 
+
+
+    
 
         </main><footer class="footer">
     

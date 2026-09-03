@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Bitmessage on LynxLine</title>
+    <link>https://lynxline.com/tags/bitmessage/</link>
+    <description>Recent content in Bitmessage on LynxLine</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 14 Dec 2020 10:00:00 +0200</lastBuildDate>
+    <atom:link href="https://lynxline.com/tags/bitmessage/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Chasing an Infinite Loop in notbit</title>
+      <link>https://lynxline.com/posts/notbit-infinite-loop/</link>
+      <pubDate>Mon, 14 Dec 2020 10:00:00 +0200</pubDate>
+      <guid>https://lynxline.com/posts/notbit-infinite-loop/</guid>
+      <description>It&amp;rsquo;s genuinely great to have a Bitmessage client like notbit — no Python, no GUI, just a small C daemon you run from a terminal. Most Bitmessage clients drag in a whole GUI toolkit and a Python runtime; notbit needs none of that.&#xA;It did have an ugly bug though: it would lock up at 100% CPU after running a while, with nothing in the logs pointing at why. It only happened once or a few times a day, which made it miserable to chase.</description>
+    </item>
+  </channel>
+</rss>

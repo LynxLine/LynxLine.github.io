@@ -13,7 +13,7 @@
       <link>https://lynxline.com/posts/small-news-about-inferno-rpi-labs/</link>
       <pubDate>Tue, 10 Dec 2013 00:00:00 +0200</pubDate>
       <guid>https://lynxline.com/posts/small-news-about-inferno-rpi-labs/</guid>
-      <description>Just small update:&#xA;To keep track of codebase of the Inferno OS on Raspberry Pi Labs we created the google code project to keep the repository and do other stuff related to the labs managements:&#xA;https://code.google.com/p/inferno-rpi/&#xA;All Labs-Commits:&#xA;https://code.google.com/p/inferno-rpi/source/list</description>
+      <description>Just small update:&#xA;To keep track of codebase of the Inferno OS on Raspberry Pi Labs we created the google code project to keep the repository and do other stuff related to the labs managements:&#xA;https://github.com/yshurik/inferno-rpi&#xA;All Labs-Commits:&#xA;https://github.com/yshurik/inferno-rpi/commits/master</description>
     </item>
     <item>
       <title>Trac&#43;Perforce</title>

@@ -34,7 +34,7 @@
       <link>https://lynxline.com/posts/inferno-raspberry-pi-image-alpha-release1/</link>
       <pubDate>Sun, 02 Mar 2014 21:00:00 +0200</pubDate>
       <guid>https://lynxline.com/posts/inferno-raspberry-pi-image-alpha-release1/</guid>
-      <description>So, we reached the point when we are able to package some small distribution.&#xA;It can:&#xA;Boot Kernel&#xA;Mount file system (kfs)&#xA;Init Usb subsystem&#xA;Load Keyboard driver (usb)&#xA;Load Ethernet driver (usb)&#xA;Initialize Net subsystem, obtain IP via DHCP&#xA;Start ndb/cs&#xA;Launch shell – console&#xA;It can not:&#xA;No mouse driver yet&#xA;Can not launch wm/wm (maybe due to mouse)&#xA;Download Link (~18MB)</description>
+      <description>So, we reached the point when we are able to package some small distribution.&#xA;It can:&#xA;Boot Kernel&#xA;Mount file system (kfs)&#xA;Init Usb subsystem&#xA;Load Keyboard driver (usb)&#xA;Load Ethernet driver (usb)&#xA;Initialize Net subsystem, obtain IP via DHCP&#xA;Start ndb/cs&#xA;Launch shell – console&#xA;It can not:&#xA;No mouse driver yet&#xA;Can not launch wm/wm (maybe due to mouse)&#xA;Download Link (~18MB) — no longer available</description>
     </item>
     <item>
       <title>Trac&#43;Perforce</title>

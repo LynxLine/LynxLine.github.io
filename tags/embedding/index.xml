@@ -13,7 +13,7 @@
       <link>https://lynxline.com/posts/inferno-rpi-project-moved/</link>
       <pubDate>Sun, 15 Nov 2015 18:00:00 +0200</pubDate>
       <guid>https://lynxline.com/posts/inferno-rpi-project-moved/</guid>
-      <description>Due to the closure of google code, the project is now moved to: https://bitbucket.org/infpi/inferno-rpi&#xA;Also added some minor changes and merged with latest inferno-os codebase changes. So returning a little to the project activity and think to keep the project based on dos partition which will be very simple for demo purposes.&#xA;Also think to keep in sync repo on github: https://github.com/yshurik/inferno-rpi</description>
+      <description>Due to the closure of google code, the project is now moved to: https://github.com/yshurik/inferno-rpi&#xA;Also added some minor changes and merged with latest inferno-os codebase changes. So returning a little to the project activity and think to keep the project based on dos partition which will be very simple for demo purposes.&#xA;Also think to keep in sync repo on github: https://github.com/yshurik/inferno-rpi</description>
     </item>
     <item>
       <title>SuperHybrids part 2, now Qt &#43; PySide</title>

@@ -83,14 +83,14 @@
       <link>https://lynxline.com/posts/inferno-raspberry-pi-image-beta1/</link>
       <pubDate>Sat, 03 May 2014 01:00:00 +0200</pubDate>
       <guid>https://lynxline.com/posts/inferno-raspberry-pi-image-beta1/</guid>
-      <description>We are happy to announce the beta release of native port of Inferno OS to Raspberry Pi.&#xA;There are some important points reached for this stage:&#xA;Mouse driver&#xA;Working wm/wm&#xA;Default memory split 240/16&#xA;A lot of small fixes and polishing&#xA;Download Link (~23MB)&#xA;Repository: http://code.google.com/p/inferno-rpi/</description>
+      <description>We are happy to announce the beta release of native port of Inferno OS to Raspberry Pi.&#xA;There are some important points reached for this stage:&#xA;Mouse driver&#xA;Working wm/wm&#xA;Default memory split 240/16&#xA;A lot of small fixes and polishing&#xA;Download Link (~23MB) — no longer available&#xA;Repository: https://github.com/yshurik/inferno-rpi</description>
     </item>
     <item>
       <title>Inferno raspberry pi image – alpha release (alpha1)</title>
       <link>https://lynxline.com/posts/inferno-raspberry-pi-image-alpha-release1/</link>
       <pubDate>Sun, 02 Mar 2014 21:00:00 +0200</pubDate>
       <guid>https://lynxline.com/posts/inferno-raspberry-pi-image-alpha-release1/</guid>
-      <description>So, we reached the point when we are able to package some small distribution.&#xA;It can:&#xA;Boot Kernel&#xA;Mount file system (kfs)&#xA;Init Usb subsystem&#xA;Load Keyboard driver (usb)&#xA;Load Ethernet driver (usb)&#xA;Initialize Net subsystem, obtain IP via DHCP&#xA;Start ndb/cs&#xA;Launch shell – console&#xA;It can not:&#xA;No mouse driver yet&#xA;Can not launch wm/wm (maybe due to mouse)&#xA;Download Link (~18MB)</description>
+      <description>So, we reached the point when we are able to package some small distribution.&#xA;It can:&#xA;Boot Kernel&#xA;Mount file system (kfs)&#xA;Init Usb subsystem&#xA;Load Keyboard driver (usb)&#xA;Load Ethernet driver (usb)&#xA;Initialize Net subsystem, obtain IP via DHCP&#xA;Start ndb/cs&#xA;Launch shell – console&#xA;It can not:&#xA;No mouse driver yet&#xA;Can not launch wm/wm (maybe due to mouse)&#xA;Download Link (~18MB) — no longer available</description>
     </item>
     <item>
       <title>Labs: Porting Inferno OS to Raspberry Pi</title>
@@ -307,7 +307,7 @@
       <link>https://lynxline.com/posts/lab-1-compiler/</link>
       <pubDate>Fri, 16 Nov 2012 21:18:41 +0200</pubDate>
       <guid>https://lynxline.com/posts/lab-1-compiler/</guid>
-      <description>Let’s start with tools that we need to just build the OS for ARM. First clone official inferno os repository from google code repository:&#xA;1# hg clone https://code.google.com/p/inferno-os/ What we need to move further? We need the ARM cross compiler, linker, etc. For this, let’s just compile inferno targeting mac as host (we are on mac now, so we will get hosted inferno for mac as result):&#xA;1# cd inferno-os/ 2# INF_ROOT=`pwd` perl -i -pe &amp;#39;s/^ROOT=.</description>
+      <description>Let’s start with tools that we need to just build the OS for ARM. First clone official inferno os repository from google code repository:&#xA;1# git clone https://github.com/inferno-os/inferno-os What we need to move further? We need the ARM cross compiler, linker, etc. For this, let’s just compile inferno targeting mac as host (we are on mac now, so we will get hosted inferno for mac as result):&#xA;1# cd inferno-os/ 2# INF_ROOT=`pwd` perl -i -pe &amp;#39;s/^ROOT=.</description>
     </item>
     <item>
       <title>Porting Inferno OS to Raspberry Pi</title>

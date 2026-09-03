@@ -13,28 +13,28 @@
       <link>https://lynxline.com/posts/inferno-rpi-0-6-release/</link>
       <pubDate>Mon, 08 Feb 2016 21:00:00 +0200</pubDate>
       <guid>https://lynxline.com/posts/inferno-rpi-0-6-release/</guid>
-      <description>Releasing Inferno-rpi-0.6&#xA;Changes:&#xA;Added devi2c&#xA;Added devspi&#xA;Added devgpio (GPIO)&#xA;Minor changes/adjustements&#xA;Boot to kernel-nogui.bin by default. Change config.txt or enter ; wm/wm&#xA;Download:&#xA;https://bitbucket.org/infpi/inferno-rpi/downloads/inferno-rpi-0.6.zip Installation:&#xA;Download latest zip package from https://bitbucket.org/infpi/inferno-rpi/downloads&#xA;Pepare SD card with first DOS partition with size less than 250 MB (vfat32 support is not complete)&#xA;Unzip all files to SD (boot.scr, kernel.bin, … – should in root of SD)&#xA;Boot Raspberry Pi&#xA;By default it starts “styxlisten -A tcp!</description>
+      <description>Releasing Inferno-rpi-0.6&#xA;Changes:&#xA;Added devi2c&#xA;Added devspi&#xA;Added devgpio (GPIO)&#xA;Minor changes/adjustements&#xA;Boot to kernel-nogui.bin by default. Change config.txt or enter ; wm/wm&#xA;Download:&#xA;https://github.com/yshurik/inferno-rpi/releases/download/v0.6/inferno-rpi-0.6.zip Installation:&#xA;Download latest zip package from https://github.com/yshurik/inferno-rpi/releases&#xA;Pepare SD card with first DOS partition with size less than 250 MB (vfat32 support is not complete)&#xA;Unzip all files to SD (boot.scr, kernel.bin, … – should in root of SD)&#xA;Boot Raspberry Pi&#xA;By default it starts “styxlisten -A tcp!</description>
     </item>
     <item>
       <title>Inferno-rpi-0.5 release</title>
       <link>https://lynxline.com/posts/inferno-rpi-0-5-release/</link>
       <pubDate>Sat, 09 Jan 2016 17:00:00 +0200</pubDate>
       <guid>https://lynxline.com/posts/inferno-rpi-0-5-release/</guid>
-      <description>Releasing Inferno-rpi-0.5&#xA;Changes:&#xA;Fixed wrong calculatons of memory pool sizes.&#xA;Support of Pi-1 models with 512MB RAM.&#xA;Update of sources from 9pi project: usbdwc, emmc, etherusb.&#xA;Added uartmini module from 9pi.&#xA;Use Mntgen by default for /n, /n/local, /n/remote&#xA;Boot to kernel-nogui.bin by default. Change config.txt or enter ; wm/wm&#xA;Download:&#xA;https://bitbucket.org/infpi/inferno-rpi/downloads/inferno-rpi-0.5.zip Installation:&#xA;Download latest zip package from https://bitbucket.org/infpi/inferno-rpi/downloads&#xA;Pepare SD card with first DOS partition with size less than 250 MB (vfat32 support is not complete)</description>
+      <description>Releasing Inferno-rpi-0.5&#xA;Changes:&#xA;Fixed wrong calculatons of memory pool sizes.&#xA;Support of Pi-1 models with 512MB RAM.&#xA;Update of sources from 9pi project: usbdwc, emmc, etherusb.&#xA;Added uartmini module from 9pi.&#xA;Use Mntgen by default for /n, /n/local, /n/remote&#xA;Boot to kernel-nogui.bin by default. Change config.txt or enter ; wm/wm&#xA;Download:&#xA;inferno-rpi-0.5.zip — no longer available Installation:&#xA;Download latest zip package from https://github.com/yshurik/inferno-rpi/releases&#xA;Pepare SD card with first DOS partition with size less than 250 MB (vfat32 support is not complete)</description>
     </item>
     <item>
       <title>Inferno-rpi-0.3 release</title>
       <link>https://lynxline.com/posts/inferno-rpi-0-3-release/</link>
       <pubDate>Thu, 19 Nov 2015 22:00:00 +0200</pubDate>
       <guid>https://lynxline.com/posts/inferno-rpi-0-3-release/</guid>
-      <description>Releasing Inferno-rpi-0.3&#xA;Changes:&#xA;Enabled JIT&#xA;Included recent updated of Inferno-Os&#xA;Memory split 240/16&#xA;devcons is added&#xA;Download:&#xA;https://bitbucket.org/infpi/inferno-rpi/downloads/inferno-rpi-0.3.zip Installation:&#xA;Download latest zip package from https://bitbucket.org/infpi/inferno-rpi/downloads&#xA;Pepare SD card with just one DOS partition (just format into the dos)&#xA;Unzip all files to SD (boot.scr, kernel.bin, … – should in root of SD)&#xA;Boot Raspberry Pi&#xA;By default it starts “styxlisten -A tcp!*!564 export /“, so you can mount it on other host by “mount -A tcp!</description>
+      <description>Releasing Inferno-rpi-0.3&#xA;Changes:&#xA;Enabled JIT&#xA;Included recent updated of Inferno-Os&#xA;Memory split 240/16&#xA;devcons is added&#xA;Download:&#xA;inferno-rpi-0.3.zip — no longer available Installation:&#xA;Download latest zip package from https://github.com/yshurik/inferno-rpi/releases&#xA;Pepare SD card with just one DOS partition (just format into the dos)&#xA;Unzip all files to SD (boot.scr, kernel.bin, … – should in root of SD)&#xA;Boot Raspberry Pi&#xA;By default it starts “styxlisten -A tcp!*!564 export /“, so you can mount it on other host by “mount -A tcp!</description>
     </item>
     <item>
       <title>Inferno raspberry pi image – alpha release (alpha1)</title>
       <link>https://lynxline.com/posts/inferno-raspberry-pi-image-alpha-release1/</link>
       <pubDate>Sun, 02 Mar 2014 21:00:00 +0200</pubDate>
       <guid>https://lynxline.com/posts/inferno-raspberry-pi-image-alpha-release1/</guid>
-      <description>So, we reached the point when we are able to package some small distribution.&#xA;It can:&#xA;Boot Kernel&#xA;Mount file system (kfs)&#xA;Init Usb subsystem&#xA;Load Keyboard driver (usb)&#xA;Load Ethernet driver (usb)&#xA;Initialize Net subsystem, obtain IP via DHCP&#xA;Start ndb/cs&#xA;Launch shell – console&#xA;It can not:&#xA;No mouse driver yet&#xA;Can not launch wm/wm (maybe due to mouse)&#xA;Download Link (~18MB)</description>
+      <description>So, we reached the point when we are able to package some small distribution.&#xA;It can:&#xA;Boot Kernel&#xA;Mount file system (kfs)&#xA;Init Usb subsystem&#xA;Load Keyboard driver (usb)&#xA;Load Ethernet driver (usb)&#xA;Initialize Net subsystem, obtain IP via DHCP&#xA;Start ndb/cs&#xA;Launch shell – console&#xA;It can not:&#xA;No mouse driver yet&#xA;Can not launch wm/wm (maybe due to mouse)&#xA;Download Link (~18MB) — no longer available</description>
     </item>
     <item>
       <title>Submiting a Qt App to Mac App Store</title>

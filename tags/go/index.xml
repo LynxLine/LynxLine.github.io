@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Go on LynxLine</title>
+    <link>https://lynxline.com/tags/go/</link>
+    <description>Recent content in Go on LynxLine</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 25 Jun 2022 10:00:00 +0200</lastBuildDate>
+    <atom:link href="https://lynxline.com/tags/go/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Momyre</title>
+      <link>https://lynxline.com/posts/momyre/</link>
+      <pubDate>Sat, 25 Jun 2022 10:00:00 +0200</pubDate>
+      <guid>https://lynxline.com/posts/momyre/</guid>
+      <description>Momyre — MOngo to MYsql simple REplicator — exists because I need to run SQL queries over data that only lives in a MongoDB cluster. Rather than rewrite the application, it&amp;rsquo;s a small Go daemon that mirrors Mongo collections into MySQL/MariaDB tables: it compares a YAML mapping config against what&amp;rsquo;s actually there, creates missing tables and columns, and folds Mongo arrays into JSON blobs where SQL has no equivalent.&#xA;It ships as a ~20MB Alpine Docker image and does the job.</description>
+    </item>
+  </channel>
+</rss>

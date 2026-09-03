@@ -30,6 +30,13 @@
       <description>init</description>
     </item>
     <item>
+      <title>Momyre</title>
+      <link>https://lynxline.com/posts/momyre/</link>
+      <pubDate>Sat, 25 Jun 2022 10:00:00 +0200</pubDate>
+      <guid>https://lynxline.com/posts/momyre/</guid>
+      <description>Momyre — MOngo to MYsql simple REplicator — exists because I need to run SQL queries over data that only lives in a MongoDB cluster. Rather than rewrite the application, it&amp;rsquo;s a small Go daemon that mirrors Mongo collections into MySQL/MariaDB tables: it compares a YAML mapping config against what&amp;rsquo;s actually there, creates missing tables and columns, and folds Mongo arrays into JSON blobs where SQL has no equivalent.&#xA;It ships as a ~20MB Alpine Docker image and does the job.</description>
+    </item>
+    <item>
       <title>Create QPdfJs</title>
       <link>https://lynxline.com/posts/create-qpdfjs/</link>
       <pubDate>Thu, 27 Apr 2017 20:05:44 +0200</pubDate>

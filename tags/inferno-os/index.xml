@@ -6,8 +6,15 @@
     <description>Recent content in Inferno OS on LynxLine</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 08 Feb 2016 21:00:00 +0200</lastBuildDate>
+    <lastBuildDate>Thu, 03 Sep 2026 09:00:00 +0200</lastBuildDate>
     <atom:link href="https://lynxline.com/tags/inferno-os/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>llm9p: LLMs Over the 9P Protocol</title>
+      <link>https://lynxline.com/posts/llm9p/</link>
+      <pubDate>Thu, 03 Sep 2026 09:00:00 +0200</pubDate>
+      <guid>https://lynxline.com/posts/llm9p/</guid>
+      <description>Years after this blog spent a whole lab series porting Inferno OS to a Raspberry Pi, someone just applied the same &amp;ldquo;everything is a file&amp;rdquo; philosophy to language models. llm9p exposes an LLM as a 9P filesystem: write a prompt to ask, read the response back. Model, temperature, and system prompt are just files too, and conversation state persists until you reset it.&#xA;What makes it genuinely Plan 9-flavored: it mounts through plan9port&amp;rsquo;s 9pfuse, Linux&amp;rsquo;s native 9P kernel module, or — best of all — Infernode, a hosted Inferno OS.</description>
+    </item>
     <item>
       <title>Inferno-rpi-0.6 release</title>
       <link>https://lynxline.com/posts/inferno-rpi-0-6-release/</link>

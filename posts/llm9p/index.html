@@ -169,7 +169,6 @@
             <p>Years after this blog spent a whole lab series porting Inferno OS to a Raspberry Pi, someone just applied the same &ldquo;everything is a file&rdquo; philosophy to language models. <a href="https://github.com/NERVsystems/llm9p">llm9p</a> exposes an LLM as a 9P filesystem: write a prompt to <code>ask</code>, read the response back. Model, temperature, and system prompt are just files too, and conversation state persists until you reset it.</p>
 <p>What makes it genuinely Plan 9-flavored: it mounts through plan9port&rsquo;s 9pfuse, Linux&rsquo;s native 9P kernel module, or — best of all — Infernode, a hosted Inferno OS. No SDK, no API client, just files and pipes.</p>
 <p>Backends are pluggable (Anthropic&rsquo;s API today, Claude Code CLI, Ollama planned), and it streams responses incrementally through a <code>stream/</code> directory.</p>
-<p><a href="https://news.ycombinator.com/item?id=47295708">Discussion on Hacker News</a> is already digging into the sharp edges — notably that Claude Code&rsquo;s <code>--appendSystemPrompt</code> isn&rsquo;t a real system prompt, just a startup user message.</p>
 
         </p>
         

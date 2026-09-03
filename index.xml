@@ -51,6 +51,13 @@
       <description>Momyre — MOngo to MYsql simple REplicator — exists because I need to run SQL queries over data that only lives in a MongoDB cluster. Rather than rewrite the application, it&amp;rsquo;s a small Go daemon that mirrors Mongo collections into MySQL/MariaDB tables: it compares a YAML mapping config against what&amp;rsquo;s actually there, creates missing tables and columns, and folds Mongo arrays into JSON blobs where SQL has no equivalent.&#xA;It ships as a ~20MB Alpine Docker image and does the job.</description>
     </item>
     <item>
+      <title>Bitmessage Over IMAP</title>
+      <link>https://lynxline.com/posts/docker-bitmessage/</link>
+      <pubDate>Sun, 20 Dec 2020 10:00:00 +0200</pubDate>
+      <guid>https://lynxline.com/posts/docker-bitmessage/</guid>
+      <description>Now that notbit isn&amp;rsquo;t locking up anymore, it&amp;rsquo;s worth actually using it — and the friction with any Bitmessage client is that you need a Bitmessage-specific interface. docker-bitmessage removes that: it wraps notbit in a ~20MB Alpine container and exposes it over IMAP and SMTP, so Thunderbird or Apple Mail can talk to the Bitmessage network like it&amp;rsquo;s just another mail account.&#xA;Addresses aren&amp;rsquo;t real email addresses — they&amp;rsquo;re &amp;lt;bitmessage-address&amp;gt;@bitmessage — and messages have to stay plain text, no attachments, no HTML.</description>
+    </item>
+    <item>
       <title>Chasing an Infinite Loop in notbit</title>
       <link>https://lynxline.com/posts/notbit-infinite-loop/</link>
       <pubDate>Mon, 14 Dec 2020 10:00:00 +0200</pubDate>

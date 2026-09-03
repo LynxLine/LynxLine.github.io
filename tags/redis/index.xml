@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Redis on LynxLine</title>
+    <link>https://lynxline.com/tags/redis/</link>
+    <description>Recent content in Redis on LynxLine</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 10 May 2021 10:00:00 +0200</lastBuildDate>
+    <atom:link href="https://lynxline.com/tags/redis/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Broadcasting WebSocket Messages via Redis</title>
+      <link>https://lynxline.com/posts/backws/</link>
+      <pubDate>Mon, 10 May 2021 10:00:00 +0200</pubDate>
+      <guid>https://lynxline.com/posts/backws/</guid>
+      <description>backws is a WebSocket server that doesn&amp;rsquo;t try to be the source of truth — it picks up deliveries from a Redis queue (Sidekiq-compatible, so anything already pushing jobs that way can feed it directly) and fans them out to connected clients. Because the state lives in Redis rather than in-process, you can run multiple backws instances behind a load balancer and any of them can deliver a message to any connected client.</description>
+    </item>
+  </channel>
+</rss>

@@ -44,11 +44,25 @@
       <description>init</description>
     </item>
     <item>
+      <title>Secure Tunnels Between Docker Hosts</title>
+      <link>https://lynxline.com/posts/docker-stunnel/</link>
+      <pubDate>Sun, 24 Jul 2022 10:00:00 +0200</pubDate>
+      <guid>https://lynxline.com/posts/docker-stunnel/</guid>
+      <description>Two containers on the same docker host can talk to each other freely, but the moment they&amp;rsquo;re on hosts in different locations, that traffic crosses the open internet unprotected. docker-stunnel is a small stunnel wrapper for exactly that gap: run it with -s on the host with the service to protect, run it as a plain client on the other end pointed at that server, and the two docker hosts get an encrypted transport layer between them without touching the containers on either side.</description>
+    </item>
+    <item>
       <title>Momyre</title>
       <link>https://lynxline.com/posts/momyre/</link>
       <pubDate>Sat, 25 Jun 2022 10:00:00 +0200</pubDate>
       <guid>https://lynxline.com/posts/momyre/</guid>
       <description>Momyre — MOngo to MYsql simple REplicator — exists because I need to run SQL queries over data that only lives in a MongoDB cluster. Rather than rewrite the application, it&amp;rsquo;s a small Go daemon that mirrors Mongo collections into MySQL/MariaDB tables: it compares a YAML mapping config against what&amp;rsquo;s actually there, creates missing tables and columns, and folds Mongo arrays into JSON blobs where SQL has no equivalent.&#xA;It ships as a ~20MB Alpine Docker image and does the job.</description>
+    </item>
+    <item>
+      <title>Broadcasting WebSocket Messages via Redis</title>
+      <link>https://lynxline.com/posts/backws/</link>
+      <pubDate>Mon, 10 May 2021 10:00:00 +0200</pubDate>
+      <guid>https://lynxline.com/posts/backws/</guid>
+      <description>backws is a WebSocket server that doesn&amp;rsquo;t try to be the source of truth — it picks up deliveries from a Redis queue (Sidekiq-compatible, so anything already pushing jobs that way can feed it directly) and fans them out to connected clients. Because the state lives in Redis rather than in-process, you can run multiple backws instances behind a load balancer and any of them can deliver a message to any connected client.</description>
     </item>
     <item>
       <title>Bitmessage Over IMAP</title>
@@ -65,11 +79,46 @@
       <description>It&amp;rsquo;s genuinely great to have a Bitmessage client like notbit — no Python, no GUI, just a small C daemon you run from a terminal. Most Bitmessage clients drag in a whole GUI toolkit and a Python runtime; notbit needs none of that.&#xA;It did have an ugly bug though: it would lock up at 100% CPU after running a while, with nothing in the logs pointing at why. It only happened once or a few times a day, which made it miserable to chase.</description>
     </item>
     <item>
+      <title>Publishing Zero-Value IOTA Transactions From Node-RED</title>
+      <link>https://lynxline.com/posts/node-red-contrib-iota-tx0/</link>
+      <pubDate>Sun, 30 Sep 2018 10:00:00 +0200</pubDate>
+      <guid>https://lynxline.com/posts/node-red-contrib-iota-tx0/</guid>
+      <description>IOTA&amp;rsquo;s Tangle lets you publish a zero-value transaction just to carry a message — no coins moved, just data attached and confirmed. node-red-contrib-iota-tx0 wraps that in a single Node-RED node: wire a data source (a sensor reading, say) into tx0 publish, and it uploads the payload to the Tangle and only pulls in the next input once the transaction actually confirms.&#xA;Fits naturally into a Node-RED flow reading off a device like a SensorTag — log a value, and get it committed to the Tangle rather than just a database, no server of your own required.</description>
+    </item>
+    <item>
+      <title>Redirecting Qt Logs Into Go</title>
+      <link>https://lynxline.com/posts/goqdebug/</link>
+      <pubDate>Thu, 02 Aug 2018 10:00:00 +0200</pubDate>
+      <guid>https://lynxline.com/posts/goqdebug/</guid>
+      <description>When a Go binary embeds Qt through bindings, qDebug()/qWarning()/qInfo() output goes wherever Qt&amp;rsquo;s default handler sends it — not into whatever logging system the Go side already uses. goqdebug is a small Go module that installs a Qt message handler and routes those calls into Go&amp;rsquo;s own logger instead, so a mixed Go+Qt binary gets one consistent log stream rather than two.&#xA;It&amp;rsquo;s meant to be dropped straight into a project rather than imported as a package — just add the files, drop main(), and make sure your own moc/rcc step still runs.</description>
+    </item>
+    <item>
+      <title>Boost Multi Index, With Recipes</title>
+      <link>https://lynxline.com/posts/multi-index-examples/</link>
+      <pubDate>Mon, 05 Jun 2017 10:00:00 +0200</pubDate>
+      <guid>https://lynxline.com/posts/multi-index-examples/</guid>
+      <description>boost::multi_index_container is fast and powerful, but the documentation is dense and the compiler errors are worse. multi-index-examples is the cookbook I wish existed: small, runnable Qt/C++ snippets for the cases that actually come up — indexing a struct by name, phone, and address at once, composite keys for combined lookups, switching between ordered_* and hashed_* for O(log n) versus O(1) access, and the random_access index when you also want plain store[i] access.</description>
+    </item>
+    <item>
+      <title>A WebSocket Broadcast Server</title>
+      <link>https://lynxline.com/posts/wsbcast/</link>
+      <pubDate>Wed, 17 May 2017 10:00:00 +0200</pubDate>
+      <guid>https://lynxline.com/posts/wsbcast/</guid>
+      <description>wsbcast does one thing: every client that connects gets a WebSocket, and anything one client sends gets broadcast to every other connected client. That&amp;rsquo;s it — no rooms, no auth, no protocol beyond &amp;ldquo;send a message, everyone else gets it.&amp;rdquo; Useful as the one shared component that lets otherwise-separate web apps know about each other in real time, just by opening a socket to it.&#xA;Built on Qt/C++, qmake &amp;amp;&amp;amp; make release to build it, and it ships with a tests/ folder of plain HTML files — open three browser tabs, reload one, and watch the message show up in the other two consoles.</description>
+    </item>
+    <item>
       <title>Create QPdfJs</title>
       <link>https://lynxline.com/posts/create-qpdfjs/</link>
       <pubDate>Thu, 27 Apr 2017 20:05:44 +0200</pubDate>
       <guid>https://lynxline.com/posts/create-qpdfjs/</guid>
       <description>Today I would like to show the power of Qt technology. The framework was born more than a decade ago but still due to a lot of efforts from talented developers and Qt community keep us surprising.&#xA;I would like to show an example of developing an application with very small efforts and have it on the intersection of desktop application programming and the web programming.&#xA;Few weeks ago I was looking for approach to convert an pdf document to a image with consideration of having it in batch mode in future.</description>
+    </item>
+    <item>
+      <title>libmemcached on Windows</title>
+      <link>https://lynxline.com/posts/libmemcached-win/</link>
+      <pubDate>Thu, 09 Mar 2017 10:00:00 +0200</pubDate>
+      <guid>https://lynxline.com/posts/libmemcached-win/</guid>
+      <description>libmemcached builds fine on Linux and Mac, but on Windows the official way is mingw plus autotools, which is awkward if your project is already MSVC-based. I fork it and add a real Visual Studio project — .sln/.vcxproj in a win32 folder — so it compiles straight in VS2015 without touching the unix build chain.&#xA;Getting it to actually link and behave took a few more fixes: making it compile without SASL, and covering WSAEWOULDBLOCK/WSAWOULDBLOCK on connect()/recv()/send(), since Windows sockets use different error constants than POSIX.</description>
     </item>
     <item>
       <title>SQLite tree structures and queries to get sub-trees</title>
@@ -310,6 +359,13 @@
       <description>We are starting new season of the labs. Season 2 will be named as “Close to hardware”. And we start from important point to have clocks and timers working. But first we made a decision to make our codes close to 9pi source codes, especially assembler parts. But we found it little complicated as UReg struct on Plan 9 have r14 and link as union while Inferno has them separate. We can not change Ureg in arm/include as we would break another ports.</description>
     </item>
     <item>
+      <title>A QCA PGP Demo</title>
+      <link>https://lynxline.com/posts/qca-demo/</link>
+      <pubDate>Sat, 15 Jun 2013 10:00:00 +0200</pubDate>
+      <guid>https://lynxline.com/posts/qca-demo/</guid>
+      <description>qca-demo is a small Qt GUI wrapped around Qt Cryptographic Architecture&amp;rsquo;s OpenPGP support — enough to load keys and encrypt/decrypt through QCA rather than shelling out to gpg directly. It&amp;rsquo;s a demo, not a library: a CryptWin widget and a main.cpp, meant to be read more than depended on, for anyone else trying to figure out QCA&amp;rsquo;s PGP API from the examples that exist rather than the documentation.</description>
+    </item>
+    <item>
       <title>Lab 15, Eve, Hello World from Limbo!</title>
       <link>https://lynxline.com/posts/lab-15-eve-hello-world-from-limbo/</link>
       <pubDate>Wed, 17 Apr 2013 10:18:04 +0200</pubDate>
@@ -485,11 +541,25 @@
       <description>&lt;p&gt;Maybe you already thought about creation a Qt application for Mac App Store or submitting an existing one. While I am on vacations I made a probe of such possibility – you may know that Apple and Nokia developing now different ecosystems of languages/libraries and you may expect to have troubles of bypassing Qt application into Mac App Store. Anyway I found that it is not so complicated as expected, though it took time to do all preparations, my application passed and was published in store with first attempt.&lt;/p&gt;&#xA;&lt;p&gt;For long time I had one application in my attic. It was an interesting experiment for studying and remembering foreign words. This application do kind of training by repeating words and force you to type correct spelling while application pronounce it to you using TTS (surely you need high-quality voice engine – I used voices from Infovox iVox). That was pretty effective and helped me a lot for studying new words and forming active vocabulary for Norwegian. Because of hearing, reading and typing it makes very effective associations in your brains. The application is cross-platform and requires only QtGui, QtXml and QtCore, also qt plugins are not need.&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;http://lynxline.com/wp-content/uploads/2011/06/TogMeg-Screenshot-1.png&#34;&gt;&lt;img src=&#34;TogMeg-Screenshot-1-300x238.png&#34; alt=&#34;&#34;&gt;&lt;/a&gt;&lt;/p&gt;</description>
     </item>
     <item>
+      <title>TogMeg</title>
+      <link>https://lynxline.com/posts/togmeg/</link>
+      <pubDate>Wed, 15 Jun 2011 10:00:00 +0200</pubDate>
+      <guid>https://lynxline.com/posts/togmeg/</guid>
+      <description>TogMeg is a small Mac app for learning vocabulary in a new language: it shows you a word, makes you type the correct spelling, and speaks it using the system&amp;rsquo;s TTS voices so you get pronunciation along with spelling in the same pass. On Lion that&amp;rsquo;s up to 24 languages built in; on older OS X, Infovox iVox voices fill the gap for about $99 each (with a month-long demo, plenty to see if TogMeg is worth it for you).</description>
+    </item>
+    <item>
       <title>QtSpeech, say “Hello World!”</title>
       <link>https://lynxline.com/posts/qtspeech-say-hello-world/</link>
       <pubDate>Thu, 10 Feb 2011 16:00:00 +0200</pubDate>
       <guid>https://lynxline.com/posts/qtspeech-say-hello-world/</guid>
       <description>&lt;p&gt;I am glad to announce new small project that got first release – &lt;a href=&#34;http://gitorious.org/qt-speech&#34;&gt;QtSpeech&lt;/a&gt;.&lt;/p&gt;&#xA;&lt;p&gt;This is library providing Qt-like interface to system TTS (text-to-speech) engines to allow your application to say “Hello World!”.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>The PySide Hybrid Source</title>
+      <link>https://lynxline.com/posts/pyside-hybrid/</link>
+      <pubDate>Wed, 06 Oct 2010 10:00:00 +0200</pubDate>
+      <guid>https://lynxline.com/posts/pyside-hybrid/</guid>
+      <description>Same idea as the PyQt version, now with the PySide build from the last post: a C++ widget compiled as a shared library, shiboken/generatorrunner generating the Python bindings from a typesystem XML, and a Main.py that imports the result like any other Python module. PySide being LGPL rather than GPL is what made this version worth doing — it opens the technique up to a lot more projects than the PyQt one could.</description>
     </item>
     <item>
       <title>SuperHybrids part 2, now Qt &#43; PySide</title>
@@ -511,6 +581,13 @@
       <pubDate>Wed, 28 Jul 2010 11:00:00 +0200</pubDate>
       <guid>https://lynxline.com/posts/undo-in-complex-qt-projects/</guid>
       <description>&lt;p&gt;&lt;strong&gt;UPDATE&lt;/strong&gt;: You may consider studying more advanced techniques described in second “undo” article: &lt;a href=&#34;http://lynxline.com/designing-undo-for-large-scale-projects-going-deep/&#34;&gt;Designing Undo for large-scale projects. Going deep.&lt;/a&gt;&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>The PyQt Hybrid Source</title>
+      <link>https://lynxline.com/posts/pyqt-hybrid/</link>
+      <pubDate>Wed, 21 Jul 2010 10:00:00 +0200</pubDate>
+      <guid>https://lynxline.com/posts/pyqt-hybrid/</guid>
+      <description>Putting the actual code up for the PyQt/C++ hybrid technique from my last post: Main.cpp/Main.py for the two entry points, MainWindow as the shared C++ widget, and a sip/ folder with the bindings that let the Python side reach into it with signals and QStrings like it was written in Python to begin with.</description>
     </item>
     <item>
       <title>Qt Python SuperHybrids</title>

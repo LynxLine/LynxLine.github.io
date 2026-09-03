@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>C&#43;&#43; on LynxLine</title>
+    <link>https://lynxline.com/tags/c&#43;&#43;/</link>
+    <description>Recent content in C&#43;&#43; on LynxLine</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 05 Jun 2017 10:00:00 +0200</lastBuildDate>
+    <atom:link href="https://lynxline.com/tags/c++/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Boost Multi Index, With Recipes</title>
+      <link>https://lynxline.com/posts/multi-index-examples/</link>
+      <pubDate>Mon, 05 Jun 2017 10:00:00 +0200</pubDate>
+      <guid>https://lynxline.com/posts/multi-index-examples/</guid>
+      <description>boost::multi_index_container is fast and powerful, but the documentation is dense and the compiler errors are worse. multi-index-examples is the cookbook I wish existed: small, runnable Qt/C++ snippets for the cases that actually come up — indexing a struct by name, phone, and address at once, composite keys for combined lookups, switching between ordered_* and hashed_* for O(log n) versus O(1) access, and the random_access index when you also want plain store[i] access.</description>
+    </item>
+    <item>
+      <title>A WebSocket Broadcast Server</title>
+      <link>https://lynxline.com/posts/wsbcast/</link>
+      <pubDate>Wed, 17 May 2017 10:00:00 +0200</pubDate>
+      <guid>https://lynxline.com/posts/wsbcast/</guid>
+      <description>wsbcast does one thing: every client that connects gets a WebSocket, and anything one client sends gets broadcast to every other connected client. That&amp;rsquo;s it — no rooms, no auth, no protocol beyond &amp;ldquo;send a message, everyone else gets it.&amp;rdquo; Useful as the one shared component that lets otherwise-separate web apps know about each other in real time, just by opening a socket to it.&#xA;Built on Qt/C++, qmake &amp;amp;&amp;amp; make release to build it, and it ships with a tests/ folder of plain HTML files — open three browser tabs, reload one, and watch the message show up in the other two consoles.</description>
+    </item>
+    <item>
+      <title>libmemcached on Windows</title>
+      <link>https://lynxline.com/posts/libmemcached-win/</link>
+      <pubDate>Thu, 09 Mar 2017 10:00:00 +0200</pubDate>
+      <guid>https://lynxline.com/posts/libmemcached-win/</guid>
+      <description>libmemcached builds fine on Linux and Mac, but on Windows the official way is mingw plus autotools, which is awkward if your project is already MSVC-based. I fork it and add a real Visual Studio project — .sln/.vcxproj in a win32 folder — so it compiles straight in VS2015 without touching the unix build chain.&#xA;Getting it to actually link and behave took a few more fixes: making it compile without SASL, and covering WSAEWOULDBLOCK/WSAWOULDBLOCK on connect()/recv()/send(), since Windows sockets use different error constants than POSIX.</description>
+    </item>
+  </channel>
+</rss>

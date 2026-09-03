@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>IOTA on LynxLine</title>
+    <link>https://lynxline.com/tags/iota/</link>
+    <description>Recent content in IOTA on LynxLine</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 30 Sep 2018 10:00:00 +0200</lastBuildDate>
+    <atom:link href="https://lynxline.com/tags/iota/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Publishing Zero-Value IOTA Transactions From Node-RED</title>
+      <link>https://lynxline.com/posts/node-red-contrib-iota-tx0/</link>
+      <pubDate>Sun, 30 Sep 2018 10:00:00 +0200</pubDate>
+      <guid>https://lynxline.com/posts/node-red-contrib-iota-tx0/</guid>
+      <description>IOTA&amp;rsquo;s Tangle lets you publish a zero-value transaction just to carry a message — no coins moved, just data attached and confirmed. node-red-contrib-iota-tx0 wraps that in a single Node-RED node: wire a data source (a sensor reading, say) into tx0 publish, and it uploads the payload to the Tangle and only pulls in the next input once the transaction actually confirms.&#xA;Fits naturally into a Node-RED flow reading off a device like a SensorTag — log a value, and get it committed to the Tangle rather than just a database, no server of your own required.</description>
+    </item>
+  </channel>
+</rss>

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Python on LynxLine</title>
+    <link>https://lynxline.com/tags/python/</link>
+    <description>Recent content in Python on LynxLine</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 06 Oct 2010 10:00:00 +0200</lastBuildDate>
+    <atom:link href="https://lynxline.com/tags/python/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>The PySide Hybrid Source</title>
+      <link>https://lynxline.com/posts/pyside-hybrid/</link>
+      <pubDate>Wed, 06 Oct 2010 10:00:00 +0200</pubDate>
+      <guid>https://lynxline.com/posts/pyside-hybrid/</guid>
+      <description>Same idea as the PyQt version, now with the PySide build from the last post: a C++ widget compiled as a shared library, shiboken/generatorrunner generating the Python bindings from a typesystem XML, and a Main.py that imports the result like any other Python module. PySide being LGPL rather than GPL is what made this version worth doing — it opens the technique up to a lot more projects than the PyQt one could.</description>
+    </item>
+    <item>
+      <title>The PyQt Hybrid Source</title>
+      <link>https://lynxline.com/posts/pyqt-hybrid/</link>
+      <pubDate>Wed, 21 Jul 2010 10:00:00 +0200</pubDate>
+      <guid>https://lynxline.com/posts/pyqt-hybrid/</guid>
+      <description>Putting the actual code up for the PyQt/C++ hybrid technique from my last post: Main.cpp/Main.py for the two entry points, MainWindow as the shared C++ widget, and a sip/ folder with the bindings that let the Python side reach into it with signals and QStrings like it was written in Python to begin with.</description>
+    </item>
+  </channel>
+</rss>

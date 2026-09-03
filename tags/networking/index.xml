@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Networking on LynxLine</title>
+    <link>https://lynxline.com/tags/networking/</link>
+    <description>Recent content in Networking on LynxLine</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 24 Jul 2022 10:00:00 +0200</lastBuildDate>
+    <atom:link href="https://lynxline.com/tags/networking/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Secure Tunnels Between Docker Hosts</title>
+      <link>https://lynxline.com/posts/docker-stunnel/</link>
+      <pubDate>Sun, 24 Jul 2022 10:00:00 +0200</pubDate>
+      <guid>https://lynxline.com/posts/docker-stunnel/</guid>
+      <description>Two containers on the same docker host can talk to each other freely, but the moment they&amp;rsquo;re on hosts in different locations, that traffic crosses the open internet unprotected. docker-stunnel is a small stunnel wrapper for exactly that gap: run it with -s on the host with the service to protect, run it as a plain client on the other end pointed at that server, and the two docker hosts get an encrypted transport layer between them without touching the containers on either side.</description>
+    </item>
+  </channel>
+</rss>

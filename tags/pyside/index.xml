@@ -6,8 +6,15 @@
     <description>Recent content in PySide on LynxLine</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 04 Oct 2010 11:00:00 +0200</lastBuildDate>
+    <lastBuildDate>Wed, 06 Oct 2010 10:00:00 +0200</lastBuildDate>
     <atom:link href="https://lynxline.com/tags/pyside/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>The PySide Hybrid Source</title>
+      <link>https://lynxline.com/posts/pyside-hybrid/</link>
+      <pubDate>Wed, 06 Oct 2010 10:00:00 +0200</pubDate>
+      <guid>https://lynxline.com/posts/pyside-hybrid/</guid>
+      <description>Same idea as the PyQt version, now with the PySide build from the last post: a C++ widget compiled as a shared library, shiboken/generatorrunner generating the Python bindings from a typesystem XML, and a Main.py that imports the result like any other Python module. PySide being LGPL rather than GPL is what made this version worth doing — it opens the technique up to a lot more projects than the PyQt one could.</description>
+    </item>
     <item>
       <title>SuperHybrids part 2, now Qt &#43; PySide</title>
       <link>https://lynxline.com/posts/superhybrids-part-2-now-qt-pyside/</link>

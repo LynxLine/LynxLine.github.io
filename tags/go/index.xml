@@ -15,5 +15,19 @@
       <guid>https://lynxline.com/posts/momyre/</guid>
       <description>Momyre — MOngo to MYsql simple REplicator — exists because I need to run SQL queries over data that only lives in a MongoDB cluster. Rather than rewrite the application, it&amp;rsquo;s a small Go daemon that mirrors Mongo collections into MySQL/MariaDB tables: it compares a YAML mapping config against what&amp;rsquo;s actually there, creates missing tables and columns, and folds Mongo arrays into JSON blobs where SQL has no equivalent.&#xA;It ships as a ~20MB Alpine Docker image and does the job.</description>
     </item>
+    <item>
+      <title>Broadcasting WebSocket Messages via Redis</title>
+      <link>https://lynxline.com/posts/backws/</link>
+      <pubDate>Mon, 10 May 2021 10:00:00 +0200</pubDate>
+      <guid>https://lynxline.com/posts/backws/</guid>
+      <description>backws is a WebSocket server that doesn&amp;rsquo;t try to be the source of truth — it picks up deliveries from a Redis queue (Sidekiq-compatible, so anything already pushing jobs that way can feed it directly) and fans them out to connected clients. Because the state lives in Redis rather than in-process, you can run multiple backws instances behind a load balancer and any of them can deliver a message to any connected client.</description>
+    </item>
+    <item>
+      <title>Redirecting Qt Logs Into Go</title>
+      <link>https://lynxline.com/posts/goqdebug/</link>
+      <pubDate>Thu, 02 Aug 2018 10:00:00 +0200</pubDate>
+      <guid>https://lynxline.com/posts/goqdebug/</guid>
+      <description>When a Go binary embeds Qt through bindings, qDebug()/qWarning()/qInfo() output goes wherever Qt&amp;rsquo;s default handler sends it — not into whatever logging system the Go side already uses. goqdebug is a small Go module that installs a Qt message handler and routes those calls into Go&amp;rsquo;s own logger instead, so a mixed Go+Qt binary gets one consistent log stream rather than two.&#xA;It&amp;rsquo;s meant to be dropped straight into a project rather than imported as a package — just add the files, drop main(), and make sure your own moc/rcc step still runs.</description>
+    </item>
   </channel>
 </rss>

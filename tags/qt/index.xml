@@ -6,8 +6,22 @@
     <description>Recent content in Qt on LynxLine</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 27 Apr 2017 20:05:44 +0200</lastBuildDate>
+    <lastBuildDate>Thu, 02 Aug 2018 10:00:00 +0200</lastBuildDate>
     <atom:link href="https://lynxline.com/tags/qt/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Redirecting Qt Logs Into Go</title>
+      <link>https://lynxline.com/posts/goqdebug/</link>
+      <pubDate>Thu, 02 Aug 2018 10:00:00 +0200</pubDate>
+      <guid>https://lynxline.com/posts/goqdebug/</guid>
+      <description>When a Go binary embeds Qt through bindings, qDebug()/qWarning()/qInfo() output goes wherever Qt&amp;rsquo;s default handler sends it — not into whatever logging system the Go side already uses. goqdebug is a small Go module that installs a Qt message handler and routes those calls into Go&amp;rsquo;s own logger instead, so a mixed Go+Qt binary gets one consistent log stream rather than two.&#xA;It&amp;rsquo;s meant to be dropped straight into a project rather than imported as a package — just add the files, drop main(), and make sure your own moc/rcc step still runs.</description>
+    </item>
+    <item>
+      <title>A WebSocket Broadcast Server</title>
+      <link>https://lynxline.com/posts/wsbcast/</link>
+      <pubDate>Wed, 17 May 2017 10:00:00 +0200</pubDate>
+      <guid>https://lynxline.com/posts/wsbcast/</guid>
+      <description>wsbcast does one thing: every client that connects gets a WebSocket, and anything one client sends gets broadcast to every other connected client. That&amp;rsquo;s it — no rooms, no auth, no protocol beyond &amp;ldquo;send a message, everyone else gets it.&amp;rdquo; Useful as the one shared component that lets otherwise-separate web apps know about each other in real time, just by opening a socket to it.&#xA;Built on Qt/C++, qmake &amp;amp;&amp;amp; make release to build it, and it ships with a tests/ folder of plain HTML files — open three browser tabs, reload one, and watch the message show up in the other two consoles.</description>
+    </item>
     <item>
       <title>Create QPdfJs</title>
       <link>https://lynxline.com/posts/create-qpdfjs/</link>
@@ -28,6 +42,13 @@
       <pubDate>Fri, 13 Sep 2013 22:00:00 +0200</pubDate>
       <guid>https://lynxline.com/posts/qt-and-use-of-cryptography-simple/</guid>
       <description>&lt;p&gt;In the light of latest news (Snowden et all) it is very clear that all developers should really take care of safety of all communications that your application could perform. In the world of desktop application developments it is often is decided to be postponed and just use plain text protocols or so and later switch to use of SSL. Surely we should pay more attention to use ciphers when any need of QtNetwork is considered.&lt;/p&gt;&#xA;&lt;p&gt;But what about using something different than just SSL? Let’s take a look at use of PGP in Qt Application. It is so good that there is great framework is already in place QCA (&lt;a href=&#34;http://delta.affinix.com/qca/&#34;&gt;http://delta.affinix.com/qca/&lt;/a&gt;). All we need is just to take a look at API and find a simple way of making ciphers.&lt;/p&gt;&#xA;&lt;p&gt;Let’s design very simple desktop application which can crypt some input text. I assume that have already installed &lt;em&gt;GnuPG&lt;/em&gt;, generated keys, configured &lt;em&gt;gpg-agent&lt;/em&gt;, installed and checked working &lt;em&gt;pinentry-qt/pinentry-gtk&lt;/em&gt;(we are on linux now). Then you have installed &lt;strong&gt;qca&lt;/strong&gt; and &lt;strong&gt;qca-gnupg&lt;/strong&gt;&lt;/p&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;emerge --ask qca qca-gnupg&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Just start &lt;em&gt;Qt Creator&lt;/em&gt;, choose to make Qt Gui application, add to pro file a linking to qca:&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>A QCA PGP Demo</title>
+      <link>https://lynxline.com/posts/qca-demo/</link>
+      <pubDate>Sat, 15 Jun 2013 10:00:00 +0200</pubDate>
+      <guid>https://lynxline.com/posts/qca-demo/</guid>
+      <description>qca-demo is a small Qt GUI wrapped around Qt Cryptographic Architecture&amp;rsquo;s OpenPGP support — enough to load keys and encrypt/decrypt through QCA rather than shelling out to gpg directly. It&amp;rsquo;s a demo, not a library: a CryptWin widget and a main.cpp, meant to be read more than depended on, for anyone else trying to figure out QCA&amp;rsquo;s PGP API from the examples that exist rather than the documentation.</description>
     </item>
     <item>
       <title>Designing tree-like models</title>
@@ -86,6 +107,13 @@
       <description>&lt;p&gt;I am glad to announce new small project that got first release – &lt;a href=&#34;http://gitorious.org/qt-speech&#34;&gt;QtSpeech&lt;/a&gt;.&lt;/p&gt;&#xA;&lt;p&gt;This is library providing Qt-like interface to system TTS (text-to-speech) engines to allow your application to say “Hello World!”.&lt;/p&gt;</description>
     </item>
     <item>
+      <title>The PySide Hybrid Source</title>
+      <link>https://lynxline.com/posts/pyside-hybrid/</link>
+      <pubDate>Wed, 06 Oct 2010 10:00:00 +0200</pubDate>
+      <guid>https://lynxline.com/posts/pyside-hybrid/</guid>
+      <description>Same idea as the PyQt version, now with the PySide build from the last post: a C++ widget compiled as a shared library, shiboken/generatorrunner generating the Python bindings from a typesystem XML, and a Main.py that imports the result like any other Python module. PySide being LGPL rather than GPL is what made this version worth doing — it opens the technique up to a lot more projects than the PyQt one could.</description>
+    </item>
+    <item>
       <title>SuperHybrids part 2, now Qt &#43; PySide</title>
       <link>https://lynxline.com/posts/superhybrids-part-2-now-qt-pyside/</link>
       <pubDate>Mon, 04 Oct 2010 11:00:00 +0200</pubDate>
@@ -105,6 +133,13 @@
       <pubDate>Wed, 28 Jul 2010 11:00:00 +0200</pubDate>
       <guid>https://lynxline.com/posts/undo-in-complex-qt-projects/</guid>
       <description>&lt;p&gt;&lt;strong&gt;UPDATE&lt;/strong&gt;: You may consider studying more advanced techniques described in second “undo” article: &lt;a href=&#34;http://lynxline.com/designing-undo-for-large-scale-projects-going-deep/&#34;&gt;Designing Undo for large-scale projects. Going deep.&lt;/a&gt;&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>The PyQt Hybrid Source</title>
+      <link>https://lynxline.com/posts/pyqt-hybrid/</link>
+      <pubDate>Wed, 21 Jul 2010 10:00:00 +0200</pubDate>
+      <guid>https://lynxline.com/posts/pyqt-hybrid/</guid>
+      <description>Putting the actual code up for the PyQt/C++ hybrid technique from my last post: Main.cpp/Main.py for the two entry points, MainWindow as the shared C++ widget, and a sip/ folder with the bindings that let the Python side reach into it with signals and QStrings like it was written in Python to begin with.</description>
     </item>
     <item>
       <title>Qt Python SuperHybrids</title>

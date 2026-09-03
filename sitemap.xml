@@ -38,6 +38,15 @@
     <loc>https://lynxline.com/posts/first_post/</loc>
     <lastmod>2024-03-03T11:21:28+01:00</lastmod>
   </url><url>
+    <loc>https://lynxline.com/tags/docker/</loc>
+    <lastmod>2022-07-24T10:00:00+02:00</lastmod>
+  </url><url>
+    <loc>https://lynxline.com/tags/networking/</loc>
+    <lastmod>2022-07-24T10:00:00+02:00</lastmod>
+  </url><url>
+    <loc>https://lynxline.com/posts/docker-stunnel/</loc>
+    <lastmod>2022-07-24T10:00:00+02:00</lastmod>
+  </url><url>
     <loc>https://lynxline.com/tags/go/</loc>
     <lastmod>2022-06-25T10:00:00+02:00</lastmod>
   </url><url>
@@ -50,13 +59,19 @@
     <loc>https://lynxline.com/tags/mysql/</loc>
     <lastmod>2022-06-25T10:00:00+02:00</lastmod>
   </url><url>
+    <loc>https://lynxline.com/posts/backws/</loc>
+    <lastmod>2021-05-10T10:00:00+02:00</lastmod>
+  </url><url>
+    <loc>https://lynxline.com/tags/redis/</loc>
+    <lastmod>2021-05-10T10:00:00+02:00</lastmod>
+  </url><url>
+    <loc>https://lynxline.com/tags/websocket/</loc>
+    <lastmod>2021-05-10T10:00:00+02:00</lastmod>
+  </url><url>
     <loc>https://lynxline.com/tags/bitmessage/</loc>
     <lastmod>2020-12-20T10:00:00+02:00</lastmod>
   </url><url>
     <loc>https://lynxline.com/posts/docker-bitmessage/</loc>
-    <lastmod>2020-12-20T10:00:00+02:00</lastmod>
-  </url><url>
-    <loc>https://lynxline.com/tags/docker/</loc>
     <lastmod>2020-12-20T10:00:00+02:00</lastmod>
   </url><url>
     <loc>https://lynxline.com/tags/email/</loc>
@@ -71,6 +86,36 @@
     <loc>https://lynxline.com/tags/debugging/</loc>
     <lastmod>2020-12-14T10:00:00+02:00</lastmod>
   </url><url>
+    <loc>https://lynxline.com/tags/iot/</loc>
+    <lastmod>2018-09-30T10:00:00+02:00</lastmod>
+  </url><url>
+    <loc>https://lynxline.com/tags/iota/</loc>
+    <lastmod>2018-09-30T10:00:00+02:00</lastmod>
+  </url><url>
+    <loc>https://lynxline.com/tags/node-red/</loc>
+    <lastmod>2018-09-30T10:00:00+02:00</lastmod>
+  </url><url>
+    <loc>https://lynxline.com/posts/node-red-contrib-iota-tx0/</loc>
+    <lastmod>2018-09-30T10:00:00+02:00</lastmod>
+  </url><url>
+    <loc>https://lynxline.com/tags/qt/</loc>
+    <lastmod>2018-08-02T10:00:00+02:00</lastmod>
+  </url><url>
+    <loc>https://lynxline.com/posts/goqdebug/</loc>
+    <lastmod>2018-08-02T10:00:00+02:00</lastmod>
+  </url><url>
+    <loc>https://lynxline.com/tags/boost/</loc>
+    <lastmod>2017-06-05T10:00:00+02:00</lastmod>
+  </url><url>
+    <loc>https://lynxline.com/posts/multi-index-examples/</loc>
+    <lastmod>2017-06-05T10:00:00+02:00</lastmod>
+  </url><url>
+    <loc>https://lynxline.com/tags/c&#43;&#43;/</loc>
+    <lastmod>2017-06-05T10:00:00+02:00</lastmod>
+  </url><url>
+    <loc>https://lynxline.com/posts/wsbcast/</loc>
+    <lastmod>2017-05-17T10:00:00+02:00</lastmod>
+  </url><url>
     <loc>https://lynxline.com/posts/create-qpdfjs/</loc>
     <lastmod>2017-04-27T20:05:44+02:00</lastmod>
   </url><url>
@@ -80,8 +125,14 @@
     <loc>https://lynxline.com/tags/pdf.js/</loc>
     <lastmod>2017-04-27T20:05:44+02:00</lastmod>
   </url><url>
-    <loc>https://lynxline.com/tags/qt/</loc>
-    <lastmod>2017-04-27T20:05:44+02:00</lastmod>
+    <loc>https://lynxline.com/posts/libmemcached-win/</loc>
+    <lastmod>2017-03-09T10:00:00+02:00</lastmod>
+  </url><url>
+    <loc>https://lynxline.com/tags/memcached/</loc>
+    <lastmod>2017-03-09T10:00:00+02:00</lastmod>
+  </url><url>
+    <loc>https://lynxline.com/tags/windows/</loc>
+    <lastmod>2017-03-09T10:00:00+02:00</lastmod>
   </url><url>
     <loc>https://lynxline.com/tags/blog/</loc>
     <lastmod>2016-06-03T22:13:05+02:00</lastmod>
@@ -182,9 +233,6 @@
     <loc>https://lynxline.com/posts/lab-24-network-part-1/</loc>
     <lastmod>2014-02-09T09:15:24+02:00</lastmod>
   </url><url>
-    <loc>https://lynxline.com/tags/boost/</loc>
-    <lastmod>2014-01-18T22:00:00+02:00</lastmod>
-  </url><url>
     <loc>https://lynxline.com/posts/jongling-models-beetween-threads/</loc>
     <lastmod>2014-01-18T22:00:00+02:00</lastmod>
   </url><url>
@@ -226,6 +274,9 @@
   </url><url>
     <loc>https://lynxline.com/posts/lab-16/</loc>
     <lastmod>2013-07-17T09:08:00+02:00</lastmod>
+  </url><url>
+    <loc>https://lynxline.com/posts/qca-demo/</loc>
+    <lastmod>2013-06-15T10:00:00+02:00</lastmod>
   </url><url>
     <loc>https://lynxline.com/posts/lab-15-eve-hello-world-from-limbo/</loc>
     <lastmod>2013-04-17T10:18:04+02:00</lastmod>
@@ -320,13 +371,28 @@
     <loc>https://lynxline.com/tags/tts/</loc>
     <lastmod>2011-06-29T21:00:00+02:00</lastmod>
   </url><url>
+    <loc>https://lynxline.com/tags/language-learning/</loc>
+    <lastmod>2011-06-15T10:00:00+02:00</lastmod>
+  </url><url>
+    <loc>https://lynxline.com/tags/mac/</loc>
+    <lastmod>2011-06-15T10:00:00+02:00</lastmod>
+  </url><url>
+    <loc>https://lynxline.com/posts/togmeg/</loc>
+    <lastmod>2011-06-15T10:00:00+02:00</lastmod>
+  </url><url>
     <loc>https://lynxline.com/posts/qtspeech-say-hello-world/</loc>
     <lastmod>2011-02-10T16:00:00+02:00</lastmod>
   </url><url>
-    <loc>https://lynxline.com/tags/hybrids/</loc>
-    <lastmod>2010-10-04T11:00:00+02:00</lastmod>
-  </url><url>
     <loc>https://lynxline.com/tags/pyside/</loc>
+    <lastmod>2010-10-06T10:00:00+02:00</lastmod>
+  </url><url>
+    <loc>https://lynxline.com/tags/python/</loc>
+    <lastmod>2010-10-06T10:00:00+02:00</lastmod>
+  </url><url>
+    <loc>https://lynxline.com/posts/pyside-hybrid/</loc>
+    <lastmod>2010-10-06T10:00:00+02:00</lastmod>
+  </url><url>
+    <loc>https://lynxline.com/tags/hybrids/</loc>
     <lastmod>2010-10-04T11:00:00+02:00</lastmod>
   </url><url>
     <loc>https://lynxline.com/posts/superhybrids-part-2-now-qt-pyside/</loc>
@@ -339,7 +405,10 @@
     <lastmod>2010-07-28T11:00:00+02:00</lastmod>
   </url><url>
     <loc>https://lynxline.com/tags/pyqt/</loc>
-    <lastmod>2010-07-19T15:00:00+02:00</lastmod>
+    <lastmod>2010-07-21T10:00:00+02:00</lastmod>
+  </url><url>
+    <loc>https://lynxline.com/posts/pyqt-hybrid/</loc>
+    <lastmod>2010-07-21T10:00:00+02:00</lastmod>
   </url><url>
     <loc>https://lynxline.com/posts/qt-python-superhybrids/</loc>
     <lastmod>2010-07-19T15:00:00+02:00</lastmod>

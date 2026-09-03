@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Mac on LynxLine</title>
+    <link>https://lynxline.com/tags/mac/</link>
+    <description>Recent content in Mac on LynxLine</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 15 Jun 2011 10:00:00 +0200</lastBuildDate>
+    <atom:link href="https://lynxline.com/tags/mac/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>TogMeg</title>
+      <link>https://lynxline.com/posts/togmeg/</link>
+      <pubDate>Wed, 15 Jun 2011 10:00:00 +0200</pubDate>
+      <guid>https://lynxline.com/posts/togmeg/</guid>
+      <description>TogMeg is a small Mac app for learning vocabulary in a new language: it shows you a word, makes you type the correct spelling, and speaks it using the system&amp;rsquo;s TTS voices so you get pronunciation along with spelling in the same pass. On Lion that&amp;rsquo;s up to 24 languages built in; on older OS X, Infovox iVox voices fill the gap for about $99 each (with a month-long demo, plenty to see if TogMeg is worth it for you).</description>
+    </item>
+  </channel>
+</rss>

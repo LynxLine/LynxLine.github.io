@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>MCP on LynxLine</title>
+    <link>https://lynxline.com/tags/mcp/</link>
+    <description>Recent content in MCP on LynxLine</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 11 Sep 2026 09:00:00 +0200</lastBuildDate>
+    <atom:link href="https://lynxline.com/tags/mcp/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Giving Your AI Agent a Safe Python Playground: Sandboxed Code Execution over MCP</title>
+      <link>https://lynxline.com/posts/sandboxed-python-mcp/</link>
+      <pubDate>Fri, 11 Sep 2026 09:00:00 +0200</pubDate>
+      <guid>https://lynxline.com/posts/sandboxed-python-mcp/</guid>
+      <description>LLM agents are remarkably good at writing code and remarkably unlucky at running it. The moment you let a model execute arbitrary Python on the same machine that holds your SSH keys, your .env files, and your production kubeconfig, you have built a very polite remote-code-execution service. Yet code execution is one of the highest-leverage tools you can give an agent: data wrangling, quick numeric checks, parsing odd file formats, validating its own hypotheses — all of it works dramatically better when the model can actually run what it writes.</description>
+    </item>
+  </channel>
+</rss>

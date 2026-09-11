@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <style>
+        :root {
+            --accent-color: #FF4D4D;
+        }
+    </style>
+
+    
+    
+    
+    
+    
+    
+
+    
+    <title>Giving Your AI Agent a Safe Python Playground: Sandboxed Code Execution over MCP</title>
+    <meta name="description" content="">
+    <meta name="keywords" content='AI, MCP, Python, Security'>
+
+    <meta property="og:url" content="https://lynxline.com/posts/sandboxed-python-mcp/">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Giving Your AI Agent a Safe Python Playground: Sandboxed Code Execution over MCP">
+    <meta property="og:description" content="">
+    <meta property="og:image" content="https://lynxline.com/images/lynx.jpg">
+    <meta property="og:image:secure_url" content="https://lynxline.com/images/lynx.jpg">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Giving Your AI Agent a Safe Python Playground: Sandboxed Code Execution over MCP">
+    <meta name="twitter:description" content="">
+    <meta property="twitter:domain" content="https://lynxline.com/posts/sandboxed-python-mcp/">
+    <meta property="twitter:url" content="https://lynxline.com/posts/sandboxed-python-mcp/">
+    <meta name="twitter:image" content="https://lynxline.com/images/lynx.jpg">
+
+    
+    <link rel="canonical" href="https://lynxline.com/posts/sandboxed-python-mcp/" />
+
+    
+    <link rel="stylesheet" type="text/css" href="/css/normalize.min.css" media="print">
+
+    
+    <link rel="stylesheet" type="text/css" href="/css/main.min.css">
+
+    
+    <link id="dark-theme" rel="stylesheet" href="/css/dark.min.css">
+
+    
+    <script src="/js/bundle.min.224c8e70fed292d18d7d9ae1b36797c99144e0be1117e2ea2c428379c8496551.js" integrity="sha256-IkyOcP7SktGNfZrhs2eXyZFE4L4RF&#43;LqLEKDechJZVE="></script>
+
+    
+    
+</head>
+<body>
+        <script type="text/javascript">
+            
+            setThemeByUserPref();
+        </script><header class="header">
+    <nav class="header-nav">
+
+        
+        <div class="avatar">
+            <a href="https://lynxline.com/">
+                <img src='/images/lynx.jpg' alt="avatar" />
+            </a>
+        </div>
+        
+
+        <div class="nav-title">
+            <a class="nav-brand" href="https://lynxline.com/">LynxLine</a>
+        </div>
+
+        <div class="nav-links">
+            
+            <div class="nav-link">
+                <a href="https://lynxline.com/services/"><span data-feather='zap'></span> Services </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://lynxline.com/posts/"><span data-feather='layers'></span> Posts </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://lynxline.com/tags/"><span data-feather='tag'></span> Tags </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://lynxline.com/contact/"><span data-feather='mail'></span> Contact </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://github.com"><span data-feather='github'></span>  </a>
+            </div>
+            
+
+            <span class="nav-icons-divider"></span>
+            <div class="nav-link dark-theme-toggle">
+                <span id="dark-theme-toggle-screen-reader-target" class="sr-only"></span>
+                <a>
+                    <span id="theme-toggle-icon" data-feather="moon"></span>
+                </a>
+            </div>
+
+            <div class="nav-link" id="hamburger-menu-toggle">
+                <span id="hamburger-menu-toggle-screen-reader-target" class="sr-only">menu</span>
+                <a>
+                    <span data-feather="menu"></span>
+                </a>
+            </div>
+
+            
+            <ul class="nav-hamburger-list visibility-hidden">
+                
+                <li class="nav-item">
+                    <a href="https://lynxline.com/services/"><span data-feather='zap'></span> Services </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://lynxline.com/posts/"><span data-feather='layers'></span> Posts </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://lynxline.com/tags/"><span data-feather='tag'></span> Tags </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://lynxline.com/contact/"><span data-feather='mail'></span> Contact </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://github.com"><span data-feather='github'></span>  </a>
+                </li>
+                
+                <li class="nav-item dark-theme-toggle">
+                    <span id="dark-theme-toggle-screen-reader-target" class="sr-only">theme</span>
+                    <a>
+                        <span id="theme-toggle-icon" data-feather="moon"></span>
+                    </a>
+                </li>
+            </ul>
+
+        </div>
+    </nav>
+</header>
+<main id="content">
+    <div class="post container">
+    <div class="post-header-section">
+        <h1>Giving Your AI Agent a Safe Python Playground: Sandboxed Code Execution over MCP</h1>
+        <small role="doc-subtitle"></small>
+        <p class="post-date">September 11, 2026
+        
+        </p>
+
+        <ul class="post-tags">
+        
+            <li class="post-tag"><a href="https://lynxline.com/tags/ai">AI</a></li>
+        
+            <li class="post-tag"><a href="https://lynxline.com/tags/mcp">MCP</a></li>
+        
+            <li class="post-tag"><a href="https://lynxline.com/tags/python">Python</a></li>
+        
+            <li class="post-tag"><a href="https://lynxline.com/tags/security">Security</a></li>
+        
+        </ul>
+    </div>
+
+    <div class="post-content">
+        <p>
+            <p>LLM agents are remarkably good at <em>writing</em> code and remarkably unlucky at <em>running</em> it. The moment you let a model execute arbitrary Python on the same machine that holds your SSH keys, your <code>.env</code> files, and your production kubeconfig, you have built a very polite remote-code-execution service. Yet code execution is one of the highest-leverage tools you can give an agent: data wrangling, quick numeric checks, parsing odd file formats, validating its own hypotheses — all of it works dramatically better when the model can actually run what it writes.</p>
+<p>The answer is not &ldquo;don&rsquo;t execute code.&rdquo; The answer is: execute it somewhere that doesn&rsquo;t matter.</p>
+<p>This article walks through building a <strong>Model Context Protocol (MCP) server that runs Python in a sandbox</strong>, using <a href="https://github.com/jlowin/fastmcp">FastMCP</a> to keep the examples compact. We&rsquo;ll look at two isolation strategies and spend most of our time on the stricter one:</p>
+<ol>
+<li><strong>Deno + Pyodide (WebAssembly)</strong> — Python compiled to WASM, running inside a runtime that is <em>deny-by-default</em>: no network, no filesystem, no environment, unless you explicitly grant each one. This is the headline approach.</li>
+<li><strong>Docker container</strong> — OS-level isolation for when you need real CPython, native wheels, or heavy compute.</li>
+</ol>
+<p>They compose, too — but first, why the WASM route deserves the spotlight.</p>
+<h2 id="why-mcp-for-this">Why MCP for this?</h2>
+<p>MCP gives you a standard contract between the agent and the tool. Instead of every team inventing its own &ldquo;run this snippet&rdquo; HTTP endpoint with its own auth and its own JSON shape, you expose one well-described tool that any MCP-capable client (Claude Code, IDE agents, custom orchestrators) can discover and call. The client sees a tool named <code>run_python</code>, a description telling the model <em>when</em> and <em>how</em> to use it, a typed input schema, and structured output it can reason about.</p>
+<p>The sandboxing itself is invisible to the model — and that&rsquo;s the point. The model just &ldquo;runs Python.&rdquo; The isolation boundary is your problem, solved once, server-side.</p>
+<h2 id="the-headline-approach-deno--pyodide">The headline approach: Deno + Pyodide</h2>
+<p>Most sandboxing stories are subtractive: start with a full OS process that can do everything, then take capabilities away — drop this, block that, mount nothing, hope you remembered every hole. The Deno + Pyodide combination inverts the model. It is <strong>additive</strong>: the code starts with <em>nothing</em> and you grant capabilities one flag at a time.</p>
+<p>Two layers make that true:</p>
+<p><strong><a href="https://pyodide.org">Pyodide</a></strong> is CPython compiled to WebAssembly. The Python interpreter itself runs inside a WASM linear-memory sandbox: it has no concept of your host filesystem, your network interfaces, or your process table. <code>open(&quot;/etc/passwd&quot;)</code> doesn&rsquo;t fail because of a permission check you configured — it fails because <em>there is no such file in the WASM world</em>. The &ldquo;filesystem&rdquo; Python sees is an in-memory emulation (Emscripten MEMFS) that exists only inside the interpreter instance and vanishes with it.</p>
+<p><strong><a href="https://deno.com">Deno</a></strong> is the JavaScript/TypeScript runtime hosting that WASM module — and unlike Node, Deno is sandboxed by default. No file reads, no file writes, no network, no environment variables, no subprocess spawning, unless the corresponding <code>--allow-*</code> flag is passed at startup. Even if some future Pyodide bug let Python reach the JavaScript host layer, the escaped code lands in a runtime that <em>also</em> can&rsquo;t touch anything.</p>
+<p>So the layering looks like this:</p>
+<pre tabindex="0"><code>+----------------------------------------------------------+
+|  Host                                                     |
+|                                                            |
+|   FastMCP server (Python) --- stdio/HTTP --- MCP client    |
+|        |                                                   |
+|        | subprocess (timeout, output caps)                 |
+|        v                                                   |
+|   +---------------------------------------------------+    |
+|   | Deno  (deny-by-default: no net, no fs, no env)    |    |
+|   |   +-------------------------------------------+   |    |
+|   |   | Pyodide (CPython in WASM)                 |   |    |
+|   |   |   - in-memory virtual filesystem only     |   |    |
+|   |   |   - no sockets, no host syscalls          |   |    |
+|   |   |   - runs the agent&#39;s script               |   |    |
+|   |   +-------------------------------------------+   |    |
+|   +---------------------------------------------------+    |
++----------------------------------------------------------+
+</code></pre><p>Notice what&rsquo;s <em>absent</em> from this diagram: there is no network rule to get wrong, no volume mount to forget, no root user to demote. <strong>&ldquo;No network and no files&rdquo; isn&rsquo;t a configuration you apply — it&rsquo;s the starting state.</strong> That property is why this approach deserves to be the default, especially for the most common agent workload: pure computation over data the agent already has in-context.</p>
+<h3 id="the-pyodide-runner">The Pyodide runner</h3>
+<p>One small TypeScript file is the entire execution engine. It reads a script from stdin, runs it inside Pyodide, and emits a JSON result on stdout:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-typescript" data-lang="typescript"><span style="display:flex;"><span><span style="color:#75715e">// runner.ts
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">loadPyodide</span> } <span style="color:#66d9ef">from</span> <span style="color:#e6db74">&#34;npm:pyodide&#34;</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">decoder</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">TextDecoder</span>();
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">code</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">decoder</span>.<span style="color:#a6e22e">decode</span>(<span style="color:#66d9ef">await</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Response</span>(<span style="color:#a6e22e">Deno</span>.<span style="color:#a6e22e">stdin</span>.<span style="color:#a6e22e">readable</span>).<span style="color:#a6e22e">arrayBuffer</span>());
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">stdoutChunks</span>: <span style="color:#66d9ef">string</span>[] <span style="color:#f92672">=</span> [];
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">stderrChunks</span>: <span style="color:#66d9ef">string</span>[] <span style="color:#f92672">=</span> [];
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">pyodide</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> <span style="color:#a6e22e">loadPyodide</span>({
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">stdout</span><span style="color:#f92672">:</span> (<span style="color:#a6e22e">line</span>: <span style="color:#66d9ef">string</span>) <span style="color:#f92672">=&gt;</span> <span style="color:#a6e22e">stdoutChunks</span>.<span style="color:#a6e22e">push</span>(<span style="color:#a6e22e">line</span>),
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">stderr</span><span style="color:#f92672">:</span> (<span style="color:#a6e22e">line</span>: <span style="color:#66d9ef">string</span>) <span style="color:#f92672">=&gt;</span> <span style="color:#a6e22e">stderrChunks</span>.<span style="color:#a6e22e">push</span>(<span style="color:#a6e22e">line</span>),
+</span></span><span style="display:flex;"><span>});
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Optional: let scripts use pure-Python wheels bundled with Pyodide
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// (numpy, pandas, etc.) — loaded from the local package cache, not the network.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">await</span> <span style="color:#a6e22e">pyodide</span>.<span style="color:#a6e22e">loadPackagesFromImports</span>(<span style="color:#a6e22e">code</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">exitCode</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">try</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">await</span> <span style="color:#a6e22e">pyodide</span>.<span style="color:#a6e22e">runPythonAsync</span>(<span style="color:#a6e22e">code</span>);
+</span></span><span style="display:flex;"><span>} <span style="color:#66d9ef">catch</span> (<span style="color:#a6e22e">err</span>) {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">stderrChunks</span>.<span style="color:#a6e22e">push</span>(String(<span style="color:#a6e22e">err</span>));
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">exitCode</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">JSON</span>.<span style="color:#a6e22e">stringify</span>({
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">stdout</span>: <span style="color:#66d9ef">stdoutChunks.join</span>(<span style="color:#e6db74">&#34;\n&#34;</span>),
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">stderr</span>: <span style="color:#66d9ef">stderrChunks.join</span>(<span style="color:#e6db74">&#34;\n&#34;</span>),
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">exit_code</span>: <span style="color:#66d9ef">exitCode</span>,
+</span></span><span style="display:flex;"><span>}));
+</span></span></code></pre></div><p>And the launch command is where the security posture becomes <em>legible</em>:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>deno run <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  --allow-read<span style="color:#f92672">=</span>./node_modules <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  --node-modules-dir<span style="color:#f92672">=</span>auto <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  runner.ts
+</span></span></code></pre></div><p>That&rsquo;s the complete permission grant: read access to the local Pyodide package cache, nothing else. No <code>--allow-net</code>. No <code>--allow-write</code>. No <code>--allow-env</code>. No <code>--allow-run</code>. The entire security review of this sandbox is <em>one shell line</em> — compare that to auditing a container spec, and you see the appeal. (Run it once with <code>--allow-net</code> to populate the package cache at build/install time; from then on, the runtime invocation stays offline.)</p>
+<h3 id="the-fastmcp-server-on-top">The FastMCP server on top</h3>
+<p>The MCP layer is a thin wrapper: hand the script to the runner, enforce a wall-clock timeout, cap the output, return structure.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># server.py</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> asyncio
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> json
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> dataclasses <span style="color:#f92672">import</span> dataclass
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> fastmcp <span style="color:#f92672">import</span> FastMCP
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>mcp <span style="color:#f92672">=</span> FastMCP(<span style="color:#e6db74">&#34;python-sandbox&#34;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>EXECUTION_TIMEOUT_SECONDS <span style="color:#f92672">=</span> <span style="color:#ae81ff">30</span>
+</span></span><span style="display:flex;"><span>MAX_OUTPUT_CHARS <span style="color:#f92672">=</span> <span style="color:#ae81ff">50_000</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>DENO_CMD <span style="color:#f92672">=</span> [
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;deno&#34;</span>, <span style="color:#e6db74">&#34;run&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;--allow-read=./node_modules&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;--node-modules-dir=auto&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;runner.ts&#34;</span>,
+</span></span><span style="display:flex;"><span>]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">@dataclass</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">ExecutionResult</span>:
+</span></span><span style="display:flex;"><span>    stdout: str
+</span></span><span style="display:flex;"><span>    stderr: str
+</span></span><span style="display:flex;"><span>    exit_code: int
+</span></span><span style="display:flex;"><span>    timed_out: bool
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">_truncate</span>(text: str) <span style="color:#f92672">-&gt;</span> str:
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> len(text) <span style="color:#f92672">&lt;=</span> MAX_OUTPUT_CHARS:
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> text
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> text[:MAX_OUTPUT_CHARS] <span style="color:#f92672">+</span> <span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">... [truncated, </span><span style="color:#e6db74">{</span>len(text)<span style="color:#e6db74">}</span><span style="color:#e6db74"> chars total]&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">@mcp.tool</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">async</span> <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">run_python</span>(code: str) <span style="color:#f92672">-&gt;</span> ExecutionResult:
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;&#34;&#34;Execute a Python script in an isolated WebAssembly sandbox.
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    The script runs in a fresh interpreter with NO network access and
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    NO access to any real filesystem: it cannot read host files, make
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    HTTP requests, or open sockets. Common scientific packages
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    (numpy, pandas) are available via normal imports. Each call is
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    independent — variables do not persist between calls. Execution
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    is killed after 30 seconds.
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    &#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>    proc <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> asyncio<span style="color:#f92672">.</span>create_subprocess_exec(
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">*</span>DENO_CMD,
+</span></span><span style="display:flex;"><span>        stdin<span style="color:#f92672">=</span>asyncio<span style="color:#f92672">.</span>subprocess<span style="color:#f92672">.</span>PIPE,
+</span></span><span style="display:flex;"><span>        stdout<span style="color:#f92672">=</span>asyncio<span style="color:#f92672">.</span>subprocess<span style="color:#f92672">.</span>PIPE,
+</span></span><span style="display:flex;"><span>        stderr<span style="color:#f92672">=</span>asyncio<span style="color:#f92672">.</span>subprocess<span style="color:#f92672">.</span>PIPE,
+</span></span><span style="display:flex;"><span>    )
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">try</span>:
+</span></span><span style="display:flex;"><span>        raw_out, raw_err <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> asyncio<span style="color:#f92672">.</span>wait_for(
+</span></span><span style="display:flex;"><span>            proc<span style="color:#f92672">.</span>communicate(code<span style="color:#f92672">.</span>encode()), timeout<span style="color:#f92672">=</span>EXECUTION_TIMEOUT_SECONDS
+</span></span><span style="display:flex;"><span>        )
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">except</span> asyncio<span style="color:#f92672">.</span>TimeoutError:
+</span></span><span style="display:flex;"><span>        proc<span style="color:#f92672">.</span>kill()
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">await</span> proc<span style="color:#f92672">.</span>wait()
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> ExecutionResult(stdout<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;&#34;</span>, stderr<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;&#34;</span>, exit_code<span style="color:#f92672">=-</span><span style="color:#ae81ff">1</span>, timed_out<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> proc<span style="color:#f92672">.</span>returncode <span style="color:#f92672">!=</span> <span style="color:#ae81ff">0</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># Runner itself failed (not the user script) — surface it plainly.</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> ExecutionResult(
+</span></span><span style="display:flex;"><span>            stdout<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;&#34;</span>,
+</span></span><span style="display:flex;"><span>            stderr<span style="color:#f92672">=</span>_truncate(raw_err<span style="color:#f92672">.</span>decode(errors<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;replace&#34;</span>)),
+</span></span><span style="display:flex;"><span>            exit_code<span style="color:#f92672">=</span>proc<span style="color:#f92672">.</span>returncode,
+</span></span><span style="display:flex;"><span>            timed_out<span style="color:#f92672">=</span><span style="color:#66d9ef">False</span>,
+</span></span><span style="display:flex;"><span>        )
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    result <span style="color:#f92672">=</span> json<span style="color:#f92672">.</span>loads(raw_out)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> ExecutionResult(
+</span></span><span style="display:flex;"><span>        stdout<span style="color:#f92672">=</span>_truncate(result[<span style="color:#e6db74">&#34;stdout&#34;</span>]),
+</span></span><span style="display:flex;"><span>        stderr<span style="color:#f92672">=</span>_truncate(result[<span style="color:#e6db74">&#34;stderr&#34;</span>]),
+</span></span><span style="display:flex;"><span>        exit_code<span style="color:#f92672">=</span>result[<span style="color:#e6db74">&#34;exit_code&#34;</span>],
+</span></span><span style="display:flex;"><span>        timed_out<span style="color:#f92672">=</span><span style="color:#66d9ef">False</span>,
+</span></span><span style="display:flex;"><span>    )
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> __name__ <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;__main__&#34;</span>:
+</span></span><span style="display:flex;"><span>    mcp<span style="color:#f92672">.</span>run()
+</span></span></code></pre></div><p>A few deliberate choices worth calling out:</p>
+<ul>
+<li><strong>The docstring is a prompt.</strong> The model decides how to use your tool based on that text. Saying &ldquo;NO network, NO filesystem&rdquo; up front stops the agent from wasting turns on <code>requests.get(...)</code> attempts that were never going to work.</li>
+<li><strong>Structured result, not a blob.</strong> Separate <code>stdout</code> / <code>stderr</code> / <code>exit_code</code> / <code>timed_out</code> fields let the model distinguish &ldquo;printed nothing&rdquo; from &ldquo;crashed&rdquo; from &ldquo;hung&rdquo; without parsing prose.</li>
+<li><strong>Fresh interpreter per call.</strong> No shared globals, no &ldquo;it worked because a previous call imported pandas.&rdquo; Stateless calls are far easier for a model to reason about.</li>
+<li><strong>Truncation with a note.</strong> Silently cutting output confuses the model; telling it <em>&ldquo;truncated, 2,400,000 chars total&rdquo;</em> lets it adapt.</li>
+<li><strong>Timeout kills the whole Deno process.</strong> WASM has no preemption story for runaway loops; the leash lives one level up, in the subprocess boundary — which is exactly where it&rsquo;s cheapest.</li>
+</ul>
+<h3 id="what-the-agents-script-can-and-cannot-do">What the agent&rsquo;s script can and cannot do</h3>
+<table>
+<thead>
+<tr>
+<th>Attempt</th>
+<th>What happens</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>open(&quot;/etc/passwd&quot;)</code></td>
+<td><code>FileNotFoundError</code> — the path doesn&rsquo;t exist in the in-memory FS</td>
+</tr>
+<tr>
+<td><code>requests.get(...)</code> / raw sockets</td>
+<td>Fails — no network stack reaches the host; Deno has no <code>--allow-net</code></td>
+</tr>
+<tr>
+<td><code>os.environ</code></td>
+<td>Empty/emulated — Deno never granted <code>--allow-env</code></td>
+</tr>
+<tr>
+<td><code>subprocess.run(&quot;bash&quot;)</code></td>
+<td>No such capability in WASM; Deno has no <code>--allow-run</code></td>
+</tr>
+<tr>
+<td>Write 10 GB of &ldquo;files&rdquo;</td>
+<td>Fills the in-memory FS inside one interpreter, dies with it</td>
+</tr>
+<tr>
+<td><code>while True: pass</code></td>
+<td>Killed by the server-side 30 s timeout</td>
+</tr>
+<tr>
+<td>Hypothetical Pyodide escape to JS</td>
+<td>Lands inside Deno, which still can&rsquo;t touch net/fs/env</td>
+</tr>
+</tbody>
+</table>
+<p>The honest limitations, so you can decide when this approach fits:</p>
+<ul>
+<li><strong>Packages</strong>: pure-Python wheels and the scientific set Pyodide ships (numpy, pandas, scipy, matplotlib, scikit-learn, and hundreds more) work; arbitrary native extensions (<code>psycopg2</code>, <code>torch</code>) do not.</li>
+<li><strong>Speed</strong>: expect roughly 1–3× slower than native CPython, plus interpreter startup per call. Irrelevant for &ldquo;check this calculation,&rdquo; relevant for heavy number crunching.</li>
+<li><strong>Threads/processes</strong>: <code>multiprocessing</code> and friends aren&rsquo;t available.</li>
+</ul>
+<p>For the dominant agent use case — <em>run this self-contained snippet on data I gave you and show me the output</em> — none of these bite, and you get the strongest isolation available for the least configuration.</p>
+<h2 id="the-second-approach-a-docker-container">The second approach: a Docker container</h2>
+<p>When you genuinely need native CPython — GPU work, database drivers, <code>multiprocessing</code>, packages with C extensions — you fall back from &ldquo;the syscalls don&rsquo;t exist&rdquo; to &ldquo;the syscalls are confined.&rdquo; The MCP server itself changes very little: the same FastMCP wrapper pattern applies, just executing <code>python script.py</code> as the subprocess instead of the Deno runner. What changes is that the security now lives in the container spec, and every line of it is load-bearing:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-dockerfile" data-lang="dockerfile"><span style="display:flex;"><span><span style="color:#66d9ef">FROM</span><span style="color:#e6db74"> python:3.12-slim</span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">RUN</span> pip install --no-cache-dir fastmcp numpy pandas matplotlib<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#75715e"># Non-root: a sandbox running as root is a sandbox in name only.</span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">RUN</span> useradd --create-home --shell /usr/sbin/nologin sandbox <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    <span style="color:#f92672">&amp;&amp;</span> mkdir /workspace <span style="color:#f92672">&amp;&amp;</span> chown sandbox:sandbox /workspace<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">COPY</span> server.py /app/server.py<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">USER</span><span style="color:#e6db74"> sandbox</span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">WORKDIR</span><span style="color:#e6db74"> /workspace</span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">ENTRYPOINT</span> [<span style="color:#e6db74">&#34;python&#34;</span>, <span style="color:#e6db74">&#34;/app/server.py&#34;</span>]<span style="color:#960050;background-color:#1e0010">
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#75715e"># docker-compose.yml</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">services</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">python-sandbox</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">build</span>: <span style="color:#ae81ff">.</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">read_only</span>: <span style="color:#66d9ef">true</span>                 <span style="color:#75715e"># root fs immutable</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">tmpfs</span>:
+</span></span><span style="display:flex;"><span>      - <span style="color:#ae81ff">/workspace:size=256m       </span> <span style="color:#75715e"># writable scratch, RAM-backed, size-capped</span>
+</span></span><span style="display:flex;"><span>      - <span style="color:#ae81ff">/tmp:size=64m</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">network_mode</span>: <span style="color:#e6db74">&#34;none&#34;</span>            <span style="color:#75715e"># no exfiltration, no surprises</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">mem_limit</span>: <span style="color:#ae81ff">512m</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">pids_limit</span>: <span style="color:#ae81ff">128</span>                 <span style="color:#75715e"># fork bombs die here</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">cpus</span>: <span style="color:#e6db74">&#34;1.0&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">cap_drop</span>: [<span style="color:#ae81ff">ALL]</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">security_opt</span>:
+</span></span><span style="display:flex;"><span>      - <span style="color:#66d9ef">no</span>-<span style="color:#ae81ff">new-privileges:true</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">stdin_open</span>: <span style="color:#66d9ef">true</span>
+</span></span></code></pre></div><p>This is a perfectly respectable sandbox — but notice how the burden shifted. With Pyodide, isolation was the <em>starting state</em> and you granted exceptions. Here, the process starts life able to do everything, and each YAML line subtracts one attack class: forget <code>network_mode: none</code> and scripts can exfiltrate; forget <code>pids_limit</code> and a fork bomb wedges the host; mount a volume for convenience and you&rsquo;ve drilled a hole in the wall. Subtractive security fails <em>open</em>; additive security fails <em>closed</em>. That asymmetry is the whole argument for reaching for WASM first.</p>
+<h3 id="belt-and-suspenders">Belt and suspenders</h3>
+<p>The two approaches aren&rsquo;t rivals. For a hardened deployment, run the Deno + Pyodide server <em>inside</em> the locked-down container: the WASM boundary handles the untrusted script, the container handles the hypothetical runtime escape, and neither layer&rsquo;s failure alone is enough. Since the Pyodide layer needs no network and no meaningful filesystem at runtime, the container config loses nothing by staying maximally strict.</p>
+<h2 id="choosing-between-them">Choosing between them</h2>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Deno + Pyodide (WASM)</th>
+<th>Docker container</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Security model</td>
+<td><strong>Additive</strong> — capabilities granted one flag at a time</td>
+<td><strong>Subtractive</strong> — capabilities removed line by line</td>
+</tr>
+<tr>
+<td>No-network guarantee</td>
+<td>Inherent (never granted)</td>
+<td>Configured (<code>network_mode: none</code>)</td>
+</tr>
+<tr>
+<td>No-files guarantee</td>
+<td>Inherent (in-memory FS only)</td>
+<td>Configured (no mounts + read-only + tmpfs)</td>
+</tr>
+<tr>
+<td>Misconfiguration risk</td>
+<td>One shell line to audit</td>
+<td>Every flag is load-bearing</td>
+</tr>
+<tr>
+<td>Python compatibility</td>
+<td>Pure-Python + Pyodide&rsquo;s scientific set</td>
+<td>Full CPython, any wheel</td>
+</tr>
+<tr>
+<td>Performance</td>
+<td>~1–3× slower, per-call startup</td>
+<td>Native</td>
+</tr>
+<tr>
+<td>Infra prerequisites</td>
+<td>A Deno binary</td>
+<td>Docker daemon</td>
+</tr>
+<tr>
+<td>Best for</td>
+<td>Default choice: calculations, data munging, self-contained snippets</td>
+<td>Native deps, heavy compute, long-lived workspaces</td>
+</tr>
+</tbody>
+</table>
+<p>Start with WASM. Move individual workloads to the container only when a concrete requirement (a native package, a performance ceiling) forces the trade.</p>
+<h2 id="wiring-it-into-an-mcp-client">Wiring it into an MCP client</h2>
+<p>With stdio transport, the client launches the server and speaks MCP over its stdin/stdout:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;mcpServers&#34;</span>: {
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;python-sandbox&#34;</span>: {
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;command&#34;</span>: <span style="color:#e6db74">&#34;python&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;args&#34;</span>: [<span style="color:#e6db74">&#34;/opt/python-sandbox/server.py&#34;</span>]
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>For shared or remote deployments, switch FastMCP to HTTP transport:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">if</span> __name__ <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;__main__&#34;</span>:
+</span></span><span style="display:flex;"><span>    mcp<span style="color:#f92672">.</span>run(transport<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;http&#34;</span>, host<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;0.0.0.0&#34;</span>, port<span style="color:#f92672">=</span><span style="color:#ae81ff">8000</span>)
+</span></span></code></pre></div><p>then front it with your normal ingress, TLS, and authentication. The tool code doesn&rsquo;t change at all — transport is a deployment detail in MCP, which is exactly how it should be.</p>
+<h2 id="the-security-checklist">The security checklist</h2>
+<ul>
+<li><input disabled="" type="checkbox"> Execution engine is <strong>deny-by-default</strong>: no <code>--allow-net</code>, no <code>--allow-write</code>, no <code>--allow-env</code>, no <code>--allow-run</code></li>
+<li><input disabled="" type="checkbox"> Package cache <strong>pre-populated at install time</strong>; runtime invocations stay fully offline</li>
+<li><input disabled="" type="checkbox"> <strong>Wall-clock timeout</strong> on every execution, killing the whole runner process</li>
+<li><input disabled="" type="checkbox"> <strong>Output truncation</strong> so a <code>print</code> loop can&rsquo;t flood the transport</li>
+<li><input disabled="" type="checkbox"> Tool description <strong>tells the model the constraints</strong> (no net, no files, no cross-call state) so it doesn&rsquo;t fight the sandbox</li>
+<li><input disabled="" type="checkbox"> If containerized: non-root, <code>cap_drop: ALL</code>, <code>no-new-privileges</code>, no volume mounts, <code>network_mode: none</code>, mem/CPU/PID limits, read-only root fs</li>
+<li><input disabled="" type="checkbox"> No secrets in the server&rsquo;s environment or install directory — a sandbox with nothing to steal makes most attacks pointless by construction</li>
+</ul>
+<h2 id="closing-thought">Closing thought</h2>
+<p>The deepest lesson here isn&rsquo;t about Python, Deno, or Docker — it&rsquo;s about <em>which direction your security model points</em>. A sandbox you build by taking capabilities away is only as strong as your memory of what to take away. A sandbox you build by granting capabilities is as strong as the shortness of the grant list — and for running an agent&rsquo;s throwaway Python, that list can be almost empty: read one package cache, nothing else.</p>
+<p>Give your agent a room where it can break things. With the WASM approach, the room isn&rsquo;t just locked — most of the doors were never built. The agent will break what it can, learn from the stack trace, and hand you working code, and the blast radius will be an in-memory filesystem that was going to vanish anyway.</p>
+
+        </p>
+        
+    </div>
+
+    <div class="prev-next">
+        
+    </div>
+
+    
+    
+    
+</div>
+
+
+
+    
+
+        </main><footer class="footer">
+    
+    
+
+    
+    <span>
+        Made using <a target="_blank" href="https://gohugo.io/">HUGO</a>
+    </span>
+</footer>
+</body>
+</html>

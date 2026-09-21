@@ -2,28 +2,43 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://lynxline.com/tags/bitmessage/</loc>
+    <lastmod>2026-09-21T09:00:00+02:00</lastmod>
+  </url><url>
+    <loc>https://lynxline.com/tags/c&#43;&#43;/</loc>
+    <lastmod>2026-09-21T09:00:00+02:00</lastmod>
+  </url><url>
+    <loc>https://lynxline.com/tags/cryptography/</loc>
+    <lastmod>2026-09-21T09:00:00+02:00</lastmod>
+  </url><url>
+    <loc>https://lynxline.com/</loc>
+    <lastmod>2026-09-21T09:00:00+02:00</lastmod>
+  </url><url>
+    <loc>https://lynxline.com/posts/</loc>
+    <lastmod>2026-09-21T09:00:00+02:00</lastmod>
+  </url><url>
+    <loc>https://lynxline.com/tags/qt/</loc>
+    <lastmod>2026-09-21T09:00:00+02:00</lastmod>
+  </url><url>
+    <loc>https://lynxline.com/tags/</loc>
+    <lastmod>2026-09-21T09:00:00+02:00</lastmod>
+  </url><url>
+    <loc>https://lynxline.com/posts/ynotbit/</loc>
+    <lastmod>2026-09-21T09:00:00+02:00</lastmod>
+  </url><url>
     <loc>https://lynxline.com/tags/ai/</loc>
     <lastmod>2026-09-11T09:00:00+02:00</lastmod>
   </url><url>
     <loc>https://lynxline.com/posts/sandboxed-python-mcp/</loc>
     <lastmod>2026-09-11T09:00:00+02:00</lastmod>
   </url><url>
-    <loc>https://lynxline.com/</loc>
-    <lastmod>2026-09-11T09:00:00+02:00</lastmod>
-  </url><url>
     <loc>https://lynxline.com/tags/mcp/</loc>
-    <lastmod>2026-09-11T09:00:00+02:00</lastmod>
-  </url><url>
-    <loc>https://lynxline.com/posts/</loc>
     <lastmod>2026-09-11T09:00:00+02:00</lastmod>
   </url><url>
     <loc>https://lynxline.com/tags/python/</loc>
     <lastmod>2026-09-11T09:00:00+02:00</lastmod>
   </url><url>
     <loc>https://lynxline.com/tags/security/</loc>
-    <lastmod>2026-09-11T09:00:00+02:00</lastmod>
-  </url><url>
-    <loc>https://lynxline.com/tags/</loc>
     <lastmod>2026-09-11T09:00:00+02:00</lastmod>
   </url><url>
     <loc>https://lynxline.com/tags/claude/</loc>
@@ -80,9 +95,6 @@
     <loc>https://lynxline.com/tags/websocket/</loc>
     <lastmod>2021-05-10T10:00:00+02:00</lastmod>
   </url><url>
-    <loc>https://lynxline.com/tags/bitmessage/</loc>
-    <lastmod>2020-12-20T10:00:00+02:00</lastmod>
-  </url><url>
     <loc>https://lynxline.com/posts/docker-bitmessage/</loc>
     <lastmod>2020-12-20T10:00:00+02:00</lastmod>
   </url><url>
@@ -110,9 +122,6 @@
     <loc>https://lynxline.com/posts/node-red-contrib-iota-tx0/</loc>
     <lastmod>2018-09-30T10:00:00+02:00</lastmod>
   </url><url>
-    <loc>https://lynxline.com/tags/qt/</loc>
-    <lastmod>2018-08-02T10:00:00+02:00</lastmod>
-  </url><url>
     <loc>https://lynxline.com/posts/goqdebug/</loc>
     <lastmod>2018-08-02T10:00:00+02:00</lastmod>
   </url><url>
@@ -120,9 +129,6 @@
     <lastmod>2017-06-05T10:00:00+02:00</lastmod>
   </url><url>
     <loc>https://lynxline.com/posts/multi-index-examples/</loc>
-    <lastmod>2017-06-05T10:00:00+02:00</lastmod>
-  </url><url>
-    <loc>https://lynxline.com/tags/c&#43;&#43;/</loc>
     <lastmod>2017-06-05T10:00:00+02:00</lastmod>
   </url><url>
     <loc>https://lynxline.com/posts/wsbcast/</loc>
@@ -277,9 +283,6 @@
   </url><url>
     <loc>https://lynxline.com/posts/lab-17-mmu-init/</loc>
     <lastmod>2013-11-15T09:13:29+02:00</lastmod>
-  </url><url>
-    <loc>https://lynxline.com/tags/cryptography/</loc>
-    <lastmod>2013-09-13T22:00:00+02:00</lastmod>
   </url><url>
     <loc>https://lynxline.com/posts/qt-and-use-of-cryptography-simple/</loc>
     <lastmod>2013-09-13T22:00:00+02:00</lastmod>

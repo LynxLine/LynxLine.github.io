@@ -6,8 +6,15 @@
     <description>Recent content in Cryptography on LynxLine</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 13 Sep 2013 22:00:00 +0200</lastBuildDate>
+    <lastBuildDate>Mon, 21 Sep 2026 09:00:00 +0200</lastBuildDate>
     <atom:link href="https://lynxline.com/tags/cryptography/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>ynotbit: A Vault, a Keyless Relay, and notbit Underneath</title>
+      <link>https://lynxline.com/posts/ynotbit/</link>
+      <pubDate>Mon, 21 Sep 2026 09:00:00 +0200</pubDate>
+      <guid>https://lynxline.com/posts/ynotbit/</guid>
+      <description>notbit already proved the point: a Bitmessage node doesn&amp;rsquo;t need Python or a GUI, just a small C daemon and a terminal. ynotbit takes that engine and builds the desktop client around it properly — Qt Widgets, C++20, and a storage design where the network relay never sees your identity keys.&#xA;Two documents, not one Most mail clients keep everything — keys and messages — in one place. ynotbit splits it in two:</description>
+    </item>
     <item>
       <title>Qt and use of Cryptography – simple!</title>
       <link>https://lynxline.com/posts/qt-and-use-of-cryptography-simple/</link>

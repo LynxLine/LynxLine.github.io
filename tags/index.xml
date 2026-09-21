@@ -6,8 +6,36 @@
     <description>Recent content in Tags on LynxLine</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 11 Sep 2026 09:00:00 +0200</lastBuildDate>
+    <lastBuildDate>Mon, 21 Sep 2026 09:00:00 +0200</lastBuildDate>
     <atom:link href="https://lynxline.com/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Bitmessage</title>
+      <link>https://lynxline.com/tags/bitmessage/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://lynxline.com/tags/bitmessage/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>C&#43;&#43;</title>
+      <link>https://lynxline.com/tags/c&#43;&#43;/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://lynxline.com/tags/c&#43;&#43;/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Cryptography</title>
+      <link>https://lynxline.com/tags/cryptography/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://lynxline.com/tags/cryptography/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Qt</title>
+      <link>https://lynxline.com/tags/qt/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://lynxline.com/tags/qt/</guid>
+      <description></description>
+    </item>
     <item>
       <title>AI</title>
       <link>https://lynxline.com/tags/ai/</link>
@@ -107,13 +135,6 @@
       <description></description>
     </item>
     <item>
-      <title>Bitmessage</title>
-      <link>https://lynxline.com/tags/bitmessage/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://lynxline.com/tags/bitmessage/</guid>
-      <description></description>
-    </item>
-    <item>
       <title>Email</title>
       <link>https://lynxline.com/tags/email/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -156,24 +177,10 @@
       <description></description>
     </item>
     <item>
-      <title>Qt</title>
-      <link>https://lynxline.com/tags/qt/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://lynxline.com/tags/qt/</guid>
-      <description></description>
-    </item>
-    <item>
       <title>Boost</title>
       <link>https://lynxline.com/tags/boost/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://lynxline.com/tags/boost/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>C&#43;&#43;</title>
-      <link>https://lynxline.com/tags/c&#43;&#43;/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://lynxline.com/tags/c&#43;&#43;/</guid>
       <description></description>
     </item>
     <item>
@@ -286,13 +293,6 @@
       <link>https://lynxline.com/tags/web/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://lynxline.com/tags/web/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Cryptography</title>
-      <link>https://lynxline.com/tags/cryptography/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://lynxline.com/tags/cryptography/</guid>
       <description></description>
     </item>
     <item>

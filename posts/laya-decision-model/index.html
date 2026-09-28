@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <style>
+        :root {
+            --accent-color: #FF4D4D;
+        }
+    </style>
+
+    
+    
+    
+    
+    
+    
+
+    
+    <title>From Question to Table Name: Trying a Small Decision Model Where Everyone Reaches for an LLM</title>
+    <meta name="description" content="">
+    <meta name="keywords" content='AI, Machine Learning, Python'>
+
+    <meta property="og:url" content="https://lynxline.com/posts/laya-decision-model/">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="From Question to Table Name: Trying a Small Decision Model Where Everyone Reaches for an LLM">
+    <meta property="og:description" content="">
+    <meta property="og:image" content="https://lynxline.com/images/lynx.jpg">
+    <meta property="og:image:secure_url" content="https://lynxline.com/images/lynx.jpg">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="From Question to Table Name: Trying a Small Decision Model Where Everyone Reaches for an LLM">
+    <meta name="twitter:description" content="">
+    <meta property="twitter:domain" content="https://lynxline.com/posts/laya-decision-model/">
+    <meta property="twitter:url" content="https://lynxline.com/posts/laya-decision-model/">
+    <meta name="twitter:image" content="https://lynxline.com/images/lynx.jpg">
+
+    
+    <link rel="canonical" href="https://lynxline.com/posts/laya-decision-model/" />
+
+    
+    <link rel="stylesheet" type="text/css" href="/css/normalize.min.css" media="print">
+
+    
+    <link rel="stylesheet" type="text/css" href="/css/main.min.css">
+
+    
+    <link id="dark-theme" rel="stylesheet" href="/css/dark.min.css">
+
+    
+    <script src="/js/bundle.min.224c8e70fed292d18d7d9ae1b36797c99144e0be1117e2ea2c428379c8496551.js" integrity="sha256-IkyOcP7SktGNfZrhs2eXyZFE4L4RF&#43;LqLEKDechJZVE="></script>
+
+    
+    
+</head>
+<body>
+        <script type="text/javascript">
+            
+            setThemeByUserPref();
+        </script><header class="header">
+    <nav class="header-nav">
+
+        
+        <div class="avatar">
+            <a href="https://lynxline.com/">
+                <img src='/images/lynx.jpg' alt="avatar" />
+            </a>
+        </div>
+        
+
+        <div class="nav-title">
+            <a class="nav-brand" href="https://lynxline.com/">LynxLine</a>
+        </div>
+
+        <div class="nav-links">
+            
+            <div class="nav-link">
+                <a href="https://lynxline.com/services/"><span data-feather='zap'></span> Services </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://lynxline.com/posts/"><span data-feather='layers'></span> Posts </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://lynxline.com/tags/"><span data-feather='tag'></span> Tags </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://lynxline.com/contact/"><span data-feather='mail'></span> Contact </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://github.com"><span data-feather='github'></span>  </a>
+            </div>
+            
+
+            <span class="nav-icons-divider"></span>
+            <div class="nav-link dark-theme-toggle">
+                <span id="dark-theme-toggle-screen-reader-target" class="sr-only"></span>
+                <a>
+                    <span id="theme-toggle-icon" data-feather="moon"></span>
+                </a>
+            </div>
+
+            <div class="nav-link" id="hamburger-menu-toggle">
+                <span id="hamburger-menu-toggle-screen-reader-target" class="sr-only">menu</span>
+                <a>
+                    <span data-feather="menu"></span>
+                </a>
+            </div>
+
+            
+            <ul class="nav-hamburger-list visibility-hidden">
+                
+                <li class="nav-item">
+                    <a href="https://lynxline.com/services/"><span data-feather='zap'></span> Services </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://lynxline.com/posts/"><span data-feather='layers'></span> Posts </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://lynxline.com/tags/"><span data-feather='tag'></span> Tags </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://lynxline.com/contact/"><span data-feather='mail'></span> Contact </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://github.com"><span data-feather='github'></span>  </a>
+                </li>
+                
+                <li class="nav-item dark-theme-toggle">
+                    <span id="dark-theme-toggle-screen-reader-target" class="sr-only">theme</span>
+                    <a>
+                        <span id="theme-toggle-icon" data-feather="moon"></span>
+                    </a>
+                </li>
+            </ul>
+
+        </div>
+    </nav>
+</header>
+<main id="content">
+    <div class="post container">
+    <div class="post-header-section">
+        <h1>From Question to Table Name: Trying a Small Decision Model Where Everyone Reaches for an LLM</h1>
+        <small role="doc-subtitle"></small>
+        <p class="post-date">September 28, 2026
+        
+        </p>
+
+        <ul class="post-tags">
+        
+            <li class="post-tag"><a href="https://lynxline.com/tags/ai">AI</a></li>
+        
+            <li class="post-tag"><a href="https://lynxline.com/tags/machine-learning">Machine Learning</a></li>
+        
+            <li class="post-tag"><a href="https://lynxline.com/tags/python">Python</a></li>
+        
+        </ul>
+    </div>
+
+    <div class="post-content">
+        <p>
+            <p>We needed to map a free-form user question to one of about 1,000 database table names, fast and on our own hardware. We tried <a href="https://github.com/NandhaKishorM/laya">Laya</a>, the open-source &ldquo;System-1 decision model,&rdquo; end to end: zero-shot, with hybrid retrieval, and finally fine-tuned on synthetic data. Here is what worked, what quietly failed, and what we would do differently.</p>
+<h2 id="the-problem">The problem</h2>
+<p>Our data platform exposes roughly 1,000 logical tables. Users ask questions like <em>&ldquo;what were the total daily sales per store in January, day by day?&rdquo;</em> and somewhere upstream of any SQL generation, something has to decide that this question is about <code>XQR7_DTV_AGG</code> and not about the forty other tables that also mention stores, days, or totals. A large LLM does this well, but we wanted the lookup to be a cheap, local primitive: called on every user turn, adding tens of milliseconds, not seconds, and never shipping schema metadata to an external API.</p>
+<p>That framing — classification over a large, closed label set — is exactly what Laya advertises. Laya is a 421M-parameter, non-autoregressive decision model built on a ModernBERT-style encoder, released under Apache 2.0. You give it a <em>state</em> (the user&rsquo;s text) and a typed <em>question</em> with candidate answers; it returns a choice with calibrated probabilities in a single forward pass, around 33 ms on modest GPUs. The label set is defined at request time, so no retraining is needed when tables are added. On paper, a perfect fit.</p>
+<h2 id="the-first-wall-it-is-not-a-long-context-model">The first wall: it is not a long-context model</h2>
+<p>The naive plan — &ldquo;feed the model everything about all tables as context&rdquo; — dies immediately. Our per-table documentation (name, human label, description, column list, typical usage phrases, disambiguation notes) compacts to about 8.5 MB of text, close to two million tokens. Laya&rsquo;s input budget is 512 tokens (1,024 for some checkpoints), of which roughly 200 are reserved for rendering the answer options, and the documentation itself notes quality drops past about 20 options per question.</p>
+<p>So the architecture has to be two-stage:</p>
+<ol>
+<li><strong>Retrieval</strong> narrows about 1,000 tables to the top 15 candidates for the query.</li>
+<li><strong>Decision</strong>: Laya picks one candidate, given a ~140-character description of each.</li>
+</ol>
+<p>This is a standard retrieve-then-rerank pattern; the interesting part is what each stage turned out to contribute.</p>
+<h2 id="measuring-anything-at-all">Measuring anything at all</h2>
+<p>We built the evaluation set from an existing library of scripted support conversations: 115 turns where the expected answer text names the table(s) actually used. Two details mattered more than any model choice:</p>
+<ul>
+<li><strong>Gold labels are noisy.</strong> The &ldquo;expected&rdquo; table is the one a reference agent happened to use; a miss is sometimes a defensible alternative. Absolute numbers below are pessimistic.</li>
+<li><strong>Follow-up turns are unanswerable without history.</strong> &ldquo;Show me the volumes for that month&rdquo; retrieves nothing by itself. Concatenating the two previous user turns onto the query (<code>q_ctx</code>) roughly doubled every metric in the study. If your users ask follow-ups, conversation context is not an optimization — it is table stakes.</li>
+</ul>
+<h2 id="stage-one-retrieval-is-the-ceiling">Stage one: retrieval is the ceiling</h2>
+<p>Whatever the decision stage does, it cannot pick a table that retrieval failed to surface, so hit@15 is a hard ceiling on end-to-end accuracy. We compared three retrievers, all over the same compacted TSV (one row per table, weighted fields):</p>
+<table>
+<thead>
+<tr>
+<th>Retriever</th>
+<th>hit@15, bare query</th>
+<th>hit@15, with context</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>BM25, field-weighted</td>
+<td>0.24</td>
+<td>0.45</td>
+</tr>
+<tr>
+<td>BM25 + hand-written abbreviation aliases</td>
+<td>0.24</td>
+<td>0.46</td>
+</tr>
+<tr>
+<td>Hybrid: BM25 + small embedder, reciprocal-rank fusion</td>
+<td>0.39</td>
+<td><strong>0.65</strong></td>
+</tr>
+</tbody>
+</table>
+<p><em>Share of eval turns where a correct table appears in the top-15 candidates. Embedder: a 33M-parameter sentence encoder, one vector per table.</em></p>
+<p>Two findings here:</p>
+<ul>
+<li><strong>The vocabulary gap is the dominant failure.</strong> Users say &ldquo;daily sales per store&rdquo;; the table is named <code>XQR7_DTV_AGG</code> and its description says &ldquo;aggregated transaction volumes.&rdquo; Lexical search cannot bridge naming conventions built from abbreviations. A small dense embedder closed most of that gap for the cost of a 1,000×384 matrix.</li>
+<li><strong>Hand-curated alias lists are a trap.</strong> We wrote ~30 expansions (the abbreviation for &ldquo;store&rdquo; → <em>store</em>, and so on) and gained one point. The long tail of naming conventions is longer than anyone&rsquo;s patience; embeddings learn it for free.</li>
+</ul>
+<h2 id="stage-two-what-the-decision-model-actually-adds">Stage two: what the decision model actually adds</h2>
+<p>With hybrid retrieval and context, the gold table is in the candidate list 65% of the time. Zero-shot Laya then picks it correctly in 20% of all turns:</p>
+<table>
+<thead>
+<tr>
+<th>Configuration (with context)</th>
+<th>Top-1 accuracy</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Hybrid retrieval alone, take rank 1</td>
+<td>0.17</td>
+</tr>
+<tr>
+<td>Dense embedder alone, take rank 1</td>
+<td>0.22</td>
+</tr>
+<tr>
+<td>Hybrid top-15 → Laya choice</td>
+<td>0.20</td>
+</tr>
+<tr>
+<td>Hybrid top-50 → Laya tournament (batches of 13, winners advance)</td>
+<td>0.19</td>
+</tr>
+</tbody>
+</table>
+<p><em>End-to-end accuracy on 115 real conversation turns; gold table counted correct if the prediction matches any table named in the reference answer.</em></p>
+<p>Read charitably: within its candidate list, Laya converts about 31% — more than four times the 6.7% a random pick over 15 options would give, from 140-character descriptions it has never seen before, in one forward pass. The mechanism works.</p>
+<p>Read honestly: the whole pipeline loses to the plain dense retriever&rsquo;s first result. And the tournament scheme — feeding it 50 candidates in batches, advancing winners — made things <em>worse</em>, because a batch winner is only locally best and good candidates get eliminated by strong distractors early.</p>
+<p>One genuinely useful property survived: <strong>confidence separates.</strong> Median reported confidence was 0.88–0.90 on correct picks versus 0.68–0.73 on wrong ones (with the caveat that the shipped calibration temperatures do not cover the 11+-option bucket, so treat the values as relative). That makes Laya viable as a cheap escalation gate: answer locally when confident, hand off to a large model otherwise.</p>
+<h2 id="the-fine-tuning-attempt-or-how-to-win-the-wrong-benchmark">The fine-tuning attempt, or: how to win the wrong benchmark</h2>
+<p>Laya&rsquo;s weights are open, and the authors publish a complete fine-tuning recipe (policy-gradient training against proper-scoring-rule rewards, with a calibration pass at the end). Their own specialized checkpoint jumps from near-chance to 0.77 on their benchmark. The pitch is precisely that you can specialize it to your decision. So we did.</p>
+<p><strong>Training data, for free:</strong> our per-table docs include &ldquo;typical usage phrases&rdquo; — short strings like <em>&ldquo;favourite delivery routes, saved route combinations, preferred carrier paths.&rdquo;</em> Split on commas, that yields ~25,000 (query, table) pairs across all 1,000 tables. For each pair we built a 15-way choice question whose distractors were the retriever&rsquo;s actual top candidates for that query — hard negatives matching the deployment distribution. We held out 5% of tables entirely as validation, kept the 115 real conversation turns as a test set that training never touches, and removed the usage phrases from the option descriptions so the model could not learn string matching.</p>
+<p><strong>The run itself:</strong> for hardware reasons the training ran on CPU — a 56-thread Xeon with the trainer patched from NCCL/CUDA to Gloo, bf16 autocast, minimum process priority. Throughput was about 20 seconds per micro-batch, roughly 17 hours per epoch, just under three days for four epochs. Not recommended, but it proves the recipe needs nothing exotic.</p>
+<p>The result is the most instructive table in this write-up:</p>
+<table>
+<thead>
+<tr>
+<th>Checkpoint</th>
+<th>Synthetic val (usage-phrase queries)</th>
+<th>Real conversations (115 turns)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Base Laya, zero-shot</td>
+<td>0.244</td>
+<td>0.200</td>
+</tr>
+<tr>
+<td>After 1 epoch</td>
+<td>0.340</td>
+<td>0.165</td>
+</tr>
+<tr>
+<td>After 4 epochs</td>
+<td><strong>0.380</strong></td>
+<td><strong>0.139</strong></td>
+</tr>
+</tbody>
+</table>
+<p><em>Fine-tuning on synthetic queries: validation accuracy up 56%, real-world accuracy down 30%. Monotonically, in both directions.</em></p>
+<p>The model learned exactly what we taught it: to classify terse, keyword-dense noun phrases lifted from documentation. Real users ask long, contextual, conversational questions. Those are different input distributions, and every epoch of training pulled the model further toward the synthetic one. The held-out-tables validation set — which we built specifically to catch overfitting — caught nothing, because it was drawn from the same synthetic distribution as the training set. It validated the wrong thing, confidently.</p>
+<blockquote>
+<p><strong>The lesson we would put on a poster:</strong> a validation set proves generalization only across the axis on which it differs from training. Ours differed by <em>table</em> and matched by <em>query style</em>, so it could only ever measure the former. If your real traffic differs from your training data in style, your validation set must too — even if that means it is fifty hand-written examples instead of a thousand generated ones.</p>
+</blockquote>
+<h2 id="caveats-collected">Caveats, collected</h2>
+<ol>
+<li><strong>Laya is not a context model.</strong> 512–1,024 input tokens, ~15–20 usable options. Any large-label-set task becomes retrieve-then-decide, and retrieval quality, not the decision model, sets your ceiling.</li>
+<li><strong>Lexical retrieval fails on schema vocabulary.</strong> Abbreviated table names versus natural phrasing is the single biggest source of misses. A small dense embedder is the cheapest large win available.</li>
+<li><strong>Conversation context doubles accuracy.</strong> Resolve follow-ups by concatenating recent user turns before retrieval.</li>
+<li><strong>Confidence is calibrated only for small option counts.</strong> The shipped temperature table stops at 11+ options; above that, use confidence as a relative signal for escalation, not as a probability.</li>
+<li><strong>Tournaments over many candidates degrade accuracy.</strong> Batch winners are locally best; widen retrieval instead of cascading decisions.</li>
+<li><strong>Fine-tuning on synthetic metadata-derived queries is actively harmful</strong> if real queries look different — and a synthetic validation set will not warn you.</li>
+<li><strong>Gold labels from reference answers are noisy;</strong> treat absolute accuracy as a lower bound and watch deltas between configurations instead.</li>
+</ol>
+<h2 id="is-it-still-worth-improving">Is it still worth improving?</h2>
+<p>We think yes, along three lines, in order of expected return:</p>
+<p><strong>1. Fix the training distribution, not the model.</strong> The fine-tuning machinery demonstrably works — it moved validation accuracy by 14 points in three days on a CPU. It optimized the wrong target because we fed it the wrong queries. The fix is to generate training questions that look like real ones: have a capable LLM rewrite each usage phrase into full conversational questions, prepend plausible dialogue context to a share of them, and mix in whatever real logged queries exist. Same recipe, same hard negatives, same holdout discipline — plus a validation slice drawn from real traffic.</p>
+<p><strong>2. Spend on retrieval before the decision stage.</strong> A larger embedder, embedding the query rewritten by the conversation (rather than raw concatenation), and indexing multiple views per table (name expansion, description, column list separately) all attack the 0.65 ceiling directly. Every point of hit@15 is worth more than a point of decision-stage conversion.</p>
+<p><strong>3. Use the decision model where it is strong: as a gate.</strong> Even zero-shot, Laya&rsquo;s confidence separates right from wrong answers. A pragmatic production shape is: dense retrieval proposes, Laya adjudicates the top candidates, high confidence answers locally in ~50 ms, low confidence escalates to a large model. The small model then does not need to beat the LLM — it needs to absorb the easy majority of traffic, which is a much lower bar.</p>
+<hr>
+<p><em>Setup for reproducibility: about 1,000 tables; per-table docs compacted to one TSV row each; BM25 with per-field weights; 33M-parameter sentence embedder with reciprocal-rank fusion (k=60); Laya 421M English checkpoint via its Python SDK; fine-tuning with the published policy-gradient recipe, 24.6k choice items, 4 epochs, effective batch 32, LR 2.5e-5 cosine; evaluation on 115 conversation turns with any-gold-match scoring. All numbers are from single runs; small deltas should be read accordingly.</em></p>
+
+        </p>
+        
+    </div>
+
+    <div class="prev-next">
+        
+    </div>
+
+    
+    
+    
+</div>
+
+
+
+    
+
+        </main><footer class="footer">
+    
+    
+
+    
+    <span>
+        Made using <a target="_blank" href="https://gohugo.io/">HUGO</a>
+    </span>
+</footer>
+</body>
+</html>

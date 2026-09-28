@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Machine Learning on LynxLine</title>
+    <link>https://lynxline.com/tags/machine-learning/</link>
+    <description>Recent content in Machine Learning on LynxLine</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 28 Sep 2026 09:00:00 +0200</lastBuildDate>
+    <atom:link href="https://lynxline.com/tags/machine-learning/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>From Question to Table Name: Trying a Small Decision Model Where Everyone Reaches for an LLM</title>
+      <link>https://lynxline.com/posts/laya-decision-model/</link>
+      <pubDate>Mon, 28 Sep 2026 09:00:00 +0200</pubDate>
+      <guid>https://lynxline.com/posts/laya-decision-model/</guid>
+      <description>We needed to map a free-form user question to one of about 1,000 database table names, fast and on our own hardware. We tried Laya, the open-source &amp;ldquo;System-1 decision model,&amp;rdquo; end to end: zero-shot, with hybrid retrieval, and finally fine-tuned on synthetic data. Here is what worked, what quietly failed, and what we would do differently.&#xA;The problem Our data platform exposes roughly 1,000 logical tables. Users ask questions like &amp;ldquo;what were the total daily sales per store in January, day by day?</description>
+    </item>
+  </channel>
+</rss>

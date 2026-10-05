@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <style>
+        :root {
+            --accent-color: #FF4D4D;
+        }
+    </style>
+
+    
+    
+    
+    
+    
+    
+
+    
+    <title>Pass References, Not Rows: Data Artifacts for Agent Computations over MCP</title>
+    <meta name="description" content="">
+    <meta name="keywords" content='AI, MCP, Python, Data'>
+
+    <meta property="og:url" content="https://lynxline.com/posts/agent-data-artifacts-mcp/">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Pass References, Not Rows: Data Artifacts for Agent Computations over MCP">
+    <meta property="og:description" content="">
+    <meta property="og:image" content="https://lynxline.com/images/lynx.jpg">
+    <meta property="og:image:secure_url" content="https://lynxline.com/images/lynx.jpg">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Pass References, Not Rows: Data Artifacts for Agent Computations over MCP">
+    <meta name="twitter:description" content="">
+    <meta property="twitter:domain" content="https://lynxline.com/posts/agent-data-artifacts-mcp/">
+    <meta property="twitter:url" content="https://lynxline.com/posts/agent-data-artifacts-mcp/">
+    <meta name="twitter:image" content="https://lynxline.com/images/lynx.jpg">
+
+    
+    <link rel="canonical" href="https://lynxline.com/posts/agent-data-artifacts-mcp/" />
+
+    
+    <link rel="stylesheet" type="text/css" href="/css/normalize.min.css" media="print">
+
+    
+    <link rel="stylesheet" type="text/css" href="/css/main.min.css">
+
+    
+    <link id="dark-theme" rel="stylesheet" href="/css/dark.min.css">
+
+    
+    <script src="/js/bundle.min.224c8e70fed292d18d7d9ae1b36797c99144e0be1117e2ea2c428379c8496551.js" integrity="sha256-IkyOcP7SktGNfZrhs2eXyZFE4L4RF&#43;LqLEKDechJZVE="></script>
+
+    
+    
+</head>
+<body>
+        <script type="text/javascript">
+            
+            setThemeByUserPref();
+        </script><header class="header">
+    <nav class="header-nav">
+
+        
+        <div class="avatar">
+            <a href="https://lynxline.com/">
+                <img src='/images/lynx.jpg' alt="avatar" />
+            </a>
+        </div>
+        
+
+        <div class="nav-title">
+            <a class="nav-brand" href="https://lynxline.com/">LynxLine</a>
+        </div>
+
+        <div class="nav-links">
+            
+            <div class="nav-link">
+                <a href="https://lynxline.com/services/"><span data-feather='zap'></span> Services </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://lynxline.com/posts/"><span data-feather='layers'></span> Posts </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://lynxline.com/tags/"><span data-feather='tag'></span> Tags </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://lynxline.com/contact/"><span data-feather='mail'></span> Contact </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://github.com"><span data-feather='github'></span>  </a>
+            </div>
+            
+
+            <span class="nav-icons-divider"></span>
+            <div class="nav-link dark-theme-toggle">
+                <span id="dark-theme-toggle-screen-reader-target" class="sr-only"></span>
+                <a>
+                    <span id="theme-toggle-icon" data-feather="moon"></span>
+                </a>
+            </div>
+
+            <div class="nav-link" id="hamburger-menu-toggle">
+                <span id="hamburger-menu-toggle-screen-reader-target" class="sr-only">menu</span>
+                <a>
+                    <span data-feather="menu"></span>
+                </a>
+            </div>
+
+            
+            <ul class="nav-hamburger-list visibility-hidden">
+                
+                <li class="nav-item">
+                    <a href="https://lynxline.com/services/"><span data-feather='zap'></span> Services </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://lynxline.com/posts/"><span data-feather='layers'></span> Posts </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://lynxline.com/tags/"><span data-feather='tag'></span> Tags </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://lynxline.com/contact/"><span data-feather='mail'></span> Contact </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://github.com"><span data-feather='github'></span>  </a>
+                </li>
+                
+                <li class="nav-item dark-theme-toggle">
+                    <span id="dark-theme-toggle-screen-reader-target" class="sr-only">theme</span>
+                    <a>
+                        <span id="theme-toggle-icon" data-feather="moon"></span>
+                    </a>
+                </li>
+            </ul>
+
+        </div>
+    </nav>
+</header>
+<main id="content">
+    <div class="post container">
+    <div class="post-header-section">
+        <h1>Pass References, Not Rows: Data Artifacts for Agent Computations over MCP</h1>
+        <small role="doc-subtitle"></small>
+        <p class="post-date">October 5, 2026
+        
+        </p>
+
+        <ul class="post-tags">
+        
+            <li class="post-tag"><a href="https://lynxline.com/tags/ai">AI</a></li>
+        
+            <li class="post-tag"><a href="https://lynxline.com/tags/mcp">MCP</a></li>
+        
+            <li class="post-tag"><a href="https://lynxline.com/tags/python">Python</a></li>
+        
+            <li class="post-tag"><a href="https://lynxline.com/tags/data">Data</a></li>
+        
+        </ul>
+    </div>
+
+    <div class="post-content">
+        <p>
+            <p>In the <a href="https://lynxline.com/posts/sandboxed-python-mcp/">previous article</a> we gave an AI agent a safe place to run Python. That answered <em>where</em> agent-written code executes. This follow-up answers a question that turns out to matter just as much: <strong>what data does the model actually need to see?</strong></p>
+<p>Usually the answer is much less than we give it.</p>
+<h2 id="the-naive-pattern">The naive pattern</h2>
+<p>The obvious way to wire an agent to a business system goes like this:</p>
+<ol>
+<li>A tool queries the system and returns the result set as JSON.</li>
+<li>The rows land in the model&rsquo;s context.</li>
+<li>The model reads them and answers: &ldquo;the top five are&hellip;&rdquo;, &ldquo;the average is&hellip;&rdquo;.</li>
+</ol>
+<p>This works in demos with twenty rows. With real data it breaks in three ways:</p>
+<ul>
+<li><strong>Security.</strong> Every row the tool returns is now part of the transcript. Transcripts get stored, logged, replayed into later turns, sent to the model provider, picked up by telemetry and sometimes kept for evaluation. Data that never needed to leave your system has now been copied to every one of those places.</li>
+<li><strong>Cost and capacity.</strong> A row with ten fields is roughly 40 to 60 tokens. Five thousand rows is a few hundred thousand tokens: most or all of the context window, paid for on every turn that carries it.</li>
+<li><strong>Correctness.</strong> LLMs don&rsquo;t calculate. They estimate. Ask a model to sum 5,000 numbers or rank groups by quarter-over-quarter change and you get a confident answer that is close but wrong. The same analysis is three lines of pandas and comes out exact.</li>
+</ul>
+<p>So the model ends up doing what it is worst at (arithmetic over bulk data) using the resource it has least of (context), and it spreads the data around while doing it.</p>
+<h2 id="the-pattern-data-stays-put-the-model-gets-a-handle">The pattern: data stays put, the model gets a handle</h2>
+<p>Turn it around. Tools that produce data <strong>don&rsquo;t return the data</strong>. They store it server-side as an <strong>artifact</strong> and return a reference plus just enough description for the model to write code against it:</p>
+<pre tabindex="0"><code>+--------------------------- MCP server ----------------------------+
+|                                                                   |
+|  fetch_*  ---&gt; [ artifact store ] &lt;---&gt; run_python (sandbox)      |
+|                   ^        ^                 |                    |
+|                   |        +---- outputs ----+                    |
+|                   +---- render_chart / export                     |
+|                                                                   |
++------------------------------|------------------------------------+
+                               | only: dataRef, schema, row count,
+                               |       tiny sample, small results
+                               v
+                       +---------------+
+                       |  LLM / agent  |
+                       +---------------+
+</code></pre><p>The model&rsquo;s job changes from &ldquo;read the data and answer&rdquo; to &ldquo;understand the data&rsquo;s <em>shape</em> and write the code that answers&rdquo;. It is good at that job.</p>
+<p>Three kinds of tools use the store:</p>
+<ul>
+<li><strong>Producers</strong> (<code>fetch_*</code>) run the query under the caller&rsquo;s permissions, store the result and return a description.</li>
+<li><strong>The compute tool</strong> (<code>run_python</code>) takes references as inputs. They show up inside the sandbox as DataFrames. Any DataFrames the script saves become <em>new</em> artifacts, and only a small JSON result goes back to the model.</li>
+<li><strong>Consumers</strong> (<code>render_chart</code>, <code>export_csv</code>) take a reference and turn it into something a human looks at. The rows go from the store to the user&rsquo;s screen without passing through the model.</li>
+</ul>
+<h2 id="a-minimal-implementation">A minimal implementation</h2>
+<p>The examples use FastMCP and pandas, as in the previous article. They are deliberately small.</p>
+<h3 id="the-store">The store</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> secrets
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> time
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> dataclasses <span style="color:#f92672">import</span> dataclass, field
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> pandas <span style="color:#66d9ef">as</span> pd
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">@dataclass</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Artifact</span>:
+</span></span><span style="display:flex;"><span>    owner: str
+</span></span><span style="display:flex;"><span>    df: pd<span style="color:#f92672">.</span>DataFrame
+</span></span><span style="display:flex;"><span>    created: float <span style="color:#f92672">=</span> field(default_factory<span style="color:#f92672">=</span>time<span style="color:#f92672">.</span>monotonic)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">ArtifactStore</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> __init__(self, ttl_seconds: int <span style="color:#f92672">=</span> <span style="color:#ae81ff">24</span> <span style="color:#f92672">*</span> <span style="color:#ae81ff">3600</span>, max_bytes: int <span style="color:#f92672">=</span> <span style="color:#ae81ff">50_000_000</span>):
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>_items: dict[str, Artifact] <span style="color:#f92672">=</span> {}
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>_ttl <span style="color:#f92672">=</span> ttl_seconds
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>_max_bytes <span style="color:#f92672">=</span> max_bytes
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">put</span>(self, owner: str, df: pd<span style="color:#f92672">.</span>DataFrame) <span style="color:#f92672">-&gt;</span> str:
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> df<span style="color:#f92672">.</span>memory_usage(deep<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>)<span style="color:#f92672">.</span>sum() <span style="color:#f92672">&gt;</span> self<span style="color:#f92672">.</span>_max_bytes:
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">raise</span> <span style="color:#a6e22e">ValueError</span>(<span style="color:#e6db74">&#34;artifact exceeds size cap - narrow the query&#34;</span>)
+</span></span><span style="display:flex;"><span>        ref <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;data_&#34;</span> <span style="color:#f92672">+</span> secrets<span style="color:#f92672">.</span>token_urlsafe(<span style="color:#ae81ff">12</span>)
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>_items[ref] <span style="color:#f92672">=</span> Artifact(owner, df)
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> ref
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">get</span>(self, owner: str, ref: str) <span style="color:#f92672">-&gt;</span> pd<span style="color:#f92672">.</span>DataFrame:
+</span></span><span style="display:flex;"><span>        now <span style="color:#f92672">=</span> time<span style="color:#f92672">.</span>monotonic()
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>_items <span style="color:#f92672">=</span> {k: a <span style="color:#66d9ef">for</span> k, a <span style="color:#f92672">in</span> self<span style="color:#f92672">.</span>_items<span style="color:#f92672">.</span>items() <span style="color:#66d9ef">if</span> now <span style="color:#f92672">-</span> a<span style="color:#f92672">.</span>created <span style="color:#f92672">&lt;</span> self<span style="color:#f92672">.</span>_ttl}
+</span></span><span style="display:flex;"><span>        artifact <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>_items<span style="color:#f92672">.</span>get(ref)
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> artifact <span style="color:#f92672">is</span> <span style="color:#66d9ef">None</span> <span style="color:#f92672">or</span> artifact<span style="color:#f92672">.</span>owner <span style="color:#f92672">!=</span> owner:
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">raise</span> <span style="color:#a6e22e">KeyError</span>(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;unknown or expired dataRef </span><span style="color:#e6db74">{</span>ref<span style="color:#e6db74">}</span><span style="color:#e6db74"> - fetch the data again&#34;</span>)
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> artifact<span style="color:#f92672">.</span>df
+</span></span></code></pre></div><p>Two details matter here. References are <strong>random, not sequential</strong>, and every read <strong>checks the owner</strong>. A reference that turns up in someone else&rsquo;s transcript is useless to them. The error message also tells the agent how to recover.</p>
+<h3 id="describe-dont-dump">Describe, don&rsquo;t dump</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> json
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">describe</span>(ref: str, df: pd<span style="color:#f92672">.</span>DataFrame, sample_rows: int <span style="color:#f92672">=</span> <span style="color:#ae81ff">5</span>) <span style="color:#f92672">-&gt;</span> dict:
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;dataRef&#34;</span>: ref,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;rows&#34;</span>: len(df),
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;columns&#34;</span>: {c: str(t) <span style="color:#66d9ef">for</span> c, t <span style="color:#f92672">in</span> df<span style="color:#f92672">.</span>dtypes<span style="color:#f92672">.</span>items()},
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;nulls&#34;</span>: {c: int(n) <span style="color:#66d9ef">for</span> c, n <span style="color:#f92672">in</span> df<span style="color:#f92672">.</span>isna()<span style="color:#f92672">.</span>sum()<span style="color:#f92672">.</span>items() <span style="color:#66d9ef">if</span> n},
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;sample&#34;</span>: json<span style="color:#f92672">.</span>loads(df<span style="color:#f92672">.</span>head(sample_rows)<span style="color:#f92672">.</span>to_json(orient<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;records&#34;</span>, date_format<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;iso&#34;</span>)),
+</span></span><span style="display:flex;"><span>    }
+</span></span></code></pre></div><p>Column names, types, null counts and a handful of rows are what a person needs to write a <code>groupby</code>. The model needs the same.</p>
+<h3 id="producer-and-compute-tools">Producer and compute tools</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">from</span> fastmcp <span style="color:#f92672">import</span> FastMCP, Context
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>mcp <span style="color:#f92672">=</span> FastMCP(<span style="color:#e6db74">&#34;data-sandbox&#34;</span>)
+</span></span><span style="display:flex;"><span>store <span style="color:#f92672">=</span> ArtifactStore()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">owner_of</span>(ctx: Context) <span style="color:#f92672">-&gt;</span> str:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">...</span>  <span style="color:#75715e"># resolve the authenticated caller from your auth layer</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">@mcp.tool</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">async</span> <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">fetch_sales</span>(since: str, ctx: Context) <span style="color:#f92672">-&gt;</span> dict:
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;&#34;&#34;Load sales since a date into a server-side artifact.
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    Returns a dataRef with schema and a small sample, NOT the rows.
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    Analyse the data with run_python.&#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>    df <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> query_sales(since<span style="color:#f92672">=</span>since)  <span style="color:#75715e"># your system of record, under the caller&#39;s permissions</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> describe(store<span style="color:#f92672">.</span>put(owner_of(ctx), df), df)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">@mcp.tool</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">async</span> <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">run_python</span>(code: str, inputs: dict[str, str], ctx: Context) <span style="color:#f92672">-&gt;</span> dict:
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;&#34;&#34;Run Python in the sandbox. `inputs` maps variable names to dataRefs;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    each arrives as a pandas DataFrame. Store DataFrames in `outputs[name]`
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    to keep them as new artifacts. Assign a SMALL JSON value to `result`.&#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>    owner <span style="color:#f92672">=</span> owner_of(ctx)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">with</span> tempfile<span style="color:#f92672">.</span>TemporaryDirectory() <span style="color:#66d9ef">as</span> run:
+</span></span><span style="display:flex;"><span>        in_dir, out_dir <span style="color:#f92672">=</span> Path(run, <span style="color:#e6db74">&#34;in&#34;</span>), Path(run, <span style="color:#e6db74">&#34;out&#34;</span>)
+</span></span><span style="display:flex;"><span>        in_dir<span style="color:#f92672">.</span>mkdir()
+</span></span><span style="display:flex;"><span>        out_dir<span style="color:#f92672">.</span>mkdir()
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span> name, ref <span style="color:#f92672">in</span> inputs<span style="color:#f92672">.</span>items():
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> <span style="color:#f92672">not</span> name<span style="color:#f92672">.</span>isidentifier():
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">raise</span> <span style="color:#a6e22e">ValueError</span>(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;input name </span><span style="color:#e6db74">{</span>name<span style="color:#e6db74">!r}</span><span style="color:#e6db74"> must be a Python identifier&#34;</span>)
+</span></span><span style="display:flex;"><span>            store<span style="color:#f92672">.</span>get(owner, ref)<span style="color:#f92672">.</span>to_parquet(in_dir <span style="color:#f92672">/</span> <span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">{</span>name<span style="color:#e6db74">}</span><span style="color:#e6db74">.parquet&#34;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        res <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> execute_sandboxed(code, in_dir, out_dir)  <span style="color:#75715e"># the sandbox from part one</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        new <span style="color:#f92672">=</span> {p<span style="color:#f92672">.</span>stem: pd<span style="color:#f92672">.</span>read_parquet(p) <span style="color:#66d9ef">for</span> p <span style="color:#f92672">in</span> out_dir<span style="color:#f92672">.</span>glob(<span style="color:#e6db74">&#34;*.parquet&#34;</span>)}
+</span></span><span style="display:flex;"><span>        outputs <span style="color:#f92672">=</span> {name: describe(store<span style="color:#f92672">.</span>put(owner, df), df, sample_rows<span style="color:#f92672">=</span><span style="color:#ae81ff">3</span>) <span style="color:#66d9ef">for</span> name, df <span style="color:#f92672">in</span> new<span style="color:#f92672">.</span>items()}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> {<span style="color:#e6db74">&#34;ok&#34;</span>: res<span style="color:#f92672">.</span>ok, <span style="color:#e6db74">&#34;result&#34;</span>: cap_json(res<span style="color:#f92672">.</span>result), <span style="color:#e6db74">&#34;stdout&#34;</span>: truncate(res<span style="color:#f92672">.</span>stdout),
+</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">&#34;error&#34;</span>: res<span style="color:#f92672">.</span>error, <span style="color:#e6db74">&#34;outputs&#34;</span>: outputs}
+</span></span></code></pre></div><p>Inside the sandbox, a short prelude loads each <code>in/*.parquet</code> into a global variable and creates an empty <code>outputs</code> dict. An epilogue writes <code>outputs</code> to <code>out/</code> and serialises <code>result</code>. The sandbox still has no network and can only see its own run directory, so the data can&rsquo;t leave through the script either. (If your runtime has no <code>pyarrow</code>, CSV works too. You just lose the column types.)</p>
+<h2 id="what-the-transcript-looks-like">What the transcript looks like</h2>
+<pre tabindex="0"><code>user:  Which five product lines lost the most revenue quarter over quarter?
+
+agent -&gt; fetch_sales(since=&#34;2025-01-01&#34;)
+      &lt;- {dataRef: &#34;data_x7Kq...&#34;, rows: 48210, columns: {...}, sample: [5 rows]}
+
+agent -&gt; run_python(inputs={&#34;sales&#34;: &#34;data_x7Kq...&#34;}, code=&#34;&#34;&#34;
+           q = sales.assign(q=sales.date.dt.to_period(&#34;Q&#34;))
+           pivot = q.pivot_table(index=&#34;line&#34;, columns=&#34;q&#34;, values=&#34;revenue&#34;, aggfunc=&#34;sum&#34;)
+           delta = (pivot.iloc[:, -1] - pivot.iloc[:, -2]).sort_values()
+           outputs[&#34;qoq&#34;] = delta.rename(&#34;delta&#34;).reset_index()
+           result = delta.head(5).round(2).to_dict()
+         &#34;&#34;&#34;)
+      &lt;- {result: {&#34;Line A&#34;: -182340.5, ...}, outputs: {&#34;qoq&#34;: {dataRef: &#34;data_Pm2...&#34;, rows: 312}}}
+
+agent: The five biggest drops were ...
+
+... several turns later ...
+
+user:  Chart all of them.
+agent -&gt; render_chart(dataRef=&#34;data_Pm2...&#34;, x=&#34;line&#34;, y=&#34;delta&#34;, kind=&#34;bar&#34;)
+</code></pre><p>48,210 rows were involved. About two kilobytes reached the transcript. The answer is exact because pandas computed it, not the model.</p>
+<h2 id="artifacts-across-steps-and-turns">Artifacts across steps and turns</h2>
+<p>Because a reference is a short string, it moves through the conversation like any other value:</p>
+<ul>
+<li><strong>Chained tool calls.</strong> One <code>run_python</code> call&rsquo;s <code>outputs</code> become the next call&rsquo;s <code>inputs</code>. A multi-step analysis (clean, join, aggregate, rank) is a chain of references. Intermediate tables never pass through the context.</li>
+<li><strong>Later turns.</strong> The reference from turn 2 is still in the transcript at turn 9. &ldquo;Now break that down by region&rdquo; reuses the stored artifact. Nothing is fetched again and the data isn&rsquo;t pasted in again.</li>
+<li><strong>Expiry is part of the design.</strong> The TTL keeps the store bounded. An expired reference returns an error that tells the agent to fetch again, so a stale handle fails cleanly instead of quietly returning old data.</li>
+</ul>
+<p>Tell the agent about this in its instructions: <em>never ask for raw rows to answer a question; fetch into an artifact, compute with run_python, and chart by dataRef.</em></p>
+<h2 id="rules-that-make-it-hold">Rules that make it hold</h2>
+<ul>
+<li><strong>Return the data&rsquo;s shape, not its content.</strong> Schema, row count, null counts and a few sample rows. Make the sample size configurable, and set it to zero for sensitive datasets.</li>
+<li><strong>Keep everything that goes back to the model small, and enforce it.</strong> Cap the size of <code>result</code> and truncate <code>stdout</code>. Otherwise a <code>print(df)</code> sends the whole table back to the model.</li>
+<li><strong>Each reference belongs to one owner.</strong> Use random IDs and check the owner on every read. A reference is not a capability.</li>
+<li><strong>Producers keep the source system&rsquo;s rules.</strong> The artifact holds exactly what the caller was allowed to fetch: same authorization, same row limits.</li>
+<li><strong>Limit the store.</strong> Byte cap per artifact, a TTL, and owner-scoped lookups. It holds working data for a while. It is not a data warehouse.</li>
+<li><strong>Let every display surface take references.</strong> Charts, tables and exports read from the store, so the &ldquo;show me&rdquo; step doesn&rsquo;t push rows through the model either.</li>
+</ul>
+<h2 id="the-honest-trade-offs">The honest trade-offs</h2>
+<p>This approach <strong>reduces</strong> exposure. It doesn&rsquo;t <strong>eliminate</strong> it. Sample rows and aggregates are still data. A group of one is a single record, and a determined prompt can still ask the agent to print rows within the output cap. Treat the result cap and sample size as policy settings, and keep the source system&rsquo;s authorization as the real boundary.</p>
+<p>The model also can&rsquo;t see the data directly any more. A five-row sample can be misleading: odd values, mixed units, a column that is 90% null. A cheap <code>describe_data(dataRef)</code> tool that returns summary statistics on request deals with most of that without bringing back the dump.</p>
+<h2 id="wrap-up">Wrap-up</h2>
+<p>The sandbox from part one made running agent code safe. Data artifacts make it worth running. The model plans and writes code, Python does the arithmetic, and the data stays in your system. The transcript ends up holding the question, the code and the answer: a reproducible record of the analysis that contains none of the data it ran on.</p>
+
+        </p>
+        
+    </div>
+
+    <div class="prev-next">
+        
+    </div>
+
+    
+    
+    
+</div>
+
+
+
+    
+
+        </main><footer class="footer">
+    
+    
+
+    
+    <span>
+        Made using <a target="_blank" href="https://gohugo.io/">HUGO</a>
+    </span>
+</footer>
+</body>
+</html>

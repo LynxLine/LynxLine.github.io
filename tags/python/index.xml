@@ -6,8 +6,15 @@
     <description>Recent content in Python on LynxLine</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 28 Sep 2026 09:00:00 +0200</lastBuildDate>
+    <lastBuildDate>Mon, 05 Oct 2026 09:00:00 +0200</lastBuildDate>
     <atom:link href="https://lynxline.com/tags/python/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Pass References, Not Rows: Data Artifacts for Agent Computations over MCP</title>
+      <link>https://lynxline.com/posts/agent-data-artifacts-mcp/</link>
+      <pubDate>Mon, 05 Oct 2026 09:00:00 +0200</pubDate>
+      <guid>https://lynxline.com/posts/agent-data-artifacts-mcp/</guid>
+      <description>In the previous article we gave an AI agent a safe place to run Python. That answered where agent-written code executes. This follow-up answers a question that turns out to matter just as much: what data does the model actually need to see?&#xA;Usually the answer is much less than we give it.&#xA;The naive pattern The obvious way to wire an agent to a business system goes like this:</description>
+    </item>
     <item>
       <title>From Question to Table Name: Trying a Small Decision Model Where Everyone Reaches for an LLM</title>
       <link>https://lynxline.com/posts/laya-decision-model/</link>

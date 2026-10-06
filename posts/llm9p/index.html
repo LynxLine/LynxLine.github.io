@@ -39,6 +39,32 @@
     <link rel="canonical" href="https://lynxline.com/posts/llm9p/" />
 
     
+    <link rel="alternate" hreflang="en" href="https://lynxline.com/posts/llm9p/" />
+    
+    <link rel="alternate" hreflang="ja" href="https://lynxline.com/ja/posts/llm9p/" />
+    
+    
+    <link rel="alternate" hreflang="x-default" href="https://lynxline.com/posts/llm9p/" />
+    
+    
+
+    
+    
+    
+    <script>
+        (function () {
+            try {
+                var choice = localStorage.getItem("lang-choice");
+                if (choice === "en") return;
+                var lang = (navigator.languages && navigator.languages[0]) || navigator.language || "";
+                if (choice === "ja" || /^ja\b/i.test(lang)) location.replace("/ja/posts/llm9p/");
+            } catch (e) {}
+        })();
+    </script>
+    
+    
+
+    
     <link rel="stylesheet" type="text/css" href="/css/normalize.min.css" media="print">
 
     
@@ -166,7 +192,7 @@
         
         <p class="post-translations">Read in:
         
-            <a href="/ja/posts/llm9p/" hreflang="ja">日本語</a>
+            <a href="/ja/posts/llm9p/" hreflang="ja" onclick="try { localStorage.setItem('lang-choice', 'ja') } catch (e) {}">日本語</a>
         
         </p>
         

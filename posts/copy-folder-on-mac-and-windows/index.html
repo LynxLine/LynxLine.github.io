@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en"><head>
+<html lang="en-us"><head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -48,7 +48,7 @@
     <link id="dark-theme" rel="stylesheet" href="/css/dark.min.css">
 
     
-    <script src="/js/bundle.min.224c8e70fed292d18d7d9ae1b36797c99144e0be1117e2ea2c428379c8496551.js" integrity="sha256-IkyOcP7SktGNfZrhs2eXyZFE4L4RF&#43;LqLEKDechJZVE="></script>
+    <script src="/js/bundle.min.a5fb480a30cceaa94e6cadb30386527cedbb9681cd04bebabc4b95b706665aa2.js" integrity="sha256-pftICjDM6qlObK2zA4ZSfO27loHNBL66vEuVtwZmWqI="></script>
 
     
     
@@ -160,6 +160,8 @@
             <li class="post-tag"><a href="https://lynxline.com/tags/qt">Qt</a></li>
         
         </ul>
+
+        
     </div>
 
     <div class="post-content">
@@ -167,12 +169,12 @@
             <p>Developers can often encounter next problem: there is required files and folders manipulations which needed to be implemented in application. For one side there is enough API to do it Qt, but maybe it is too much code to handle all reads/writes, then you need to worry about some progress message, then it could be that additional thread is required because of blocking operations. So the simple operation can make “just copying” code complicated enough.</p>
 <p>Why not use Explorer on Windows or Fnder on Mac?</p>
 <p>Well Mac it is very simple:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">copyFolder</span>(QString sourcePath, QString destPath)
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">copyFolder</span>(QString sourcePath, QString destPath)
 </span></span><span style="display:flex;"><span>{
 </span></span><span style="display:flex;"><span>    QDir<span style="color:#f92672">::</span>root().mkpath(destPath);
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e">#ifdef Q_WS_MAC
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    QStringList args;
+</span></span></span><span style="display:flex;"><span>    QStringList args;
 </span></span><span style="display:flex;"><span>    args <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;-e&#34;</span>;
 </span></span><span style="display:flex;"><span>    args <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;set ss to </span><span style="color:#ae81ff">\&#34;</span><span style="color:#e6db74">&#34;</span><span style="color:#f92672">+</span>sourcePath<span style="color:#f92672">+</span><span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\&#34;</span><span style="color:#e6db74">&#34;</span>;
 </span></span><span style="display:flex;"><span>    args <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;-e&#34;</span>;
@@ -186,9 +188,9 @@
 </span></span><span style="display:flex;"><span>            <span style="color:#e6db74">&#34;of folder ps to folder pc with replacing&#34;</span>;
 </span></span><span style="display:flex;"><span>    QProcess<span style="color:#f92672">::</span>startDetached(<span style="color:#e6db74">&#34;osascript&#34;</span>, args);
 </span></span><span style="display:flex;"><span><span style="color:#75715e">#endif
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e">#ifdef Q_WS_WIN
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    QString path <span style="color:#f92672">=</span> QCoreApplication<span style="color:#f92672">::</span>applicationDirPath();
+</span></span></span><span style="display:flex;"><span>    QString path <span style="color:#f92672">=</span> QCoreApplication<span style="color:#f92672">::</span>applicationDirPath();
 </span></span><span style="display:flex;"><span>    path <span style="color:#f92672">+=</span> <span style="color:#e6db74">&#34;/CopyFolder.vbs&#34;</span>;
 </span></span><span style="display:flex;"><span>    QStringList args;
 </span></span><span style="display:flex;"><span>    args <span style="color:#f92672">&lt;&lt;</span> QDir<span style="color:#f92672">::</span>toNativeSeparators(path);
@@ -196,9 +198,9 @@
 </span></span><span style="display:flex;"><span>    args <span style="color:#f92672">&lt;&lt;</span> QDir<span style="color:#f92672">::</span>toNativeSeparators(destPath);
 </span></span><span style="display:flex;"><span>    QProcess<span style="color:#f92672">::</span>startDetached(<span style="color:#e6db74">&#34;wscript&#34;</span>, args);
 </span></span><span style="display:flex;"><span><span style="color:#75715e">#endif
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>}
+</span></span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><p>You can see that on Windows it requires additional step and we have to run simple vbs script which does all job: <em>(we assume that such vbs placed near our exe)</em></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span>Set args <span style="color:#f92672">=</span> WScript.Arguments
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span>Set args <span style="color:#f92672">=</span> WScript.Arguments
 </span></span><span style="display:flex;"><span>Const FOF_CREATEPROGRESSDLG <span style="color:#f92672">=</span> <span style="color:#f92672">&amp;</span>H0<span style="color:#f92672">&amp;</span>
 </span></span><span style="display:flex;"><span>Source <span style="color:#f92672">=</span> args.Item(<span style="color:#ae81ff">0</span>)<span style="color:#f92672">+</span><span style="color:#e6db74">&#34;*.*&#34;</span>
 </span></span><span style="display:flex;"><span>Target <span style="color:#f92672">=</span> args.Item(<span style="color:#ae81ff">1</span>)

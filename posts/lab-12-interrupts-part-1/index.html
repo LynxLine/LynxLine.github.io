@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en"><head>
+<html lang="en-us"><head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -48,7 +48,7 @@
     <link id="dark-theme" rel="stylesheet" href="/css/dark.min.css">
 
     
-    <script src="/js/bundle.min.224c8e70fed292d18d7d9ae1b36797c99144e0be1117e2ea2c428379c8496551.js" integrity="sha256-IkyOcP7SktGNfZrhs2eXyZFE4L4RF&#43;LqLEKDechJZVE="></script>
+    <script src="/js/bundle.min.a5fb480a30cceaa94e6cadb30386527cedbb9681cd04bebabc4b95b706665aa2.js" integrity="sha256-pftICjDM6qlObK2zA4ZSfO27loHNBL66vEuVtwZmWqI="></script>
 
     
     
@@ -164,18 +164,20 @@
             <li class="post-tag"><a href="https://lynxline.com/tags/research">Research</a></li>
         
         </ul>
+
+        
     </div>
 
     <div class="post-content">
         <p>
             <p>Time to create content of <strong>io.h</strong> with references to control registers, irq nums etc:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1</span><span><span style="color:#75715e">#define IOBASE			0x20000000		</span><span style="color:#75715e">/* base of io regs */</span><span style="color:#75715e">
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-c" data-lang="c"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1</span><span><span style="color:#75715e">#define IOBASE			0x20000000		</span><span style="color:#75715e">/* base of io regs */</span><span style="color:#75715e">
 </span></span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2</span><span><span style="color:#75715e">#define INTREGS			(IOBASE+0x00B200)
 </span></span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3</span><span><span style="color:#75715e">#define POWERREGS		(IOBASE+0x100000)
 </span></span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4</span><span><span style="color:#75715e">#define PL011REGS		(IOBASE+0x201000)
-</span></span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5</span><span><span style="color:#75715e"></span>
+</span></span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5</span><span>
 </span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6</span><span><span style="color:#75715e">#define UART_PL01x_FR_TXFF	0x20
-</span></span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7</span><span><span style="color:#75715e"></span>
+</span></span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7</span><span>
 </span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8</span><span><span style="color:#66d9ef">typedef</span> <span style="color:#66d9ef">struct</span> Intregs Intregs;
 </span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9</span><span>
 </span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10</span><span><span style="color:#75715e">/* interrupt control registers */</span>
@@ -197,7 +199,7 @@
 </span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">26</span><span>	IRQclock	<span style="color:#f92672">=</span> IRQtimer3,
 </span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">27</span><span>	IRQdma0		<span style="color:#f92672">=</span> <span style="color:#ae81ff">16</span>,
 </span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">28</span><span><span style="color:#75715e">#define IRQDMA(chan)	(IRQdma0+(chan))
-</span></span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">29</span><span><span style="color:#75715e"></span>	IRQaux		<span style="color:#f92672">=</span> <span style="color:#ae81ff">29</span>,
+</span></span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">29</span><span>	IRQaux		<span style="color:#f92672">=</span> <span style="color:#ae81ff">29</span>,
 </span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">30</span><span>	IRQmmc		<span style="color:#f92672">=</span> <span style="color:#ae81ff">62</span>,
 </span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">31</span><span>	IRQbasic	<span style="color:#f92672">=</span> <span style="color:#ae81ff">64</span>,
 </span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">32</span><span>	IRQtimerArm	<span style="color:#f92672">=</span> IRQbasic <span style="color:#f92672">+</span> <span style="color:#ae81ff">0</span>,
@@ -208,7 +210,7 @@
 </span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">37</span><span>	DmaDevEmmc	<span style="color:#f92672">=</span> <span style="color:#ae81ff">11</span>
 </span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">38</span><span>};
 </span></span></code></pre></div><p>Then in Mach struct we need to add stacks – they will be used as short memory blocks for stack:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span><span style="color:#66d9ef">struct</span> Mach {
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-c" data-lang="c"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span><span style="color:#66d9ef">struct</span> Mach {
 </span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2</span><span>        ...
 </span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3</span><span>	<span style="color:#75715e">/* stacks for exceptions */</span>
 </span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4</span><span>	ulong   fiqstack[<span style="color:#ae81ff">4</span>];
@@ -219,13 +221,13 @@
 </span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">9</span><span>};
 </span></span></code></pre></div><p>Also <em>Mach.stack</em> reference at the end of Mach will be very useful for us because it is indication of low limit of kernel stack. If kernel stack address moves below this we detect that it is “kernel panic” situation – that will be performed in interrupts coding.</p>
 <p>Then, because we will work with assembler codes and can easily get unpredictable cases, let’s create <strong>dump.c</strong> with functions that will help us with dumping all registers, stack, memory fragments, etc:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">  1</span><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&#34;u.h&#34;</span><span style="color:#75715e">
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-c" data-lang="c"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">  1</span><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&#34;u.h&#34;</span><span style="color:#75715e">
 </span></span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">  2</span><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&#34;../port/lib.h&#34;</span><span style="color:#75715e">
 </span></span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">  3</span><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&#34;mem.h&#34;</span><span style="color:#75715e">
 </span></span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">  4</span><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&#34;dat.h&#34;</span><span style="color:#75715e">
 </span></span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">  5</span><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&#34;ureg.h&#34;</span><span style="color:#75715e">
 </span></span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">  6</span><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&#34;armv6.h&#34;</span><span style="color:#75715e">
-</span></span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">  7</span><span><span style="color:#75715e"></span>
+</span></span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">  7</span><span>
 </span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">  8</span><span><span style="color:#66d9ef">void</span>
 </span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">  9</span><span><span style="color:#a6e22e">dumplongs</span>(<span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span>msg, ulong <span style="color:#f92672">*</span>v, <span style="color:#66d9ef">int</span> n)
 </span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 10</span><span>{
@@ -377,14 +379,14 @@
 </span></span></code></pre></div><p>So, nothing complicated, just <em>print()</em> mostly</p>
 <p>FILES:</p>
 <ul>
-<li><a href="io.h">os/rpi/io.h</a></li>
-<li><a href="dat.h">os/rpi/dat.h</a></li>
-<li><a href="fns.h">os/rpi/fns.h</a></li>
-<li><a href="main.c">os/rpi/main.c</a></li>
-<li><a href="dump.c">os/rpi/dump.c</a></li>
-<li><a href="trap.c">os/rpi/trap.c</a></li>
-<li><a href="pl011.c">os/rpi/pl011.c</a></li>
-<li><a href="mkfile">os/rpi/mkfile</a></li>
+<li><a href="/posts/lab-12-interrupts-part-1/io.h">os/rpi/io.h</a></li>
+<li><a href="/posts/lab-12-interrupts-part-1/dat.h">os/rpi/dat.h</a></li>
+<li><a href="/posts/lab-12-interrupts-part-1/fns.h">os/rpi/fns.h</a></li>
+<li><a href="/posts/lab-12-interrupts-part-1/main.c">os/rpi/main.c</a></li>
+<li><a href="/posts/lab-12-interrupts-part-1/dump.c">os/rpi/dump.c</a></li>
+<li><a href="/posts/lab-12-interrupts-part-1/trap.c">os/rpi/trap.c</a></li>
+<li><a href="/posts/lab-12-interrupts-part-1/pl011.c">os/rpi/pl011.c</a></li>
+<li><a href="/posts/lab-12-interrupts-part-1/mkfile">os/rpi/mkfile</a></li>
 </ul>
 
         </p>

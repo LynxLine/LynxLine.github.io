@@ -1,40 +1,45 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>C&#43;&#43; on LynxLine</title>
-    <link>https://lynxline.com/tags/c&#43;&#43;/</link>
-    <description>Recent content in C&#43;&#43; on LynxLine</description>
-    <generator>Hugo</generator>
-    <language>en-us</language>
-    <lastBuildDate>Mon, 21 Sep 2026 09:00:00 +0200</lastBuildDate>
-    <atom:link href="https://lynxline.com/tags/c++/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>ynotbit: A Vault, a Keyless Relay, and notbit Underneath</title>
-      <link>https://lynxline.com/posts/ynotbit/</link>
-      <pubDate>Mon, 21 Sep 2026 09:00:00 +0200</pubDate>
-      <guid>https://lynxline.com/posts/ynotbit/</guid>
-      <description>notbit already proved the point: a Bitmessage node doesn&amp;rsquo;t need Python or a GUI, just a small C daemon and a terminal. ynotbit takes that engine and builds the desktop client around it properly — Qt Widgets, C++20, and a storage design where the network relay never sees your identity keys.&#xA;Two documents, not one Most mail clients keep everything — keys and messages — in one place. ynotbit splits it in two:</description>
-    </item>
-    <item>
-      <title>Boost Multi Index, With Recipes</title>
-      <link>https://lynxline.com/posts/multi-index-examples/</link>
-      <pubDate>Mon, 05 Jun 2017 10:00:00 +0200</pubDate>
-      <guid>https://lynxline.com/posts/multi-index-examples/</guid>
-      <description>boost::multi_index_container is fast and powerful, but the documentation is dense and the compiler errors are worse. multi-index-examples is the cookbook I wish existed: small, runnable Qt/C++ snippets for the cases that actually come up — indexing a struct by name, phone, and address at once, composite keys for combined lookups, switching between ordered_* and hashed_* for O(log n) versus O(1) access, and the random_access index when you also want plain store[i] access.</description>
-    </item>
-    <item>
-      <title>A WebSocket Broadcast Server</title>
-      <link>https://lynxline.com/posts/wsbcast/</link>
-      <pubDate>Wed, 17 May 2017 10:00:00 +0200</pubDate>
-      <guid>https://lynxline.com/posts/wsbcast/</guid>
-      <description>wsbcast does one thing: every client that connects gets a WebSocket, and anything one client sends gets broadcast to every other connected client. That&amp;rsquo;s it — no rooms, no auth, no protocol beyond &amp;ldquo;send a message, everyone else gets it.&amp;rdquo; Useful as the one shared component that lets otherwise-separate web apps know about each other in real time, just by opening a socket to it.&#xA;Built on Qt/C++, qmake &amp;amp;&amp;amp; make release to build it, and it ships with a tests/ folder of plain HTML files — open three browser tabs, reload one, and watch the message show up in the other two consoles.</description>
-    </item>
-    <item>
-      <title>libmemcached on Windows</title>
-      <link>https://lynxline.com/posts/libmemcached-win/</link>
-      <pubDate>Thu, 09 Mar 2017 10:00:00 +0200</pubDate>
-      <guid>https://lynxline.com/posts/libmemcached-win/</guid>
-      <description>libmemcached builds fine on Linux and Mac, but on Windows the official way is mingw plus autotools, which is awkward if your project is already MSVC-based. I fork it and add a real Visual Studio project — .sln/.vcxproj in a win32 folder — so it compiles straight in VS2015 without touching the unix build chain.&#xA;Getting it to actually link and behave took a few more fixes: making it compile without SASL, and covering WSAEWOULDBLOCK/WSAWOULDBLOCK on connect()/recv()/send(), since Windows sockets use different error constants than POSIX.</description>
-    </item>
-  </channel>
+	<channel>
+		<title>C&#43;&#43; on LynxLine</title>
+		<link>https://lynxline.com/tags/c&#43;&#43;/</link>
+		<description>Recent content in C&#43;&#43; on LynxLine</description>
+		<generator>Hugo</generator>
+		<language>en-us</language>
+		
+		
+		
+		
+			<lastBuildDate>Mon, 21 Sep 2026 09:00:00 +0200</lastBuildDate>
+		
+			<atom:link href="https://lynxline.com/tags/c++/index.xml" rel="self" type="application/rss+xml" />
+			<item>
+				<title>ynotbit: A Vault, a Keyless Relay, and notbit Underneath</title>
+				<link>https://lynxline.com/posts/ynotbit/</link>
+				<pubDate>Mon, 21 Sep 2026 09:00:00 +0200</pubDate>
+				<guid>https://lynxline.com/posts/ynotbit/</guid>
+				<description>&lt;p&gt;&lt;a href=&#34;https://github.com/bpeel/notbit&#34;&gt;notbit&lt;/a&gt; already proved the point: a Bitmessage node doesn&amp;rsquo;t need Python or a GUI, just a small C daemon and a terminal. &lt;a href=&#34;https://github.com/yshurik/ynotbit&#34;&gt;ynotbit&lt;/a&gt; takes that engine and builds the desktop client around it properly — Qt Widgets, C++20, and a storage design where the network relay never sees your identity keys.&lt;/p&gt;&#xA;&lt;p&gt;&lt;img src=&#34;https://lynxline.com/posts/ynotbit/desktop.png&#34; alt=&#34;ynotbit desktop with an editable encrypted draft&#34;&gt;&lt;/p&gt;&#xA;&lt;h2 id=&#34;two-documents-not-one&#34;&gt;Two documents, not one&lt;/h2&gt;&#xA;&lt;p&gt;Most mail clients keep everything — keys and messages — in one place. ynotbit splits it in two:&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title>Boost Multi Index, With Recipes</title>
+				<link>https://lynxline.com/posts/multi-index-examples/</link>
+				<pubDate>Mon, 05 Jun 2017 10:00:00 +0200</pubDate>
+				<guid>https://lynxline.com/posts/multi-index-examples/</guid>
+				<description>&lt;p&gt;&lt;code&gt;boost::multi_index_container&lt;/code&gt; is fast and powerful, but the documentation is dense and the compiler errors are worse. &lt;a href=&#34;https://github.com/LynxLine/multi-index-examples&#34;&gt;multi-index-examples&lt;/a&gt; is the cookbook I wish existed: small, runnable Qt/C++ snippets for the cases that actually come up — indexing a struct by name, phone, and address at once, composite keys for combined lookups, switching between &lt;code&gt;ordered_*&lt;/code&gt; and &lt;code&gt;hashed_*&lt;/code&gt; for O(log n) versus O(1) access, and the &lt;code&gt;random_access&lt;/code&gt; index when you also want plain &lt;code&gt;store[i]&lt;/code&gt; access.&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title>A WebSocket Broadcast Server</title>
+				<link>https://lynxline.com/posts/wsbcast/</link>
+				<pubDate>Wed, 17 May 2017 10:00:00 +0200</pubDate>
+				<guid>https://lynxline.com/posts/wsbcast/</guid>
+				<description>&lt;p&gt;&lt;a href=&#34;https://github.com/LynxLine/wsbcast&#34;&gt;wsbcast&lt;/a&gt; does one thing: every client that connects gets a WebSocket, and anything one client sends gets broadcast to every other connected client. That&amp;rsquo;s it — no rooms, no auth, no protocol beyond &amp;ldquo;send a message, everyone else gets it.&amp;rdquo; Useful as the one shared component that lets otherwise-separate web apps know about each other in real time, just by opening a socket to it.&lt;/p&gt;&#xA;&lt;p&gt;Built on Qt/C++, &lt;code&gt;qmake &amp;amp;&amp;amp; make release&lt;/code&gt; to build it, and it ships with a &lt;code&gt;tests/&lt;/code&gt; folder of plain HTML files — open three browser tabs, reload one, and watch the message show up in the other two consoles.&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title>libmemcached on Windows</title>
+				<link>https://lynxline.com/posts/libmemcached-win/</link>
+				<pubDate>Thu, 09 Mar 2017 10:00:00 +0200</pubDate>
+				<guid>https://lynxline.com/posts/libmemcached-win/</guid>
+				<description>&lt;p&gt;&lt;a href=&#34;https://github.com/LynxLine/libmemcached-win&#34;&gt;libmemcached&lt;/a&gt; builds fine on Linux and Mac, but on Windows the official way is mingw plus autotools, which is awkward if your project is already MSVC-based. I fork it and add a real Visual Studio project — &lt;code&gt;.sln&lt;/code&gt;/&lt;code&gt;.vcxproj&lt;/code&gt; in a &lt;code&gt;win32&lt;/code&gt; folder — so it compiles straight in VS2015 without touching the unix build chain.&lt;/p&gt;&#xA;&lt;p&gt;Getting it to actually link and behave took a few more fixes: making it compile without SASL, and covering &lt;code&gt;WSAEWOULDBLOCK&lt;/code&gt;/&lt;code&gt;WSAWOULDBLOCK&lt;/code&gt; on &lt;code&gt;connect()&lt;/code&gt;/&lt;code&gt;recv()&lt;/code&gt;/&lt;code&gt;send()&lt;/code&gt;, since Windows sockets use different error constants than POSIX. Open the vcxproj, build, and you get &lt;code&gt;.lib&lt;/code&gt;/&lt;code&gt;.dll&lt;/code&gt; you can link into any MSVC application.&lt;/p&gt;</description>
+			</item>
+	</channel>
 </rss>

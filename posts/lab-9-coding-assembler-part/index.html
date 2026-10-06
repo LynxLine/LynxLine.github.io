@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en"><head>
+<html lang="en-us"><head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -48,7 +48,7 @@
     <link id="dark-theme" rel="stylesheet" href="/css/dark.min.css">
 
     
-    <script src="/js/bundle.min.224c8e70fed292d18d7d9ae1b36797c99144e0be1117e2ea2c428379c8496551.js" integrity="sha256-IkyOcP7SktGNfZrhs2eXyZFE4L4RF&#43;LqLEKDechJZVE="></script>
+    <script src="/js/bundle.min.a5fb480a30cceaa94e6cadb30386527cedbb9681cd04bebabc4b95b706665aa2.js" integrity="sha256-pftICjDM6qlObK2zA4ZSfO27loHNBL66vEuVtwZmWqI="></script>
 
     
     
@@ -164,18 +164,20 @@
             <li class="post-tag"><a href="https://lynxline.com/tags/research">Research</a></li>
         
         </ul>
+
+        
     </div>
 
     <div class="post-content">
         <p>
             <p>Time to have assembler part of Inferno kernel to be implemented. Let’s start with routines that allows to make labels and later jump to them, they are used in kernel sources to have scheduler to switch control and do context switching between processes.
 The <strong>Label</strong> structure in <strong>dat.h:</strong></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span><span style="color:#66d9ef">struct</span> Label {
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-c" data-lang="c"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span><span style="color:#66d9ef">struct</span> Label {
 </span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2</span><span>	ulong   sp;
 </span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3</span><span>	ulong   pc;
 </span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4</span><span>};
 </span></span></code></pre></div><p>Simple idea to remember the PC(program counter) and SP(stack pointer), to init the structure and use later, we should have two functions implemented:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-asm" data-lang="asm"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1</span><span><span style="color:#a6e22e">TEXT</span> <span style="color:#66d9ef">setlabel</span>(<span style="color:#66d9ef">SB</span>), <span style="color:#66d9ef">$-4</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-asm" data-lang="asm"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1</span><span><span style="color:#a6e22e">TEXT</span> <span style="color:#66d9ef">setlabel</span>(<span style="color:#66d9ef">SB</span>), <span style="color:#66d9ef">$-4</span>
 </span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2</span><span>    <span style="color:#a6e22e">MOVW</span>    <span style="color:#66d9ef">R13</span>, <span style="color:#ae81ff">0</span>(<span style="color:#66d9ef">R0</span>)
 </span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3</span><span>    <span style="color:#a6e22e">MOVW</span>    <span style="color:#66d9ef">R14</span>, <span style="color:#ae81ff">4</span>(<span style="color:#66d9ef">R0</span>)
 </span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4</span><span>    <span style="color:#a6e22e">MOVW</span>    <span style="color:#66d9ef">$0</span>, <span style="color:#66d9ef">R0</span>
@@ -188,11 +190,11 @@ The <strong>Label</strong> structure in <strong>dat.h:</strong></p>
 </span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11</span><span>    <span style="color:#a6e22e">RET</span>
 </span></span></code></pre></div><p>It works in simple way, <strong>setlabel()</strong> has pointer to Label as argument (R0 registry), so initialization 0(R0) puts value of R13/SP into Label.sp, and 4(R0) puts value of R14/PC into Label.pc; <strong>gotolabel()</strong> does opposite, taking pointer to Label and initialize SP and PC and as result pass control of execution.</p>
 <p><strong>getcallerpc()</strong> also is very simple, when the function is called, the PC is put in stack for return address, so we can extract it as 0(SP):</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-asm" data-lang="asm"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span><span style="color:#a6e22e">TEXT</span> <span style="color:#66d9ef">getcallerpc</span>(<span style="color:#66d9ef">SB</span>), <span style="color:#66d9ef">$-4</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-asm" data-lang="asm"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span><span style="color:#a6e22e">TEXT</span> <span style="color:#66d9ef">getcallerpc</span>(<span style="color:#66d9ef">SB</span>), <span style="color:#66d9ef">$-4</span>
 </span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2</span><span>    <span style="color:#a6e22e">MOVW</span>    <span style="color:#ae81ff">0</span>(<span style="color:#66d9ef">SP</span>), <span style="color:#66d9ef">R0</span>
 </span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3</span><span>    <span style="color:#a6e22e">RET</span>
 </span></span></code></pre></div><p><strong>splhi()</strong> is function that saves PC into Mach structure, disables all maskable interrupts and returns the previous interrupt enable state, see the <a href="http://www.vitanuova.com/inferno/man/10/splhi.html">http://www.vitanuova.com/inferno/man/10/splhi.html</a>, so we modify Mach structure to have ulong splpc at very beginning so address is same as address of Mach.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span><span style="color:#66d9ef">struct</span> Mach {
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-c" data-lang="c"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span><span style="color:#66d9ef">struct</span> Mach {
 </span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2</span><span>    ulong   splpc;      <span style="color:#75715e">/* pc of last caller to splhi */</span>
 </span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3</span><span>    <span style="color:#66d9ef">int</span>     machno;     <span style="color:#75715e">/* physical id of processor */</span>
 </span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4</span><span>    ulong   ticks;      <span style="color:#75715e">/* of the clock since boot time */</span>
@@ -200,7 +202,7 @@ The <strong>Label</strong> structure in <strong>dat.h:</strong></p>
 </span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6</span><span>    Label   sched;      <span style="color:#75715e">/* scheduler wakeup */</span>
 </span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7</span><span>};
 </span></span></code></pre></div><p>So the code of <strong>int splhi():</strong></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-asm" data-lang="asm"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span><span style="color:#a6e22e">TEXT</span> <span style="color:#66d9ef">splhi</span>(<span style="color:#66d9ef">SB</span>), <span style="color:#66d9ef">$-4</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-asm" data-lang="asm"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span><span style="color:#a6e22e">TEXT</span> <span style="color:#66d9ef">splhi</span>(<span style="color:#66d9ef">SB</span>), <span style="color:#66d9ef">$-4</span>
 </span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2</span><span>	<span style="color:#a6e22e">MOVW</span>	<span style="color:#66d9ef">$</span>(<span style="color:#66d9ef">MACHADDR</span>), <span style="color:#66d9ef">R6</span>
 </span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3</span><span>	<span style="color:#a6e22e">MOVW</span>	<span style="color:#66d9ef">R14</span>, (<span style="color:#66d9ef">R6</span>)   <span style="color:#75715e">/* m-&gt;splpc */</span>
 </span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4</span><span>	<span style="color:#a6e22e">MOVW</span>	<span style="color:#66d9ef">CPSR</span>, <span style="color:#66d9ef">R0</span>
@@ -210,7 +212,7 @@ The <strong>Label</strong> structure in <strong>dat.h:</strong></p>
 </span></span></code></pre></div><p><strong>int spllo()</strong> enables interrupts and returns a flag representing the previous interrupt enable state:</p>
 <p><strong>splx(int x)</strong> saves PC into m-&gt;splpc, restores the interrupt enable state state to x, which must be a value returned by a previous call to splhi or spllo</p>
 <p><strong>splxpc(int x)</strong> does same but without saving PC</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-asm" data-lang="asm"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span><span style="color:#a6e22e">TEXT</span> <span style="color:#66d9ef">splx</span>(<span style="color:#66d9ef">SB</span>), <span style="color:#66d9ef">$-4</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-asm" data-lang="asm"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span><span style="color:#a6e22e">TEXT</span> <span style="color:#66d9ef">splx</span>(<span style="color:#66d9ef">SB</span>), <span style="color:#66d9ef">$-4</span>
 </span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2</span><span>	<span style="color:#a6e22e">MOVW</span>	<span style="color:#66d9ef">$</span>(<span style="color:#66d9ef">MACHADDR</span>), <span style="color:#66d9ef">R6</span>
 </span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3</span><span>	<span style="color:#a6e22e">MOVW</span>	<span style="color:#66d9ef">R14</span>, (<span style="color:#66d9ef">R6</span>)   <span style="color:#75715e">/* m-&gt;splpc */</span>
 </span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4</span><span><span style="color:#a6e22e">TEXT</span> <span style="color:#66d9ef">splxpc</span>(<span style="color:#66d9ef">SB</span>), <span style="color:#66d9ef">$-4</span>
@@ -219,18 +221,18 @@ The <strong>Label</strong> structure in <strong>dat.h:</strong></p>
 </span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7</span><span>	<span style="color:#a6e22e">MOVW</span>	<span style="color:#66d9ef">R1</span>, <span style="color:#66d9ef">CPSR</span>
 </span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">8</span><span>	<span style="color:#a6e22e">RET</span>
 </span></span></code></pre></div><p><strong>int islo()</strong> returns true (non-zero) if interrupts are currently enabled, and 0 otherwise:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-asm" data-lang="asm"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span><span style="color:#a6e22e">TEXT</span> <span style="color:#66d9ef">islo</span>(<span style="color:#66d9ef">SB</span>), <span style="color:#66d9ef">$-4</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-asm" data-lang="asm"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span><span style="color:#a6e22e">TEXT</span> <span style="color:#66d9ef">islo</span>(<span style="color:#66d9ef">SB</span>), <span style="color:#66d9ef">$-4</span>
 </span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2</span><span>	<span style="color:#a6e22e">MOVW</span>	<span style="color:#66d9ef">CPSR</span>, <span style="color:#66d9ef">R0</span>
 </span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3</span><span>	<span style="color:#a6e22e">AND</span>		<span style="color:#66d9ef">$</span>(<span style="color:#66d9ef">PsrDirq</span>), <span style="color:#66d9ef">R0</span>
 </span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4</span><span>	<span style="color:#a6e22e">EOR</span>		<span style="color:#66d9ef">$</span>(<span style="color:#66d9ef">PsrDirq</span>), <span style="color:#66d9ef">R0</span>
 </span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5</span><span>	<span style="color:#a6e22e">RET</span>
 </span></span></code></pre></div><p>FILES:</p>
 <ul>
-<li><a href="dat.h">os/rpi/dat.h</a></li>
-<li><a href="armv6.h">os/rpi/armv6.h</a></li>
-<li><a href="armv6.s">os/rpi/armv6.s</a></li>
-<li><a href="main.c">os/rpi/main.c</a></li>
-<li><a href="splhi.pdf">splhi.pdf</a></li>
+<li><a href="/posts/lab-9-coding-assembler-part/dat.h">os/rpi/dat.h</a></li>
+<li><a href="/posts/lab-9-coding-assembler-part/armv6.h">os/rpi/armv6.h</a></li>
+<li><a href="/posts/lab-9-coding-assembler-part/armv6.s">os/rpi/armv6.s</a></li>
+<li><a href="/posts/lab-9-coding-assembler-part/main.c">os/rpi/main.c</a></li>
+<li><a href="/posts/lab-9-coding-assembler-part/splhi.pdf">splhi.pdf</a></li>
 </ul>
 
         </p>

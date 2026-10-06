@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en"><head>
+<html lang="en-us"><head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -48,7 +48,7 @@
     <link id="dark-theme" rel="stylesheet" href="/css/dark.min.css">
 
     
-    <script src="/js/bundle.min.224c8e70fed292d18d7d9ae1b36797c99144e0be1117e2ea2c428379c8496551.js" integrity="sha256-IkyOcP7SktGNfZrhs2eXyZFE4L4RF&#43;LqLEKDechJZVE="></script>
+    <script src="/js/bundle.min.a5fb480a30cceaa94e6cadb30386527cedbb9681cd04bebabc4b95b706665aa2.js" integrity="sha256-pftICjDM6qlObK2zA4ZSfO27loHNBL66vEuVtwZmWqI="></script>
 
     
     
@@ -162,6 +162,8 @@
             <li class="post-tag"><a href="https://lynxline.com/tags/pdf.js">PDF.js</a></li>
         
         </ul>
+
+        
     </div>
 
     <div class="post-content">
@@ -189,7 +191,7 @@ $ gulp minified
 <pre><code>auto url = QUrl::fromLocalFile(app_path+&quot;/minified/web/viewer.html&quot;);
 </code></pre>
 <p>Now build &amp; run:</p>
-<p><img src="image_0.png" alt="image alt text"></p>
+<p><img src="/posts/create-qpdfjs/image_0.png" alt="image alt text"></p>
 <p>This worked perfectly right out of the box, so my concept is valid, however it is showing their example PDF file, how does it bypass the filename and inject our own into the javascript engine? There is another clever bit of Qt technology called QWebChannel. The idea is that on C++/Qt side we instantiate <em>QWebChannel</em> object and set this channel to a webpage. With that channel we can register objects that can be accessed from a JavaScript scope:</p>
 <pre><code>auto url = QUrl::fromLocalFile(app_path+&quot;/minified/web/viewer.html&quot;);
 
@@ -226,7 +228,7 @@ new QWebChannel(qt.webChannelTransport
 <pre><code>$ gulp minified
 </code></pre>
 <p>Now we copy the <em>minified</em> to our project home. From here we can make changes like allowing the application to accept command line arguments, or profile a list of available PDF files that you want to process, whatever it is you need.</p>
-<p><img src="image_1.png" alt="image alt text"></p>
+<p><img src="/posts/create-qpdfjs/image_1.png" alt="image alt text"></p>
 <p>And there you have it, a completed PDF viewer desktop application just in few hours (not counting research).</p>
 <p>Project github: <a href="https://github.com/yshurik/qpdfjs">https://github.com/yshurik/qpdfjs</a></p>
 <p>PS: And this post is my first attempt to create a site based on Hugo+GitHubPages. Pretty impressive!</p>

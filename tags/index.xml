@@ -1,390 +1,395 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Tags on LynxLine</title>
-    <link>https://lynxline.com/tags/</link>
-    <description>Recent content in Tags on LynxLine</description>
-    <generator>Hugo</generator>
-    <language>en-us</language>
-    <lastBuildDate>Mon, 05 Oct 2026 09:00:00 +0200</lastBuildDate>
-    <atom:link href="https://lynxline.com/tags/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>AI</title>
-      <link>https://lynxline.com/tags/ai/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://lynxline.com/tags/ai/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Data</title>
-      <link>https://lynxline.com/tags/data/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://lynxline.com/tags/data/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>MCP</title>
-      <link>https://lynxline.com/tags/mcp/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://lynxline.com/tags/mcp/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Python</title>
-      <link>https://lynxline.com/tags/python/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://lynxline.com/tags/python/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Machine Learning</title>
-      <link>https://lynxline.com/tags/machine-learning/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://lynxline.com/tags/machine-learning/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Bitmessage</title>
-      <link>https://lynxline.com/tags/bitmessage/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://lynxline.com/tags/bitmessage/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>C&#43;&#43;</title>
-      <link>https://lynxline.com/tags/c&#43;&#43;/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://lynxline.com/tags/c&#43;&#43;/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Cryptography</title>
-      <link>https://lynxline.com/tags/cryptography/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://lynxline.com/tags/cryptography/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Qt</title>
-      <link>https://lynxline.com/tags/qt/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://lynxline.com/tags/qt/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Security</title>
-      <link>https://lynxline.com/tags/security/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://lynxline.com/tags/security/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Claude</title>
-      <link>https://lynxline.com/tags/claude/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://lynxline.com/tags/claude/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Inferno OS</title>
-      <link>https://lynxline.com/tags/inferno-os/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://lynxline.com/tags/inferno-os/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Tools</title>
-      <link>https://lynxline.com/tags/tools/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://lynxline.com/tags/tools/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Docker</title>
-      <link>https://lynxline.com/tags/docker/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://lynxline.com/tags/docker/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Networking</title>
-      <link>https://lynxline.com/tags/networking/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://lynxline.com/tags/networking/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Go</title>
-      <link>https://lynxline.com/tags/go/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://lynxline.com/tags/go/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>MongoDB</title>
-      <link>https://lynxline.com/tags/mongodb/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://lynxline.com/tags/mongodb/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>MySQL</title>
-      <link>https://lynxline.com/tags/mysql/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://lynxline.com/tags/mysql/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Redis</title>
-      <link>https://lynxline.com/tags/redis/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://lynxline.com/tags/redis/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>WebSocket</title>
-      <link>https://lynxline.com/tags/websocket/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://lynxline.com/tags/websocket/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Email</title>
-      <link>https://lynxline.com/tags/email/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://lynxline.com/tags/email/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>C</title>
-      <link>https://lynxline.com/tags/c/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://lynxline.com/tags/c/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Debugging</title>
-      <link>https://lynxline.com/tags/debugging/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://lynxline.com/tags/debugging/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>IoT</title>
-      <link>https://lynxline.com/tags/iot/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://lynxline.com/tags/iot/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>IOTA</title>
-      <link>https://lynxline.com/tags/iota/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://lynxline.com/tags/iota/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Node-RED</title>
-      <link>https://lynxline.com/tags/node-red/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://lynxline.com/tags/node-red/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Boost</title>
-      <link>https://lynxline.com/tags/boost/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://lynxline.com/tags/boost/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Development</title>
-      <link>https://lynxline.com/tags/development/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://lynxline.com/tags/development/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>PDF.js</title>
-      <link>https://lynxline.com/tags/pdf.js/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://lynxline.com/tags/pdf.js/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Memcached</title>
-      <link>https://lynxline.com/tags/memcached/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://lynxline.com/tags/memcached/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Windows</title>
-      <link>https://lynxline.com/tags/windows/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://lynxline.com/tags/windows/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Blog</title>
-      <link>https://lynxline.com/tags/blog/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://lynxline.com/tags/blog/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Ideas</title>
-      <link>https://lynxline.com/tags/ideas/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://lynxline.com/tags/ideas/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Misc</title>
-      <link>https://lynxline.com/tags/misc/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://lynxline.com/tags/misc/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Research</title>
-      <link>https://lynxline.com/tags/research/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://lynxline.com/tags/research/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>SQL</title>
-      <link>https://lynxline.com/tags/sql/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://lynxline.com/tags/sql/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>SQLite</title>
-      <link>https://lynxline.com/tags/sqlite/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://lynxline.com/tags/sqlite/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Projects</title>
-      <link>https://lynxline.com/tags/projects/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://lynxline.com/tags/projects/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Raspberry Pi</title>
-      <link>https://lynxline.com/tags/raspberry-pi/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://lynxline.com/tags/raspberry-pi/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Release</title>
-      <link>https://lynxline.com/tags/release/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://lynxline.com/tags/release/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Embedding</title>
-      <link>https://lynxline.com/tags/embedding/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://lynxline.com/tags/embedding/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Models</title>
-      <link>https://lynxline.com/tags/models/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://lynxline.com/tags/models/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Web</title>
-      <link>https://lynxline.com/tags/web/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://lynxline.com/tags/web/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Trac</title>
-      <link>https://lynxline.com/tags/trac/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://lynxline.com/tags/trac/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Undo</title>
-      <link>https://lynxline.com/tags/undo/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://lynxline.com/tags/undo/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Mac App Store</title>
-      <link>https://lynxline.com/tags/mac-app-store/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://lynxline.com/tags/mac-app-store/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>QtSpeech</title>
-      <link>https://lynxline.com/tags/qtspeech/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://lynxline.com/tags/qtspeech/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>TogMeg</title>
-      <link>https://lynxline.com/tags/togmeg/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://lynxline.com/tags/togmeg/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>TTS</title>
-      <link>https://lynxline.com/tags/tts/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://lynxline.com/tags/tts/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Language Learning</title>
-      <link>https://lynxline.com/tags/language-learning/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://lynxline.com/tags/language-learning/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Mac</title>
-      <link>https://lynxline.com/tags/mac/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://lynxline.com/tags/mac/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>PySide</title>
-      <link>https://lynxline.com/tags/pyside/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://lynxline.com/tags/pyside/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Hybrids</title>
-      <link>https://lynxline.com/tags/hybrids/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://lynxline.com/tags/hybrids/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>PyQt</title>
-      <link>https://lynxline.com/tags/pyqt/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://lynxline.com/tags/pyqt/</guid>
-      <description></description>
-    </item>
-  </channel>
+	<channel>
+		<title>Tags on LynxLine</title>
+		<link>https://lynxline.com/tags/</link>
+		<description>Recent content in Tags on LynxLine</description>
+		<generator>Hugo</generator>
+		<language>en-us</language>
+		
+		
+		
+		
+			<lastBuildDate>Mon, 05 Oct 2026 09:00:00 +0200</lastBuildDate>
+		
+			<atom:link href="https://lynxline.com/tags/index.xml" rel="self" type="application/rss+xml" />
+			<item>
+				<title>AI</title>
+				<link>https://lynxline.com/tags/ai/</link>
+				<pubDate>Mon, 05 Oct 2026 09:00:00 +0200</pubDate>
+				<guid>https://lynxline.com/tags/ai/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Data</title>
+				<link>https://lynxline.com/tags/data/</link>
+				<pubDate>Mon, 05 Oct 2026 09:00:00 +0200</pubDate>
+				<guid>https://lynxline.com/tags/data/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>MCP</title>
+				<link>https://lynxline.com/tags/mcp/</link>
+				<pubDate>Mon, 05 Oct 2026 09:00:00 +0200</pubDate>
+				<guid>https://lynxline.com/tags/mcp/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Python</title>
+				<link>https://lynxline.com/tags/python/</link>
+				<pubDate>Mon, 05 Oct 2026 09:00:00 +0200</pubDate>
+				<guid>https://lynxline.com/tags/python/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Machine Learning</title>
+				<link>https://lynxline.com/tags/machine-learning/</link>
+				<pubDate>Mon, 28 Sep 2026 09:00:00 +0200</pubDate>
+				<guid>https://lynxline.com/tags/machine-learning/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Bitmessage</title>
+				<link>https://lynxline.com/tags/bitmessage/</link>
+				<pubDate>Mon, 21 Sep 2026 09:00:00 +0200</pubDate>
+				<guid>https://lynxline.com/tags/bitmessage/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>C&#43;&#43;</title>
+				<link>https://lynxline.com/tags/c&#43;&#43;/</link>
+				<pubDate>Mon, 21 Sep 2026 09:00:00 +0200</pubDate>
+				<guid>https://lynxline.com/tags/c&#43;&#43;/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Cryptography</title>
+				<link>https://lynxline.com/tags/cryptography/</link>
+				<pubDate>Mon, 21 Sep 2026 09:00:00 +0200</pubDate>
+				<guid>https://lynxline.com/tags/cryptography/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Qt</title>
+				<link>https://lynxline.com/tags/qt/</link>
+				<pubDate>Mon, 21 Sep 2026 09:00:00 +0200</pubDate>
+				<guid>https://lynxline.com/tags/qt/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Security</title>
+				<link>https://lynxline.com/tags/security/</link>
+				<pubDate>Fri, 11 Sep 2026 09:00:00 +0200</pubDate>
+				<guid>https://lynxline.com/tags/security/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Claude</title>
+				<link>https://lynxline.com/tags/claude/</link>
+				<pubDate>Thu, 03 Sep 2026 09:00:00 +0200</pubDate>
+				<guid>https://lynxline.com/tags/claude/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Inferno OS</title>
+				<link>https://lynxline.com/tags/inferno-os/</link>
+				<pubDate>Thu, 03 Sep 2026 09:00:00 +0200</pubDate>
+				<guid>https://lynxline.com/tags/inferno-os/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Tools</title>
+				<link>https://lynxline.com/tags/tools/</link>
+				<pubDate>Wed, 02 Sep 2026 12:00:00 +0200</pubDate>
+				<guid>https://lynxline.com/tags/tools/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Docker</title>
+				<link>https://lynxline.com/tags/docker/</link>
+				<pubDate>Sun, 24 Jul 2022 10:00:00 +0200</pubDate>
+				<guid>https://lynxline.com/tags/docker/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Networking</title>
+				<link>https://lynxline.com/tags/networking/</link>
+				<pubDate>Sun, 24 Jul 2022 10:00:00 +0200</pubDate>
+				<guid>https://lynxline.com/tags/networking/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Go</title>
+				<link>https://lynxline.com/tags/go/</link>
+				<pubDate>Sat, 25 Jun 2022 10:00:00 +0200</pubDate>
+				<guid>https://lynxline.com/tags/go/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>MongoDB</title>
+				<link>https://lynxline.com/tags/mongodb/</link>
+				<pubDate>Sat, 25 Jun 2022 10:00:00 +0200</pubDate>
+				<guid>https://lynxline.com/tags/mongodb/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>MySQL</title>
+				<link>https://lynxline.com/tags/mysql/</link>
+				<pubDate>Sat, 25 Jun 2022 10:00:00 +0200</pubDate>
+				<guid>https://lynxline.com/tags/mysql/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Redis</title>
+				<link>https://lynxline.com/tags/redis/</link>
+				<pubDate>Mon, 10 May 2021 10:00:00 +0200</pubDate>
+				<guid>https://lynxline.com/tags/redis/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>WebSocket</title>
+				<link>https://lynxline.com/tags/websocket/</link>
+				<pubDate>Mon, 10 May 2021 10:00:00 +0200</pubDate>
+				<guid>https://lynxline.com/tags/websocket/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Email</title>
+				<link>https://lynxline.com/tags/email/</link>
+				<pubDate>Sun, 20 Dec 2020 10:00:00 +0200</pubDate>
+				<guid>https://lynxline.com/tags/email/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>C</title>
+				<link>https://lynxline.com/tags/c/</link>
+				<pubDate>Mon, 14 Dec 2020 10:00:00 +0200</pubDate>
+				<guid>https://lynxline.com/tags/c/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Debugging</title>
+				<link>https://lynxline.com/tags/debugging/</link>
+				<pubDate>Mon, 14 Dec 2020 10:00:00 +0200</pubDate>
+				<guid>https://lynxline.com/tags/debugging/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>IoT</title>
+				<link>https://lynxline.com/tags/iot/</link>
+				<pubDate>Sun, 30 Sep 2018 10:00:00 +0200</pubDate>
+				<guid>https://lynxline.com/tags/iot/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>IOTA</title>
+				<link>https://lynxline.com/tags/iota/</link>
+				<pubDate>Sun, 30 Sep 2018 10:00:00 +0200</pubDate>
+				<guid>https://lynxline.com/tags/iota/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Node-RED</title>
+				<link>https://lynxline.com/tags/node-red/</link>
+				<pubDate>Sun, 30 Sep 2018 10:00:00 +0200</pubDate>
+				<guid>https://lynxline.com/tags/node-red/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Boost</title>
+				<link>https://lynxline.com/tags/boost/</link>
+				<pubDate>Mon, 05 Jun 2017 10:00:00 +0200</pubDate>
+				<guid>https://lynxline.com/tags/boost/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Development</title>
+				<link>https://lynxline.com/tags/development/</link>
+				<pubDate>Thu, 27 Apr 2017 20:05:44 +0200</pubDate>
+				<guid>https://lynxline.com/tags/development/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>PDF.js</title>
+				<link>https://lynxline.com/tags/pdf.js/</link>
+				<pubDate>Thu, 27 Apr 2017 20:05:44 +0200</pubDate>
+				<guid>https://lynxline.com/tags/pdf.js/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Memcached</title>
+				<link>https://lynxline.com/tags/memcached/</link>
+				<pubDate>Thu, 09 Mar 2017 10:00:00 +0200</pubDate>
+				<guid>https://lynxline.com/tags/memcached/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Windows</title>
+				<link>https://lynxline.com/tags/windows/</link>
+				<pubDate>Thu, 09 Mar 2017 10:00:00 +0200</pubDate>
+				<guid>https://lynxline.com/tags/windows/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Blog</title>
+				<link>https://lynxline.com/tags/blog/</link>
+				<pubDate>Fri, 03 Jun 2016 22:13:05 +0200</pubDate>
+				<guid>https://lynxline.com/tags/blog/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Ideas</title>
+				<link>https://lynxline.com/tags/ideas/</link>
+				<pubDate>Fri, 03 Jun 2016 22:13:05 +0200</pubDate>
+				<guid>https://lynxline.com/tags/ideas/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Misc</title>
+				<link>https://lynxline.com/tags/misc/</link>
+				<pubDate>Fri, 03 Jun 2016 22:13:05 +0200</pubDate>
+				<guid>https://lynxline.com/tags/misc/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Research</title>
+				<link>https://lynxline.com/tags/research/</link>
+				<pubDate>Fri, 03 Jun 2016 22:13:05 +0200</pubDate>
+				<guid>https://lynxline.com/tags/research/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>SQL</title>
+				<link>https://lynxline.com/tags/sql/</link>
+				<pubDate>Fri, 03 Jun 2016 22:13:05 +0200</pubDate>
+				<guid>https://lynxline.com/tags/sql/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>SQLite</title>
+				<link>https://lynxline.com/tags/sqlite/</link>
+				<pubDate>Fri, 03 Jun 2016 22:13:05 +0200</pubDate>
+				<guid>https://lynxline.com/tags/sqlite/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Projects</title>
+				<link>https://lynxline.com/tags/projects/</link>
+				<pubDate>Mon, 08 Feb 2016 21:00:00 +0200</pubDate>
+				<guid>https://lynxline.com/tags/projects/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Raspberry Pi</title>
+				<link>https://lynxline.com/tags/raspberry-pi/</link>
+				<pubDate>Mon, 08 Feb 2016 21:00:00 +0200</pubDate>
+				<guid>https://lynxline.com/tags/raspberry-pi/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Release</title>
+				<link>https://lynxline.com/tags/release/</link>
+				<pubDate>Mon, 08 Feb 2016 21:00:00 +0200</pubDate>
+				<guid>https://lynxline.com/tags/release/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Embedding</title>
+				<link>https://lynxline.com/tags/embedding/</link>
+				<pubDate>Sun, 15 Nov 2015 18:00:00 +0200</pubDate>
+				<guid>https://lynxline.com/tags/embedding/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Models</title>
+				<link>https://lynxline.com/tags/models/</link>
+				<pubDate>Sat, 18 Jan 2014 22:00:00 +0200</pubDate>
+				<guid>https://lynxline.com/tags/models/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Web</title>
+				<link>https://lynxline.com/tags/web/</link>
+				<pubDate>Tue, 10 Dec 2013 00:00:00 +0200</pubDate>
+				<guid>https://lynxline.com/tags/web/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Trac</title>
+				<link>https://lynxline.com/tags/trac/</link>
+				<pubDate>Sat, 20 Oct 2012 22:00:00 +0200</pubDate>
+				<guid>https://lynxline.com/tags/trac/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Undo</title>
+				<link>https://lynxline.com/tags/undo/</link>
+				<pubDate>Mon, 02 Apr 2012 13:00:00 +0200</pubDate>
+				<guid>https://lynxline.com/tags/undo/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Mac App Store</title>
+				<link>https://lynxline.com/tags/mac-app-store/</link>
+				<pubDate>Wed, 29 Jun 2011 21:00:00 +0200</pubDate>
+				<guid>https://lynxline.com/tags/mac-app-store/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>QtSpeech</title>
+				<link>https://lynxline.com/tags/qtspeech/</link>
+				<pubDate>Wed, 29 Jun 2011 21:00:00 +0200</pubDate>
+				<guid>https://lynxline.com/tags/qtspeech/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>TogMeg</title>
+				<link>https://lynxline.com/tags/togmeg/</link>
+				<pubDate>Wed, 29 Jun 2011 21:00:00 +0200</pubDate>
+				<guid>https://lynxline.com/tags/togmeg/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>TTS</title>
+				<link>https://lynxline.com/tags/tts/</link>
+				<pubDate>Wed, 29 Jun 2011 21:00:00 +0200</pubDate>
+				<guid>https://lynxline.com/tags/tts/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Language Learning</title>
+				<link>https://lynxline.com/tags/language-learning/</link>
+				<pubDate>Wed, 15 Jun 2011 10:00:00 +0200</pubDate>
+				<guid>https://lynxline.com/tags/language-learning/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Mac</title>
+				<link>https://lynxline.com/tags/mac/</link>
+				<pubDate>Wed, 15 Jun 2011 10:00:00 +0200</pubDate>
+				<guid>https://lynxline.com/tags/mac/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>PySide</title>
+				<link>https://lynxline.com/tags/pyside/</link>
+				<pubDate>Wed, 06 Oct 2010 10:00:00 +0200</pubDate>
+				<guid>https://lynxline.com/tags/pyside/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Hybrids</title>
+				<link>https://lynxline.com/tags/hybrids/</link>
+				<pubDate>Mon, 04 Oct 2010 11:00:00 +0200</pubDate>
+				<guid>https://lynxline.com/tags/hybrids/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>PyQt</title>
+				<link>https://lynxline.com/tags/pyqt/</link>
+				<pubDate>Wed, 21 Jul 2010 10:00:00 +0200</pubDate>
+				<guid>https://lynxline.com/tags/pyqt/</guid>
+				<description></description>
+			</item>
+	</channel>
 </rss>

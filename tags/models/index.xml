@@ -1,47 +1,52 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Models on LynxLine</title>
-    <link>https://lynxline.com/tags/models/</link>
-    <description>Recent content in Models on LynxLine</description>
-    <generator>Hugo</generator>
-    <language>en-us</language>
-    <lastBuildDate>Sat, 18 Jan 2014 22:00:00 +0200</lastBuildDate>
-    <atom:link href="https://lynxline.com/tags/models/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Jongling models beetween threads</title>
-      <link>https://lynxline.com/posts/jongling-models-beetween-threads/</link>
-      <pubDate>Sat, 18 Jan 2014 22:00:00 +0200</pubDate>
-      <guid>https://lynxline.com/posts/jongling-models-beetween-threads/</guid>
-      <description>&lt;p&gt;We know that in Qt the models are not thread-safe – they totally depend on your implementation.&lt;/p&gt;&#xA;&lt;p&gt;So what we may do to bypass model between threads?&lt;/p&gt;&#xA;&lt;p&gt;Guess that we have some models which implementation we can not adjust much or can not make thread-safe.&lt;/p&gt;&#xA;&lt;p&gt;Danger is that if some model is used somewhere (pointer to model, saved QModelIndex, etc), then when we move model object to another thread, for some resource consuming processing,&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Designing tree-like models</title>
-      <link>https://lynxline.com/posts/designing-tree-like-models/</link>
-      <pubDate>Fri, 12 Apr 2013 00:00:00 +0200</pubDate>
-      <guid>https://lynxline.com/posts/designing-tree-like-models/</guid>
-      <description>&lt;p&gt;We found that developers are often confused about implementing tree-like models using Qt classes. Now we can show some tricks and considerations about the way of designing them.&lt;/p&gt;&#xA;&lt;p&gt;First for some refreshment, let’s remind what you have for addressing the elements in the model. This is &lt;em&gt;QModelIndex&lt;/em&gt;, which have pointer to model that created the index object, row and column and plus a some pointer or id (&lt;em&gt;qint64&lt;/em&gt;) which can be used for addressing.&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Overhead cost of using Qt models</title>
-      <link>https://lynxline.com/posts/overhead-cost-of-using-qt-models/</link>
-      <pubDate>Tue, 19 Feb 2013 23:00:00 +0200</pubDate>
-      <guid>https://lynxline.com/posts/overhead-cost-of-using-qt-models/</guid>
-      <description>I decided to run very simple test to have glance on performance of Qt models and overhead cost of using them.&#xA;Something very simple as make 1M random strings with random size (note: rnd_str(int) return some random string with specified size)&#xA;int n = 1000000; QStandardItemModel std(n, 1); for(int row =0; row &amp;lt;n; ++row) std.setData(std.index(row,0), rnd_str(rand() % 16)); versus just vector of strings&#xA;QVector&amp;lt;QString&amp;gt; vec; for(int i =0; i&amp;lt; n; ++i) vec.</description>
-    </item>
-    <item>
-      <title>About Boost Multi-index Containers</title>
-      <link>https://lynxline.com/posts/about-boost-multi-index-containers/</link>
-      <pubDate>Sat, 29 Dec 2012 00:00:00 +0200</pubDate>
-      <guid>https://lynxline.com/posts/about-boost-multi-index-containers/</guid>
-      <description>&lt;p&gt;I really like Qt Template Library (QTL), but still have lack of some important functionality which is usually called multi-index. Anyway there is very powerful implementation existing in Boost. I really need these templates to establish relations between different data structures. I often use it as internal “engine” for different Proxy models that I use to manipulate models.&lt;/p&gt;&#xA;&lt;p&gt;So, I would like to remind and give quick recepies about such powerful module in Boost as multi_index_container. We know and intensively use standard STL templates for storing and access to data as lists, vectors, maps, hashes. There are a lot of information about them and very well explained.&lt;/p&gt;&#xA;&lt;p&gt;Things get complicated when there is a need to store and access to objects by more then one set of keys or their combinations. Usually developers start from creation of two maps or hashes plus a log of synchronization of then, but later with increase of keys codes became much more complicated due to synchronization of hashes, insertions, key renames, removes etc. Also it is getting very hard to understand the computation complexity of every operation taken with such storage. And of course creation of such “bicycles” leads to high amount of bugs, needs of optimizations, etc.&lt;/p&gt;&#xA;&lt;p&gt;Of course everything is invented before us and in Boost libraries you will find a module for solving these problems – boost::multi_index. Great advantage – speed, multi_index is very fast. But documentation for this module is, let’s say, complicated for understanding and especially for quick start, so newbies try to avoid the use of the module. And of course compiler messages about error due to use of multi_index templates give high amount of confusion.&lt;/p&gt;&#xA;&lt;p&gt;I would like to remove confusion and give simple cases that will be good recipes of use. I will use it together with Qt classes for demo:&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Jongling Qt models 2, Composition Gem</title>
-      <link>https://lynxline.com/posts/jongling-qt-models-2-composition-gem/</link>
-      <pubDate>Mon, 19 Sep 2011 14:00:00 +0200</pubDate>
-      <guid>https://lynxline.com/posts/jongling-qt-models-2-composition-gem/</guid>
-      <description>We are back to models again :). In Qt you may find a lot of flexibilities for Model-View programming. Especially due to proxies to do filtering, sorting or even rearranging data (see Jongling Qt models) to be organized in any way that is good for you. You can have one data source model which you then split in “flows” of data with chains of proxy models which have ends at views.</description>
-    </item>
-  </channel>
+	<channel>
+		<title>Models on LynxLine</title>
+		<link>https://lynxline.com/tags/models/</link>
+		<description>Recent content in Models on LynxLine</description>
+		<generator>Hugo</generator>
+		<language>en-us</language>
+		
+		
+		
+		
+			<lastBuildDate>Sat, 18 Jan 2014 22:00:00 +0200</lastBuildDate>
+		
+			<atom:link href="https://lynxline.com/tags/models/index.xml" rel="self" type="application/rss+xml" />
+			<item>
+				<title>Jongling models beetween threads</title>
+				<link>https://lynxline.com/posts/jongling-models-beetween-threads/</link>
+				<pubDate>Sat, 18 Jan 2014 22:00:00 +0200</pubDate>
+				<guid>https://lynxline.com/posts/jongling-models-beetween-threads/</guid>
+				<description>&lt;p&gt;We know that in Qt the models are not thread-safe – they totally depend on your implementation.&lt;/p&gt;&#xA;&lt;p&gt;So what we may do to bypass model between threads?&lt;/p&gt;&#xA;&lt;p&gt;Guess that we have some models which implementation we can not adjust much or can not make thread-safe.&lt;/p&gt;&#xA;&lt;p&gt;Danger is that if some model is used somewhere (pointer to model, saved QModelIndex, etc), then when we move model object to another thread, for some resource consuming processing,&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title>Designing tree-like models</title>
+				<link>https://lynxline.com/posts/designing-tree-like-models/</link>
+				<pubDate>Fri, 12 Apr 2013 00:00:00 +0200</pubDate>
+				<guid>https://lynxline.com/posts/designing-tree-like-models/</guid>
+				<description>&lt;p&gt;We found that developers are often confused about implementing tree-like models using Qt classes. Now we can show some tricks and considerations about the way of designing them.&lt;/p&gt;&#xA;&lt;p&gt;First for some refreshment, let’s remind what you have for addressing the elements in the model. This is &lt;em&gt;QModelIndex&lt;/em&gt;, which have pointer to model that created the index object, row and column and plus a some pointer or id (&lt;em&gt;qint64&lt;/em&gt;) which can be used for addressing.&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title>Overhead cost of using Qt models</title>
+				<link>https://lynxline.com/posts/overhead-cost-of-using-qt-models/</link>
+				<pubDate>Tue, 19 Feb 2013 23:00:00 +0200</pubDate>
+				<guid>https://lynxline.com/posts/overhead-cost-of-using-qt-models/</guid>
+				<description>&lt;p&gt;I decided to run very simple test to have glance on performance of Qt models and overhead cost of using them.&lt;/p&gt;&#xA;&lt;p&gt;Something very simple as make 1M random strings with random size (note: &lt;em&gt;rnd_str(int)&lt;/em&gt; return some random string with specified size)&lt;/p&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;&#34;&gt;&lt;code class=&#34;language-cpp&#34; data-lang=&#34;cpp&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&#x9;&lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; n &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;1000000&lt;/span&gt;;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&#x9;QStandardItemModel &lt;span style=&#34;color:#a6e22e&#34;&gt;std&lt;/span&gt;(n, &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;);&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&#x9;&lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt;(&lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; row &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;; row &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt;n; &lt;span style=&#34;color:#f92672&#34;&gt;++&lt;/span&gt;row)&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&#x9;&#x9;std.setData(std.index(row,&lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;), rnd_str(rand() &lt;span style=&#34;color:#f92672&#34;&gt;%&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;16&lt;/span&gt;));&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;versus just vector of strings&lt;/p&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;&#34;&gt;&lt;code class=&#34;language-cpp&#34; data-lang=&#34;cpp&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&#x9;QVector&lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt;QString&lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&lt;/span&gt; vec;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&#x9;&lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt;(&lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; i &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;; i&lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt; n; &lt;span style=&#34;color:#f92672&#34;&gt;++&lt;/span&gt;i)&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&#x9;&#x9;vec.push_back(rnd_str(rand() &lt;span style=&#34;color:#f92672&#34;&gt;%&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;16&lt;/span&gt;));&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Then just compare time of iterating through them:&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title>About Boost Multi-index Containers</title>
+				<link>https://lynxline.com/posts/about-boost-multi-index-containers/</link>
+				<pubDate>Sat, 29 Dec 2012 00:00:00 +0200</pubDate>
+				<guid>https://lynxline.com/posts/about-boost-multi-index-containers/</guid>
+				<description>&lt;p&gt;I really like Qt Template Library (QTL), but still have lack of some important functionality which is usually called multi-index. Anyway there is very powerful implementation existing in Boost. I really need these templates to establish relations between different data structures. I often use it as internal “engine” for different Proxy models that I use to manipulate models.&lt;/p&gt;&#xA;&lt;p&gt;So, I would like to remind and give quick recepies about such powerful module in Boost as multi_index_container. We know and intensively use standard STL templates for storing and access to data as lists, vectors, maps, hashes. There are a lot of information about them and very well explained.&lt;/p&gt;&#xA;&lt;p&gt;Things get complicated when there is a need to store and access to objects by more then one set of keys or their combinations. Usually developers start from creation of two maps or hashes plus a log of synchronization of then, but later with increase of keys codes became much more complicated due to synchronization of hashes, insertions, key renames, removes etc. Also it is getting very hard to understand the computation complexity of every operation taken with such storage. And of course creation of such “bicycles” leads to high amount of bugs, needs of optimizations, etc.&lt;/p&gt;&#xA;&lt;p&gt;Of course everything is invented before us and in Boost libraries you will find a module for solving these problems – boost::multi_index. Great advantage – speed, multi_index is very fast. But documentation for this module is, let’s say, complicated for understanding and especially for quick start, so newbies try to avoid the use of the module. And of course compiler messages about error due to use of multi_index templates give high amount of confusion.&lt;/p&gt;&#xA;&lt;p&gt;I would like to remove confusion and give simple cases that will be good recipes of use. I will use it together with Qt classes for demo:&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title>Jongling Qt models 2, Composition Gem</title>
+				<link>https://lynxline.com/posts/jongling-qt-models-2-composition-gem/</link>
+				<pubDate>Mon, 19 Sep 2011 14:00:00 +0200</pubDate>
+				<guid>https://lynxline.com/posts/jongling-qt-models-2-composition-gem/</guid>
+				<description>&lt;p&gt;We are back to models again :). In Qt you may find a lot of flexibilities for Model-View programming. Especially due to proxies to do filtering, sorting or even rearranging data (see &lt;a href=&#34;http://lynxline.com/jongling-qt-models/&#34;&gt;Jongling Qt models&lt;/a&gt;) to be organized in any way that is good for you. You can have one data source model which you then split in “flows” of data with chains of proxy models which have ends at views. For example friend of mine found that it is very effective to have one single model for all data loaded which then goes in 3-4 chains of about 15 proxy models in totals. Why so much? – Every proxy is as much simple operation as possible, for example: filter, ungroup, transpose, etc. Each simple operation much easier to implement, debug and prove effectiveness. But by joining them in chain you can make any complicated operations. You have to track complexity that you get at the end of chain – i.e. sorting proxy will add O(n*log(n)), but if you make filtering before sorting, then it goes faster.&lt;/p&gt;</description>
+			</item>
+	</channel>
 </rss>

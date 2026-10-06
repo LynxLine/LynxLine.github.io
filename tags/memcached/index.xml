@@ -1,19 +1,24 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Memcached on LynxLine</title>
-    <link>https://lynxline.com/tags/memcached/</link>
-    <description>Recent content in Memcached on LynxLine</description>
-    <generator>Hugo</generator>
-    <language>en-us</language>
-    <lastBuildDate>Thu, 09 Mar 2017 10:00:00 +0200</lastBuildDate>
-    <atom:link href="https://lynxline.com/tags/memcached/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>libmemcached on Windows</title>
-      <link>https://lynxline.com/posts/libmemcached-win/</link>
-      <pubDate>Thu, 09 Mar 2017 10:00:00 +0200</pubDate>
-      <guid>https://lynxline.com/posts/libmemcached-win/</guid>
-      <description>libmemcached builds fine on Linux and Mac, but on Windows the official way is mingw plus autotools, which is awkward if your project is already MSVC-based. I fork it and add a real Visual Studio project — .sln/.vcxproj in a win32 folder — so it compiles straight in VS2015 without touching the unix build chain.&#xA;Getting it to actually link and behave took a few more fixes: making it compile without SASL, and covering WSAEWOULDBLOCK/WSAWOULDBLOCK on connect()/recv()/send(), since Windows sockets use different error constants than POSIX.</description>
-    </item>
-  </channel>
+	<channel>
+		<title>Memcached on LynxLine</title>
+		<link>https://lynxline.com/tags/memcached/</link>
+		<description>Recent content in Memcached on LynxLine</description>
+		<generator>Hugo</generator>
+		<language>en-us</language>
+		
+		
+		
+		
+			<lastBuildDate>Thu, 09 Mar 2017 10:00:00 +0200</lastBuildDate>
+		
+			<atom:link href="https://lynxline.com/tags/memcached/index.xml" rel="self" type="application/rss+xml" />
+			<item>
+				<title>libmemcached on Windows</title>
+				<link>https://lynxline.com/posts/libmemcached-win/</link>
+				<pubDate>Thu, 09 Mar 2017 10:00:00 +0200</pubDate>
+				<guid>https://lynxline.com/posts/libmemcached-win/</guid>
+				<description>&lt;p&gt;&lt;a href=&#34;https://github.com/LynxLine/libmemcached-win&#34;&gt;libmemcached&lt;/a&gt; builds fine on Linux and Mac, but on Windows the official way is mingw plus autotools, which is awkward if your project is already MSVC-based. I fork it and add a real Visual Studio project — &lt;code&gt;.sln&lt;/code&gt;/&lt;code&gt;.vcxproj&lt;/code&gt; in a &lt;code&gt;win32&lt;/code&gt; folder — so it compiles straight in VS2015 without touching the unix build chain.&lt;/p&gt;&#xA;&lt;p&gt;Getting it to actually link and behave took a few more fixes: making it compile without SASL, and covering &lt;code&gt;WSAEWOULDBLOCK&lt;/code&gt;/&lt;code&gt;WSAWOULDBLOCK&lt;/code&gt; on &lt;code&gt;connect()&lt;/code&gt;/&lt;code&gt;recv()&lt;/code&gt;/&lt;code&gt;send()&lt;/code&gt;, since Windows sockets use different error constants than POSIX. Open the vcxproj, build, and you get &lt;code&gt;.lib&lt;/code&gt;/&lt;code&gt;.dll&lt;/code&gt; you can link into any MSVC application.&lt;/p&gt;</description>
+			</item>
+	</channel>
 </rss>

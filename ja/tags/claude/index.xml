@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+	<channel>
+		<title>Claude on LynxLine</title>
+		<link>https://lynxline.com/ja/tags/claude/</link>
+		<description>Recent content in Claude on LynxLine</description>
+		<generator>Hugo</generator>
+		<language>ja</language>
+		
+		
+		
+		
+			<lastBuildDate>Thu, 03 Sep 2026 09:00:00 +0200</lastBuildDate>
+		
+			<atom:link href="https://lynxline.com/ja/tags/claude/index.xml" rel="self" type="application/rss+xml" />
+			<item>
+				<title>llm9p：9P プロトコル越しに LLM を使う</title>
+				<link>https://lynxline.com/ja/posts/llm9p/</link>
+				<pubDate>Thu, 03 Sep 2026 09:00:00 +0200</pubDate>
+				<guid>https://lynxline.com/ja/posts/llm9p/</guid>
+				<description>&lt;p&gt;このブログではかつて、Inferno OS を Raspberry Pi に移植する長いラボ連載を書きました。それから何年も経った今、同じ「すべてはファイルである」という思想を言語モデルに持ち込んだ人が現れました。&lt;a href=&#34;https://github.com/NERVsystems/llm9p&#34;&gt;llm9p&lt;/a&gt; は LLM を 9P ファイルシステムとして公開します。&lt;code&gt;ask&lt;/code&gt; にプロンプトを書き込み、応答を読み出す。それだけです。モデル名、temperature、システムプロンプトもすべてファイルで、会話の状態はリセットするまで保持されます。&lt;/p&gt;&#xA;&lt;p&gt;Plan 9 らしさが本物なのはマウント方法です。plan9port の 9pfuse、Linux カーネル標準の 9P モジュール、そして何より嬉しいのが、ホスト型 Inferno OS である Infernode。SDK も API クライアントも要りません。ファイルとパイプだけで済みます。&lt;/p&gt;&#xA;&lt;p&gt;バックエンドは差し替え可能で（現在は Anthropic API、Claude Code CLI と Ollama は対応予定）、応答は &lt;code&gt;stream/&lt;/code&gt; ディレクトリを通じて逐次ストリーミングされます。&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title>Claude Code 用スキル「i-have-adhd」</title>
+				<link>https://lynxline.com/ja/posts/i-have-adhd-claude-skill/</link>
+				<pubDate>Wed, 02 Sep 2026 12:00:00 +0200</pubDate>
+				<guid>https://lynxline.com/ja/posts/i-have-adhd-claude-skill/</guid>
+				<description>&lt;p&gt;AI アシスタントには共通の癖があります。聞いたことに答える前に、三段落ぶんの前置きが入るのです。「調べてみますね……ついでに触れておくと……見つかった内容をまとめると……」。肝心の答えが出てくる頃には、何を聞いたのか忘れています。&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://github.com/ayghri/i-have-adhd&#34;&gt;ayghri/i-have-adhd&lt;/a&gt; は、この振る舞いをオフにする Claude Code のスキルです。有効にすると、モデルの話し方がこう変わります。&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;答え、または次にやることが必ず最初に来る&lt;/li&gt;&#xA;&lt;li&gt;複数ステップの作業は番号付きで、1 ステップにつき 1 つの具体的な行動&lt;/li&gt;&#xA;&lt;li&gt;前置き、振り返り、締めのまとめはなし&lt;/li&gt;&#xA;&lt;li&gt;進捗はターンをまたいで引き継がれ、毎回リセットされない&lt;/li&gt;&#xA;&lt;li&gt;所要時間は「すぐに」「まもなく」ではなく具体的に示す&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;もともとは ADHD のアクセシビリティ向けに作られたものですが、要点を埋もれさせないツールが欲しいだけの人たちにも広まり、インストール数は数千に達しています。結局、冗長な文章を読み進められる我慢の限界は、誰でも似たようなものなのでしょう。&lt;/p&gt;&#xA;&lt;p&gt;インストールはコマンド 2 つです。&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;claude plugin marketplace add ayghri/i-have-adhd&#xA;claude plugin install i-have-adhd@i-have-adhd&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;あとはセッションごとに一度 &lt;code&gt;/i-have-adhd&lt;/code&gt; を実行すれば、その会話の間ずっと有効になります。&lt;/p&gt;</description>
+			</item>
+	</channel>
+</rss>

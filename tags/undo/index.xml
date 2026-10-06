@@ -1,26 +1,31 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Undo on LynxLine</title>
-    <link>https://lynxline.com/tags/undo/</link>
-    <description>Recent content in Undo on LynxLine</description>
-    <generator>Hugo</generator>
-    <language>en-us</language>
-    <lastBuildDate>Mon, 02 Apr 2012 13:00:00 +0200</lastBuildDate>
-    <atom:link href="https://lynxline.com/tags/undo/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Designing Undo for large-scale projects. Going deep.</title>
-      <link>https://lynxline.com/posts/designing-undo-for-large-scale-projects-going-deep/</link>
-      <pubDate>Mon, 02 Apr 2012 13:00:00 +0200</pubDate>
-      <guid>https://lynxline.com/posts/designing-undo-for-large-scale-projects-going-deep/</guid>
-      <description>&lt;p&gt;That is huge architect-level article about designing undo in large-scale project, welcome under &lt;em&gt;more&lt;/em&gt; label…&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Undo in complex Qt projects</title>
-      <link>https://lynxline.com/posts/undo-in-complex-qt-projects/</link>
-      <pubDate>Wed, 28 Jul 2010 11:00:00 +0200</pubDate>
-      <guid>https://lynxline.com/posts/undo-in-complex-qt-projects/</guid>
-      <description>&lt;p&gt;&lt;strong&gt;UPDATE&lt;/strong&gt;: You may consider studying more advanced techniques described in second “undo” article: &lt;a href=&#34;http://lynxline.com/designing-undo-for-large-scale-projects-going-deep/&#34;&gt;Designing Undo for large-scale projects. Going deep.&lt;/a&gt;&lt;/p&gt;</description>
-    </item>
-  </channel>
+	<channel>
+		<title>Undo on LynxLine</title>
+		<link>https://lynxline.com/tags/undo/</link>
+		<description>Recent content in Undo on LynxLine</description>
+		<generator>Hugo</generator>
+		<language>en-us</language>
+		
+		
+		
+		
+			<lastBuildDate>Mon, 02 Apr 2012 13:00:00 +0200</lastBuildDate>
+		
+			<atom:link href="https://lynxline.com/tags/undo/index.xml" rel="self" type="application/rss+xml" />
+			<item>
+				<title>Designing Undo for large-scale projects. Going deep.</title>
+				<link>https://lynxline.com/posts/designing-undo-for-large-scale-projects-going-deep/</link>
+				<pubDate>Mon, 02 Apr 2012 13:00:00 +0200</pubDate>
+				<guid>https://lynxline.com/posts/designing-undo-for-large-scale-projects-going-deep/</guid>
+				<description>&lt;p&gt;That is huge architect-level article about designing undo in large-scale project, welcome under &lt;em&gt;more&lt;/em&gt; label…&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title>Undo in complex Qt projects</title>
+				<link>https://lynxline.com/posts/undo-in-complex-qt-projects/</link>
+				<pubDate>Wed, 28 Jul 2010 11:00:00 +0200</pubDate>
+				<guid>https://lynxline.com/posts/undo-in-complex-qt-projects/</guid>
+				<description>&lt;p&gt;&lt;strong&gt;UPDATE&lt;/strong&gt;: You may consider studying more advanced techniques described in second “undo” article: &lt;a href=&#34;http://lynxline.com/designing-undo-for-large-scale-projects-going-deep/&#34;&gt;Designing Undo for large-scale projects. Going deep.&lt;/a&gt;&lt;/p&gt;&#xA;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;&#xA;When you implement user interfaces, you should always be ready that your customers will ask very simple question: “Hey, where is undo in my application?”. Sometimes it makes developers totally puzzled :) because they haven’t even considered it. Then developers can find that they have to apply to project so much code changes and in so much places, that definitely will reflect stability of project, bring new bugs etc.&#xA;&#xA;So, what can be done there? Well, good to have it planned from beginning, but usually it does not happen, especially if several people worked on the project, some of them left project, some of them working only on command-line interface, etc.&#xA;&#xA;It is possible that you need to implement undo in project which grown up to 100K lines of code and of course the primary question is how to do it smooth and transparent without affecting much code. I had similar experience and would like to share some tricks about it.&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;Let’s consider some project which compound of multiple components and one of them is model which used by several views and even used through filter/sorting proxy models. Usually developers quickly goes to cover everything than users can do in views, so they subclass views and start working hard on covering all actions there. Well, even if such idea works, this is not good, considering complexity of your project, and especially if there are multiple components and they are using each other, so they should now about undo actions of every other component in project. Are you using different views of same models? – well, you have to implement same undo few times in different view, oh wait, there is also filter/sorting model in middle – you have to code more, etc&#xA;&#xA;You can get feeling that with implementing undo you started some avalanche in code of new dependencies, new apis, new methods, hundred of undo commands etc… Even more – you have to teach other developers how to apply undo or document it all very well.&#xA;&#xA;Let’s try another approach – we can try to cover one single component without affecting API, and make it totally transparent for other classes in project.&#xA;&#xA;Imaging that we have some model:&#xA;&#xA;```cpp&#xA;class Model : public QAbstractItemModel { Q_OBJECT&#xA;public:&#xA;    Model(QObject * parent);&#xA;    virtual ~Model()&#xA;&#xA;    // model reimpl:&#xA;    int rowCount(const QModelIndex &amp;amp;parent = QModelIndex()) const;&#xA;    int columnCount(const QModelIndex &amp;amp;parent = QModelIndex()) const;&#xA;    QVariant data(const QModelIndex &amp;amp;index, &#xA;                  int role = Qt::DisplayRole) const;&#xA;    virtual bool setData(const QModelIndex&amp;amp; index, &#xA;                         const QVariant &amp;amp; value, &#xA;                         int role = Qt::EditRole);&#xA;&#xA;    // you api&#xA;    virtual void add(Item *);&#xA;    virtual void remove(Item *);&#xA;};&#xA;```&#xA;&#xA;There are 3 points where your model can be changed: add(), remove() and setData(). It is ideal to apply undo only in these 3 points and make it automatic. What means by “automatic”? – our code should know when apply undo and when not.&#xA;&#xA;Remember that our project may also be used in command line mode. It makes sense not to mix model logic code with undo code, but we are not going to implement it in view, so let’s subclass our model and implement all Gui stuff and Undo there:&#xA;&#xA;```cpp&#xA;class ModelGui : public Model { Q_OBJECT&#xA;public:&#xA;    ModelGui(QObject * parent);&#xA;    virtual ~ModelGui()&#xA;&#xA;    QUndoStack * undoStack() const;&#xA;    void setUndoStack(QUndoStack *);&#xA;&#xA;    // reimplemented for undo:&#xA;    virtual bool setData(const QModelIndex&amp;amp; index, &#xA;                         const QVariant &amp;amp; value, &#xA;                         int role = Qt::EditRole);&#xA;&#xA;    virtual void add(Item *);&#xA;    virtual void remove(Item *);&#xA;&#xA;private:&#xA;    class AddCmd;&#xA;    class RemoveCmd;&#xA;    class ChangeCmd;&#xA;};&#xA;```&#xA;&#xA;We subclassed Model to reimplement add(), remove(), setData(), also we declared undo commands in “private” section (but we will define them in cpp to make them hidden). Now we need to implement add() where we cover it by undo command. Same time undo AddCmd should access “logic” add() method of superclass – we don’t need a recursion, so some kind of flag is needed, also it makes sense to make the flag kind of “global” to have control of covering actions by undo and in case of macro commands etc. Good trick to use “property” of qobject, also good to use as the qobject – the undo stack itself.&#xA;&#xA;Let’s show implementation to make it clear:&#xA;&#xA;```cpp&#xA;...&#xA;&#xA;class ModelGui::AddCmd : public QUndoCommand {&#xA;public:&#xA;    AddCmd(ModelGui * m, Item * newItem): model(m), item(newItem) {}&#xA;&#xA;    void redo() {&#xA;        bool cover = model-&amp;gt;undoStack()-&amp;gt;property(&amp;#39;cover&amp;#39;).toBool();&#xA;        model-&amp;gt;undoStack()-&amp;gt;setProperty(&amp;#39;cover&amp;#39;, false);&#xA;        model-&amp;gt;Model::add(item);&#xA;        model-&amp;gt;undoStack()-&amp;gt;setProperty(&amp;#39;cover&amp;#39;, cover);&#xA;    }&#xA;&#xA;    void undo() {&#xA;        bool cover = model-&amp;gt;undoStack()-&amp;gt;property(&amp;#39;cover&amp;#39;).toBool();&#xA;        model-&amp;gt;undoStack()-&amp;gt;setProperty(&amp;#39;cover&amp;#39;, false);&#xA;        model-&amp;gt;Model::remove(item);&#xA;        model-&amp;gt;undoStack()-&amp;gt;setProperty(&amp;#39;cover&amp;#39;, cover);&#xA;    }&#xA;&#xA;private:&#xA;    ModelGui * model;&#xA;    Item * item;&#xA;};&#xA;&#xA;void ModelGui::add(Item * newItem) {&#xA;    bool cover = undoStack()-&amp;gt;property(&amp;#39;cover&amp;#39;).toBool();&#xA;    if (cover) {&#xA;        undoStack()-&amp;gt;beginMacro(&amp;#34;Add Item&amp;#34;);&#xA;        undoStack()-&amp;gt;push(new AddCmd(this, newItem));&#xA;        undoStack()-&amp;gt;endMacro();&#xA;    }&#xA;    else Model::add(newItem);&#xA;}&#xA;&#xA;...&#xA;```&#xA;&#xA;What we have accomplished here?&#xA;&#xA;- There is single place where undo applied&#xA;&#xA;- Implementation of undo commands are hidden&#xA;&#xA;- Other classes or components don’t even need to know about undo in the model&#xA;&#xA;- You can use multiple views and sorting/filtering proxy models without worry about undo&#xA;&#xA;- If there is also command-line use of project, you just exclude ModelGui.h/cpp&#xA;&#xA;- If other component/module cast for add(), it is covered by undo automatically&#xA;&#xA;- If other undo command cast for add() from inside, it is not covered by undo – no recursion&#xA;&#xA;- The project can be as complex as possible, you only need to worry about using “cover”&#xA;&lt;/code&gt;&lt;/pre&gt;</description>
+			</item>
+	</channel>
 </rss>

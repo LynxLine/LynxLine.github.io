@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en"><head>
+<html lang="en-us"><head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -48,7 +48,7 @@
     <link id="dark-theme" rel="stylesheet" href="/css/dark.min.css">
 
     
-    <script src="/js/bundle.min.224c8e70fed292d18d7d9ae1b36797c99144e0be1117e2ea2c428379c8496551.js" integrity="sha256-IkyOcP7SktGNfZrhs2eXyZFE4L4RF&#43;LqLEKDechJZVE="></script>
+    <script src="/js/bundle.min.a5fb480a30cceaa94e6cadb30386527cedbb9681cd04bebabc4b95b706665aa2.js" integrity="sha256-pftICjDM6qlObK2zA4ZSfO27loHNBL66vEuVtwZmWqI="></script>
 
     
     
@@ -162,6 +162,14 @@
             <li class="post-tag"><a href="https://lynxline.com/tags/python">Python</a></li>
         
         </ul>
+
+        
+        <p class="post-translations">Read in:
+        
+            <a href="/ja/posts/laya-decision-model/" hreflang="ja">日本語</a>
+        
+        </p>
+        
     </div>
 
     <div class="post-content">
@@ -187,30 +195,30 @@
 <h2 id="stage-one-retrieval-is-the-ceiling">Stage one: retrieval is the ceiling</h2>
 <p>Whatever the decision stage does, it cannot pick a table that retrieval failed to surface, so hit@15 is a hard ceiling on end-to-end accuracy. We compared three retrievers, all over the same compacted TSV (one row per table, weighted fields):</p>
 <table>
-<thead>
-<tr>
-<th>Retriever</th>
-<th>hit@15, bare query</th>
-<th>hit@15, with context</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>BM25, field-weighted</td>
-<td>0.24</td>
-<td>0.45</td>
-</tr>
-<tr>
-<td>BM25 + hand-written abbreviation aliases</td>
-<td>0.24</td>
-<td>0.46</td>
-</tr>
-<tr>
-<td>Hybrid: BM25 + small embedder, reciprocal-rank fusion</td>
-<td>0.39</td>
-<td><strong>0.65</strong></td>
-</tr>
-</tbody>
+	<thead>
+			<tr>
+					<th>Retriever</th>
+					<th>hit@15, bare query</th>
+					<th>hit@15, with context</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>BM25, field-weighted</td>
+					<td>0.24</td>
+					<td>0.45</td>
+			</tr>
+			<tr>
+					<td>BM25 + hand-written abbreviation aliases</td>
+					<td>0.24</td>
+					<td>0.46</td>
+			</tr>
+			<tr>
+					<td>Hybrid: BM25 + small embedder, reciprocal-rank fusion</td>
+					<td>0.39</td>
+					<td><strong>0.65</strong></td>
+			</tr>
+	</tbody>
 </table>
 <p><em>Share of eval turns where a correct table appears in the top-15 candidates. Embedder: a 33M-parameter sentence encoder, one vector per table.</em></p>
 <p>Two findings here:</p>
@@ -221,30 +229,30 @@
 <h2 id="stage-two-what-the-decision-model-actually-adds">Stage two: what the decision model actually adds</h2>
 <p>With hybrid retrieval and context, the gold table is in the candidate list 65% of the time. Zero-shot Laya then picks it correctly in 20% of all turns:</p>
 <table>
-<thead>
-<tr>
-<th>Configuration (with context)</th>
-<th>Top-1 accuracy</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Hybrid retrieval alone, take rank 1</td>
-<td>0.17</td>
-</tr>
-<tr>
-<td>Dense embedder alone, take rank 1</td>
-<td>0.22</td>
-</tr>
-<tr>
-<td>Hybrid top-15 → Laya choice</td>
-<td>0.20</td>
-</tr>
-<tr>
-<td>Hybrid top-50 → Laya tournament (batches of 13, winners advance)</td>
-<td>0.19</td>
-</tr>
-</tbody>
+	<thead>
+			<tr>
+					<th>Configuration (with context)</th>
+					<th>Top-1 accuracy</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>Hybrid retrieval alone, take rank 1</td>
+					<td>0.17</td>
+			</tr>
+			<tr>
+					<td>Dense embedder alone, take rank 1</td>
+					<td>0.22</td>
+			</tr>
+			<tr>
+					<td>Hybrid top-15 → Laya choice</td>
+					<td>0.20</td>
+			</tr>
+			<tr>
+					<td>Hybrid top-50 → Laya tournament (batches of 13, winners advance)</td>
+					<td>0.19</td>
+			</tr>
+	</tbody>
 </table>
 <p><em>End-to-end accuracy on 115 real conversation turns; gold table counted correct if the prediction matches any table named in the reference answer.</em></p>
 <p>Read charitably: within its candidate list, Laya converts about 31% — more than four times the 6.7% a random pick over 15 options would give, from 140-character descriptions it has never seen before, in one forward pass. The mechanism works.</p>
@@ -256,30 +264,30 @@
 <p><strong>The run itself:</strong> for hardware reasons the training ran on CPU — a 56-thread Xeon with the trainer patched from NCCL/CUDA to Gloo, bf16 autocast, minimum process priority. Throughput was about 20 seconds per micro-batch, roughly 17 hours per epoch, just under three days for four epochs. Not recommended, but it proves the recipe needs nothing exotic.</p>
 <p>The result is the most instructive table in this write-up:</p>
 <table>
-<thead>
-<tr>
-<th>Checkpoint</th>
-<th>Synthetic val (usage-phrase queries)</th>
-<th>Real conversations (115 turns)</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Base Laya, zero-shot</td>
-<td>0.244</td>
-<td>0.200</td>
-</tr>
-<tr>
-<td>After 1 epoch</td>
-<td>0.340</td>
-<td>0.165</td>
-</tr>
-<tr>
-<td>After 4 epochs</td>
-<td><strong>0.380</strong></td>
-<td><strong>0.139</strong></td>
-</tr>
-</tbody>
+	<thead>
+			<tr>
+					<th>Checkpoint</th>
+					<th>Synthetic val (usage-phrase queries)</th>
+					<th>Real conversations (115 turns)</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>Base Laya, zero-shot</td>
+					<td>0.244</td>
+					<td>0.200</td>
+			</tr>
+			<tr>
+					<td>After 1 epoch</td>
+					<td>0.340</td>
+					<td>0.165</td>
+			</tr>
+			<tr>
+					<td>After 4 epochs</td>
+					<td><strong>0.380</strong></td>
+					<td><strong>0.139</strong></td>
+			</tr>
+	</tbody>
 </table>
 <p><em>Fine-tuning on synthetic queries: validation accuracy up 56%, real-world accuracy down 30%. Monotonically, in both directions.</em></p>
 <p>The model learned exactly what we taught it: to classify terse, keyword-dense noun phrases lifted from documentation. Real users ask long, contextual, conversational questions. Those are different input distributions, and every epoch of training pulled the model further toward the synthetic one. The held-out-tables validation set — which we built specifically to catch overfitting — caught nothing, because it was drawn from the same synthetic distribution as the training set. It validated the wrong thing, confidently.</p>

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en"><head>
+<html lang="en-us"><head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -48,7 +48,7 @@
     <link id="dark-theme" rel="stylesheet" href="/css/dark.min.css">
 
     
-    <script src="/js/bundle.min.224c8e70fed292d18d7d9ae1b36797c99144e0be1117e2ea2c428379c8496551.js" integrity="sha256-IkyOcP7SktGNfZrhs2eXyZFE4L4RF&#43;LqLEKDechJZVE="></script>
+    <script src="/js/bundle.min.a5fb480a30cceaa94e6cadb30386527cedbb9681cd04bebabc4b95b706665aa2.js" integrity="sha256-pftICjDM6qlObK2zA4ZSfO27loHNBL66vEuVtwZmWqI="></script>
 
     
     
@@ -164,6 +164,8 @@
             <li class="post-tag"><a href="https://lynxline.com/tags/research">Research</a></li>
         
         </ul>
+
+        
     </div>
 
     <div class="post-content">
@@ -173,11 +175,11 @@
 <p>Then my initial attempt of using source codes from 9pi project is wrong as they will not process the dis pseudocodes – that why it didn’t work either. Now as another attempt I just used source codes from ipaq1110/sa1110 – it has the software emulation of floating point.</p>
 <p>We copy <strong>fpi.h</strong> and <strong>fpiarm.c</strong> from <strong>sa1110/</strong>. Then add <strong>fpi.$O</strong>, <strong>fpimem.$O</strong>, <strong>fpi.h</strong> to <strong>mkfile</strong>. Remove from rpi from port section <em>fpi</em> and <em>fpimem</em>. Also we need <strong>“-f”</strong> flag to the linker – the <strong>5l</strong> loader currently has support for <em>vfp2</em> used in Raspberry Pi CPU.</p>
 <p>And that’s all. Let just add some floating point code to <strong>rpiinit.b</strong> just to test:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#a6e22e">x</span> <span style="color:#f92672">:=</span> <span style="color:#ae81ff">10.25</span>;
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#a6e22e">x</span> <span style="color:#f92672">:=</span> <span style="color:#ae81ff">10.25</span>;
 </span></span><span style="display:flex;"><span><span style="color:#a6e22e">y</span> <span style="color:#f92672">:=</span> <span style="color:#ae81ff">734.</span>;
 </span></span><span style="display:flex;"><span><span style="color:#a6e22e">sys</span><span style="color:#f92672">-</span>&gt;print(<span style="color:#e6db74">&#34;\n\nfloat point div %f/%f=%f\n\n&#34;</span>, <span style="color:#a6e22e">x</span>,<span style="color:#a6e22e">y</span>,<span style="color:#a6e22e">x</span><span style="color:#f92672">/</span><span style="color:#a6e22e">y</span>);
 </span></span></code></pre></div><p>Compile, run and see:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-txt" data-lang="txt"><span style="display:flex;"><span>...
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-txt" data-lang="txt"><span style="display:flex;"><span>...
 </span></span><span style="display:flex;"><span>Starting init0()
 </span></span><span style="display:flex;"><span>Initial Dis: &#34;/osinit.dis&#34;
 </span></span><span style="display:flex;"><span>

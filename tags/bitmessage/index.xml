@@ -1,33 +1,38 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Bitmessage on LynxLine</title>
-    <link>https://lynxline.com/tags/bitmessage/</link>
-    <description>Recent content in Bitmessage on LynxLine</description>
-    <generator>Hugo</generator>
-    <language>en-us</language>
-    <lastBuildDate>Mon, 21 Sep 2026 09:00:00 +0200</lastBuildDate>
-    <atom:link href="https://lynxline.com/tags/bitmessage/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>ynotbit: A Vault, a Keyless Relay, and notbit Underneath</title>
-      <link>https://lynxline.com/posts/ynotbit/</link>
-      <pubDate>Mon, 21 Sep 2026 09:00:00 +0200</pubDate>
-      <guid>https://lynxline.com/posts/ynotbit/</guid>
-      <description>notbit already proved the point: a Bitmessage node doesn&amp;rsquo;t need Python or a GUI, just a small C daemon and a terminal. ynotbit takes that engine and builds the desktop client around it properly — Qt Widgets, C++20, and a storage design where the network relay never sees your identity keys.&#xA;Two documents, not one Most mail clients keep everything — keys and messages — in one place. ynotbit splits it in two:</description>
-    </item>
-    <item>
-      <title>Bitmessage Over IMAP</title>
-      <link>https://lynxline.com/posts/docker-bitmessage/</link>
-      <pubDate>Sun, 20 Dec 2020 10:00:00 +0200</pubDate>
-      <guid>https://lynxline.com/posts/docker-bitmessage/</guid>
-      <description>Now that notbit isn&amp;rsquo;t locking up anymore, it&amp;rsquo;s worth actually using it — and the friction with any Bitmessage client is that you need a Bitmessage-specific interface. docker-bitmessage removes that: it wraps notbit in a ~20MB Alpine container and exposes it over IMAP and SMTP, so Thunderbird or Apple Mail can talk to the Bitmessage network like it&amp;rsquo;s just another mail account.&#xA;Addresses aren&amp;rsquo;t real email addresses — they&amp;rsquo;re &amp;lt;bitmessage-address&amp;gt;@bitmessage — and messages have to stay plain text, no attachments, no HTML.</description>
-    </item>
-    <item>
-      <title>Chasing an Infinite Loop in notbit</title>
-      <link>https://lynxline.com/posts/notbit-infinite-loop/</link>
-      <pubDate>Mon, 14 Dec 2020 10:00:00 +0200</pubDate>
-      <guid>https://lynxline.com/posts/notbit-infinite-loop/</guid>
-      <description>It&amp;rsquo;s genuinely great to have a Bitmessage client like notbit — no Python, no GUI, just a small C daemon you run from a terminal. Most Bitmessage clients drag in a whole GUI toolkit and a Python runtime; notbit needs none of that.&#xA;It did have an ugly bug though: it would lock up at 100% CPU after running a while, with nothing in the logs pointing at why. It only happened once or a few times a day, which made it miserable to chase.</description>
-    </item>
-  </channel>
+	<channel>
+		<title>Bitmessage on LynxLine</title>
+		<link>https://lynxline.com/tags/bitmessage/</link>
+		<description>Recent content in Bitmessage on LynxLine</description>
+		<generator>Hugo</generator>
+		<language>en-us</language>
+		
+		
+		
+		
+			<lastBuildDate>Mon, 21 Sep 2026 09:00:00 +0200</lastBuildDate>
+		
+			<atom:link href="https://lynxline.com/tags/bitmessage/index.xml" rel="self" type="application/rss+xml" />
+			<item>
+				<title>ynotbit: A Vault, a Keyless Relay, and notbit Underneath</title>
+				<link>https://lynxline.com/posts/ynotbit/</link>
+				<pubDate>Mon, 21 Sep 2026 09:00:00 +0200</pubDate>
+				<guid>https://lynxline.com/posts/ynotbit/</guid>
+				<description>&lt;p&gt;&lt;a href=&#34;https://github.com/bpeel/notbit&#34;&gt;notbit&lt;/a&gt; already proved the point: a Bitmessage node doesn&amp;rsquo;t need Python or a GUI, just a small C daemon and a terminal. &lt;a href=&#34;https://github.com/yshurik/ynotbit&#34;&gt;ynotbit&lt;/a&gt; takes that engine and builds the desktop client around it properly — Qt Widgets, C++20, and a storage design where the network relay never sees your identity keys.&lt;/p&gt;&#xA;&lt;p&gt;&lt;img src=&#34;https://lynxline.com/posts/ynotbit/desktop.png&#34; alt=&#34;ynotbit desktop with an editable encrypted draft&#34;&gt;&lt;/p&gt;&#xA;&lt;h2 id=&#34;two-documents-not-one&#34;&gt;Two documents, not one&lt;/h2&gt;&#xA;&lt;p&gt;Most mail clients keep everything — keys and messages — in one place. ynotbit splits it in two:&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title>Bitmessage Over IMAP</title>
+				<link>https://lynxline.com/posts/docker-bitmessage/</link>
+				<pubDate>Sun, 20 Dec 2020 10:00:00 +0200</pubDate>
+				<guid>https://lynxline.com/posts/docker-bitmessage/</guid>
+				<description>&lt;p&gt;Now that &lt;a href=&#34;https://github.com/bpeel/notbit&#34;&gt;notbit&lt;/a&gt; isn&amp;rsquo;t locking up anymore, it&amp;rsquo;s worth actually using it — and the friction with any Bitmessage client is that you need a Bitmessage-specific interface. &lt;a href=&#34;https://github.com/yshurik/docker-bitmessage&#34;&gt;docker-bitmessage&lt;/a&gt; removes that: it wraps notbit in a ~20MB Alpine container and exposes it over IMAP and SMTP, so Thunderbird or Apple Mail can talk to the Bitmessage network like it&amp;rsquo;s just another mail account.&lt;/p&gt;&#xA;&lt;p&gt;Addresses aren&amp;rsquo;t real email addresses — they&amp;rsquo;re &lt;code&gt;&amp;lt;bitmessage-address&amp;gt;@bitmessage&lt;/code&gt; — and messages have to stay plain text, no attachments, no HTML. Existing keys from the official PyBitmessage client import directly by copying &lt;code&gt;keys.dat&lt;/code&gt; into the container&amp;rsquo;s volume. It builds for both amd64 and arm, so it runs on a Raspberry Pi as easily as a normal PC.&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title>Chasing an Infinite Loop in notbit</title>
+				<link>https://lynxline.com/posts/notbit-infinite-loop/</link>
+				<pubDate>Mon, 14 Dec 2020 10:00:00 +0200</pubDate>
+				<guid>https://lynxline.com/posts/notbit-infinite-loop/</guid>
+				<description>&lt;p&gt;It&amp;rsquo;s genuinely great to have a Bitmessage client like &lt;a href=&#34;https://github.com/bpeel/notbit&#34;&gt;notbit&lt;/a&gt; — no Python, no GUI, just a small C daemon you run from a terminal. Most Bitmessage clients drag in a whole GUI toolkit and a Python runtime; notbit needs none of that.&lt;/p&gt;&#xA;&lt;p&gt;It did have an ugly bug though: it would lock up at 100% CPU after running a while, with nothing in the logs pointing at why. It only happened once or a few times a day, which made it miserable to chase. The cause turned out to be in &lt;code&gt;check_timer_sources()&lt;/code&gt;: a timer source gets removed and reinserted in the same list pass, and the two operations corrupt the linked list into a small self-referencing loop — the next pass through it spins forever.&lt;/p&gt;</description>
+			</item>
+	</channel>
 </rss>

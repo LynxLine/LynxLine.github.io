@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en"><head>
+<html lang="en-us"><head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -48,7 +48,7 @@
     <link id="dark-theme" rel="stylesheet" href="/css/dark.min.css">
 
     
-    <script src="/js/bundle.min.224c8e70fed292d18d7d9ae1b36797c99144e0be1117e2ea2c428379c8496551.js" integrity="sha256-IkyOcP7SktGNfZrhs2eXyZFE4L4RF&#43;LqLEKDechJZVE="></script>
+    <script src="/js/bundle.min.a5fb480a30cceaa94e6cadb30386527cedbb9681cd04bebabc4b95b706665aa2.js" integrity="sha256-pftICjDM6qlObK2zA4ZSfO27loHNBL66vEuVtwZmWqI="></script>
 
     
     
@@ -160,6 +160,8 @@
             <li class="post-tag"><a href="https://lynxline.com/tags/qt">Qt</a></li>
         
         </ul>
+
+        
     </div>
 
     <div class="post-content">
@@ -167,7 +169,7 @@
             <p>QListView Mac</p>
 <p>If you have lists or tables in your application you can see that Qt widgets have scroll bar for full height of widget instead of only viewport area. What to do to make it looks like native mac widget? It is easy. Remember that QAbstractScrollArea has method: addScrollBarWidget()</p>
 <p>So, we create small widget, apply header style and put it in scroll bar area.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span>QWidget <span style="color:#f92672">*</span> w <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> QToolButton;
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span>QWidget <span style="color:#f92672">*</span> w <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> QToolButton;
 </span></span><span style="display:flex;"><span>w<span style="color:#f92672">-&gt;</span>setFixedHeight(horizontalHeader()<span style="color:#f92672">-&gt;</span>height());
 </span></span><span style="display:flex;"><span>w<span style="color:#f92672">-&gt;</span>setAutoFillBackground(true);
 </span></span><span style="display:flex;"><span>w<span style="color:#f92672">-&gt;</span>setStyleSheet(<span style="color:#e6db74">&#34;QToolButton {\
@@ -181,14 +183,14 @@
 </span></span><span style="display:flex;"><span>addScrollBarWidget(w, Qt<span style="color:#f92672">::</span>AlignTop);
 </span></span></code></pre></div><p>Because this is QToolButton, you can expand functionality later to have for example menu to select visible columns, etc.</p>
 <p>But if you would like to have it system-independent and apply system QStyle, I recommend to sub-class QToolButton (or QWidget, as you wish) and implement such paintEvent() method:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#66d9ef">void</span> ColumnSelectorButton<span style="color:#f92672">::</span>paintEvent(QPaintEvent <span style="color:#f92672">*</span> pe)
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#66d9ef">void</span> ColumnSelectorButton<span style="color:#f92672">::</span>paintEvent(QPaintEvent <span style="color:#f92672">*</span> pe)
 </span></span><span style="display:flex;"><span>{
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int</span> w <span style="color:#f92672">=</span> width();
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int</span> h <span style="color:#f92672">=</span> height();
 </span></span><span style="display:flex;"><span><span style="color:#75715e">#ifdef Q_WS_MAC
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    w<span style="color:#f92672">++</span>;
+</span></span></span><span style="display:flex;"><span>    w<span style="color:#f92672">++</span>;
 </span></span><span style="display:flex;"><span><span style="color:#75715e">#endif
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>    QPainter <span style="color:#a6e22e">p</span>(<span style="color:#66d9ef">this</span>);
 </span></span><span style="display:flex;"><span>    p.setClipRect(pe<span style="color:#f92672">-&gt;</span>rect());
 </span></span><span style="display:flex;"><span>

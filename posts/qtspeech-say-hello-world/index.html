@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en"><head>
+<html lang="en-us"><head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -48,7 +48,7 @@
     <link id="dark-theme" rel="stylesheet" href="/css/dark.min.css">
 
     
-    <script src="/js/bundle.min.224c8e70fed292d18d7d9ae1b36797c99144e0be1117e2ea2c428379c8496551.js" integrity="sha256-IkyOcP7SktGNfZrhs2eXyZFE4L4RF&#43;LqLEKDechJZVE="></script>
+    <script src="/js/bundle.min.a5fb480a30cceaa94e6cadb30386527cedbb9681cd04bebabc4b95b706665aa2.js" integrity="sha256-pftICjDM6qlObK2zA4ZSfO27loHNBL66vEuVtwZmWqI="></script>
 
     
     
@@ -168,6 +168,8 @@
             <li class="post-tag"><a href="https://lynxline.com/tags/tts">TTS</a></li>
         
         </ul>
+
+        
     </div>
 
     <div class="post-content">
@@ -176,17 +178,17 @@
 <p>This is library providing Qt-like interface to system TTS (text-to-speech) engines to allow your application to say “Hello World!”.</p>
 <p>Current API is very simple.</p>
 <p>First you need to include <!-- raw HTML omitted -->. Then if your application just needed to say something synchronously (execution will wait in the point until speech is finished) you can use such code:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;QtSpeech&gt;</span><span style="color:#75715e">
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>...
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;QtSpeech&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span>...
 </span></span><span style="display:flex;"><span>QtSpeech voice;
 </span></span><span style="display:flex;"><span>voice.say(<span style="color:#e6db74">&#34;Hello World!&#34;</span>);
 </span></span></code></pre></div><p>If you would like to do this in asynchronous way (so your application is not blocked meanwhile) just use tell() call:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span>QtSpeech <span style="color:#f92672">*</span> voice <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> QtSpeech(<span style="color:#66d9ef">this</span>);
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span>QtSpeech <span style="color:#f92672">*</span> voice <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> QtSpeech(<span style="color:#66d9ef">this</span>);
 </span></span><span style="display:flex;"><span>voice<span style="color:#f92672">-&gt;</span>tell(<span style="color:#e6db74">&#34;Hello asynchronous world!&#34;</span>);
 </span></span></code></pre></div><p>If you need to invoke a slot at the end, use:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span>voice<span style="color:#f92672">-&gt;</span>tell(<span style="color:#e6db74">&#34;Hello!&#34;</span>, <span style="color:#66d9ef">this</span>, SLOT(onSpeechFinished()));
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span>voice<span style="color:#f92672">-&gt;</span>tell(<span style="color:#e6db74">&#34;Hello!&#34;</span>, <span style="color:#66d9ef">this</span>, SLOT(onSpeechFinished()));
 </span></span></code></pre></div><p>Also you have possibility to get list of voices and choose voice from available in your system:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span>QtSpeech<span style="color:#f92672">::</span>VoiceNames vs <span style="color:#f92672">=</span> QtSpeech<span style="color:#f92672">::</span>names()
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span>QtSpeech<span style="color:#f92672">::</span>VoiceNames vs <span style="color:#f92672">=</span> QtSpeech<span style="color:#f92672">::</span>names()
 </span></span></code></pre></div><p>Current implementation support <strong>Windows</strong> using SAPI and <strong>Mac</strong>. I have plans to extend API to include more functionality but will try to choose what is common on all platforms.</p>
 <p>Link to repository on GitHub: <a href="https://github.com/LynxLine/qtspeech">https://github.com/LynxLine/qtspeech</a></p>
 <p><strong>UPDATE</strong>: Unix/Linux got implementation too! Based on Festival, so only English at the moment, but it is a great start to have TTS working in Qt applications too in Linux systems!</p>

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en"><head>
+<html lang="en-us"><head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -48,7 +48,7 @@
     <link id="dark-theme" rel="stylesheet" href="/css/dark.min.css">
 
     
-    <script src="/js/bundle.min.224c8e70fed292d18d7d9ae1b36797c99144e0be1117e2ea2c428379c8496551.js" integrity="sha256-IkyOcP7SktGNfZrhs2eXyZFE4L4RF&#43;LqLEKDechJZVE="></script>
+    <script src="/js/bundle.min.a5fb480a30cceaa94e6cadb30386527cedbb9681cd04bebabc4b95b706665aa2.js" integrity="sha256-pftICjDM6qlObK2zA4ZSfO27loHNBL66vEuVtwZmWqI="></script>
 
     
     
@@ -164,19 +164,21 @@
             <li class="post-tag"><a href="https://lynxline.com/tags/research">Research</a></li>
         
         </ul>
+
+        
     </div>
 
     <div class="post-content">
         <p>
             <p>Before this Lab, the only way to bypass information to our Raspberry Pi machine, was the TFTP which downloads kernel from development machine (used Mac). Because kernel also includes root filesystem, we can embed some files there to have minimal read-only filesystem which allows to run dis files and do some testing, like experimenting with USB support, etc.</p>
 <p>Sure, there were no way to do something and keep results on storage as there is no one. In this lab we try to create a partition to have possibility to save files.</p>
-<p><img src="lab-23-1.png" alt="fig1"></p>
+<p><img src="/posts/lab-23-hard-disk-or-sd-card/lab-23-1.png" alt="fig1"></p>
 <p>Letâ€™s start:
 First I compared files in <strong>port/</strong> versus same in Plan9. Infernoâ€™s versions were more old, so I used <strong>sd.h</strong> and <strong>devsd.c</strong> from Plan9. Inferno does not have <strong>port/sdmmc.c</strong>, so this one was also added. Examined with compilation in Inferno environment and applied few trivial changes (like <em>up-&gt;errstr</em> to <em>up-&gt;env-&gt;errstr</em>). That was minor.</p>
 <p>Now codes specific to Raspberry: we borrow from 9pi. We need <strong>dma.c</strong> as it is time that we use the DMA for fast data transfer from SD. <strong>emmc.c</strong> written by Richard Miller for 9pi for bcm2835 mass media controller. Modify <strong>rpi</strong> spec file to include <em>sd</em> in <em>dev</em> section, <em>dma</em> and <em>sdmmc emmc</em> into <em>misc</em> section. Add <strong>/dis/disk/*.dis</strong>, <strong>zeros</strong>, <strong>dd</strong> to embedded filesystem.</p>
 <p>Some changes are needed for our header files: in <strong>mem.h</strong> we need specify <em>#define BUSIO</em> to have controller communications. That should have addresses as seen from the videocore gpu, which was my fault as I thought same address as <em>PHYSIO</em>, but fixed later.</p>
 <p>Add Devport and DevConf to <strong>dat.h</strong>:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1</span><span><span style="color:#75715e">/*
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-c" data-lang="c"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1</span><span><span style="color:#75715e">/*
 </span></span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2</span><span><span style="color:#75715e"> *  hardware info about a device
 </span></span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3</span><span><span style="color:#75715e"> */</span>
 </span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4</span><span><span style="color:#66d9ef">typedef</span> <span style="color:#66d9ef">struct</span> {
@@ -193,15 +195,15 @@ First I compared files in <strong>port/</strong> versus same in Plan9. Infernoâ€
 </span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15</span><span>        Devport <span style="color:#f92672">*</span>ports;                 <span style="color:#75715e">/* The ports themselves */</span>
 </span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16</span><span>};
 </span></span></code></pre></div><p>Add SD card dev file server bind to <strong>rpiinit.b</strong> to see it on device:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span><span style="color:#a6e22e">sys</span><span style="color:#f92672">-</span>&gt;<span style="color:#a6e22e">bind</span>(<span style="color:#e6db74">&#34;#S&#34;</span>, <span style="color:#e6db74">&#34;/dev&#34;</span>, <span style="color:#a6e22e">sys</span><span style="color:#f92672">-</span>&gt;<span style="color:#a6e22e">MAFTER</span>);   <span style="color:#960050;background-color:#1e0010">#</span> <span style="color:#a6e22e">sdcard</span> <span style="color:#a6e22e">subsystem</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-go" data-lang="go"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span><span style="color:#a6e22e">sys</span><span style="color:#f92672">-</span>&gt;<span style="color:#a6e22e">bind</span>(<span style="color:#e6db74">&#34;#S&#34;</span>, <span style="color:#e6db74">&#34;/dev&#34;</span>, <span style="color:#a6e22e">sys</span><span style="color:#f92672">-</span>&gt;<span style="color:#a6e22e">MAFTER</span>);   <span style="color:#960050;background-color:#1e0010">#</span> <span style="color:#a6e22e">sdcard</span> <span style="color:#a6e22e">subsystem</span>
 </span></span></code></pre></div><p>Try to compile, all looks okay. Attempt to boot and see message:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-txt" data-lang="txt"><span style="display:flex;"><span>eMMC external clock 50 MHz
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-txt" data-lang="txt"><span style="display:flex;"><span>eMMC external clock 50 MHz
 </span></span></code></pre></div><p>Have a look at <strong>/dev</strong>, there is <strong>/dev/sdM0/</strong></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-txt" data-lang="txt"><span style="display:flex;"><span>/dev/sdM0/ctl
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-txt" data-lang="txt"><span style="display:flex;"><span>/dev/sdM0/ctl
 </span></span><span style="display:flex;"><span>/dev/sdM0/data
 </span></span><span style="display:flex;"><span>/dev/sdM0/raw
 </span></span></code></pre></div><p>To see partition table we use <strong>disk/fdisk</strong> from Inferno. Amazing, but it work ok:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-txt" data-lang="txt"><span style="display:flex;"><span>$ disk/fdisk /dev/sdM0/data
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-txt" data-lang="txt"><span style="display:flex;"><span>$ disk/fdisk /dev/sdM0/data
 </span></span><span style="display:flex;"><span>&gt;&gt;&gt; p
 </span></span><span style="display:flex;"><span>cylinder = 1936384 bytes
 </span></span><span style="display:flex;"><span>   p1                    0 66         (66 cylinders, 121.88 MB) FAT32LBA
@@ -210,7 +212,7 @@ First I compared files in <strong>port/</strong> versus same in Plan9. Infernoâ€
 </span></span><span style="display:flex;"><span>   empty               859 2047       (1188 cylinders, 2.14 GB)
 </span></span><span style="display:flex;"><span>&gt;&gt;&gt; 
 </span></span></code></pre></div><p>Looks like I have SD card with some linux onboard. If we would like to see partitions as files in <strong>/dev/sdM0/</strong>, we just do:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-txt" data-lang="txt"><span style="display:flex;"><span>$ disk/fdisk -p /dev/sdM0/data &gt; /dev/sdM0/ctl
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-txt" data-lang="txt"><span style="display:flex;"><span>$ disk/fdisk -p /dev/sdM0/data &gt; /dev/sdM0/ctl
 </span></span><span style="display:flex;"><span>$ ls /dev/sdM0
 </span></span><span style="display:flex;"><span>/dev/sdM0/ctl
 </span></span><span style="display:flex;"><span>/dev/sdM0/data
@@ -218,18 +220,18 @@ First I compared files in <strong>port/</strong> versus same in Plan9. Infernoâ€
 </span></span><span style="display:flex;"><span>/dev/sdM0/linux
 </span></span><span style="display:flex;"><span>/dev/sdM0/raw
 </span></span></code></pre></div><p>Now about filesystem that we can use as root of our system. This is <strong>kfs</strong> which is used in Plan9 and Inferno. It has some limitations as 27 bytes per filename. First I come back to my Mac, inserted SD card and by using Mac fdisk changed type Linux partition to <strong>39</strong> (Plan9). Then as I see size of partition in bytes I created with <strong>dd if=/dev/zero</strong> same length file. Started emu (mac hosted inferno) and tried to initialize and mount the file:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-txt" data-lang="txt"><span style="display:flex;"><span>; mount -c {disk/kfs -r -b 8192 kfs.file} /n/local
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-txt" data-lang="txt"><span style="display:flex;"><span>; mount -c {disk/kfs -r -b 8192 kfs.file} /n/local
 </span></span></code></pre></div><p>using 8KB as block size.
 Then I just copied whole Inferno folder content to SD partition:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-txt" data-lang="txt"><span style="display:flex;"><span>; cp -r * /n/local/
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-txt" data-lang="txt"><span style="display:flex;"><span>; cp -r * /n/local/
 </span></span><span style="display:flex;"><span>cp: cannot create /n/local//os/rpi/labs/lab-03-rpi-booting-process.pdf: name too long
 </span></span><span style="display:flex;"><span>...
 </span></span></code></pre></div><p>Yep, some filenames are too long, but it is okay for now.
 Unmount, put SD back into raspberry, boot, again initialize <strong>ctl</strong> with fdisk and try to mount:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-txt" data-lang="txt"><span style="display:flex;"><span>$ mount -c {disk/kfs /dev/sdM0/plan9} /n/local
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-txt" data-lang="txt"><span style="display:flex;"><span>$ mount -c {disk/kfs /dev/sdM0/plan9} /n/local
 </span></span><span style="display:flex;"><span>mount: can&#39;t dial net!{disk/kfs!styx: %q% /net.alt (/net.alt/net/clone)
 </span></span></code></pre></div><p>Strange, feel dumb, but we used <strong>tinysh.dis</strong> as our shell and it can not do <strong>{}</strong>, I guess copied from <strong>ipaq</strong> spec file with assumption that it needs less dependencies. So fix <strong>rpi</strong> spec file to use real <strong>sh.dis</strong> as our shell and:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-txt" data-lang="txt"><span style="display:flex;"><span>; mount -c {disk/kfs -A -n main /dev/sdM0/plan9} /n/local
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-txt" data-lang="txt"><span style="display:flex;"><span>; mount -c {disk/kfs -A -n main /dev/sdM0/plan9} /n/local
 </span></span><span style="display:flex;"><span>kfs needs check
 </span></span><span style="display:flex;"><span>kfs: initializing minimal user table
 </span></span><span style="display:flex;"><span>; ls /n/local

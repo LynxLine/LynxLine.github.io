@@ -1,54 +1,59 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Misc on LynxLine</title>
-    <link>https://lynxline.com/tags/misc/</link>
-    <description>Recent content in Misc on LynxLine</description>
-    <generator>Hugo</generator>
-    <language>en-us</language>
-    <lastBuildDate>Fri, 03 Jun 2016 22:13:05 +0200</lastBuildDate>
-    <atom:link href="https://lynxline.com/tags/misc/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>SQLite tree structures and queries to get sub-trees</title>
-      <link>https://lynxline.com/posts/sqlite-tree-structures-and-queries-to-get-sub-trees/</link>
-      <pubDate>Fri, 03 Jun 2016 22:13:05 +0200</pubDate>
-      <guid>https://lynxline.com/posts/sqlite-tree-structures-and-queries-to-get-sub-trees/</guid>
-      <description>&lt;p&gt;SQLite is wonderful!&lt;/p&gt;&#xA;&lt;p&gt;Just today I found that SQLite support queries with a recurse to get the inner sub-trees:&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Wrong size of memory pools – dumb</title>
-      <link>https://lynxline.com/posts/wrong-size-of-memory-pools-dumb/</link>
-      <pubDate>Thu, 07 Jan 2016 22:00:00 +0200</pubDate>
-      <guid>https://lynxline.com/posts/wrong-size-of-memory-pools-dumb/</guid>
-      <description>Occasionally I had a look at /dev/memory:&#xA;What I saw there?&#xA;; cat /dev/memory 2282656 14018478 2314496 14149 6246 18 11735810 main 492768 7009239 499488 110133 106946 4 6516459 heap 4960 14018478 4960 8 1 1 14013506 image ; What? I run my Inferno just on 14+7+14 = 33MB memory? (yep and it still runs ok ;) )&#xA;The code that define size of memory pools was just copied from other ports:</description>
-    </item>
-    <item>
-      <title>Thinking about user interfaces</title>
-      <link>https://lynxline.com/posts/thinking-about-user-interfaces/</link>
-      <pubDate>Sun, 20 Dec 2015 22:00:00 +0200</pubDate>
-      <guid>https://lynxline.com/posts/thinking-about-user-interfaces/</guid>
-      <description>Had some time to look into implementation of gui in inferno and take some thoughts.&#xA;First maybe about history of graphics user iterfaces and how they brought us to the current situation.&#xA;How a computer iteracts to an user?&#xA;Very first implementations of are just clones of typewriting process – user types on keyboard and same time computer types on paper roll actions. Due to this first commands are pretty small like “ls” “ps” “cd” etc.</description>
-    </item>
-    <item>
-      <title>Inferno raspberry pi image – alpha release (alpha1)</title>
-      <link>https://lynxline.com/posts/inferno-raspberry-pi-image-alpha-release1/</link>
-      <pubDate>Sun, 02 Mar 2014 21:00:00 +0200</pubDate>
-      <guid>https://lynxline.com/posts/inferno-raspberry-pi-image-alpha-release1/</guid>
-      <description>So, we reached the point when we are able to package some small distribution.&#xA;It can:&#xA;Boot Kernel&#xA;Mount file system (kfs)&#xA;Init Usb subsystem&#xA;Load Keyboard driver (usb)&#xA;Load Ethernet driver (usb)&#xA;Initialize Net subsystem, obtain IP via DHCP&#xA;Start ndb/cs&#xA;Launch shell – console&#xA;It can not:&#xA;No mouse driver yet&#xA;Can not launch wm/wm (maybe due to mouse)&#xA;Download Link (~18MB) — no longer available</description>
-    </item>
-    <item>
-      <title>Trac&#43;Perforce</title>
-      <link>https://lynxline.com/posts/tracperforce/</link>
-      <pubDate>Sat, 20 Oct 2012 22:00:00 +0200</pubDate>
-      <guid>https://lynxline.com/posts/tracperforce/</guid>
-      <description>People who are using Trac and have a need of possibility binding it with Perforce repository can find that appropriate plugin is dead and no support is possible. So I would like to do some refresh – I was able to do some fixing and made these plugins available for use with Trac 1.0 for win32. Attaching to the post.&#xA;pyprotocols-0.9.3-py2.7-win32&#xA;PyPerforce-0.4-py2.7-win32&#xA;TracPerforce-0.5dev-py2.7</description>
-    </item>
-    <item>
-      <title>Designing Undo for large-scale projects. Going deep.</title>
-      <link>https://lynxline.com/posts/designing-undo-for-large-scale-projects-going-deep/</link>
-      <pubDate>Mon, 02 Apr 2012 13:00:00 +0200</pubDate>
-      <guid>https://lynxline.com/posts/designing-undo-for-large-scale-projects-going-deep/</guid>
-      <description>&lt;p&gt;That is huge architect-level article about designing undo in large-scale project, welcome under &lt;em&gt;more&lt;/em&gt; label…&lt;/p&gt;</description>
-    </item>
-  </channel>
+	<channel>
+		<title>Misc on LynxLine</title>
+		<link>https://lynxline.com/tags/misc/</link>
+		<description>Recent content in Misc on LynxLine</description>
+		<generator>Hugo</generator>
+		<language>en-us</language>
+		
+		
+		
+		
+			<lastBuildDate>Fri, 03 Jun 2016 22:13:05 +0200</lastBuildDate>
+		
+			<atom:link href="https://lynxline.com/tags/misc/index.xml" rel="self" type="application/rss+xml" />
+			<item>
+				<title>SQLite tree structures and queries to get sub-trees</title>
+				<link>https://lynxline.com/posts/sqlite-tree-structures-and-queries-to-get-sub-trees/</link>
+				<pubDate>Fri, 03 Jun 2016 22:13:05 +0200</pubDate>
+				<guid>https://lynxline.com/posts/sqlite-tree-structures-and-queries-to-get-sub-trees/</guid>
+				<description>&lt;p&gt;SQLite is wonderful!&lt;/p&gt;&#xA;&lt;p&gt;Just today I found that SQLite support queries with a recurse to get the inner sub-trees:&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title>Wrong size of memory pools – dumb</title>
+				<link>https://lynxline.com/posts/wrong-size-of-memory-pools-dumb/</link>
+				<pubDate>Thu, 07 Jan 2016 22:00:00 +0200</pubDate>
+				<guid>https://lynxline.com/posts/wrong-size-of-memory-pools-dumb/</guid>
+				<description>&lt;p&gt;Occasionally I had a look at &lt;code&gt;/dev/memory&lt;/code&gt;:&lt;/p&gt;&#xA;&lt;p&gt;What I saw there?&lt;/p&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;; cat /dev/memory&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#ae81ff&#34;&gt;2282656&lt;/span&gt;    &lt;span style=&#34;color:#ae81ff&#34;&gt;14018478&lt;/span&gt;     &lt;span style=&#34;color:#ae81ff&#34;&gt;2314496&lt;/span&gt;       &lt;span style=&#34;color:#ae81ff&#34;&gt;14149&lt;/span&gt;        &lt;span style=&#34;color:#ae81ff&#34;&gt;6246&lt;/span&gt;          &lt;span style=&#34;color:#ae81ff&#34;&gt;18&lt;/span&gt;    &lt;span style=&#34;color:#ae81ff&#34;&gt;11735810&lt;/span&gt; main&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;     &lt;span style=&#34;color:#ae81ff&#34;&gt;492768&lt;/span&gt;     &lt;span style=&#34;color:#ae81ff&#34;&gt;7009239&lt;/span&gt;      &lt;span style=&#34;color:#ae81ff&#34;&gt;499488&lt;/span&gt;      &lt;span style=&#34;color:#ae81ff&#34;&gt;110133&lt;/span&gt;      &lt;span style=&#34;color:#ae81ff&#34;&gt;106946&lt;/span&gt;           &lt;span style=&#34;color:#ae81ff&#34;&gt;4&lt;/span&gt;     &lt;span style=&#34;color:#ae81ff&#34;&gt;6516459&lt;/span&gt; heap&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;       &lt;span style=&#34;color:#ae81ff&#34;&gt;4960&lt;/span&gt;    &lt;span style=&#34;color:#ae81ff&#34;&gt;14018478&lt;/span&gt;        &lt;span style=&#34;color:#ae81ff&#34;&gt;4960&lt;/span&gt;           &lt;span style=&#34;color:#ae81ff&#34;&gt;8&lt;/span&gt;           &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;           &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;    &lt;span style=&#34;color:#ae81ff&#34;&gt;14013506&lt;/span&gt; image&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;What? I run my Inferno just on 14+7+14 = 33MB memory? (yep and it still runs ok ;) )&lt;/p&gt;&#xA;&lt;p&gt;The code that define size of memory pools was just copied from other ports:&lt;/p&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;&#34;&gt;&lt;code class=&#34;language-cpp&#34; data-lang=&#34;cpp&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&#x9;ulong nb;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&#x9;ulong mpb,hpb,ipb;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&#x9;nb &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; conf.npage&lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt;BY2PG;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&#x9;mpb &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; (nb&lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt;main_pool_pcnt)&lt;span style=&#34;color:#f92672&#34;&gt;/&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;100&lt;/span&gt;;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&#x9;hpb &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; (nb&lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt;heap_pool_pcnt)&lt;span style=&#34;color:#f92672&#34;&gt;/&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;100&lt;/span&gt;;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&#x9;ipb &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; (nb&lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt;image_pool_pcnt)&lt;span style=&#34;color:#f92672&#34;&gt;/&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;100&lt;/span&gt;;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&#x9;poolsize(mainmem, mpb, &lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;);&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&#x9;poolsize(heapmem, hpb, &lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;);&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&#x9;poolsize(imagmem, ipb, &lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;);&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;See something dumb? :)&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title>Thinking about user interfaces</title>
+				<link>https://lynxline.com/posts/thinking-about-user-interfaces/</link>
+				<pubDate>Sun, 20 Dec 2015 22:00:00 +0200</pubDate>
+				<guid>https://lynxline.com/posts/thinking-about-user-interfaces/</guid>
+				<description>&lt;p&gt;Had some time to look into implementation of gui in inferno and take some thoughts.&lt;/p&gt;&#xA;&lt;p&gt;First maybe about history of graphics user iterfaces and how they brought us to the current situation.&lt;/p&gt;&#xA;&lt;p&gt;How a computer iteracts to an user?&lt;/p&gt;&#xA;&lt;p&gt;&lt;img src=&#34;https://upload.wikimedia.org/wikipedia/commons/thumb/9/91/Selectric_II.jpg/220px-Selectric_II.jpg&#34; alt=&#34;typewriter&#34;&gt;&lt;/p&gt;&#xA;&lt;p&gt;Very first implementations of are just clones of typewriting process – user types on keyboard and same time computer types on paper roll actions. Due to this first commands are pretty small like “&lt;strong&gt;ls&lt;/strong&gt;” “&lt;strong&gt;ps&lt;/strong&gt;” “&lt;strong&gt;cd&lt;/strong&gt;” etc. Also because of that all current shells inherit paradigm of typewriter: user see echo of what he types and between his types he sees “answers” of the computer. Ideal representation of the paradigm is “chatty” – user send “questions” and receive “answers”. That’s all, nothing else. All power of command lines of unix systems is based on idea of “chats” with a computer. More you know about language of “question” then more complicated logic can be launched inside a computer and you looks more powerful to your boss :)&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title>Inferno raspberry pi image – alpha release (alpha1)</title>
+				<link>https://lynxline.com/posts/inferno-raspberry-pi-image-alpha-release1/</link>
+				<pubDate>Sun, 02 Mar 2014 21:00:00 +0200</pubDate>
+				<guid>https://lynxline.com/posts/inferno-raspberry-pi-image-alpha-release1/</guid>
+				<description>&lt;p&gt;So, we reached the point when we are able to package some small distribution.&lt;/p&gt;&#xA;&lt;p&gt;It can:&lt;/p&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;Boot Kernel&lt;/p&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;Mount file system (kfs)&lt;/p&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;Init Usb subsystem&lt;/p&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;Load Keyboard driver (usb)&lt;/p&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;Load Ethernet driver (usb)&lt;/p&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;Initialize Net subsystem, obtain IP via DHCP&lt;/p&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;Start ndb/cs&lt;/p&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;Launch shell – console&lt;/p&gt;&#xA;&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;p&gt;It can not:&lt;/p&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;No mouse driver yet&lt;/p&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;Can not launch wm/wm (maybe due to mouse)&lt;/p&gt;&#xA;&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;p&gt;Download Link (~18MB) — no longer available&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title>Trac&#43;Perforce</title>
+				<link>https://lynxline.com/posts/tracperforce/</link>
+				<pubDate>Sat, 20 Oct 2012 22:00:00 +0200</pubDate>
+				<guid>https://lynxline.com/posts/tracperforce/</guid>
+				<description>&lt;p&gt;People who are using Trac and have a need of possibility binding it with Perforce repository can find that &lt;a href=&#34;http://trac-hacks.org/wiki/PerforcePlugin&#34;&gt;appropriate plugin&lt;/a&gt; is dead and no support is possible. So I would like to do some refresh – I was able to do some fixing and made these plugins available for use with Trac 1.0 for win32. Attaching to the post.&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;http://lynxline.com/wp-content/uploads/2012/10/pyprotocols-0.9.3-py2.7-win32.egg&#34;&gt;pyprotocols-0.9.3-py2.7-win32&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;http://lynxline.com/wp-content/uploads/2012/10/PyPerforce-0.4-py2.7-win32.egg&#34;&gt;PyPerforce-0.4-py2.7-win32&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;http://lynxline.com/wp-content/uploads/2012/10/TracPerforce-0.5dev-py2.7.egg&#34;&gt;TracPerforce-0.5dev-py2.7&lt;/a&gt;&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title>Designing Undo for large-scale projects. Going deep.</title>
+				<link>https://lynxline.com/posts/designing-undo-for-large-scale-projects-going-deep/</link>
+				<pubDate>Mon, 02 Apr 2012 13:00:00 +0200</pubDate>
+				<guid>https://lynxline.com/posts/designing-undo-for-large-scale-projects-going-deep/</guid>
+				<description>&lt;p&gt;That is huge architect-level article about designing undo in large-scale project, welcome under &lt;em&gt;more&lt;/em&gt; label…&lt;/p&gt;</description>
+			</item>
+	</channel>
 </rss>

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en"><head>
+<html lang="en-us"><head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -48,7 +48,7 @@
     <link id="dark-theme" rel="stylesheet" href="/css/dark.min.css">
 
     
-    <script src="/js/bundle.min.224c8e70fed292d18d7d9ae1b36797c99144e0be1117e2ea2c428379c8496551.js" integrity="sha256-IkyOcP7SktGNfZrhs2eXyZFE4L4RF&#43;LqLEKDechJZVE="></script>
+    <script src="/js/bundle.min.a5fb480a30cceaa94e6cadb30386527cedbb9681cd04bebabc4b95b706665aa2.js" integrity="sha256-pftICjDM6qlObK2zA4ZSfO27loHNBL66vEuVtwZmWqI="></script>
 
     
     
@@ -160,14 +160,16 @@
             <li class="post-tag"><a href="https://lynxline.com/tags/qt">Qt</a></li>
         
         </ul>
+
+        
     </div>
 
     <div class="post-content">
         <p>
             <p>Let’s continue our previous blog post regarding preferences window. Of course it looks great and native look-and-feel on Mac, but what about having styles for both platforms to make user feel comfortably. I tried to apply Firefox-like style of preferences window, you can see screenshot above.</p>
 <p>Code:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#75715e">#ifdef Q_WS_MAC
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>setUnifiedTitleAndToolBarOnMac(true);
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#75715e">#ifdef Q_WS_MAC
+</span></span></span><span style="display:flex;"><span>setUnifiedTitleAndToolBarOnMac(true);
 </span></span><span style="display:flex;"><span>toolBar<span style="color:#f92672">-&gt;</span>setIconSize(QSize(<span style="color:#ae81ff">32</span>,<span style="color:#ae81ff">32</span>));
 </span></span><span style="display:flex;"><span>toolBar<span style="color:#f92672">-&gt;</span>setStyleSheet(<span style="color:#e6db74">&#34;\
 </span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    QToolBar { margin: 0px; padding: 0px; spacing 3px; border: 0px;}\
@@ -177,7 +179,7 @@
 </span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        stop: 0 #bbbbbb, stop: 0.5 #808080, stop: 1 #959595);\
 </span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    }&#34;</span>);
 </span></span><span style="display:flex;"><span><span style="color:#75715e">#else
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>toolBar<span style="color:#f92672">-&gt;</span>setIconSize(QSize(<span style="color:#ae81ff">32</span>,<span style="color:#ae81ff">32</span>));
+</span></span></span><span style="display:flex;"><span>toolBar<span style="color:#f92672">-&gt;</span>setIconSize(QSize(<span style="color:#ae81ff">32</span>,<span style="color:#ae81ff">32</span>));
 </span></span><span style="display:flex;"><span>toolBar<span style="color:#f92672">-&gt;</span>setStyleSheet(<span style="color:#e6db74">&#34;\
 </span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    QToolBar { background-color: #f8f8f8; \
 </span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        margin: 0px; padding: 0px; spacing: 10px; \
@@ -197,7 +199,7 @@
 </span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        background-color: #c0d0e8;\
 </span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    }&#34;</span>);
 </span></span><span style="display:flex;"><span><span style="color:#75715e">#endif 
-</span></span></span></code></pre></div><p><a href="http://lynxline.com/wp-content/uploads/2008/04/Screen-Shot-2012-02-22-at-19.13.21-.png"><img src="Screen-Shot-2012-02-22-at-19.13.21.png" alt=""></a></p>
+</span></span></span></code></pre></div><p><a href="http://lynxline.com/wp-content/uploads/2008/04/Screen-Shot-2012-02-22-at-19.13.21-.png"><img src="/posts/continue-preferences-window/Screen-Shot-2012-02-22-at-19.13.21.png" alt=""></a></p>
         </p>
         
     </div>

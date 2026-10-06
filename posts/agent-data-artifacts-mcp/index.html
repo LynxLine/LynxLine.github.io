@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en"><head>
+<html lang="en-us"><head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -48,7 +48,7 @@
     <link id="dark-theme" rel="stylesheet" href="/css/dark.min.css">
 
     
-    <script src="/js/bundle.min.224c8e70fed292d18d7d9ae1b36797c99144e0be1117e2ea2c428379c8496551.js" integrity="sha256-IkyOcP7SktGNfZrhs2eXyZFE4L4RF&#43;LqLEKDechJZVE="></script>
+    <script src="/js/bundle.min.a5fb480a30cceaa94e6cadb30386527cedbb9681cd04bebabc4b95b706665aa2.js" integrity="sha256-pftICjDM6qlObK2zA4ZSfO27loHNBL66vEuVtwZmWqI="></script>
 
     
     
@@ -164,6 +164,14 @@
             <li class="post-tag"><a href="https://lynxline.com/tags/data">Data</a></li>
         
         </ul>
+
+        
+        <p class="post-translations">Read in:
+        
+            <a href="/ja/posts/agent-data-artifacts-mcp/" hreflang="ja">日本語</a>
+        
+        </p>
+        
     </div>
 
     <div class="post-content">
@@ -210,7 +218,7 @@
 <h2 id="a-minimal-implementation">A minimal implementation</h2>
 <p>The examples use FastMCP and pandas, as in the previous article. They are deliberately small.</p>
 <h3 id="the-store">The store</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> secrets
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> secrets
 </span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> time
 </span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> dataclasses <span style="color:#f92672">import</span> dataclass, field
 </span></span><span style="display:flex;"><span>
@@ -225,7 +233,7 @@
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">ArtifactStore</span>:
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> __init__(self, ttl_seconds: int <span style="color:#f92672">=</span> <span style="color:#ae81ff">24</span> <span style="color:#f92672">*</span> <span style="color:#ae81ff">3600</span>, max_bytes: int <span style="color:#f92672">=</span> <span style="color:#ae81ff">50_000_000</span>):
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">__init__</span>(self, ttl_seconds: int <span style="color:#f92672">=</span> <span style="color:#ae81ff">24</span> <span style="color:#f92672">*</span> <span style="color:#ae81ff">3600</span>, max_bytes: int <span style="color:#f92672">=</span> <span style="color:#ae81ff">50_000_000</span>):
 </span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>_items: dict[str, Artifact] <span style="color:#f92672">=</span> {}
 </span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>_ttl <span style="color:#f92672">=</span> ttl_seconds
 </span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>_max_bytes <span style="color:#f92672">=</span> max_bytes
@@ -246,7 +254,7 @@
 </span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> artifact<span style="color:#f92672">.</span>df
 </span></span></code></pre></div><p>Two details matter here. References are <strong>random, not sequential</strong>, and every read <strong>checks the owner</strong>. A reference that turns up in someone else&rsquo;s transcript is useless to them. The error message also tells the agent how to recover.</p>
 <h3 id="describe-dont-dump">Describe, don&rsquo;t dump</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> json
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> json
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">describe</span>(ref: str, df: pd<span style="color:#f92672">.</span>DataFrame, sample_rows: int <span style="color:#f92672">=</span> <span style="color:#ae81ff">5</span>) <span style="color:#f92672">-&gt;</span> dict:
@@ -259,7 +267,7 @@
 </span></span><span style="display:flex;"><span>    }
 </span></span></code></pre></div><p>Column names, types, null counts and a handful of rows are what a person needs to write a <code>groupby</code>. The model needs the same.</p>
 <h3 id="producer-and-compute-tools">Producer and compute tools</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">from</span> fastmcp <span style="color:#f92672">import</span> FastMCP, Context
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">from</span> fastmcp <span style="color:#f92672">import</span> FastMCP, Context
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>mcp <span style="color:#f92672">=</span> FastMCP(<span style="color:#e6db74">&#34;data-sandbox&#34;</span>)
 </span></span><span style="display:flex;"><span>store <span style="color:#f92672">=</span> ArtifactStore()

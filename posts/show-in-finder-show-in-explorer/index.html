@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en"><head>
+<html lang="en-us"><head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -48,7 +48,7 @@
     <link id="dark-theme" rel="stylesheet" href="/css/dark.min.css">
 
     
-    <script src="/js/bundle.min.224c8e70fed292d18d7d9ae1b36797c99144e0be1117e2ea2c428379c8496551.js" integrity="sha256-IkyOcP7SktGNfZrhs2eXyZFE4L4RF&#43;LqLEKDechJZVE="></script>
+    <script src="/js/bundle.min.a5fb480a30cceaa94e6cadb30386527cedbb9681cd04bebabc4b95b706665aa2.js" integrity="sha256-pftICjDM6qlObK2zA4ZSfO27loHNBL66vEuVtwZmWqI="></script>
 
     
     
@@ -160,13 +160,15 @@
             <li class="post-tag"><a href="https://lynxline.com/tags/qt">Qt</a></li>
         
         </ul>
+
+        
     </div>
 
     <div class="post-content">
         <p>
             <p>It happens often when for integration purposes or for making easy way to navigate to files you need to have such action “Show in Finder” on mac or “Show in Explorer” on windows. Well, the code is pretty simple:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#75715e">#ifdef Q_WS_MAC
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    QStringList args;
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#75715e">#ifdef Q_WS_MAC
+</span></span></span><span style="display:flex;"><span>    QStringList args;
 </span></span><span style="display:flex;"><span>    args <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;-e&#34;</span>;
 </span></span><span style="display:flex;"><span>    args <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;tell application </span><span style="color:#ae81ff">\&#34;</span><span style="color:#e6db74">Finder</span><span style="color:#ae81ff">\&#34;</span><span style="color:#e6db74">&#34;</span>;
 </span></span><span style="display:flex;"><span>    args <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;-e&#34;</span>;
@@ -177,9 +179,9 @@
 </span></span><span style="display:flex;"><span>    args <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;end tell&#34;</span>;
 </span></span><span style="display:flex;"><span>    QProcess<span style="color:#f92672">::</span>startDetached(<span style="color:#e6db74">&#34;osascript&#34;</span>, args);
 </span></span><span style="display:flex;"><span><span style="color:#75715e">#endif
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e">#ifdef Q_WS_WIN
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    QStringList args;
+</span></span></span><span style="display:flex;"><span>    QStringList args;
 </span></span><span style="display:flex;"><span>    args <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;/select,&#34;</span> <span style="color:#f92672">&lt;&lt;</span> QDir<span style="color:#f92672">::</span>toNativeSeparators(filePath);
 </span></span><span style="display:flex;"><span>    QProcess<span style="color:#f92672">::</span>startDetached(<span style="color:#e6db74">&#34;explorer&#34;</span>, args);
 </span></span><span style="display:flex;"><span><span style="color:#75715e">#endif

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en"><head>
+<html lang="en-us"><head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -48,7 +48,7 @@
     <link id="dark-theme" rel="stylesheet" href="/css/dark.min.css">
 
     
-    <script src="/js/bundle.min.224c8e70fed292d18d7d9ae1b36797c99144e0be1117e2ea2c428379c8496551.js" integrity="sha256-IkyOcP7SktGNfZrhs2eXyZFE4L4RF&#43;LqLEKDechJZVE="></script>
+    <script src="/js/bundle.min.a5fb480a30cceaa94e6cadb30386527cedbb9681cd04bebabc4b95b706665aa2.js" integrity="sha256-pftICjDM6qlObK2zA4ZSfO27loHNBL66vEuVtwZmWqI="></script>
 
     
     
@@ -164,6 +164,8 @@
             <li class="post-tag"><a href="https://lynxline.com/tags/research">Research</a></li>
         
         </ul>
+
+        
     </div>
 
     <div class="post-content">
@@ -173,12 +175,12 @@ First have a look at other ports and inferno and find what is needed to compile 
 <ol>
 <li>dev section needs:</li>
 </ol>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-diff" data-lang="diff"><span style="display:flex;"><span><span style="color:#a6e22e">+       ip  ip ipv6 ipaux iproute arp netlog ptclbsum iprouter plan9 nullmedium pktmedium netaux
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-diff" data-lang="diff"><span style="display:flex;"><span><span style="color:#a6e22e">+       ip  ip ipv6 ipaux iproute arp netlog ptclbsum iprouter plan9 nullmedium pktmedium netaux
 </span></span></span><span style="display:flex;"><span><span style="color:#a6e22e">+       ether netif netaux
 </span></span></span></code></pre></div><ol start="2">
 <li>add ip section</li>
 </ol>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-diff" data-lang="diff"><span style="display:flex;"><span><span style="color:#a6e22e">+ip
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-diff" data-lang="diff"><span style="display:flex;"><span><span style="color:#a6e22e">+ip
 </span></span></span><span style="display:flex;"><span><span style="color:#a6e22e">+       il
 </span></span></span><span style="display:flex;"><span><span style="color:#a6e22e">+       tcp
 </span></span></span><span style="display:flex;"><span><span style="color:#a6e22e">+       udp
@@ -188,26 +190,26 @@ First have a look at other ports and inferno and find what is needed to compile 
 </span></span></span></code></pre></div><ol start="3">
 <li>mod section needs:</li>
 </ol>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-diff" data-lang="diff"><span style="display:flex;"><span><span style="color:#a6e22e">+       crypt
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-diff" data-lang="diff"><span style="display:flex;"><span><span style="color:#a6e22e">+       crypt
 </span></span></span><span style="display:flex;"><span><span style="color:#a6e22e">+       ipints
 </span></span></span></code></pre></div><p>Then we will add etherusb.c from 9pi project (according to 9pi: it takes over the
 job of copying packets between the usb pipe and the kernel ether i/o
 queues, to save the extra overhead of doing it in user mode in the
 usb/ether driver.) Later we may not need it, but for now take it just to have complete compilation.</p>
 <p>Then link section:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-diff" data-lang="diff"><span style="display:flex;"><span>link
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-diff" data-lang="diff"><span style="display:flex;"><span>link
 </span></span><span style="display:flex;"><span>        usbdwc
 </span></span><span style="display:flex;"><span><span style="color:#a6e22e">+       etherusb
 </span></span></span><span style="display:flex;"><span><span style="color:#a6e22e">+       ethermedium
 </span></span></span><span style="display:flex;"><span><span style="color:#a6e22e">+       loopbackmedium
 </span></span></span></code></pre></div><p>In <strong>archpi.c</strong> we will add ethernet initialization:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-diff" data-lang="diff"><span style="display:flex;"><span> #include &#34;dat.h&#34;
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-diff" data-lang="diff"><span style="display:flex;"><span> #include &#34;dat.h&#34;
 </span></span><span style="display:flex;"><span> #include &#34;fns.h&#34;
 </span></span><span style="display:flex;"><span> 
 </span></span><span style="display:flex;"><span><span style="color:#a6e22e">+#include &#34;../port/netif.h&#34;
 </span></span></span><span style="display:flex;"><span><span style="color:#a6e22e">+#include &#34;etherif.h&#34;
 </span></span></span><span style="display:flex;"><span><span style="color:#a6e22e">+
-</span></span></span><span style="display:flex;"><span><span style="color:#a6e22e"></span> static void
+</span></span></span><span style="display:flex;"><span> static void
 </span></span><span style="display:flex;"><span> linkproc(void)
 </span></span><span style="display:flex;"><span> {
 </span></span><span style="display:flex;"><span>...

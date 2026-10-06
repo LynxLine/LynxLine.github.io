@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en"><head>
+<html lang="en-us"><head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -48,7 +48,7 @@
     <link id="dark-theme" rel="stylesheet" href="/css/dark.min.css">
 
     
-    <script src="/js/bundle.min.224c8e70fed292d18d7d9ae1b36797c99144e0be1117e2ea2c428379c8496551.js" integrity="sha256-IkyOcP7SktGNfZrhs2eXyZFE4L4RF&#43;LqLEKDechJZVE="></script>
+    <script src="/js/bundle.min.a5fb480a30cceaa94e6cadb30386527cedbb9681cd04bebabc4b95b706665aa2.js" integrity="sha256-pftICjDM6qlObK2zA4ZSfO27loHNBL66vEuVtwZmWqI="></script>
 
     
     
@@ -166,20 +166,22 @@
             <li class="post-tag"><a href="https://lynxline.com/tags/research">Research</a></li>
         
         </ul>
+
+        
     </div>
 
     <div class="post-content">
         <p>
             <p>Occasionally I had a look at <code>/dev/memory</code>:</p>
 <p>What I saw there?</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>; cat /dev/memory
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>; cat /dev/memory
 </span></span><span style="display:flex;"><span>    <span style="color:#ae81ff">2282656</span>    <span style="color:#ae81ff">14018478</span>     <span style="color:#ae81ff">2314496</span>       <span style="color:#ae81ff">14149</span>        <span style="color:#ae81ff">6246</span>          <span style="color:#ae81ff">18</span>    <span style="color:#ae81ff">11735810</span> main
 </span></span><span style="display:flex;"><span>     <span style="color:#ae81ff">492768</span>     <span style="color:#ae81ff">7009239</span>      <span style="color:#ae81ff">499488</span>      <span style="color:#ae81ff">110133</span>      <span style="color:#ae81ff">106946</span>           <span style="color:#ae81ff">4</span>     <span style="color:#ae81ff">6516459</span> heap
 </span></span><span style="display:flex;"><span>       <span style="color:#ae81ff">4960</span>    <span style="color:#ae81ff">14018478</span>        <span style="color:#ae81ff">4960</span>           <span style="color:#ae81ff">8</span>           <span style="color:#ae81ff">1</span>           <span style="color:#ae81ff">1</span>    <span style="color:#ae81ff">14013506</span> image
 </span></span><span style="display:flex;"><span>;
 </span></span></code></pre></div><p>What? I run my Inferno just on 14+7+14 = 33MB memory? (yep and it still runs ok ;) )</p>
 <p>The code that define size of memory pools was just copied from other ports:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span>	ulong nb;
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span>	ulong nb;
 </span></span><span style="display:flex;"><span>	ulong mpb,hpb,ipb;
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>	nb <span style="color:#f92672">=</span> conf.npage<span style="color:#f92672">*</span>BY2PG;
@@ -196,7 +198,7 @@
 <p><strong>Oops, all previous releases of inferno-rpi have only 33MB RAM. SORRY :)</strong></p>
 <p>Surely fixed and coming in next release soon…</p>
 <p>Now it is right:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>; cat /dev/memory
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>; cat /dev/memory
 </span></span><span style="display:flex;"><span>    <span style="color:#ae81ff">2400480</span>    <span style="color:#ae81ff">99917824</span>     <span style="color:#ae81ff">2434464</span>       <span style="color:#ae81ff">14596</span>        <span style="color:#ae81ff">6408</span>          <span style="color:#ae81ff">18</span>    <span style="color:#ae81ff">97517332</span> main
 </span></span><span style="display:flex;"><span>     <span style="color:#ae81ff">498688</span>    <span style="color:#ae81ff">49958912</span>      <span style="color:#ae81ff">500576</span>      <span style="color:#ae81ff">110906</span>      <span style="color:#ae81ff">107649</span>           <span style="color:#ae81ff">4</span>    <span style="color:#ae81ff">49460212</span> heap
 </span></span><span style="display:flex;"><span>       <span style="color:#ae81ff">4960</span>    <span style="color:#ae81ff">99917824</span>        <span style="color:#ae81ff">4960</span>           <span style="color:#ae81ff">8</span>           <span style="color:#ae81ff">1</span>           <span style="color:#ae81ff">1</span>    <span style="color:#ae81ff">99912852</span> image

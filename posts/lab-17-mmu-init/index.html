@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en"><head>
+<html lang="en-us"><head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -48,7 +48,7 @@
     <link id="dark-theme" rel="stylesheet" href="/css/dark.min.css">
 
     
-    <script src="/js/bundle.min.224c8e70fed292d18d7d9ae1b36797c99144e0be1117e2ea2c428379c8496551.js" integrity="sha256-IkyOcP7SktGNfZrhs2eXyZFE4L4RF&#43;LqLEKDechJZVE="></script>
+    <script src="/js/bundle.min.a5fb480a30cceaa94e6cadb30386527cedbb9681cd04bebabc4b95b706665aa2.js" integrity="sha256-pftICjDM6qlObK2zA4ZSfO27loHNBL66vEuVtwZmWqI="></script>
 
     
     
@@ -164,6 +164,8 @@
             <li class="post-tag"><a href="https://lynxline.com/tags/research">Research</a></li>
         
         </ul>
+
+        
     </div>
 
     <div class="post-content">
@@ -171,7 +173,7 @@
             <p>What is fun about Inferno OS that our CPU may not have <a href="http://en.wikipedia.org/wiki/Memory_management_unit">MMU</a> support and still we are able to port Inferno to such architecture. That’s because Inferno OS implements Dis virtual machine and all users processes are actually Dis byte-codes interpreters on <a href="http://en.wikipedia.org/wiki/Just-in-time_compilation">JIT</a> compiled. So address space is virtual by software layer and it is very good for portability of the system.</p>
 <p>Anyway, still it is good to have the MMU initialized (may be needed later to work with framebuffer) and it looks simple enough to do.</p>
 <p>So idea that we map 1:1 all memory that we have SDRAM banks, then we also map IO address space and also low-high interrupt vectors. Also some adjustments to <strong>load.s</strong> to have <em>mmuinit()</em> to called before <em>main()</em>:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1</span><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">mmuinit</span>(<span style="color:#66d9ef">void</span>)
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-c" data-lang="c"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1</span><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">mmuinit</span>(<span style="color:#66d9ef">void</span>)
 </span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2</span><span>{
 </span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3</span><span>    PTE <span style="color:#f92672">*</span>l1, <span style="color:#f92672">*</span>l2;
 </span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4</span><span>    uintptr pa, va;
@@ -204,7 +206,7 @@
 </span></span></code></pre></div><p>There are also minor changes to <strong>dat.h</strong>, <strong>mem.h</strong>, etc</p>
 <p>FILES:</p>
 <ul>
-<li><a href="rpi-lab17.zip">rpi-lab17.zip</a></li>
+<li><a href="/posts/lab-17-mmu-init/rpi-lab17.zip">rpi-lab17.zip</a></li>
 </ul>
 
         </p>

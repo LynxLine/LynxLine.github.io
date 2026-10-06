@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en"><head>
+<html lang="en-us"><head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -48,7 +48,7 @@
     <link id="dark-theme" rel="stylesheet" href="/css/dark.min.css">
 
     
-    <script src="/js/bundle.min.224c8e70fed292d18d7d9ae1b36797c99144e0be1117e2ea2c428379c8496551.js" integrity="sha256-IkyOcP7SktGNfZrhs2eXyZFE4L4RF&#43;LqLEKDechJZVE="></script>
+    <script src="/js/bundle.min.a5fb480a30cceaa94e6cadb30386527cedbb9681cd04bebabc4b95b706665aa2.js" integrity="sha256-pftICjDM6qlObK2zA4ZSfO27loHNBL66vEuVtwZmWqI="></script>
 
     
     
@@ -164,15 +164,17 @@
             <li class="post-tag"><a href="https://lynxline.com/tags/research">Research</a></li>
         
         </ul>
+
+        
     </div>
 
     <div class="post-content">
         <p>
             <p>Before the Lab the development was going in total darkness…, um I meant using serial ftdi usb cable. But time comes to have a light!, no, a screen. Amazingly it wasn’t so complicated. Yes, we just used codes from 9pi project (thanks to Richard Miller).
 Our expected result is:</p>
-<p><img src="lab-18-1.jpg" alt="fig1"></p>
+<p><img src="/posts/lab-18-we-have-a-screen/lab-18-1.jpg" alt="fig1"></p>
 <p>To achieve we need first to expand our “<strong>rpi</strong>” configuration and add <em>draw</em> and <em>screen</em> to <em>dev</em> section, <em>tk draw memlayer memdraw</em> into the <em>lib</em> section and <em>draw</em> and <em>tk</em> to <em>mod</em>:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-txt" data-lang="txt"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1</span><span>dev
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-txt" data-lang="txt"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1</span><span>dev
 </span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2</span><span>	root
 </span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3</span><span>	cons
 </span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4</span><span>	env
@@ -259,7 +261,7 @@ Our expected result is:</p>
 <p>What is very good about this Lab is that there is no more real need to have USB-FTDI cable connected, all debug messages and some indications can come just to our connected display! So if there anybody else would like to join Inferno OS porting to RPI, it became much simpler because no more need for specialized hardware.</p>
 <p>FILES:</p>
 <ul>
-<li><a href="rpi-lab18.zip">rpi-lab18.zip</a></li>
+<li><a href="/posts/lab-18-we-have-a-screen/rpi-lab18.zip">rpi-lab18.zip</a></li>
 </ul>
 
         </p>

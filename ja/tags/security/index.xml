@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+	<channel>
+		<title>Security on LynxLine</title>
+		<link>https://lynxline.com/ja/tags/security/</link>
+		<description>Recent content in Security on LynxLine</description>
+		<generator>Hugo</generator>
+		<language>ja</language>
+		
+		
+		
+		
+			<lastBuildDate>Fri, 11 Sep 2026 09:00:00 +0200</lastBuildDate>
+		
+			<atom:link href="https://lynxline.com/ja/tags/security/index.xml" rel="self" type="application/rss+xml" />
+			<item>
+				<title>AI エージェントに安全な Python の遊び場を：MCP によるサンドボックス化されたコード実行</title>
+				<link>https://lynxline.com/ja/posts/sandboxed-python-mcp/</link>
+				<pubDate>Fri, 11 Sep 2026 09:00:00 +0200</pubDate>
+				<guid>https://lynxline.com/ja/posts/sandboxed-python-mcp/</guid>
+				<description>&lt;p&gt;LLM エージェントはコードを&lt;em&gt;書く&lt;/em&gt;のは驚くほど得意ですが、&lt;em&gt;実行する&lt;/em&gt;となると話は別です。SSH 鍵や &lt;code&gt;.env&lt;/code&gt; ファイル、本番の kubeconfig が置いてあるマシンで、モデルに任意の Python を実行させた瞬間、あなたはとても礼儀正しいリモートコード実行サービスを作り上げたことになります。それでも、コード実行はエージェントに渡せるツールの中でも特に効果の大きいものです。データの整形、ちょっとした数値チェック、変わったファイル形式のパース、自分の仮説の検証。どれも、モデルが書いたものを実際に動かせるだけで格段にうまくいきます。&lt;/p&gt;&#xA;&lt;p&gt;答えは「コードを実行させない」ではありません。「どうなっても構わない場所で実行させる」です。&lt;/p&gt;&#xA;&lt;p&gt;この記事では、&lt;strong&gt;Python をサンドボックス内で実行する Model Context Protocol（MCP）サーバー&lt;/strong&gt;の作り方を解説します。例を簡潔にするため &lt;a href=&#34;https://github.com/jlowin/fastmcp&#34;&gt;FastMCP&lt;/a&gt; を使います。隔離の方法は 2 つ取り上げ、より厳格な方に多くの紙幅を割きます。&lt;/p&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;&lt;strong&gt;Deno + Pyodide（WebAssembly）&lt;/strong&gt;：WASM にコンパイルされた Python を、&lt;em&gt;デフォルト拒否&lt;/em&gt;のランタイム上で動かします。ネットワークもファイルシステムも環境変数も、一つずつ明示的に許可しない限り使えません。本記事の主役です。&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;Docker コンテナ&lt;/strong&gt;：本物の CPython やネイティブ wheel、重い計算が必要な場合の、OS レベルの隔離です。&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;p&gt;この 2 つは組み合わせることもできます。ただその前に、なぜ WASM の方を主役にするのかを説明します。&lt;/p&gt;&#xA;&lt;h2 id=&#34;なぜ-mcp-なのか&#34;&gt;なぜ MCP なのか&lt;/h2&gt;&#xA;&lt;p&gt;MCP はエージェントとツールの間に標準的な契約を定めます。チームごとに独自の認証と独自の JSON 形式で「このスニペットを実行」用の HTTP エンドポイントを作る代わりに、きちんと説明の付いたツールを 1 つ公開すれば、MCP 対応のクライアント（Claude Code、IDE のエージェント、自作のオーケストレーター）ならどれでも発見して呼び出せます。クライアントから見えるのは、&lt;code&gt;run_python&lt;/code&gt; という名前のツール、いつ・どう使うべきかをモデルに伝える説明文、型付きの入力スキーマ、そしてモデルが解釈できる構造化された出力です。&lt;/p&gt;&#xA;&lt;p&gt;サンドボックスの仕組みそのものはモデルからは見えません。そこが肝心です。モデルはただ「Python を実行する」だけ。隔離の境界はサーバー側の責任で、一度解決すれば済みます。&lt;/p&gt;&#xA;&lt;h2 id=&#34;主役のアプローチdeno--pyodide&#34;&gt;主役のアプローチ：Deno + Pyodide&lt;/h2&gt;&#xA;&lt;p&gt;サンドボックスの多くは引き算で作られます。何でもできる OS プロセスから出発し、権限を取り除いていく。これを落とし、あれをブロックし、何もマウントせず、穴を一つも見落としていないことを祈る。Deno + Pyodide の組み合わせはこの発想を逆転させます。&lt;strong&gt;足し算&lt;/strong&gt;なのです。コードは&lt;em&gt;何も持たない&lt;/em&gt;状態から始まり、フラグ一つずつ権限を与えていきます。&lt;/p&gt;&#xA;&lt;p&gt;これを実現しているのは 2 つの層です。&lt;/p&gt;&#xA;&lt;p&gt;&lt;strong&gt;&lt;a href=&#34;https://pyodide.org&#34;&gt;Pyodide&lt;/a&gt;&lt;/strong&gt; は WebAssembly にコンパイルされた CPython です。Python インタープリター自体が WASM の線形メモリによるサンドボックスの中で動きます。ホストのファイルシステムも、ネットワークインターフェースも、プロセステーブルも、そもそも概念として存在しません。&lt;code&gt;open(&amp;quot;/etc/passwd&amp;quot;)&lt;/code&gt; が失敗するのは、あなたが設定した権限チェックのせいではありません。&lt;em&gt;WASM の世界にそんなファイルは存在しない&lt;/em&gt;からです。Python から見える「ファイルシステム」はメモリ上のエミュレーション（Emscripten MEMFS）で、そのインタープリターのインスタンスの中にだけ存在し、インスタンスと一緒に消えます。&lt;/p&gt;</description>
+			</item>
+	</channel>
+</rss>

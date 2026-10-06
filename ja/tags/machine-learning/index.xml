@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+	<channel>
+		<title>Machine Learning on LynxLine</title>
+		<link>https://lynxline.com/ja/tags/machine-learning/</link>
+		<description>Recent content in Machine Learning on LynxLine</description>
+		<generator>Hugo</generator>
+		<language>ja</language>
+		
+		
+		
+		
+			<lastBuildDate>Mon, 28 Sep 2026 09:00:00 +0200</lastBuildDate>
+		
+			<atom:link href="https://lynxline.com/ja/tags/machine-learning/index.xml" rel="self" type="application/rss+xml" />
+			<item>
+				<title>質問からテーブル名へ：誰もが LLM に頼る場面で、小さな意思決定モデルを試してみた</title>
+				<link>https://lynxline.com/ja/posts/laya-decision-model/</link>
+				<pubDate>Mon, 28 Sep 2026 09:00:00 +0200</pubDate>
+				<guid>https://lynxline.com/ja/posts/laya-decision-model/</guid>
+				<description>&lt;p&gt;自由形式のユーザーの質問を、約 1,000 個あるデータベースのテーブル名のどれか 1 つに対応付ける必要がありました。しかも高速に、自前のハードウェアで。そこで、オープンソースの「System-1 意思決定モデル」である &lt;a href=&#34;https://github.com/NandhaKishorM/laya&#34;&gt;Laya&lt;/a&gt; を一通り試しました。ゼロショット、ハイブリッド検索との組み合わせ、そして最後に合成データでのファインチューニング。何がうまくいき、何が気づかないうちに失敗していたのか、そして次にやるならどうするかをまとめます。&lt;/p&gt;&#xA;&lt;h2 id=&#34;課題&#34;&gt;課題&lt;/h2&gt;&#xA;&lt;p&gt;私たちのデータ基盤には、論理テーブルがおよそ 1,000 個あります。ユーザーは &lt;em&gt;「1 月の店舗ごとの日次売上合計を、日別に出して」&lt;/em&gt; のような質問をします。SQL を生成するより手前のどこかで、この質問が &lt;code&gt;XQR7_DTV_AGG&lt;/code&gt; に関するものであって、同じく店舗や日付や合計に触れている他の 40 個のテーブルではない、と判断する必要があります。大きな LLM ならこれをうまくこなしますが、私たちはこの判定を安価なローカルの部品にしたいと考えていました。ユーザーの発話ごとに呼ばれ、かかる時間は数秒ではなく数十ミリ秒、そしてスキーマのメタデータを外部 API に送らないこと。&lt;/p&gt;&#xA;&lt;p&gt;大規模で閉じたラベル集合に対する分類。この捉え方は、まさに Laya がうたっているものです。Laya は ModernBERT 系のエンコーダーをベースにした、パラメーター数 4 億 2,100 万の非自己回帰型意思決定モデルで、Apache 2.0 で公開されています。&lt;em&gt;状態&lt;/em&gt;（ユーザーのテキスト）と、選択肢付きの型付きの&lt;em&gt;問い&lt;/em&gt;を渡すと、1 回のフォワードパスで、キャリブレーション済みの確率とともに選択を返します。控えめな GPU で約 33 ms です。ラベル集合はリクエスト時に定義するので、テーブルが増えても再学習は不要です。書類の上では、完璧に合っていました。&lt;/p&gt;&#xA;&lt;h2 id=&#34;最初の壁長文コンテキストのモデルではない&#34;&gt;最初の壁：長文コンテキストのモデルではない&lt;/h2&gt;&#xA;&lt;p&gt;「全テーブルの情報をまるごとコンテキストとして渡す」という素朴な案は、すぐに破綻します。テーブルごとのドキュメント（名前、人間向けラベル、説明、カラム一覧、典型的な言い回し、紛らわしいテーブルとの区別の注記）は、圧縮しても約 8.5 MB のテキスト、つまり 200 万トークン近くになります。一方、Laya の入力上限は 512 トークン（チェックポイントによっては 1,024）で、そのうち約 200 トークンは選択肢の表示に予約されています。さらにドキュメント自体に、1 問あたりの選択肢が 20 個を超えると品質が落ちると書かれています。&lt;/p&gt;&#xA;&lt;p&gt;そのため、構成は 2 段階にせざるを得ません。&lt;/p&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;&lt;strong&gt;検索&lt;/strong&gt;：約 1,000 個のテーブルを、クエリに対する上位 15 候補に絞り込む。&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;判定&lt;/strong&gt;：各候補の約 140 文字の説明をもとに、Laya が 1 つを選ぶ。&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;p&gt;これはよくある「検索してから再ランキング」のパターンです。面白いのは、それぞれの段階が実際に何をもたらしたかです。&lt;/p&gt;</description>
+			</item>
+	</channel>
+</rss>

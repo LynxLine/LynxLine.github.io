@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en"><head>
+<html lang="en-us"><head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -48,7 +48,7 @@
     <link id="dark-theme" rel="stylesheet" href="/css/dark.min.css">
 
     
-    <script src="/js/bundle.min.224c8e70fed292d18d7d9ae1b36797c99144e0be1117e2ea2c428379c8496551.js" integrity="sha256-IkyOcP7SktGNfZrhs2eXyZFE4L4RF&#43;LqLEKDechJZVE="></script>
+    <script src="/js/bundle.min.a5fb480a30cceaa94e6cadb30386527cedbb9681cd04bebabc4b95b706665aa2.js" integrity="sha256-pftICjDM6qlObK2zA4ZSfO27loHNBL66vEuVtwZmWqI="></script>
 
     
     
@@ -164,6 +164,8 @@
             <li class="post-tag"><a href="https://lynxline.com/tags/research">Research</a></li>
         
         </ul>
+
+        
     </div>
 
     <div class="post-content">
@@ -174,10 +176,10 @@ It should only print “Hello world!” to our serial console.</p>
 <p>First, let’s find out how we can print something. BCM2835 manual describes that the chip has different features as Mini-UART and PL011 UART.</p>
 <p>Instead of writing own driver for UART routines let’s better check how U-Boot performs. Checking the sources codes gives us a hint that when U-Boot pass execution control to our program we have initialized PL011 which has ports ready to transmit bytes to our serial line. It has choice for PL011 because Linux kernel (which is default target/option for U-Boot) will be throwing boot messages exactly to PL011 ports until Linux kernel initializes own driver for serial.</p>
 <p>After checking routines we realizes that code for sending something to serial is pretty simple:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1</span><span><span style="color:#75715e">#define IOBASE          0x20000000      </span><span style="color:#75715e">/* base of io registers */</span><span style="color:#75715e">
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-c" data-lang="c"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1</span><span><span style="color:#75715e">#define IOBASE          0x20000000      </span><span style="color:#75715e">/* base of io registers */</span><span style="color:#75715e">
 </span></span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2</span><span><span style="color:#75715e">#define PL011REGS       (IOBASE+0x201000)
 </span></span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3</span><span><span style="color:#75715e">#define UART_PL01x_FR_TXFF  0x20
-</span></span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4</span><span><span style="color:#75715e"></span><span style="color:#66d9ef">typedef</span> <span style="color:#66d9ef">unsigned</span> <span style="color:#66d9ef">int</span>    u32int;
+</span></span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4</span><span><span style="color:#66d9ef">typedef</span> <span style="color:#66d9ef">unsigned</span> <span style="color:#66d9ef">int</span>    u32int;
 </span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5</span><span>
 </span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6</span><span><span style="color:#66d9ef">void</span>
 </span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7</span><span><span style="color:#a6e22e">pl011_putc</span>(<span style="color:#66d9ef">int</span> c)
@@ -213,7 +215,7 @@ It should only print “Hello world!” to our serial console.</p>
 </span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">37</span><span>}
 </span></span></code></pre></div><p>Again, we do not need to initialize anything, so our code should just work.</p>
 <p>Compile our barenone kernel, connecting everything (serial, eth, etc), starting tftp server, juice power to rpi and:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-txt" data-lang="txt"><span style="display:flex;"><span>U-Boot 2012.04.01-00489-gcd2dac2-dirty (Jul 07 2012 - 12:57:03)
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-txt" data-lang="txt"><span style="display:flex;"><span>U-Boot 2012.04.01-00489-gcd2dac2-dirty (Jul 07 2012 - 12:57:03)
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>DRAM:  128 MiB
 </span></span><span style="display:flex;"><span>WARNING: Caches not enabled
@@ -259,7 +261,7 @@ It should only print “Hello world!” to our serial console.</p>
 </span></span></code></pre></div><p>So at this point you can develop any OS you would like to have, using Plan9 Assembler and C lang, but our timeline is to have Inferno OS working native on Raspberry Pi.</p>
 <p>FILES:</p>
 <ul>
-<li><a href="main.c">main.c</a></li>
+<li><a href="/posts/lab-5-hello-world/main.c">main.c</a></li>
 </ul>
 
         </p>

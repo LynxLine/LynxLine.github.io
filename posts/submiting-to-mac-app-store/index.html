@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en"><head>
+<html lang="en-us"><head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -48,7 +48,7 @@
     <link id="dark-theme" rel="stylesheet" href="/css/dark.min.css">
 
     
-    <script src="/js/bundle.min.224c8e70fed292d18d7d9ae1b36797c99144e0be1117e2ea2c428379c8496551.js" integrity="sha256-IkyOcP7SktGNfZrhs2eXyZFE4L4RF&#43;LqLEKDechJZVE="></script>
+    <script src="/js/bundle.min.a5fb480a30cceaa94e6cadb30386527cedbb9681cd04bebabc4b95b706665aa2.js" integrity="sha256-pftICjDM6qlObK2zA4ZSfO27loHNBL66vEuVtwZmWqI="></script>
 
     
     
@@ -170,65 +170,67 @@
             <li class="post-tag"><a href="https://lynxline.com/tags/tts">TTS</a></li>
         
         </ul>
+
+        
     </div>
 
     <div class="post-content">
         <p>
             <p>Maybe you already thought about creation a Qt application for Mac App Store or submitting an existing one. While I am on vacations I made a probe of such possibility – you may know that Apple and Nokia developing now different ecosystems of languages/libraries and you may expect to have troubles of bypassing Qt application into Mac App Store. Anyway I found that it is not so complicated as expected, though it took time to do all preparations, my application passed and was published in store with first attempt.</p>
 <p>For long time I had one application in my attic. It was an interesting experiment for studying and remembering foreign words. This application do kind of training by repeating words and force you to type correct spelling while application pronounce it to you using TTS (surely you need high-quality voice engine – I used voices from Infovox iVox). That was pretty effective and helped me a lot for studying new words and forming active vocabulary for Norwegian. Because of hearing, reading and typing it makes very effective associations in your brains. The application is cross-platform and requires only QtGui, QtXml and QtCore, also qt plugins are not need.</p>
-<p><a href="http://lynxline.com/wp-content/uploads/2011/06/TogMeg-Screenshot-1.png"><img src="TogMeg-Screenshot-1-300x238.png" alt=""></a></p>
+<p><a href="http://lynxline.com/wp-content/uploads/2011/06/TogMeg-Screenshot-1.png"><img src="/posts/submiting-to-mac-app-store/TogMeg-Screenshot-1-300x238.png" alt=""></a></p>
 <p>First I worked on adjustments of widgets and look-and-feel to have app closer to Mac style. It wasn’t complicated because on each release Nokia improves drawing of widgets to have it very close to native views. You can find differences in user interface if you know especialities.</p>
 <p>Then application (bundle) was build with inclusion of all required libs as private frameworks. I got too much for such small application — about 60MB. For me it is too heavy and I decided to make it smaller. Also after checking Qt forums I found that some patches are required for Qt to get a ticket into store.</p>
 <p>It was chosen Carbon version of Qt because I found some glitches in GUI when used Cocoa – so I decided not to spend time on it. Then disabled everything that is not needed in configure, also used 10.5 sdk and only 32 bit:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>./configure -carbon -fast -no-qt3support -no-xmlpatterns -no-multimedia -no-audio-backend -no-phonon -no-phonon-backend -no-svg -no-webkit -no-javascript-jit -no-script -no-scripttools -no-declarative -no-openssl -arch <span style="color:#e6db74">&#34;x86&#34;</span> -sdk <span style="color:#e6db74">&#34;/Developer/SDKs/MacOSX10.5.sdk&#34;</span> -no-exceptions
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>./configure -carbon -fast -no-qt3support -no-xmlpatterns -no-multimedia -no-audio-backend -no-phonon -no-phonon-backend -no-svg -no-webkit -no-javascript-jit -no-script -no-scripttools -no-declarative -no-openssl -arch <span style="color:#e6db74">&#34;x86&#34;</span> -sdk <span style="color:#e6db74">&#34;/Developer/SDKs/MacOSX10.5.sdk&#34;</span> -no-exceptions
 </span></span></code></pre></div><p>I got about 30MB for Frameworks. But Framework folders can be downsized — no need for debug versions of libs, no need for header files because frameworks are private. Because I used copying of Frameworks using <em>QMAKE_POST_LINK</em>, it looks like this:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>QMAKE_POST_LINK <span style="color:#f92672">=</span> <span style="color:#ae81ff">\
-</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>mkdir -p $$<span style="color:#f92672">{</span>BUNDLETARGET<span style="color:#f92672">}</span>/Contents/Frameworks; <span style="color:#ae81ff">\
-</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>cp -R $$<span style="color:#f92672">{</span>QTFRAMEWORKSPATH<span style="color:#f92672">}</span>/QtCore.framework <span style="color:#ae81ff">\
-</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>$$<span style="color:#f92672">{</span>QTFRAMEWORKSPATH<span style="color:#f92672">}</span>/QtGui.framework <span style="color:#ae81ff">\
-</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>$$<span style="color:#f92672">{</span>QTFRAMEWORKSPATH<span style="color:#f92672">}</span>/QtXml.framework <span style="color:#ae81ff">\
-</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>$$<span style="color:#f92672">{</span>BUNDLETARGET<span style="color:#f92672">}</span>/Contents/Frameworks; <span style="color:#ae81ff">\
-</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>...
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>QMAKE_POST_LINK <span style="color:#f92672">=</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span>mkdir -p $$<span style="color:#f92672">{</span>BUNDLETARGET<span style="color:#f92672">}</span>/Contents/Frameworks; <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span>cp -R $$<span style="color:#f92672">{</span>QTFRAMEWORKSPATH<span style="color:#f92672">}</span>/QtCore.framework <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span>$$<span style="color:#f92672">{</span>QTFRAMEWORKSPATH<span style="color:#f92672">}</span>/QtGui.framework <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span>$$<span style="color:#f92672">{</span>QTFRAMEWORKSPATH<span style="color:#f92672">}</span>/QtXml.framework <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span>$$<span style="color:#f92672">{</span>BUNDLETARGET<span style="color:#f92672">}</span>/Contents/Frameworks; <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span>...
 </span></span><span style="display:flex;"><span><span style="color:#ae81ff">\
-</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>strip <span style="color:#66d9ef">$(</span>TARGET<span style="color:#66d9ef">)</span>; <span style="color:#ae81ff">\
-</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>strip -x $$<span style="color:#f92672">{</span>BUNDLETARGET<span style="color:#f92672">}</span>/Contents/Frameworks/QtCore.framework/Versions/4/QtCore; <span style="color:#ae81ff">\
-</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>strip -x $$<span style="color:#f92672">{</span>BUNDLETARGET<span style="color:#f92672">}</span>/Contents/Frameworks/QtGui.framework/Versions/4/QtGui; <span style="color:#ae81ff">\
-</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>strip -x $$<span style="color:#f92672">{</span>BUNDLETARGET<span style="color:#f92672">}</span>/Contents/Frameworks/QtXml.framework/Versions/4/QtXml; <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span>strip <span style="color:#66d9ef">$(</span>TARGET<span style="color:#66d9ef">)</span>; <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span>strip -x $$<span style="color:#f92672">{</span>BUNDLETARGET<span style="color:#f92672">}</span>/Contents/Frameworks/QtCore.framework/Versions/4/QtCore; <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span>strip -x $$<span style="color:#f92672">{</span>BUNDLETARGET<span style="color:#f92672">}</span>/Contents/Frameworks/QtGui.framework/Versions/4/QtGui; <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span>strip -x $$<span style="color:#f92672">{</span>BUNDLETARGET<span style="color:#f92672">}</span>/Contents/Frameworks/QtXml.framework/Versions/4/QtXml; <span style="color:#ae81ff">\
 </span></span></span><span style="display:flex;"><span><span style="color:#ae81ff">\
-</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>rm -rf <span style="color:#e6db74">`</span>find $$<span style="color:#f92672">{</span>BUNDLETARGET<span style="color:#f92672">}</span> -name <span style="color:#e6db74">&#34;*.prl&#34;</span><span style="color:#e6db74">`</span>; <span style="color:#ae81ff">\
-</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>rm -rf <span style="color:#e6db74">`</span>find $$<span style="color:#f92672">{</span>BUNDLETARGET<span style="color:#f92672">}</span> -name <span style="color:#e6db74">&#34;*.lproj&#34;</span><span style="color:#e6db74">`</span>; <span style="color:#ae81ff">\
-</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>rm -rf <span style="color:#e6db74">`</span>find $$<span style="color:#f92672">{</span>BUNDLETARGET<span style="color:#f92672">}</span> -name <span style="color:#e6db74">&#34;*_debug*&#34;</span><span style="color:#e6db74">`</span>; <span style="color:#ae81ff">\
-</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>rm -rf <span style="color:#e6db74">`</span>find $$<span style="color:#f92672">{</span>BUNDLETARGET<span style="color:#f92672">}</span> -name <span style="color:#e6db74">&#34;Headers&#34;</span><span style="color:#e6db74">`</span>; <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span>rm -rf <span style="color:#e6db74">`</span>find $$<span style="color:#f92672">{</span>BUNDLETARGET<span style="color:#f92672">}</span> -name <span style="color:#e6db74">&#34;*.prl&#34;</span><span style="color:#e6db74">`</span>; <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span>rm -rf <span style="color:#e6db74">`</span>find $$<span style="color:#f92672">{</span>BUNDLETARGET<span style="color:#f92672">}</span> -name <span style="color:#e6db74">&#34;*.lproj&#34;</span><span style="color:#e6db74">`</span>; <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span>rm -rf <span style="color:#e6db74">`</span>find $$<span style="color:#f92672">{</span>BUNDLETARGET<span style="color:#f92672">}</span> -name <span style="color:#e6db74">&#34;*_debug*&#34;</span><span style="color:#e6db74">`</span>; <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span>rm -rf <span style="color:#e6db74">`</span>find $$<span style="color:#f92672">{</span>BUNDLETARGET<span style="color:#f92672">}</span> -name <span style="color:#e6db74">&#34;Headers&#34;</span><span style="color:#e6db74">`</span>; <span style="color:#ae81ff">\
 </span></span></span><span style="display:flex;"><span><span style="color:#ae81ff">\
-</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>otool -L <span style="color:#66d9ef">$(</span>TARGET<span style="color:#66d9ef">)</span>; <span style="color:#ae81ff">\
-</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>otool -L $$<span style="color:#f92672">{</span>BUNDLETARGET<span style="color:#f92672">}</span>/Contents/Frameworks/QtCore.framework/Versions/4/QtCore; <span style="color:#ae81ff">\
-</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>otool -L $$<span style="color:#f92672">{</span>BUNDLETARGET<span style="color:#f92672">}</span>/Contents/Frameworks/QtGui.framework/Versions/4/QtGui; <span style="color:#ae81ff">\
-</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>otool -L $$<span style="color:#f92672">{</span>BUNDLETARGET<span style="color:#f92672">}</span>/Contents/Frameworks/QtXml.framework/Versions/4/QtXml; <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span>otool -L <span style="color:#66d9ef">$(</span>TARGET<span style="color:#66d9ef">)</span>; <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span>otool -L $$<span style="color:#f92672">{</span>BUNDLETARGET<span style="color:#f92672">}</span>/Contents/Frameworks/QtCore.framework/Versions/4/QtCore; <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span>otool -L $$<span style="color:#f92672">{</span>BUNDLETARGET<span style="color:#f92672">}</span>/Contents/Frameworks/QtGui.framework/Versions/4/QtGui; <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span>otool -L $$<span style="color:#f92672">{</span>BUNDLETARGET<span style="color:#f92672">}</span>/Contents/Frameworks/QtXml.framework/Versions/4/QtXml; <span style="color:#ae81ff">\
 </span></span></span><span style="display:flex;"><span><span style="color:#ae81ff">\
-</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>echo <span style="color:#e6db74">&#34;Ok&#34;</span>
+</span></span></span><span style="display:flex;"><span>echo <span style="color:#e6db74">&#34;Ok&#34;</span>
 </span></span></code></pre></div><p>Result — 12MB, in Mac App Store – just 5.3MB. This is great just for small application which is based on non-native GUI frameworks.</p>
 <p>So we resolved size issue, now it is time to get Qt ready to pass examination and be ready for store.</p>
 <p>First — app should keep own data in <em>~/Library/Application Support/com.organization.appname</em>, so we download patch <a href="http://bugreports.qt.nokia.com/secure/attachment/23529/mac-app-store-cache-location.diff">mac-app-store-cache-location.diff</a>. After applying it, when using <em>QDesktopServices::storageLocation()</em> we get right path to location where to keep app/user data.</p>
 <p>Second — Qt apps always read and write <em>~/Library/Preferences/com.nokia.qt.plist</em>. You can not disable it due to need of common settings of Qt Applications. But Apple has restrictions for applications not to write settings of other applications. So we download second patch for Qt — <a href="http://bugreports.qt.nokia.com/secure/attachment/23530/mac-settings-in-app-area.diff">mac-settings-in-app-area.diff</a>, and in <em>main()</em> in very beginning  add a call: <em>qt_force_trolltech_settings_to_app_area(true);</em></p>
 <p>Also there are two patches — first one is for removal <em>Hide/Show All</em> from application menu, but I found this patch later, though my app passed control without it, and second one is for SQLite — but I did not study this one (no need for my app).</p>
 <p>Frameworks should be adjusted to have them referenced to each other using <em>@executable_path</em>. You can see it easily by otool utility:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ otool -L QtGui.framework/QtGui
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ otool -L QtGui.framework/QtGui
 </span></span><span style="display:flex;"><span>QtGui.framework/QtGui:
 </span></span><span style="display:flex;"><span>/usr/local/Trolltech/Qt-4.7.3/lib/QtGui.framework/Versions/4/QtGui <span style="color:#f92672">(</span>compatibility version 4.7.0, current version 4.7.3<span style="color:#f92672">)</span>
 </span></span><span style="display:flex;"><span>/usr/local/Trolltech/Qt-4.7.3/lib/QtCore.framework/Versions/4/QtCore <span style="color:#f92672">(</span>compatibility version 4.7.0, current version 4.7.3<span style="color:#f92672">)</span>
 </span></span><span style="display:flex;"><span>/System/Library/Frameworks/Carbon.framework/Versions/A/Carbon <span style="color:#f92672">(</span>compatibility version 2.0.0, current version 136.0.0<span style="color:#f92672">)</span>
 </span></span><span style="display:flex;"><span>...
 </span></span></code></pre></div><p>Add this to <em>QMAKE_POST_LINK</em>:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>install_name_tool -id @executable_path/../Frameworks/QtCore.framework/Versions/4/QtCore <span style="color:#ae81ff">\
-</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>$$<span style="color:#f92672">{</span>BUNDLETARGET<span style="color:#f92672">}</span>/Contents/Frameworks/QtCore.framework/Versions/4/QtCore; <span style="color:#ae81ff">\
-</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>install_name_tool -id @executable_path/../Frameworks/QtGui.framework/Versions/4/QtGui <span style="color:#ae81ff">\
-</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>$$<span style="color:#f92672">{</span>BUNDLETARGET<span style="color:#f92672">}</span>/Contents/Frameworks/QtGui.framework/Versions/4/QtGui; <span style="color:#ae81ff">\
-</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>install_name_tool -id @executable_path/../Frameworks/QtXml.framework/Versions/4/QtXml <span style="color:#ae81ff">\
-</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>$$<span style="color:#f92672">{</span>BUNDLETARGET<span style="color:#f92672">}</span>/Contents/Frameworks/QtXml.framework/Versions/4/QtXml; <span style="color:#ae81ff">\
-</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>...
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>install_name_tool -id @executable_path/../Frameworks/QtCore.framework/Versions/4/QtCore <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span>$$<span style="color:#f92672">{</span>BUNDLETARGET<span style="color:#f92672">}</span>/Contents/Frameworks/QtCore.framework/Versions/4/QtCore; <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span>install_name_tool -id @executable_path/../Frameworks/QtGui.framework/Versions/4/QtGui <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span>$$<span style="color:#f92672">{</span>BUNDLETARGET<span style="color:#f92672">}</span>/Contents/Frameworks/QtGui.framework/Versions/4/QtGui; <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span>install_name_tool -id @executable_path/../Frameworks/QtXml.framework/Versions/4/QtXml <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span>$$<span style="color:#f92672">{</span>BUNDLETARGET<span style="color:#f92672">}</span>/Contents/Frameworks/QtXml.framework/Versions/4/QtXml; <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span>...
 </span></span><span style="display:flex;"><span>+and same <span style="color:#66d9ef">for</span> other references
 </span></span></code></pre></div><p>Now everything is fine:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>otool -L QtGui.framework/QtGui
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>otool -L QtGui.framework/QtGui
 </span></span><span style="display:flex;"><span>QtGui.framework/QtGui:
 </span></span><span style="display:flex;"><span>@executable_path/../Frameworks/QtGui.framework/Versions/4/QtGui <span style="color:#f92672">(</span>compatibility version 4.7.0, current version 4.7.3<span style="color:#f92672">)</span>
 </span></span><span style="display:flex;"><span>@executable_path/../Frameworks/QtCore.framework/Versions/4/QtCore <span style="color:#f92672">(</span>compatibility version 4.7.0, current version 4.7.3<span style="color:#f92672">)</span>
@@ -236,7 +238,7 @@
 </span></span><span style="display:flex;"><span>...
 </span></span></code></pre></div><p>Now just by copying .app bundle onto another Mac without developer tools and Qt your App should start without problems.</p>
 <p>Also you need to sign your app by your signature(certificate) as Mac developer. You have to get such certificate from developer.apple.com, pay $99 for year subscription if you haven’t done it yet.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>/usr/bin/codesign -f -s 3rd<span style="color:#ae81ff">\ </span>Party<span style="color:#ae81ff">\ </span>Mac<span style="color:#ae81ff">\ </span>Developer<span style="color:#ae81ff">\ </span>Application:<span style="color:#ae81ff">\ </span>Firstname<span style="color:#ae81ff">\ </span>Lastname $$<span style="color:#f92672">{</span>BUNDLETARGET<span style="color:#f92672">}</span>; <span style="color:#ae81ff">\
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>/usr/bin/codesign -f -s 3rd<span style="color:#ae81ff">\ </span>Party<span style="color:#ae81ff">\ </span>Mac<span style="color:#ae81ff">\ </span>Developer<span style="color:#ae81ff">\ </span>Application:<span style="color:#ae81ff">\ </span>Firstname<span style="color:#ae81ff">\ </span>Lastname $$<span style="color:#f92672">{</span>BUNDLETARGET<span style="color:#f92672">}</span>; <span style="color:#ae81ff">\
 </span></span></span></code></pre></div><p>and add this to “pro” file too.</p>
 <p>But for submitting the application into App Store, I had to start Xcode, build it in dsym+dwarf mode, make it signed, added prepared Frameworks by «New Build Phase -&gt; New Copy Files Build Phase». Everything was tested with <em>otool</em> to see all dependencies, checked on another Mac and got ready to send into App Store (<em>If you know how to do all such stuff by scripts please let me know – prefer to do everything in Qt Creator</em>).</p>
 <p>Summary —</p>

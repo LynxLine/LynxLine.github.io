@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en"><head>
+<html lang="en-us"><head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -48,7 +48,7 @@
     <link id="dark-theme" rel="stylesheet" href="/css/dark.min.css">
 
     
-    <script src="/js/bundle.min.224c8e70fed292d18d7d9ae1b36797c99144e0be1117e2ea2c428379c8496551.js" integrity="sha256-IkyOcP7SktGNfZrhs2eXyZFE4L4RF&#43;LqLEKDechJZVE="></script>
+    <script src="/js/bundle.min.a5fb480a30cceaa94e6cadb30386527cedbb9681cd04bebabc4b95b706665aa2.js" integrity="sha256-pftICjDM6qlObK2zA4ZSfO27loHNBL66vEuVtwZmWqI="></script>
 
     
     
@@ -164,6 +164,8 @@
             <li class="post-tag"><a href="https://lynxline.com/tags/research">Research</a></li>
         
         </ul>
+
+        
     </div>
 
     <div class="post-content">
@@ -174,25 +176,25 @@
 <p>When I had attempt to start Raspberry with this new ethernet driver but to my wonder I found that Mac address is just zeros. Strange, but by asking experts and checking info, yes that’s correct: eeprom of ethernet chip on Raspberry does not have the MAC there embedded. Instead it is kept in VideoCore chip and can be received by MailBox interface.</p>
 <p>The communication with VideoCore is already implemeneted in <strong>vcore.c</strong> which we have from 9pi project. But my attempt to receive MAC showed something very strange – it didn’t work at all. Channel 1 of mailbox interface – Framebuffer works perfect why Channel 8 – getting properties from chip does not work at all.</p>
 <p>Almost two days of debugging, different trys, attempts while I realized that I probably have very old firmware. Oops. When I did try get new firware files (<a href="https://github.com/raspberrypi/firmware/tree/master/boot">https://github.com/raspberrypi/firmware/tree/master/boot</a>) I found another stumbling block: U-Boot no more working!</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-txt" data-lang="txt"><span style="display:flex;"><span>** Unable to use mmc 0:1 for fatload **
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-txt" data-lang="txt"><span style="display:flex;"><span>** Unable to use mmc 0:1 for fatload **
 </span></span></code></pre></div><p>Well, my U-Boot was from friend of mine and from 2012 (yep, old). As next I need to compile U-Boot myself. Version from repository didn’t compile for some reason, so I tried the release 2013-10.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-txt" data-lang="txt"><span style="display:flex;"><span># emerge --ask crossdev
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-txt" data-lang="txt"><span style="display:flex;"><span># emerge --ask crossdev
 </span></span><span style="display:flex;"><span># crossdev -S -v -t armv6j-hardfloat-linux-gnueabi
 </span></span><span style="display:flex;"><span># cd u-boot
 </span></span><span style="display:flex;"><span># make ARCH=arm CROSS_COMPILE=armv6j-hardfloat-linux-gnueabi- rpi_b_config
 </span></span><span style="display:flex;"><span># make ARCH=arm CROSS_COMPILE=armv6j-hardfloat-linux-gnueabi-
 </span></span></code></pre></div><p>Complete!
 But I as result I have elf file while I need an image file. For this special tool:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-txt" data-lang="txt"><span style="display:flex;"><span># emerge sys-boot/raspberrypi-mkimage
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-txt" data-lang="txt"><span style="display:flex;"><span># emerge sys-boot/raspberrypi-mkimage
 </span></span></code></pre></div><p>Next attempts to boot didn’t work again. Ah, I need to process <strong>u-boot.bin</strong> but not just <strong>u-boot</strong> file:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-txt" data-lang="txt"><span style="display:flex;"><span># imagetool-uncompressed.py u-boot.bin /mnt/SD/u-boot.bin
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-txt" data-lang="txt"><span style="display:flex;"><span># imagetool-uncompressed.py u-boot.bin /mnt/SD/u-boot.bin
 </span></span></code></pre></div><p>Finally! It boot! But wait:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-txt" data-lang="txt"><span style="display:flex;"><span>## Executing script at 00000000
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-txt" data-lang="txt"><span style="display:flex;"><span>## Executing script at 00000000
 </span></span><span style="display:flex;"><span>Unknown command &#39;usb&#39; - try &#39;help&#39;
 </span></span></code></pre></div><p>Why? After searches I found that even up to current moment they haven’t integrated Usb codes for raspberry into U-Boot :(
 I have to go back. The very recent but with Usb is the repository <a href="https://github.com/gonzoua/u-boot-pi">https://github.com/gonzoua/u-boot-pi</a>. Also looks from 2012 but I have hope.</p>
 <p>Again, compile cycle and I got U-Boot with Usb finally and with new firmware!</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-txt" data-lang="txt"><span style="display:flex;"><span>In:    serial
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-txt" data-lang="txt"><span style="display:flex;"><span>In:    serial
 </span></span><span style="display:flex;"><span>Out:   lcd
 </span></span><span style="display:flex;"><span>Err:   lcd
 </span></span><span style="display:flex;"><span>mbox: Timeout waiting for response
@@ -228,11 +230,11 @@ I have to go back. The very recent but with Usb is the repository <a href="https
 </span></span></code></pre></div><p>And an attempt to get stored MAC Address with MailBox from VideoCore and success!</p>
 <p><strong>mac: b827ebd9eafd</strong></p>
 <p>To bypass it from kernel to Usb driver we will just create environment variable in main.c funcion <em>init0()</em>:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#a6e22e">snprint</span>(buf, <span style="color:#66d9ef">sizeof</span>(buf), <span style="color:#e6db74">&#34;%s&#34;</span>, <span style="color:#a6e22e">getethermac</span>());
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#a6e22e">snprint</span>(buf, <span style="color:#66d9ef">sizeof</span>(buf), <span style="color:#e6db74">&#34;%s&#34;</span>, <span style="color:#a6e22e">getethermac</span>());
 </span></span><span style="display:flex;"><span><span style="color:#a6e22e">ksetenv</span>(<span style="color:#e6db74">&#34;ethermac&#34;</span>, buf, <span style="color:#ae81ff">0</span>);
 </span></span></code></pre></div><p>Also bind “/env” as we haven’t done it yet in <strong>rpiinit.b</strong>.
 Testing and looks okay, I see the MAC in ifc</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-txt" data-lang="txt"><span style="display:flex;"><span>; cd /net/ether0
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-txt" data-lang="txt"><span style="display:flex;"><span>; cd /net/ether0
 </span></span><span style="display:flex;"><span>; ls
 </span></span><span style="display:flex;"><span>addr
 </span></span><span style="display:flex;"><span>clone
@@ -253,9 +255,9 @@ Testing and looks okay, I see the MAC in ifc</p>
 </span></span><span style="display:flex;"><span>mbps: 100
 </span></span><span style="display:flex;"><span>addr: b827ebd9eaf
 </span></span></code></pre></div><p>Now time to get IP with DHCP. To do so I decided for now just put code into driver:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#75715e">// default initialization:
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// let&#39;s get ip with dhcp
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">confether</span>() {
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#75715e">// default initialization:</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// let&#39;s get ip with dhcp</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">confether</span>() {
 </span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">fd</span>: <span style="color:#a6e22e">ref</span> <span style="color:#a6e22e">Sys</span><span style="color:#f92672">-</span>&gt;<span style="color:#a6e22e">FD</span>;
 </span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">ethername</span> <span style="color:#f92672">:=</span> <span style="color:#e6db74">&#34;ether0&#34;</span>;
 </span></span><span style="display:flex;"><span>
@@ -288,7 +290,7 @@ Testing and looks okay, I see the MAC in ifc</p>
 </span></span><span style="display:flex;"><span>	}
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><p>Rebooting again, and</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-txt" data-lang="txt"><span style="display:flex;"><span>; cd /net/ipifc/0
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-txt" data-lang="txt"><span style="display:flex;"><span>; cd /net/ipifc/0
 </span></span><span style="display:flex;"><span>; ls
 </span></span><span style="display:flex;"><span>ctl
 </span></span><span style="display:flex;"><span>data
@@ -303,14 +305,14 @@ Testing and looks okay, I see the MAC in ifc</p>
 </span></span><span style="display:flex;"><span>;
 </span></span></code></pre></div><p>Great! Try to ping from both sides:</p>
 <p>Linux:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-txt" data-lang="txt"><span style="display:flex;"><span># ping 10.0.55.105
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-txt" data-lang="txt"><span style="display:flex;"><span># ping 10.0.55.105
 </span></span><span style="display:flex;"><span>PING 10.0.55.105 (10.0.55.105) 56(84) bytes of data.
 </span></span><span style="display:flex;"><span>64 bytes from 10.0.55.105: icmp_seq=1 ttl=255 time=0.843 ms
 </span></span><span style="display:flex;"><span>64 bytes from 10.0.55.105: icmp_seq=2 ttl=255 time=0.419 ms
 </span></span><span style="display:flex;"><span>64 bytes from 10.0.55.105: icmp_seq=3 ttl=255 time=0.389 ms
 </span></span><span style="display:flex;"><span>64 bytes from 10.0.55.105: icmp_seq=4 ttl=255 time=0.407 ms
 </span></span></code></pre></div><p>Raspberry:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-txt" data-lang="txt"><span style="display:flex;"><span>; ip/ping -n 4 10.0.55.110
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-txt" data-lang="txt"><span style="display:flex;"><span>; ip/ping -n 4 10.0.55.110
 </span></span><span style="display:flex;"><span>sending 4 64 byte messages 1000 ms apart
 </span></span><span style="display:flex;"><span>0: rtt 20000 µs, avg rtt 20000 µs, ttl = 64
 </span></span><span style="display:flex;"><span>1: rtt 20000 µs, avg rtt 20000 µs, ttl = 64

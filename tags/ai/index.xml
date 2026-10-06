@@ -1,47 +1,52 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>AI on LynxLine</title>
-    <link>https://lynxline.com/tags/ai/</link>
-    <description>Recent content in AI on LynxLine</description>
-    <generator>Hugo</generator>
-    <language>en-us</language>
-    <lastBuildDate>Mon, 05 Oct 2026 09:00:00 +0200</lastBuildDate>
-    <atom:link href="https://lynxline.com/tags/ai/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Pass References, Not Rows: Data Artifacts for Agent Computations over MCP</title>
-      <link>https://lynxline.com/posts/agent-data-artifacts-mcp/</link>
-      <pubDate>Mon, 05 Oct 2026 09:00:00 +0200</pubDate>
-      <guid>https://lynxline.com/posts/agent-data-artifacts-mcp/</guid>
-      <description>In the previous article we gave an AI agent a safe place to run Python. That answered where agent-written code executes. This follow-up answers a question that turns out to matter just as much: what data does the model actually need to see?&#xA;Usually the answer is much less than we give it.&#xA;The naive pattern The obvious way to wire an agent to a business system goes like this:</description>
-    </item>
-    <item>
-      <title>From Question to Table Name: Trying a Small Decision Model Where Everyone Reaches for an LLM</title>
-      <link>https://lynxline.com/posts/laya-decision-model/</link>
-      <pubDate>Mon, 28 Sep 2026 09:00:00 +0200</pubDate>
-      <guid>https://lynxline.com/posts/laya-decision-model/</guid>
-      <description>We needed to map a free-form user question to one of about 1,000 database table names, fast and on our own hardware. We tried Laya, the open-source &amp;ldquo;System-1 decision model,&amp;rdquo; end to end: zero-shot, with hybrid retrieval, and finally fine-tuned on synthetic data. Here is what worked, what quietly failed, and what we would do differently.&#xA;The problem Our data platform exposes roughly 1,000 logical tables. Users ask questions like &amp;ldquo;what were the total daily sales per store in January, day by day?</description>
-    </item>
-    <item>
-      <title>Giving Your AI Agent a Safe Python Playground: Sandboxed Code Execution over MCP</title>
-      <link>https://lynxline.com/posts/sandboxed-python-mcp/</link>
-      <pubDate>Fri, 11 Sep 2026 09:00:00 +0200</pubDate>
-      <guid>https://lynxline.com/posts/sandboxed-python-mcp/</guid>
-      <description>LLM agents are remarkably good at writing code and remarkably unlucky at running it. The moment you let a model execute arbitrary Python on the same machine that holds your SSH keys, your .env files, and your production kubeconfig, you have built a very polite remote-code-execution service. Yet code execution is one of the highest-leverage tools you can give an agent: data wrangling, quick numeric checks, parsing odd file formats, validating its own hypotheses — all of it works dramatically better when the model can actually run what it writes.</description>
-    </item>
-    <item>
-      <title>llm9p: LLMs Over the 9P Protocol</title>
-      <link>https://lynxline.com/posts/llm9p/</link>
-      <pubDate>Thu, 03 Sep 2026 09:00:00 +0200</pubDate>
-      <guid>https://lynxline.com/posts/llm9p/</guid>
-      <description>Years after this blog spent a whole lab series porting Inferno OS to a Raspberry Pi, someone just applied the same &amp;ldquo;everything is a file&amp;rdquo; philosophy to language models. llm9p exposes an LLM as a 9P filesystem: write a prompt to ask, read the response back. Model, temperature, and system prompt are just files too, and conversation state persists until you reset it.&#xA;What makes it genuinely Plan 9-flavored: it mounts through plan9port&amp;rsquo;s 9pfuse, Linux&amp;rsquo;s native 9P kernel module, or — best of all — Infernode, a hosted Inferno OS.</description>
-    </item>
-    <item>
-      <title>The i-have-adhd Skill for Claude Code</title>
-      <link>https://lynxline.com/posts/i-have-adhd-claude-skill/</link>
-      <pubDate>Wed, 02 Sep 2026 12:00:00 +0200</pubDate>
-      <guid>https://lynxline.com/posts/i-have-adhd-claude-skill/</guid>
-      <description>Every AI assistant has the same tic: three paragraphs of throat-clearing before it tells you the thing you actually asked. &amp;ldquo;Let me look into that&amp;hellip; I should also mention&amp;hellip; here&amp;rsquo;s a summary of what I found&amp;hellip;&amp;rdquo; By the time the answer shows up, you&amp;rsquo;ve lost the thread.&#xA;ayghri/i-have-adhd is a Claude Code skill that just turns that behavior off. Once it&amp;rsquo;s active it rewrites how the model talks:&#xA;Answer or next action comes first, always Multi-step work gets numbered, one bounded action per step No preamble, no recap, no closing summary Progress carries across turns instead of resetting each time Time estimates are concrete, not &amp;ldquo;soon&amp;rdquo; or &amp;ldquo;shortly&amp;rdquo; It was built for ADHD accessibility, but it&amp;rsquo;s picked up thousands of installs from people who just want tools that don&amp;rsquo;t bury the lede.</description>
-    </item>
-  </channel>
+	<channel>
+		<title>AI on LynxLine</title>
+		<link>https://lynxline.com/tags/ai/</link>
+		<description>Recent content in AI on LynxLine</description>
+		<generator>Hugo</generator>
+		<language>en-us</language>
+		
+		
+		
+		
+			<lastBuildDate>Mon, 05 Oct 2026 09:00:00 +0200</lastBuildDate>
+		
+			<atom:link href="https://lynxline.com/tags/ai/index.xml" rel="self" type="application/rss+xml" />
+			<item>
+				<title>Pass References, Not Rows: Data Artifacts for Agent Computations over MCP</title>
+				<link>https://lynxline.com/posts/agent-data-artifacts-mcp/</link>
+				<pubDate>Mon, 05 Oct 2026 09:00:00 +0200</pubDate>
+				<guid>https://lynxline.com/posts/agent-data-artifacts-mcp/</guid>
+				<description>&lt;p&gt;In the &lt;a href=&#34;https://lynxline.com/posts/sandboxed-python-mcp/&#34;&gt;previous article&lt;/a&gt; we gave an AI agent a safe place to run Python. That answered &lt;em&gt;where&lt;/em&gt; agent-written code executes. This follow-up answers a question that turns out to matter just as much: &lt;strong&gt;what data does the model actually need to see?&lt;/strong&gt;&lt;/p&gt;&#xA;&lt;p&gt;Usually the answer is much less than we give it.&lt;/p&gt;&#xA;&lt;h2 id=&#34;the-naive-pattern&#34;&gt;The naive pattern&lt;/h2&gt;&#xA;&lt;p&gt;The obvious way to wire an agent to a business system goes like this:&lt;/p&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;A tool queries the system and returns the result set as JSON.&lt;/li&gt;&#xA;&lt;li&gt;The rows land in the model&amp;rsquo;s context.&lt;/li&gt;&#xA;&lt;li&gt;The model reads them and answers: &amp;ldquo;the top five are&amp;hellip;&amp;rdquo;, &amp;ldquo;the average is&amp;hellip;&amp;rdquo;.&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;p&gt;This works in demos with twenty rows. With real data it breaks in three ways:&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title>From Question to Table Name: Trying a Small Decision Model Where Everyone Reaches for an LLM</title>
+				<link>https://lynxline.com/posts/laya-decision-model/</link>
+				<pubDate>Mon, 28 Sep 2026 09:00:00 +0200</pubDate>
+				<guid>https://lynxline.com/posts/laya-decision-model/</guid>
+				<description>&lt;p&gt;We needed to map a free-form user question to one of about 1,000 database table names, fast and on our own hardware. We tried &lt;a href=&#34;https://github.com/NandhaKishorM/laya&#34;&gt;Laya&lt;/a&gt;, the open-source &amp;ldquo;System-1 decision model,&amp;rdquo; end to end: zero-shot, with hybrid retrieval, and finally fine-tuned on synthetic data. Here is what worked, what quietly failed, and what we would do differently.&lt;/p&gt;&#xA;&lt;h2 id=&#34;the-problem&#34;&gt;The problem&lt;/h2&gt;&#xA;&lt;p&gt;Our data platform exposes roughly 1,000 logical tables. Users ask questions like &lt;em&gt;&amp;ldquo;what were the total daily sales per store in January, day by day?&amp;rdquo;&lt;/em&gt; and somewhere upstream of any SQL generation, something has to decide that this question is about &lt;code&gt;XQR7_DTV_AGG&lt;/code&gt; and not about the forty other tables that also mention stores, days, or totals. A large LLM does this well, but we wanted the lookup to be a cheap, local primitive: called on every user turn, adding tens of milliseconds, not seconds, and never shipping schema metadata to an external API.&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title>Giving Your AI Agent a Safe Python Playground: Sandboxed Code Execution over MCP</title>
+				<link>https://lynxline.com/posts/sandboxed-python-mcp/</link>
+				<pubDate>Fri, 11 Sep 2026 09:00:00 +0200</pubDate>
+				<guid>https://lynxline.com/posts/sandboxed-python-mcp/</guid>
+				<description>&lt;p&gt;LLM agents are remarkably good at &lt;em&gt;writing&lt;/em&gt; code and remarkably unlucky at &lt;em&gt;running&lt;/em&gt; it. The moment you let a model execute arbitrary Python on the same machine that holds your SSH keys, your &lt;code&gt;.env&lt;/code&gt; files, and your production kubeconfig, you have built a very polite remote-code-execution service. Yet code execution is one of the highest-leverage tools you can give an agent: data wrangling, quick numeric checks, parsing odd file formats, validating its own hypotheses — all of it works dramatically better when the model can actually run what it writes.&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title>llm9p: LLMs Over the 9P Protocol</title>
+				<link>https://lynxline.com/posts/llm9p/</link>
+				<pubDate>Thu, 03 Sep 2026 09:00:00 +0200</pubDate>
+				<guid>https://lynxline.com/posts/llm9p/</guid>
+				<description>&lt;p&gt;Years after this blog spent a whole lab series porting Inferno OS to a Raspberry Pi, someone just applied the same &amp;ldquo;everything is a file&amp;rdquo; philosophy to language models. &lt;a href=&#34;https://github.com/NERVsystems/llm9p&#34;&gt;llm9p&lt;/a&gt; exposes an LLM as a 9P filesystem: write a prompt to &lt;code&gt;ask&lt;/code&gt;, read the response back. Model, temperature, and system prompt are just files too, and conversation state persists until you reset it.&lt;/p&gt;&#xA;&lt;p&gt;What makes it genuinely Plan 9-flavored: it mounts through plan9port&amp;rsquo;s 9pfuse, Linux&amp;rsquo;s native 9P kernel module, or — best of all — Infernode, a hosted Inferno OS. No SDK, no API client, just files and pipes.&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title>The i-have-adhd Skill for Claude Code</title>
+				<link>https://lynxline.com/posts/i-have-adhd-claude-skill/</link>
+				<pubDate>Wed, 02 Sep 2026 12:00:00 +0200</pubDate>
+				<guid>https://lynxline.com/posts/i-have-adhd-claude-skill/</guid>
+				<description>&lt;p&gt;Every AI assistant has the same tic: three paragraphs of throat-clearing before it tells you the thing you actually asked. &amp;ldquo;Let me look into that&amp;hellip; I should also mention&amp;hellip; here&amp;rsquo;s a summary of what I found&amp;hellip;&amp;rdquo; By the time the answer shows up, you&amp;rsquo;ve lost the thread.&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://github.com/ayghri/i-have-adhd&#34;&gt;ayghri/i-have-adhd&lt;/a&gt; is a Claude Code skill that just turns that behavior off. Once it&amp;rsquo;s active it rewrites how the model talks:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Answer or next action comes first, always&lt;/li&gt;&#xA;&lt;li&gt;Multi-step work gets numbered, one bounded action per step&lt;/li&gt;&#xA;&lt;li&gt;No preamble, no recap, no closing summary&lt;/li&gt;&#xA;&lt;li&gt;Progress carries across turns instead of resetting each time&lt;/li&gt;&#xA;&lt;li&gt;Time estimates are concrete, not &amp;ldquo;soon&amp;rdquo; or &amp;ldquo;shortly&amp;rdquo;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;It was built for ADHD accessibility, but it&amp;rsquo;s picked up thousands of installs from people who just want tools that don&amp;rsquo;t bury the lede. Turns out most of us have the same threshold for wading through filler.&lt;/p&gt;</description>
+			</item>
+	</channel>
 </rss>

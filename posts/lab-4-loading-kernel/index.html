@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en"><head>
+<html lang="en-us"><head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -48,7 +48,7 @@
     <link id="dark-theme" rel="stylesheet" href="/css/dark.min.css">
 
     
-    <script src="/js/bundle.min.224c8e70fed292d18d7d9ae1b36797c99144e0be1117e2ea2c428379c8496551.js" integrity="sha256-IkyOcP7SktGNfZrhs2eXyZFE4L4RF&#43;LqLEKDechJZVE="></script>
+    <script src="/js/bundle.min.a5fb480a30cceaa94e6cadb30386527cedbb9681cd04bebabc4b95b706665aa2.js" integrity="sha256-pftICjDM6qlObK2zA4ZSfO27loHNBL66vEuVtwZmWqI="></script>
 
     
     
@@ -164,6 +164,8 @@
             <li class="post-tag"><a href="https://lynxline.com/tags/research">Research</a></li>
         
         </ul>
+
+        
     </div>
 
     <div class="post-content">
@@ -171,36 +173,36 @@
             <p>Time to study the way how we place our kernel into the memory on R-Pi.
 U-Boot have usually convention to place loaded binaries at 0x8000 (32KB) and just pass control there. So, let’s compile trivial program and study generated binary to understand the way how we can operate with it.</p>
 <p>In Lab 1 we found a way of making ARM executables. Check what actually the file is:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ file test
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ file test
 </span></span><span style="display:flex;"><span>test: Plan <span style="color:#ae81ff">9</span> executable, ARM 7-something
 </span></span></code></pre></div><p>By checking Plan 9 a.out format document we will find that it has 32 bytes header and following TEXT section. To have U-Boot passing control just to TEXT section we may load kernel into address 0x8000-0x20 = 0x7fe0, and then by “go 8000” we jump just to first byte/command in TEXT section. Also we need all addresses of routines to have the base of 0x8000. Manual <a href="http://man.cat-v.org/plan_9/1/2l">http://man.cat-v.org/plan_9/1/2l</a> gives us a way to do this by “-T” command line option.</p>
 <p>To have specific code at 0x8000 we will created some ASM file with a loader which just call main routine. (we may take example from ARM native ports, see l.s file). Plus we use “-l” option to linker (see link to manual above) load.s:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-asm" data-lang="asm"><span style="display:flex;"><span><span style="color:#a6e22e">TEXT</span> <span style="color:#66d9ef">_start</span>(<span style="color:#66d9ef">SB</span>), <span style="color:#ae81ff">1</span>, <span style="color:#66d9ef">$-4</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-asm" data-lang="asm"><span style="display:flex;"><span><span style="color:#a6e22e">TEXT</span> <span style="color:#66d9ef">_start</span>(<span style="color:#66d9ef">SB</span>), <span style="color:#ae81ff">1</span>, <span style="color:#66d9ef">$-4</span>
 </span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">MOVW</span>    <span style="color:#66d9ef">$setR12</span>(<span style="color:#66d9ef">SB</span>), <span style="color:#66d9ef">R12</span>	<span style="color:#75715e">/* static base (SB) */</span>
 </span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">BL</span>      ,<span style="color:#66d9ef">main</span>(<span style="color:#66d9ef">SB</span>)
 </span></span></code></pre></div><p>We need to be sure about DATA section to be addressed in right way. Let’s compile this small exe and study in hex editor and disassembler.</p>
 <p>test.c:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>() {
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>() {
 </span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span> s <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Hello world!</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>;
 </span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">return</span> <span style="color:#ae81ff">123</span>; 
 </span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ 5a load.s
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ 5a load.s
 </span></span><span style="display:flex;"><span>$ 5c test.c
 </span></span><span style="display:flex;"><span>$ 5l -l -o irpi -T0x8000 load.5 test.5
 </span></span></code></pre></div><p>We got just 423 bytes executable “irpi”:</p>
-<p><img src="lab-4-1.png" alt="fig1"></p>
+<p><img src="/posts/lab-4-loading-kernel/lab-4-1.png" alt="fig1"></p>
 <p>Let’s copy bytes 0x20-0x48 (skip 0x20 plan9 header and until the “Hello world!”) to online disassembler to see what’s there:</p>
-<p><img src="lab-4-2.png" alt="fig2"></p>
+<p><img src="/posts/lab-4-loading-kernel/lab-4-2.png" alt="fig2"></p>
 <p>We see that in line “ldr r1, [pc, #12] ; 0x00000020” it would initialize R1 with address located at 0x20 (disassembler shows TEXT started at 0x0, so in irpi file it is 0x20+0x20). Oops, this memory cell have reference to “0x9000”, which is not we expected, our “Hello world!” will be located at 0x8000+0x28.</p>
 <p>So, let’s again check linker options and find “-Rr The text segment is rounded to a multiple of r”. Looks like by default it is aligned by 0x1000. Because it is ARM, then everything is aligned by 4 bytes, we just pass “-R4”:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ 5l -l -o irpi -T0x8000 -R4 load.5 test.5
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ 5l -l -o irpi -T0x8000 -R4 load.5 test.5
 </span></span></code></pre></div><p>Now check again with disassembler, and yes:</p>
-<p><img src="lab-4-3.png" alt="fig3"></p>
+<p><img src="/posts/lab-4-loading-kernel/lab-4-3.png" alt="fig3"></p>
 <p>We see 0x8028 address.</p>
 <p>So now we are ready to load our kernel/binary with U-Boot at 0x7fe0, pass control to 0x8000 and expect that all addresses/references will work as expected.</p>
 <p>FILES:</p>
 <ul>
-<li><a href="2l.pdf">2l.pdf</a></li>
+<li><a href="/posts/lab-4-loading-kernel/2l.pdf">2l.pdf</a></li>
 <li><a href="a.out.pdf">a.out.pdf</a></li>
 </ul>
 

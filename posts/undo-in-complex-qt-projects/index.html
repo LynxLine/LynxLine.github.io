@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en"><head>
+<html lang="en-us"><head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -48,7 +48,7 @@
     <link id="dark-theme" rel="stylesheet" href="/css/dark.min.css">
 
     
-    <script src="/js/bundle.min.224c8e70fed292d18d7d9ae1b36797c99144e0be1117e2ea2c428379c8496551.js" integrity="sha256-IkyOcP7SktGNfZrhs2eXyZFE4L4RF&#43;LqLEKDechJZVE="></script>
+    <script src="/js/bundle.min.a5fb480a30cceaa94e6cadb30386527cedbb9681cd04bebabc4b95b706665aa2.js" integrity="sha256-pftICjDM6qlObK2zA4ZSfO27loHNBL66vEuVtwZmWqI="></script>
 
     
     
@@ -162,12 +162,141 @@
             <li class="post-tag"><a href="https://lynxline.com/tags/undo">Undo</a></li>
         
         </ul>
+
+        
     </div>
 
     <div class="post-content">
         <p>
             <p><strong>UPDATE</strong>: You may consider studying more advanced techniques described in second “undo” article: <a href="http://lynxline.com/designing-undo-for-large-scale-projects-going-deep/">Designing Undo for large-scale projects. Going deep.</a></p>
-e>
+<pre tabindex="0"><code>
+When you implement user interfaces, you should always be ready that your customers will ask very simple question: “Hey, where is undo in my application?”. Sometimes it makes developers totally puzzled :) because they haven’t even considered it. Then developers can find that they have to apply to project so much code changes and in so much places, that definitely will reflect stability of project, bring new bugs etc.
+
+So, what can be done there? Well, good to have it planned from beginning, but usually it does not happen, especially if several people worked on the project, some of them left project, some of them working only on command-line interface, etc.
+
+It is possible that you need to implement undo in project which grown up to 100K lines of code and of course the primary question is how to do it smooth and transparent without affecting much code. I had similar experience and would like to share some tricks about it.
+
+
+
+
+Let’s consider some project which compound of multiple components and one of them is model which used by several views and even used through filter/sorting proxy models. Usually developers quickly goes to cover everything than users can do in views, so they subclass views and start working hard on covering all actions there. Well, even if such idea works, this is not good, considering complexity of your project, and especially if there are multiple components and they are using each other, so they should now about undo actions of every other component in project. Are you using different views of same models? – well, you have to implement same undo few times in different view, oh wait, there is also filter/sorting model in middle – you have to code more, etc
+
+You can get feeling that with implementing undo you started some avalanche in code of new dependencies, new apis, new methods, hundred of undo commands etc… Even more – you have to teach other developers how to apply undo or document it all very well.
+
+Let’s try another approach – we can try to cover one single component without affecting API, and make it totally transparent for other classes in project.
+
+Imaging that we have some model:
+
+```cpp
+class Model : public QAbstractItemModel { Q_OBJECT
+public:
+    Model(QObject * parent);
+    virtual ~Model()
+
+    // model reimpl:
+    int rowCount(const QModelIndex &amp;parent = QModelIndex()) const;
+    int columnCount(const QModelIndex &amp;parent = QModelIndex()) const;
+    QVariant data(const QModelIndex &amp;index, 
+                  int role = Qt::DisplayRole) const;
+    virtual bool setData(const QModelIndex&amp; index, 
+                         const QVariant &amp; value, 
+                         int role = Qt::EditRole);
+
+    // you api
+    virtual void add(Item *);
+    virtual void remove(Item *);
+};
+```
+
+There are 3 points where your model can be changed: add(), remove() and setData(). It is ideal to apply undo only in these 3 points and make it automatic. What means by “automatic”? – our code should know when apply undo and when not.
+
+Remember that our project may also be used in command line mode. It makes sense not to mix model logic code with undo code, but we are not going to implement it in view, so let’s subclass our model and implement all Gui stuff and Undo there:
+
+```cpp
+class ModelGui : public Model { Q_OBJECT
+public:
+    ModelGui(QObject * parent);
+    virtual ~ModelGui()
+
+    QUndoStack * undoStack() const;
+    void setUndoStack(QUndoStack *);
+
+    // reimplemented for undo:
+    virtual bool setData(const QModelIndex&amp; index, 
+                         const QVariant &amp; value, 
+                         int role = Qt::EditRole);
+
+    virtual void add(Item *);
+    virtual void remove(Item *);
+
+private:
+    class AddCmd;
+    class RemoveCmd;
+    class ChangeCmd;
+};
+```
+
+We subclassed Model to reimplement add(), remove(), setData(), also we declared undo commands in “private” section (but we will define them in cpp to make them hidden). Now we need to implement add() where we cover it by undo command. Same time undo AddCmd should access “logic” add() method of superclass – we don’t need a recursion, so some kind of flag is needed, also it makes sense to make the flag kind of “global” to have control of covering actions by undo and in case of macro commands etc. Good trick to use “property” of qobject, also good to use as the qobject – the undo stack itself.
+
+Let’s show implementation to make it clear:
+
+```cpp
+...
+
+class ModelGui::AddCmd : public QUndoCommand {
+public:
+    AddCmd(ModelGui * m, Item * newItem): model(m), item(newItem) {}
+
+    void redo() {
+        bool cover = model-&gt;undoStack()-&gt;property(&#39;cover&#39;).toBool();
+        model-&gt;undoStack()-&gt;setProperty(&#39;cover&#39;, false);
+        model-&gt;Model::add(item);
+        model-&gt;undoStack()-&gt;setProperty(&#39;cover&#39;, cover);
+    }
+
+    void undo() {
+        bool cover = model-&gt;undoStack()-&gt;property(&#39;cover&#39;).toBool();
+        model-&gt;undoStack()-&gt;setProperty(&#39;cover&#39;, false);
+        model-&gt;Model::remove(item);
+        model-&gt;undoStack()-&gt;setProperty(&#39;cover&#39;, cover);
+    }
+
+private:
+    ModelGui * model;
+    Item * item;
+};
+
+void ModelGui::add(Item * newItem) {
+    bool cover = undoStack()-&gt;property(&#39;cover&#39;).toBool();
+    if (cover) {
+        undoStack()-&gt;beginMacro(&#34;Add Item&#34;);
+        undoStack()-&gt;push(new AddCmd(this, newItem));
+        undoStack()-&gt;endMacro();
+    }
+    else Model::add(newItem);
+}
+
+...
+```
+
+What we have accomplished here?
+
+- There is single place where undo applied
+
+- Implementation of undo commands are hidden
+
+- Other classes or components don’t even need to know about undo in the model
+
+- You can use multiple views and sorting/filtering proxy models without worry about undo
+
+- If there is also command-line use of project, you just exclude ModelGui.h/cpp
+
+- If other component/module cast for add(), it is covered by undo automatically
+
+- If other undo command cast for add() from inside, it is not covered by undo – no recursion
+
+- The project can be as complex as possible, you only need to worry about using “cover”
+</code></pre>
         </p>
         
     </div>

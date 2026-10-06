@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en"><head>
+<html lang="en-us"><head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -48,7 +48,7 @@
     <link id="dark-theme" rel="stylesheet" href="/css/dark.min.css">
 
     
-    <script src="/js/bundle.min.224c8e70fed292d18d7d9ae1b36797c99144e0be1117e2ea2c428379c8496551.js" integrity="sha256-IkyOcP7SktGNfZrhs2eXyZFE4L4RF&#43;LqLEKDechJZVE="></script>
+    <script src="/js/bundle.min.a5fb480a30cceaa94e6cadb30386527cedbb9681cd04bebabc4b95b706665aa2.js" integrity="sha256-pftICjDM6qlObK2zA4ZSfO27loHNBL66vEuVtwZmWqI="></script>
 
     
     
@@ -164,15 +164,17 @@
             <li class="post-tag"><a href="https://lynxline.com/tags/research">Research</a></li>
         
         </ul>
+
+        
     </div>
 
     <div class="post-content">
         <p>
             <p>In previous lab we approached very close to get working Usb devices. In this lab we will try to get Usb keyboard working:</p>
-<p><img src="lab-22-1.jpg" alt="fig1"></p>
+<p><img src="/posts/lab-22-usb-keyboard/lab-22-1.jpg" alt="fig1"></p>
 <p>First some preparations: as we need automatic drivers loading, we overwrite existing Usb codes in Inferno repository with our files affecting <strong>appl/cmd/usb</strong> and <strong>appl/lib/usb</strong>. Our Usbd which we have written as standalone limbo file, we will split into header <strong>usb.m</strong>, library with API, <strong>usb.b</strong> and functionality related to hubs and ports logic and driver loading we leave in <strong>usbd.b</strong>.</p>
 <p>It is really cool with Limbo that we can dynamically load usb driver and initialize it directly with objects of usb Dev and then spawn the driver thread:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1</span><span><span style="color:#a6e22e">pp</span>.<span style="color:#a6e22e">dev</span>.<span style="color:#a6e22e">mod</span> = <span style="color:#a6e22e">load</span> <span style="color:#a6e22e">UsbDriver</span> <span style="color:#a6e22e">path</span>;
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-go" data-lang="go"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1</span><span><span style="color:#a6e22e">pp</span>.<span style="color:#a6e22e">dev</span>.<span style="color:#a6e22e">mod</span> = <span style="color:#a6e22e">load</span> <span style="color:#a6e22e">UsbDriver</span> <span style="color:#a6e22e">path</span>;
 </span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2</span><span><span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">pp</span>.<span style="color:#a6e22e">dev</span>.<span style="color:#a6e22e">mod</span> <span style="color:#f92672">==</span> <span style="color:#66d9ef">nil</span>)
 </span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3</span><span>	<span style="color:#a6e22e">sys</span><span style="color:#f92672">-</span>&gt;<span style="color:#a6e22e">fprint</span>(<span style="color:#a6e22e">stderr</span>, <span style="color:#e6db74">&#34;usbd: failed to load %s\n&#34;</span>, <span style="color:#a6e22e">path</span>);
 </span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4</span><span><span style="color:#66d9ef">else</span> {
@@ -190,13 +192,13 @@
 </span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16</span><span>		<span style="color:#a6e22e">sys</span><span style="color:#f92672">-</span>&gt;<span style="color:#a6e22e">fprint</span>(<span style="color:#a6e22e">stderr</span>, <span style="color:#e6db74">&#34;%s running\n&#34;</span>, <span style="color:#a6e22e">path</span>);
 </span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17</span><span>}
 </span></span></code></pre></div><p>The <em>UsbDriver</em> we will define as:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span><span style="color:#a6e22e">UsbDriver</span>: <span style="color:#a6e22e">module</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-go" data-lang="go"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span><span style="color:#a6e22e">UsbDriver</span>: <span style="color:#a6e22e">module</span>
 </span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2</span><span>{
 </span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3</span><span>	<span style="color:#a6e22e">init</span>: <span style="color:#a6e22e">fn</span>(<span style="color:#a6e22e">usb</span>: <span style="color:#a6e22e">Usb</span>, <span style="color:#a6e22e">dev</span>: <span style="color:#a6e22e">ref</span> <span style="color:#a6e22e">Usb</span><span style="color:#f92672">-</span>&gt;<span style="color:#a6e22e">Dev</span>): <span style="color:#66d9ef">int</span>;
 </span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4</span><span>	<span style="color:#a6e22e">shutdown</span>: <span style="color:#a6e22e">fn</span>();
 </span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5</span><span>};
 </span></span></code></pre></div><p>Also add a member to <em>Dev</em> adt:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-txt" data-lang="txt"><span style="display:flex;"><span>mod: UsbDriver;
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-txt" data-lang="txt"><span style="display:flex;"><span>mod: UsbDriver;
 </span></span></code></pre></div><p>The code for automatic driver loading is demonstrated above. It is choosing the driver dis file based on database of Usb drivers: <strong>/lib/usbdb</strong>. The code related to the database loading etc we will borrow from old Usb framework.</p>
 <p>To support the keyboard I took some search through internet and amazingly found the project inferno-bls (<a href="https://github.com/Plan9-Archive/inferno-bls">https://github.com/Plan9-Archive/inferno-bls</a>) which is probably done almost same work of porting Plan9 Usbd to Inferno, but early version of about 2010. Because it looks compatible I attempted to use the keyboard driver from that project, but no luck, it goes into deadlock with repeater. Still with disabled repeater it is almost working but hang without reason after few seconds. So, I gave up with the driver and just go to porting Plan9 driver for Usb keybord. C to Limbo porting very straightforward with simplifications of lot of places.</p>
 <p>The difference is that <strong>usbkbd</strong> writes scan codes into <em>“#Ι/kbin”</em>, which is handled in Plan9 by <strong>devkbin,kbd</strong> kernel fileserver which converts scancodes into <em>kbdputc()</em> calls. By checking 9pi it seems to use the <strong>kbd.c</strong> from <strong>omap</strong> which is designed for quote: <em>simulated keyboard input for systems with none (except via uart or usb)</em>. It compiles-in into Inferno perfectly.</p>
@@ -204,10 +206,10 @@
 <p>(except one strange bug that I have to put some empty <em>fprint()</em> to stderr just before writing scancode to devkbin – some sync is needed for channels? I may investigate later, or just rewrite kbin into Limbo code, will see)</p>
 <p>FILES:</p>
 <ul>
-<li><a href="usb.m">usb.m</a></li>
-<li><a href="usb.b">usb.b</a></li>
-<li><a href="usbd.b">usbd.b</a></li>
-<li><a href="usbkbd.b">usbkbd.b</a></li>
+<li><a href="/posts/lab-22-usb-keyboard/usb.m">usb.m</a></li>
+<li><a href="/posts/lab-22-usb-keyboard/usb.b">usb.b</a></li>
+<li><a href="/posts/lab-22-usb-keyboard/usbd.b">usbd.b</a></li>
+<li><a href="/posts/lab-22-usb-keyboard/usbkbd.b">usbkbd.b</a></li>
 </ul>
 
         </p>

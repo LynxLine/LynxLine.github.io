@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="ja"><head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <style>
+        :root {
+            --accent-color: #FF4D4D;
+        }
+    </style>
+
+    
+    
+    
+    
+    
+    
+
+    
+    <title>質問からテーブル名へ：誰もが LLM に頼る場面で、小さな意思決定モデルを試してみた</title>
+    <meta name="description" content="">
+    <meta name="keywords" content='AI, Machine Learning, Python'>
+
+    <meta property="og:url" content="https://lynxline.com/ja/posts/laya-decision-model/">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="質問からテーブル名へ：誰もが LLM に頼る場面で、小さな意思決定モデルを試してみた">
+    <meta property="og:description" content="">
+    <meta property="og:image" content="https://lynxline.com/images/lynx.jpg">
+    <meta property="og:image:secure_url" content="https://lynxline.com/images/lynx.jpg">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="質問からテーブル名へ：誰もが LLM に頼る場面で、小さな意思決定モデルを試してみた">
+    <meta name="twitter:description" content="">
+    <meta property="twitter:domain" content="https://lynxline.com/ja/posts/laya-decision-model/">
+    <meta property="twitter:url" content="https://lynxline.com/ja/posts/laya-decision-model/">
+    <meta name="twitter:image" content="https://lynxline.com/images/lynx.jpg">
+
+    
+    <link rel="canonical" href="https://lynxline.com/ja/posts/laya-decision-model/" />
+
+    
+    <link rel="stylesheet" type="text/css" href="/css/normalize.min.css" media="print">
+
+    
+    <link rel="stylesheet" type="text/css" href="/css/main.min.css">
+
+    
+    <link id="dark-theme" rel="stylesheet" href="/css/dark.min.css">
+
+    
+    <script src="/js/bundle.min.a5fb480a30cceaa94e6cadb30386527cedbb9681cd04bebabc4b95b706665aa2.js" integrity="sha256-pftICjDM6qlObK2zA4ZSfO27loHNBL66vEuVtwZmWqI="></script>
+
+    
+    
+</head>
+<body>
+        <script type="text/javascript">
+            
+            setThemeByUserPref();
+        </script><header class="header">
+    <nav class="header-nav">
+
+        
+        <div class="avatar">
+            <a href="https://lynxline.com/">
+                <img src='/images/lynx.jpg' alt="avatar" />
+            </a>
+        </div>
+        
+
+        <div class="nav-title">
+            <a class="nav-brand" href="https://lynxline.com/">LynxLine</a>
+        </div>
+
+        <div class="nav-links">
+            
+            <div class="nav-link">
+                <a href="https://lynxline.com/services/"><span data-feather='zap'></span> サービス </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://lynxline.com/ja/posts/"><span data-feather='layers'></span> 記事 </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://lynxline.com/ja/tags/"><span data-feather='tag'></span> タグ </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://lynxline.com/contact/"><span data-feather='mail'></span> お問い合わせ </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://github.com"><span data-feather='github'></span>  </a>
+            </div>
+            
+
+            <span class="nav-icons-divider"></span>
+            <div class="nav-link dark-theme-toggle">
+                <span id="dark-theme-toggle-screen-reader-target" class="sr-only"></span>
+                <a>
+                    <span id="theme-toggle-icon" data-feather="moon"></span>
+                </a>
+            </div>
+
+            <div class="nav-link" id="hamburger-menu-toggle">
+                <span id="hamburger-menu-toggle-screen-reader-target" class="sr-only">menu</span>
+                <a>
+                    <span data-feather="menu"></span>
+                </a>
+            </div>
+
+            
+            <ul class="nav-hamburger-list visibility-hidden">
+                
+                <li class="nav-item">
+                    <a href="https://lynxline.com/services/"><span data-feather='zap'></span> サービス </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://lynxline.com/ja/posts/"><span data-feather='layers'></span> 記事 </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://lynxline.com/ja/tags/"><span data-feather='tag'></span> タグ </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://lynxline.com/contact/"><span data-feather='mail'></span> お問い合わせ </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://github.com"><span data-feather='github'></span>  </a>
+                </li>
+                
+                <li class="nav-item dark-theme-toggle">
+                    <span id="dark-theme-toggle-screen-reader-target" class="sr-only">theme</span>
+                    <a>
+                        <span id="theme-toggle-icon" data-feather="moon"></span>
+                    </a>
+                </li>
+            </ul>
+
+        </div>
+    </nav>
+</header>
+<main id="content">
+    <div class="post container">
+    <div class="post-header-section">
+        <h1>質問からテーブル名へ：誰もが LLM に頼る場面で、小さな意思決定モデルを試してみた</h1>
+        <small role="doc-subtitle"></small>
+        <p class="post-date">2026年9月28日
+        
+        </p>
+
+        <ul class="post-tags">
+        
+            <li class="post-tag"><a href="https://lynxline.com/ja/tags/ai">AI</a></li>
+        
+            <li class="post-tag"><a href="https://lynxline.com/ja/tags/machine-learning">Machine Learning</a></li>
+        
+            <li class="post-tag"><a href="https://lynxline.com/ja/tags/python">Python</a></li>
+        
+        </ul>
+
+        
+        <p class="post-translations">この記事を読む：
+        
+            <a href="/posts/laya-decision-model/" hreflang="en">English</a>
+        
+        </p>
+        
+    </div>
+
+    <div class="post-content">
+        <p>
+            <p>自由形式のユーザーの質問を、約 1,000 個あるデータベースのテーブル名のどれか 1 つに対応付ける必要がありました。しかも高速に、自前のハードウェアで。そこで、オープンソースの「System-1 意思決定モデル」である <a href="https://github.com/NandhaKishorM/laya">Laya</a> を一通り試しました。ゼロショット、ハイブリッド検索との組み合わせ、そして最後に合成データでのファインチューニング。何がうまくいき、何が気づかないうちに失敗していたのか、そして次にやるならどうするかをまとめます。</p>
+<h2 id="課題">課題</h2>
+<p>私たちのデータ基盤には、論理テーブルがおよそ 1,000 個あります。ユーザーは <em>「1 月の店舗ごとの日次売上合計を、日別に出して」</em> のような質問をします。SQL を生成するより手前のどこかで、この質問が <code>XQR7_DTV_AGG</code> に関するものであって、同じく店舗や日付や合計に触れている他の 40 個のテーブルではない、と判断する必要があります。大きな LLM ならこれをうまくこなしますが、私たちはこの判定を安価なローカルの部品にしたいと考えていました。ユーザーの発話ごとに呼ばれ、かかる時間は数秒ではなく数十ミリ秒、そしてスキーマのメタデータを外部 API に送らないこと。</p>
+<p>大規模で閉じたラベル集合に対する分類。この捉え方は、まさに Laya がうたっているものです。Laya は ModernBERT 系のエンコーダーをベースにした、パラメーター数 4 億 2,100 万の非自己回帰型意思決定モデルで、Apache 2.0 で公開されています。<em>状態</em>（ユーザーのテキスト）と、選択肢付きの型付きの<em>問い</em>を渡すと、1 回のフォワードパスで、キャリブレーション済みの確率とともに選択を返します。控えめな GPU で約 33 ms です。ラベル集合はリクエスト時に定義するので、テーブルが増えても再学習は不要です。書類の上では、完璧に合っていました。</p>
+<h2 id="最初の壁長文コンテキストのモデルではない">最初の壁：長文コンテキストのモデルではない</h2>
+<p>「全テーブルの情報をまるごとコンテキストとして渡す」という素朴な案は、すぐに破綻します。テーブルごとのドキュメント（名前、人間向けラベル、説明、カラム一覧、典型的な言い回し、紛らわしいテーブルとの区別の注記）は、圧縮しても約 8.5 MB のテキスト、つまり 200 万トークン近くになります。一方、Laya の入力上限は 512 トークン（チェックポイントによっては 1,024）で、そのうち約 200 トークンは選択肢の表示に予約されています。さらにドキュメント自体に、1 問あたりの選択肢が 20 個を超えると品質が落ちると書かれています。</p>
+<p>そのため、構成は 2 段階にせざるを得ません。</p>
+<ol>
+<li><strong>検索</strong>：約 1,000 個のテーブルを、クエリに対する上位 15 候補に絞り込む。</li>
+<li><strong>判定</strong>：各候補の約 140 文字の説明をもとに、Laya が 1 つを選ぶ。</li>
+</ol>
+<p>これはよくある「検索してから再ランキング」のパターンです。面白いのは、それぞれの段階が実際に何をもたらしたかです。</p>
+<h2 id="そもそも測れるようにする">そもそも測れるようにする</h2>
+<p>評価セットは、既存のサポート会話シナリオ集から作りました。期待される回答文の中に、実際に使われたテーブル名が書かれている 115 ターンです。どのモデルを選ぶかよりも、次の 2 点の方が効いてきました。</p>
+<ul>
+<li><strong>正解ラベルにはノイズがある。</strong> 「期待される」テーブルとは、参照用のエージェントがたまたま使ったものです。外れとされた予測が、実は妥当な別解であることもあります。以下の数値は悲観的に見積もったものです。</li>
+<li><strong>フォローアップの質問は、履歴なしでは答えられない。</strong> 「その月の件数を見せて」だけでは何も検索できません。直前 2 回分のユーザー発話をクエリに連結する（<code>q_ctx</code>）だけで、この調査のあらゆる指標がおよそ 2 倍になりました。ユーザーがフォローアップの質問をするなら、会話のコンテキストは最適化ではありません。最低条件です。</li>
+</ul>
+<h2 id="第-1-段階検索が上限を決める">第 1 段階：検索が上限を決める</h2>
+<p>判定の段階がどれほど優秀でも、検索で出てこなかったテーブルは選べません。つまり hit@15 が、エンドツーエンドの精度の絶対的な上限になります。同じ圧縮済み TSV（1 テーブル 1 行、フィールドごとに重み付け）に対して、3 種類の検索手法を比べました。</p>
+<table>
+	<thead>
+			<tr>
+					<th>検索手法</th>
+					<th>hit@15（クエリのみ）</th>
+					<th>hit@15（コンテキスト付き）</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>BM25、フィールド重み付け</td>
+					<td>0.24</td>
+					<td>0.45</td>
+			</tr>
+			<tr>
+					<td>BM25 + 手書きの略語エイリアス</td>
+					<td>0.24</td>
+					<td>0.46</td>
+			</tr>
+			<tr>
+					<td>ハイブリッド：BM25 + 小型埋め込みモデル、Reciprocal Rank Fusion</td>
+					<td>0.39</td>
+					<td><strong>0.65</strong></td>
+			</tr>
+	</tbody>
+</table>
+<p><em>評価ターンのうち、上位 15 候補に正解テーブルが含まれた割合。埋め込みモデルは 3,300 万パラメーターの文エンコーダーで、1 テーブルにつき 1 ベクトル。</em></p>
+<p>ここからわかったことは 2 つです。</p>
+<ul>
+<li><strong>最大の失敗要因は語彙のギャップ。</strong> ユーザーは「店舗ごとの日次売上」と言いますが、テーブル名は <code>XQR7_DTV_AGG</code> で、説明文には「集計済みトランザクション件数」とあります。略語で組み立てられた命名規則を、字句検索では埋められません。小さな密ベクトルの埋め込みモデルが、1,000×384 の行列というコストでそのギャップの大半を埋めてくれました。</li>
+<li><strong>手作りのエイリアス一覧は罠。</strong> 約 30 個の展開（「store」の略語 → <em>store</em> など）を書いて、上がったのは 1 ポイントでした。命名規則のロングテールは、人の根気よりも長いのです。埋め込みならそれをタダで学習してくれます。</li>
+</ul>
+<h2 id="第-2-段階意思決定モデルが実際に足しているもの">第 2 段階：意思決定モデルが実際に足しているもの</h2>
+<p>ハイブリッド検索とコンテキストを使うと、正解テーブルが候補リストに入るのは 65% です。そこからゼロショットの Laya が正解を選べたのは、全ターンの 20% でした。</p>
+<table>
+	<thead>
+			<tr>
+					<th>構成（コンテキスト付き）</th>
+					<th>Top-1 精度</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>ハイブリッド検索のみ、1 位を採用</td>
+					<td>0.17</td>
+			</tr>
+			<tr>
+					<td>密ベクトル埋め込みのみ、1 位を採用</td>
+					<td>0.22</td>
+			</tr>
+			<tr>
+					<td>ハイブリッド上位 15 → Laya が選択</td>
+					<td>0.20</td>
+			</tr>
+			<tr>
+					<td>ハイブリッド上位 50 → Laya のトーナメント（13 個ずつのバッチ、勝者が勝ち上がり）</td>
+					<td>0.19</td>
+			</tr>
+	</tbody>
+</table>
+<p><em>実際の会話 115 ターンにおけるエンドツーエンドの精度。予測が参照回答に登場するいずれかのテーブルと一致すれば正解とする。</em></p>
+<p>好意的に読めば、Laya は候補リストの中から約 31% を正しく選んでいます。15 択でランダムに選んだ場合の 6.7% の 4 倍以上です。しかも初めて見る 140 文字の説明だけをもとに、1 回のフォワードパスで。仕組みとしては機能しています。</p>
+<p>正直に読めば、パイプライン全体が、素の密ベクトル検索の 1 位に負けています。そして、50 候補をバッチに分けて勝者を勝ち上がらせるトーナメント方式は、むしろ<em>悪化</em>させました。バッチの勝者はそのバッチ内で一番よいだけで、良い候補が早い段階で強力な紛らわしい候補に敗退してしまうからです。</p>
+<p>それでも、本当に役立つ性質が 1 つ残りました。<strong>確信度がきれいに分かれる</strong>のです。報告された確信度の中央値は、正解時に 0.88〜0.90、不正解時に 0.68〜0.73 でした（ただし、同梱のキャリブレーション温度は選択肢 11 個以上の区分をカバーしていないため、値は相対的なものとして扱ってください）。これにより、Laya は安価なエスカレーションの関門として使えます。確信度が高ければローカルで答え、低ければ大きなモデルに引き継ぐ、という使い方です。</p>
+<h2 id="ファインチューニングの試みあるいは間違ったベンチマークで勝つ方法">ファインチューニングの試み、あるいは間違ったベンチマークで勝つ方法</h2>
+<p>Laya の重みは公開されていて、作者たちはファインチューニングの完全な手順も公開しています（適切なスコアリングルールに基づく報酬を使った方策勾配法での学習と、最後のキャリブレーション）。作者自身が特化させたチェックポイントは、彼らのベンチマークでほぼチャンスレベルから 0.77 まで上がっています。自分の判定タスクに特化させられる、というのがまさに売りなのです。というわけで、やってみました。</p>
+<p><strong>学習データはタダで手に入る：</strong> テーブルごとのドキュメントには「典型的な言い回し」が含まれています。*「お気に入りの配送ルート、保存済みのルートの組み合わせ、優先する配送業者の経路」*のような短い文字列です。これをカンマで分割すると、1,000 テーブル全体で約 25,000 組の（クエリ, テーブル）ペアが得られます。各ペアについて 15 択の問いを作り、紛らわしい選択肢には、そのクエリに対して検索手法が実際に返した上位候補を使いました。本番の分布に合ったハードネガティブです。検証用にはテーブルの 5% をまるごと除外し、実際の会話 115 ターンは学習では一切使わないテストセットとして取っておきました。さらに、モデルが文字列照合を覚えないよう、選択肢の説明からは典型的な言い回しを削除しました。</p>
+<p><strong>学習の実行：</strong> ハードウェアの都合で、学習は CPU で行いました。56 スレッドの Xeon で、トレーナーを NCCL/CUDA から Gloo に書き換え、bf16 の autocast を使い、プロセス優先度は最低に設定。スループットはマイクロバッチあたり約 20 秒、1 エポックおよそ 17 時間、4 エポックで 3 日弱でした。おすすめはしませんが、この手順に特殊なものが何も要らないことの証明にはなります。</p>
+<p>結果は、この記事で最も示唆に富む表です。</p>
+<table>
+	<thead>
+			<tr>
+					<th>チェックポイント</th>
+					<th>合成データの検証（言い回しクエリ）</th>
+					<th>実際の会話（115 ターン）</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>ベースの Laya、ゼロショット</td>
+					<td>0.244</td>
+					<td>0.200</td>
+			</tr>
+			<tr>
+					<td>1 エポック後</td>
+					<td>0.340</td>
+					<td>0.165</td>
+			</tr>
+			<tr>
+					<td>4 エポック後</td>
+					<td><strong>0.380</strong></td>
+					<td><strong>0.139</strong></td>
+			</tr>
+	</tbody>
+</table>
+<p><em>合成クエリでのファインチューニング：検証精度は 56% 向上、実環境の精度は 30% 低下。どちらの方向にも単調に。</em></p>
+<p>モデルは、私たちが教えたことをそのまま学びました。ドキュメントから抜き出した、簡潔でキーワードの詰まった名詞句を分類することです。しかし実際のユーザーは、長く、文脈に依存した、会話的な質問をします。この 2 つは入力の分布が異なり、エポックを重ねるごとにモデルは合成データの分布の方へ引っ張られていきました。過学習を検出するためにわざわざ作った、テーブル単位で除外した検証セットは、何も検出しませんでした。学習セットと同じ合成データの分布から作られていたからです。間違ったものを、自信満々に検証していたのです。</p>
+<blockquote>
+<p><strong>ポスターにして貼っておきたい教訓：</strong> 検証セットが汎化を証明できるのは、学習データと<em>異なる</em>軸についてだけです。私たちの検証セットは<em>テーブル</em>が異なり、<em>クエリの文体</em>は同じでした。だから前者しか測れなかったのです。実際のトラフィックが学習データと文体の点で異なるなら、検証セットも文体を変えなければなりません。たとえ 1,000 件の生成データではなく、手書きの 50 件になったとしても。</p>
+</blockquote>
+<h2 id="注意点のまとめ">注意点のまとめ</h2>
+<ol>
+<li><strong>Laya はコンテキストを扱うモデルではない。</strong> 入力は 512〜1,024 トークン、使える選択肢は約 15〜20 個。ラベル集合が大きいタスクは必ず「検索してから判定」になり、上限を決めるのは意思決定モデルではなく検索の品質です。</li>
+<li><strong>字句検索はスキーマの語彙に弱い。</strong> 略語のテーブル名と自然な言い回しのずれが、取りこぼしの最大の原因です。小さな密ベクトル埋め込みモデルが、最も安く大きな改善をもたらします。</li>
+<li><strong>会話のコンテキストで精度が倍になる。</strong> 検索の前に直近のユーザー発話を連結して、フォローアップの質問を解決しましょう。</li>
+<li><strong>確信度がキャリブレーションされているのは選択肢が少ない場合だけ。</strong> 同梱の温度テーブルは「11 個以上」で止まっています。それを超える場合は、確信度を確率としてではなく、エスカレーション用の相対的な指標として使ってください。</li>
+<li><strong>多数の候補に対するトーナメントは精度を下げる。</strong> バッチの勝者はその中で一番よいだけです。判定を多段にするより、検索の幅を広げましょう。</li>
+<li><strong>メタデータから作った合成クエリでのファインチューニングは、実際のクエリの見た目が違うなら明確に有害。</strong> しかも合成データの検証セットは警告してくれません。</li>
+<li><strong>参照回答から作った正解ラベルにはノイズがある。</strong> 精度の絶対値は下限とみなし、構成間の差に注目しましょう。</li>
+</ol>
+<h2 id="それでも改善する価値はあるか">それでも改善する価値はあるか</h2>
+<p>あると考えています。期待できるリターンの大きい順に、3 つの方向があります。</p>
+<p><strong>1. モデルではなく、学習データの分布を直す。</strong> ファインチューニングの仕組み自体は確かに機能しています。CPU で 3 日かけて、検証精度を 14 ポイント動かしました。最適化の対象を間違えたのは、間違ったクエリを与えたからです。対策は、本物に近い学習用の質問を作ることです。高性能な LLM に各言い回しを完全な会話調の質問に書き直させ、その一部にはもっともらしい対話の文脈を前置きし、記録された実際のクエリがあればそれも混ぜる。手順も、ハードネガティブも、除外の規律も同じまま。そこに、実際のトラフィックから取った検証用のスライスを加えます。</p>
+<p><strong>2. 判定段階より先に、検索に投資する。</strong> より大きな埋め込みモデル、生の連結ではなく会話を踏まえて書き直したクエリの埋め込み、テーブルごとに複数のビュー（名前の展開、説明、カラム一覧を別々に）をインデックスすること。どれも 0.65 という上限に直接効きます。hit@15 の 1 ポイントは、判定段階の正答率 1 ポイントよりも価値があります。</p>
+<p><strong>3. 意思決定モデルは、得意な場所で使う：関門として。</strong> ゼロショットでも、Laya の確信度は正解と不正解をきれいに分けます。本番で現実的な形はこうです。密ベクトル検索が候補を出し、Laya が上位候補を判定し、確信度が高ければ約 50 ms でローカルに回答、低ければ大きなモデルにエスカレーションする。こうすれば、小さなモデルは LLM に勝つ必要がありません。トラフィックの大半を占める簡単なものを吸収できればよく、それはずっと低いハードルです。</p>
+<hr>
+<p><em>再現のための構成：テーブル約 1,000 個、テーブルごとのドキュメントをそれぞれ TSV 1 行に圧縮、フィールドごとに重み付けした BM25、3,300 万パラメーターの文埋め込みモデルと Reciprocal Rank Fusion（k=60）、Python SDK 経由の Laya 4 億 2,100 万パラメーター英語版チェックポイント、公開されている方策勾配法の手順によるファインチューニング（選択問題 24.6k 件、4 エポック、実効バッチサイズ 32、学習率 2.5e-5 cosine）、評価は会話 115 ターンでいずれかの正解との一致によりスコアリング。数値はすべて単一の実行によるものなので、小さな差はそのつもりで読んでください。</em></p>
+
+        </p>
+        
+    </div>
+
+    <div class="prev-next">
+        
+    </div>
+
+    
+    
+    
+</div>
+
+
+
+    
+
+        </main><footer class="footer">
+    
+    
+
+    
+    <span>
+        Made using <a target="_blank" href="https://gohugo.io/">HUGO</a>
+    </span>
+</footer>
+</body>
+</html>

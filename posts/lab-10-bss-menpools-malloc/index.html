@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en"><head>
+<html lang="en-us"><head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -48,7 +48,7 @@
     <link id="dark-theme" rel="stylesheet" href="/css/dark.min.css">
 
     
-    <script src="/js/bundle.min.224c8e70fed292d18d7d9ae1b36797c99144e0be1117e2ea2c428379c8496551.js" integrity="sha256-IkyOcP7SktGNfZrhs2eXyZFE4L4RF&#43;LqLEKDechJZVE="></script>
+    <script src="/js/bundle.min.a5fb480a30cceaa94e6cadb30386527cedbb9681cd04bebabc4b95b706665aa2.js" integrity="sha256-pftICjDM6qlObK2zA4ZSfO27loHNBL66vEuVtwZmWqI="></script>
 
     
     
@@ -164,27 +164,29 @@
             <li class="post-tag"><a href="https://lynxline.com/tags/research">Research</a></li>
         
         </ul>
+
+        
     </div>
 
     <div class="post-content">
         <p>
             <p>Time to have a look at initial memory initializations.
-First we need to initialize BSS (more details: <a href="http://en.wikipedia.org/wiki/.bss)">http://en.wikipedia.org/wiki/.bss)</a>, statically-allocated variables. We do it in next way:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span><span style="color:#a6e22e">memset</span>(edata, <span style="color:#ae81ff">0</span>, end<span style="color:#f92672">-</span>edata);
+First we need to initialize BSS (more details: <a href="http://en.wikipedia.org/wiki/.bss%29">http://en.wikipedia.org/wiki/.bss)</a>, statically-allocated variables. We do it in next way:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-c" data-lang="c"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span><span style="color:#a6e22e">memset</span>(edata, <span style="color:#ae81ff">0</span>, end<span style="color:#f92672">-</span>edata);
 </span></span></code></pre></div><p>From Plan9 manual:
 <em>“The loaded image has several symbols inserted by the loader: <strong>etext</strong> is the address of the end of the text segment; <strong>bdata</strong> is the address of the beginning of the data segment; <strong>edata</strong> is the address of the end of the data segment; and <strong>end</strong> is the address of the end of the bss segment, and of the program.”</em></p>
 <p>When it is done, we init with zeros also Mach obejct:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span><span style="color:#a6e22e">memset</span>(m, <span style="color:#ae81ff">0</span>, <span style="color:#66d9ef">sizeof</span>(Mach)); 
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-c" data-lang="c"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span><span style="color:#a6e22e">memset</span>(m, <span style="color:#ae81ff">0</span>, <span style="color:#66d9ef">sizeof</span>(Mach)); 
 </span></span></code></pre></div><p>Also let’s move pl011 stuff into pl011.c and add signatures into <strong>fns.h:</strong></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span><span style="color:#66d9ef">void</span>    <span style="color:#a6e22e">pl011_putc</span>(<span style="color:#66d9ef">int</span>);
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-c" data-lang="c"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span><span style="color:#66d9ef">void</span>    <span style="color:#a6e22e">pl011_putc</span>(<span style="color:#66d9ef">int</span>);
 </span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2</span><span><span style="color:#66d9ef">void</span>    <span style="color:#a6e22e">pl011_puts</span>(<span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span>);
 </span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3</span><span><span style="color:#66d9ef">void</span>    <span style="color:#a6e22e">pl011_serputs</span>(<span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span>, <span style="color:#66d9ef">int</span>);
 </span></span></code></pre></div><p>Specify amount of <em>Mach</em> objects:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span>conf.nmach <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>; 
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-c" data-lang="c"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span>conf.nmach <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>; 
 </span></span></code></pre></div><p>Specify a function for serial console writing:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span>serwrite <span style="color:#f92672">=</span> <span style="color:#f92672">&amp;</span>pl011;_serputs;
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-c" data-lang="c"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span>serwrite <span style="color:#f92672">=</span> <span style="color:#f92672">&amp;</span>pl011;_serputs;
 </span></span></code></pre></div><p>Next is <em>confinit()</em> call to initialize <em>Conf</em> object:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1</span><span><span style="color:#66d9ef">extern</span> <span style="color:#66d9ef">int</span> main_pool_pcnt;
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-c" data-lang="c"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1</span><span><span style="color:#66d9ef">extern</span> <span style="color:#66d9ef">int</span> main_pool_pcnt;
 </span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2</span><span><span style="color:#66d9ef">extern</span> <span style="color:#66d9ef">int</span> heap_pool_pcnt;
 </span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3</span><span><span style="color:#66d9ef">extern</span> <span style="color:#66d9ef">int</span> image_pool_pcnt;
 </span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4</span><span>
@@ -212,13 +214,13 @@ First we need to initialize BSS (more details: <a href="http://en.wikipedia.org/
 </span></span></code></pre></div><p>Plus we need to add ulong npage; and ulong topofmem; into Conf structure
 and definition <em>#define PGROUND(s) ROUND(s, BY2PG)</em> into <strong>mem.h</strong>
 Three variable: <em>int main_pool_pcnt; int heap_pool_pcnt; int image_pool_pcnt;</em> we define in <strong>rpi</strong> config file:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-txt" data-lang="txt"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span>code
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-txt" data-lang="txt"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span>code
 </span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2</span><span>    int kernel_pool_pcnt = 10;
 </span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3</span><span>    int main_pool_pcnt = 40;
 </span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4</span><span>    int heap_pool_pcnt = 20;
 </span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5</span><span>    int image_pool_pcnt = 40;
 </span></span></code></pre></div><p>Finally we can initialize memory pools:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span><span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-c" data-lang="c"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span><span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span>
 </span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2</span><span><span style="color:#a6e22e">poolsizeinit</span>(<span style="color:#66d9ef">void</span>)
 </span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3</span><span>{
 </span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4</span><span>    ulong nb;
@@ -228,20 +230,20 @@ Three variable: <em>int main_pool_pcnt; int heap_pool_pcnt; int image_pool_pcnt;
 </span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">8</span><span>    <span style="color:#a6e22e">poolsize</span>(imagmem, (nb<span style="color:#f92672">*</span>image_pool_pcnt)<span style="color:#f92672">/</span><span style="color:#ae81ff">100</span>, <span style="color:#ae81ff">1</span>);
 </span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">9</span><span>}
 </span></span></code></pre></div><p>And in <em>main():</em></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span><span style="color:#a6e22e">xinit</span>();
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-c" data-lang="c"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span><span style="color:#a6e22e">xinit</span>();
 </span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2</span><span><span style="color:#a6e22e">poolinit</span>();
 </span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3</span><span><span style="color:#a6e22e">poolsizeinit</span>();
 </span></span></code></pre></div><p>As memory pools are ready then malloc() is functional we can do much more in next labs.</p>
 <p>FILES:</p>
 <ul>
-<li><a href="dat.h">os/rpi/dat.h</a></li>
-<li><a href="fns.h">os/rpi/fns.h</a></li>
-<li><a href="mem.h">os/rpi/mem.h</a></li>
-<li><a href="main.c">os/rpi/main.c</a></li>
-<li><a href="pl011.c">os/rpi/pl011.c</a></li>
-<li><a href="rpi">os/rpi/rpi</a></li>
-<li><a href="mkfile">os/rpi/mkfile</a></li>
-<li><a href="bss.pdf">bss.pdf</a></li>
+<li><a href="/posts/lab-10-bss-menpools-malloc/dat.h">os/rpi/dat.h</a></li>
+<li><a href="/posts/lab-10-bss-menpools-malloc/fns.h">os/rpi/fns.h</a></li>
+<li><a href="/posts/lab-10-bss-menpools-malloc/mem.h">os/rpi/mem.h</a></li>
+<li><a href="/posts/lab-10-bss-menpools-malloc/main.c">os/rpi/main.c</a></li>
+<li><a href="/posts/lab-10-bss-menpools-malloc/pl011.c">os/rpi/pl011.c</a></li>
+<li><a href="/posts/lab-10-bss-menpools-malloc/rpi">os/rpi/rpi</a></li>
+<li><a href="/posts/lab-10-bss-menpools-malloc/mkfile">os/rpi/mkfile</a></li>
+<li><a href="/posts/lab-10-bss-menpools-malloc/bss.pdf">bss.pdf</a></li>
 </ul>
 
         </p>

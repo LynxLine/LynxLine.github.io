@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en"><head>
+<html lang="en-us"><head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -48,7 +48,7 @@
     <link id="dark-theme" rel="stylesheet" href="/css/dark.min.css">
 
     
-    <script src="/js/bundle.min.224c8e70fed292d18d7d9ae1b36797c99144e0be1117e2ea2c428379c8496551.js" integrity="sha256-IkyOcP7SktGNfZrhs2eXyZFE4L4RF&#43;LqLEKDechJZVE="></script>
+    <script src="/js/bundle.min.a5fb480a30cceaa94e6cadb30386527cedbb9681cd04bebabc4b95b706665aa2.js" integrity="sha256-pftICjDM6qlObK2zA4ZSfO27loHNBL66vEuVtwZmWqI="></script>
 
     
     
@@ -168,6 +168,8 @@
             <li class="post-tag"><a href="https://lynxline.com/tags/research">Research</a></li>
         
         </ul>
+
+        
     </div>
 
     <div class="post-content">
@@ -178,14 +180,14 @@
 <p>Of course everything is invented before us and in Boost libraries you will find a module for solving these problems – boost::multi_index. Great advantage – speed, multi_index is very fast. But documentation for this module is, let’s say, complicated for understanding and especially for quick start, so newbies try to avoid the use of the module. And of course compiler messages about error due to use of multi_index templates give high amount of confusion.</p>
 <p>I would like to remove confusion and give simple cases that will be good recipes of use. I will use it together with Qt classes for demo:</p>
 <p>For example we have small structure:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">Rec</span> { QString name, phone, addr; };
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">Rec</span> { QString name, phone, addr; };
 </span></span></code></pre></div><p>multi_index provide convenience by using tags for keys. Let’s define then directly in Rec to have it all in one place:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">Rec</span> {
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">Rec</span> {
 </span></span><span style="display:flex;"><span>	QString name, phone, addr;
 </span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">ByName</span> {}; <span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">ByPhone</span> {}; <span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">ByAddr</span> {};
 </span></span><span style="display:flex;"><span>};
 </span></span></code></pre></div><p>Now we can create next array:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#66d9ef">typedef</span> boost<span style="color:#f92672">::</span>multi_index_container<span style="color:#f92672">&lt;</span>Rec,
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#66d9ef">typedef</span> boost<span style="color:#f92672">::</span>multi_index_container<span style="color:#f92672">&lt;</span>Rec,
 </span></span><span style="display:flex;"><span>	indexed_by<span style="color:#f92672">&lt;</span>
 </span></span><span style="display:flex;"><span>		ordered_unique<span style="color:#f92672">&lt;</span>
 </span></span><span style="display:flex;"><span>			tag<span style="color:#f92672">&lt;</span>Rec<span style="color:#f92672">::</span>ByName<span style="color:#f92672">&gt;</span>, member<span style="color:#f92672">&lt;</span>Rec,QString,<span style="color:#f92672">&amp;</span>Rec<span style="color:#f92672">::</span>name<span style="color:#f92672">&gt;</span>
@@ -199,25 +201,25 @@
 </span></span><span style="display:flex;"><span>	<span style="color:#f92672">&gt;</span>
 </span></span><span style="display:flex;"><span><span style="color:#f92672">&gt;</span> Store;
 </span></span></code></pre></div><p>We defines that records are unique by name, but not unique by address and phone. The “name” uniqueness also means that we can not add two records with same name.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span>{
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span>{
 </span></span><span style="display:flex;"><span>	Store store;
 </span></span><span style="display:flex;"><span>	Rec r1 <span style="color:#f92672">=</span> { <span style="color:#e6db74">&#34;Basilio Pupkinio&#34;</span>, <span style="color:#e6db74">&#34;022&#34;</span>, <span style="color:#e6db74">&#34;Neron st&#34;</span> };
 </span></span><span style="display:flex;"><span>	qDebug() <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;ok1&#34;</span> <span style="color:#f92672">&lt;&lt;</span> store.insert(r1).second; <span style="color:#75715e">// ok1 true
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	qDebug() <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;ok2&#34;</span> <span style="color:#f92672">&lt;&lt;</span> store.insert(r1).second; <span style="color:#75715e">// ok2 false
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>}
+</span></span></span><span style="display:flex;"><span>	qDebug() <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;ok2&#34;</span> <span style="color:#f92672">&lt;&lt;</span> store.insert(r1).second; <span style="color:#75715e">// ok2 false
+</span></span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><p>For me it is very useful property that array does not allow the addition of duplicates - then I can rely on validity of array &ldquo;a priori&rdquo;.</p>
 <p>Let&rsquo;s find the record by name:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span>{
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span>{
 </span></span><span style="display:flex;"><span>	QString find_id <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Basilio Pupkinio&#34;</span>;
 </span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">typedef</span> Store<span style="color:#f92672">::</span>index<span style="color:#f92672">&lt;</span>Rec<span style="color:#f92672">::</span>ByName<span style="color:#f92672">&gt;::</span>type List;
 </span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">const</span> List <span style="color:#f92672">&amp;</span> ls <span style="color:#f92672">=</span> store.get<span style="color:#f92672">&lt;</span>Rec<span style="color:#f92672">::</span>ByName<span style="color:#f92672">&gt;</span>();
 </span></span><span style="display:flex;"><span>	List<span style="color:#f92672">::</span>const_iterator it <span style="color:#f92672">=</span> ls.find(find_id);
 </span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">if</span> ( it <span style="color:#f92672">!=</span> ls.end() ) {
 </span></span><span style="display:flex;"><span>		qDebug() <span style="color:#f92672">&lt;&lt;</span> (<span style="color:#f92672">*</span>it).addr; <span style="color:#75715e">// &#34;Neron st&#34;
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	}
+</span></span></span><span style="display:flex;"><span>	}
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><p>If we have few records with phone 022</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span>{
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span>{
 </span></span><span style="display:flex;"><span>	Store store;
 </span></span><span style="display:flex;"><span>	Rec r1 <span style="color:#f92672">=</span> { <span style="color:#e6db74">&#34;Basilio Pupkinio&#34;</span>, <span style="color:#e6db74">&#34;022&#34;</span>, <span style="color:#e6db74">&#34;Pushkina st&#34;</span> };
 </span></span><span style="display:flex;"><span>	Rec r2 <span style="color:#f92672">=</span> { <span style="color:#e6db74">&#34;Vasya Pupkin&#34;</span>,     <span style="color:#e6db74">&#34;022&#34;</span>, <span style="color:#e6db74">&#34;Around st&#34;</span> };
@@ -225,7 +227,7 @@
 </span></span><span style="display:flex;"><span>	store.insert(r2)
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><p>Then to find all records with the phone 022:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span>{
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span>{
 </span></span><span style="display:flex;"><span>	QString find_phone <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;022&#34;</span>;
 </span></span><span style="display:flex;"><span>	Store<span style="color:#f92672">::</span>index<span style="color:#f92672">&lt;</span>Rec<span style="color:#f92672">::</span>ByPhone<span style="color:#f92672">&gt;::</span>type<span style="color:#f92672">::</span>iterator it0, it1;
 </span></span><span style="display:flex;"><span>	tie(it0,it1) <span style="color:#f92672">=</span> store.get<span style="color:#f92672">&lt;</span>Rec<span style="color:#f92672">::</span>ByPhone<span style="color:#f92672">&gt;</span>().equal_range(find_phone);
@@ -233,7 +235,7 @@
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><p>What if we are interested in search by phone+address combination?</p>
 <p>Then we just add composition index to our array by such code block:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span>		ordered_non_unique<span style="color:#f92672">&lt;</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span>		ordered_non_unique<span style="color:#f92672">&lt;</span>
 </span></span><span style="display:flex;"><span>			tag<span style="color:#f92672">&lt;</span>Rec<span style="color:#f92672">::</span>ByKey<span style="color:#f92672">&gt;</span>, composite_key<span style="color:#f92672">&lt;</span>
 </span></span><span style="display:flex;"><span>				Rec,
 </span></span><span style="display:flex;"><span>				member<span style="color:#f92672">&lt;</span>Rec,QString,<span style="color:#f92672">&amp;</span>Rec<span style="color:#f92672">::</span>phone<span style="color:#f92672">&gt;</span>,
@@ -241,7 +243,7 @@
 </span></span><span style="display:flex;"><span>			<span style="color:#f92672">&gt;</span>
 </span></span><span style="display:flex;"><span>		<span style="color:#f92672">&gt;</span>,
 </span></span></code></pre></div><p>(do not forget to add tag: struct ByKey {}; )</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span>{
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span>{
 </span></span><span style="display:flex;"><span>	Rec r1  <span style="color:#f92672">=</span> { <span style="color:#e6db74">&#34;Basilio Pupkinio&#34;</span>, <span style="color:#e6db74">&#34;022&#34;</span>, <span style="color:#e6db74">&#34;Pushkina st&#34;</span> };
 </span></span><span style="display:flex;"><span>	Rec r2  <span style="color:#f92672">=</span> { <span style="color:#e6db74">&#34;Vasya Pupkin&#34;</span>,     <span style="color:#e6db74">&#34;022&#34;</span>, <span style="color:#e6db74">&#34;Around st&#34;</span> };
 </span></span><span style="display:flex;"><span>	Rec r3  <span style="color:#f92672">=</span> { <span style="color:#e6db74">&#34;Vasilisa Pupkina&#34;</span>, <span style="color:#e6db74">&#34;022&#34;</span>, <span style="color:#e6db74">&#34;Around st&#34;</span> };
@@ -259,7 +261,7 @@
 </span></span></code></pre></div><p>Of course for composite key we can also use both ordered_non_unique and ordered_unique.</p>
 <p>In this way it is very convenient to create additional requirements to content of keys and their combinations - the array itself will not allow addition of &ldquo;wrong&rdquo; objects.</p>
 <p>If we would like to have same time &ldquo;vector&rdquo;-like access then we can easily add random_access definition:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#66d9ef">typedef</span> boost<span style="color:#f92672">::</span>multi_index_container<span style="color:#f92672">&lt;</span>Rec,
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#66d9ef">typedef</span> boost<span style="color:#f92672">::</span>multi_index_container<span style="color:#f92672">&lt;</span>Rec,
 </span></span><span style="display:flex;"><span>	indexed_by<span style="color:#f92672">&lt;</span>
 </span></span><span style="display:flex;"><span>		random_access<span style="color:#f92672">&lt;</span> tag<span style="color:#f92672">&lt;</span>Rec<span style="color:#f92672">::</span>ByRnd<span style="color:#f92672">&gt;</span> <span style="color:#f92672">&gt;</span>,		
 </span></span><span style="display:flex;"><span>		ordered_unique<span style="color:#f92672">&lt;</span>
@@ -272,7 +274,7 @@
 </span></span><span style="display:flex;"><span><span style="color:#f92672">&gt;</span> Store;
 </span></span></code></pre></div><p>As result we have access to records by store[0], store[1]&hellip;, and push_back().</p>
 <p>If we would like to use array as hash and have fast access by key as О(1), but slower O(log(n)) on insert/remove then we can use hashed_unique/hashed_non_unique instead ordered_unique/ordered_non_uniue:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#66d9ef">typedef</span> boost<span style="color:#f92672">::</span>multi_index_container<span style="color:#f92672">&lt;</span>Rec,
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#66d9ef">typedef</span> boost<span style="color:#f92672">::</span>multi_index_container<span style="color:#f92672">&lt;</span>Rec,
 </span></span><span style="display:flex;"><span>	indexed_by<span style="color:#f92672">&lt;</span>
 </span></span><span style="display:flex;"><span>		hashed_non_unique<span style="color:#f92672">&lt;</span>
 </span></span><span style="display:flex;"><span>			tag<span style="color:#f92672">&lt;</span>Rec<span style="color:#f92672">::</span>ByName<span style="color:#f92672">&gt;</span>, member<span style="color:#f92672">&lt;</span>Rec,QString,<span style="color:#f92672">&amp;</span>Rec<span style="color:#f92672">::</span>name<span style="color:#f92672">&gt;</span>
@@ -286,7 +288,7 @@
 </span></span></code></pre></div><p>Of course can do same hashed_uniqie/hashed_non_unique for composite keys.</p>
 <p><strong>Records modifications:</strong></p>
 <p>Because members of objects should be in sync with array keys you can not change only field of object. Imagine that we need to change a phone of one record. To have our keys in sync the change should be done through functor:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">Rec</span> {
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">Rec</span> {
 </span></span><span style="display:flex;"><span>	QString name, phone, addr;
 </span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">ByName</span> {};
 </span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">ByPhone</span> {};
@@ -297,7 +299,7 @@
 </span></span><span style="display:flex;"><span>	};
 </span></span><span style="display:flex;"><span>}; 
 </span></span></code></pre></div><p>As example let&rsquo;s find some record by name, get the appropriate &ldquo;name&rdquo; iterator, then with project() switch to iterator by &ldquo;phone&rdquo; and finally modify the record by functor:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span>{
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span>{
 </span></span><span style="display:flex;"><span>	Store store;
 </span></span><span style="display:flex;"><span>	Rec r1  <span style="color:#f92672">=</span> { <span style="color:#e6db74">&#34;Basilio Pupkinio&#34;</span>, <span style="color:#e6db74">&#34;021&#34;</span>, <span style="color:#e6db74">&#34;Around st&#34;</span> };
 </span></span><span style="display:flex;"><span>	Rec r2  <span style="color:#f92672">=</span> { <span style="color:#e6db74">&#34;Vasya Pupkin&#34;</span>,     <span style="color:#e6db74">&#34;022&#34;</span>, <span style="color:#e6db74">&#34;Around st&#34;</span> };
@@ -318,7 +320,7 @@
 </span></span><span style="display:flex;"><span>	}
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><p>Keys are not limited by fields - you can use and member-functions, example:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">Rec</span> {
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">Rec</span> {
 </span></span><span style="display:flex;"><span>	QString n, phone, addr;
 </span></span><span style="display:flex;"><span>	QString <span style="color:#a6e22e">name</span>() <span style="color:#66d9ef">const</span> { <span style="color:#66d9ef">return</span> n; }
 </span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">ByName</span> {};
@@ -336,7 +338,7 @@
 </span></span><span style="display:flex;"><span>	<span style="color:#f92672">&gt;</span>
 </span></span><span style="display:flex;"><span><span style="color:#f92672">&gt;</span> Store;
 </span></span></code></pre></div><p>Worth to mention usage of pointers in the array:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">Rec</span> {
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">Rec</span> {
 </span></span><span style="display:flex;"><span>	QString n, phone, addr;
 </span></span><span style="display:flex;"><span>	QString <span style="color:#a6e22e">name</span>() <span style="color:#66d9ef">const</span> { <span style="color:#66d9ef">return</span> n; }
 </span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">ByName</span> {};
@@ -365,14 +367,14 @@
 </span></span><span style="display:flex;"><span>	<span style="color:#f92672">&gt;</span>
 </span></span><span style="display:flex;"><span><span style="color:#f92672">&gt;</span> Store;
 </span></span></code></pre></div><p>All other codes are same (only used &ldquo;-&gt;&rdquo; instead &ldquo;.&rdquo; in few places):</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span>{
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span>{
 </span></span><span style="display:flex;"><span>	QString find_phone <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;022&#34;</span>;
 </span></span><span style="display:flex;"><span>	Store<span style="color:#f92672">::</span>index<span style="color:#f92672">&lt;</span>Rec<span style="color:#f92672">::</span>ByPhone<span style="color:#f92672">&gt;::</span>type<span style="color:#f92672">::</span>iterator it0, it1;
 </span></span><span style="display:flex;"><span>	tie(it0,it1) <span style="color:#f92672">=</span> store.get<span style="color:#f92672">&lt;</span>Rec<span style="color:#f92672">::</span>ByPhone<span style="color:#f92672">&gt;</span>().equal_range(find_phone);
 </span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">while</span>(it0 <span style="color:#f92672">!=</span> it1) { qDebug() <span style="color:#f92672">&lt;&lt;</span> (<span style="color:#f92672">*</span>it0)<span style="color:#f92672">-&gt;</span>name(); <span style="color:#f92672">++</span>it0; }
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><p>Plus worth to add a block</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span>		ordered_unique<span style="color:#f92672">&lt;</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span>		ordered_unique<span style="color:#f92672">&lt;</span>
 </span></span><span style="display:flex;"><span>			tag<span style="color:#f92672">&lt;</span>Rec<span style="color:#f92672">::</span>ByPtr<span style="color:#f92672">&gt;</span>, const_mem_fun<span style="color:#f92672">&lt;</span>Rec_ptr,Rec <span style="color:#f92672">*</span>,<span style="color:#f92672">&amp;</span>Rec_ptr<span style="color:#f92672">::</span>get<span style="color:#f92672">&gt;</span>
 </span></span><span style="display:flex;"><span>		<span style="color:#f92672">&gt;</span>,
 </span></span></code></pre></div><p>To prevent duplicates of pointers in array.</p>

@@ -1,40 +1,45 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Ideas on LynxLine</title>
-    <link>https://lynxline.com/tags/ideas/</link>
-    <description>Recent content in Ideas on LynxLine</description>
-    <generator>Hugo</generator>
-    <language>en-us</language>
-    <lastBuildDate>Fri, 03 Jun 2016 22:13:05 +0200</lastBuildDate>
-    <atom:link href="https://lynxline.com/tags/ideas/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>SQLite tree structures and queries to get sub-trees</title>
-      <link>https://lynxline.com/posts/sqlite-tree-structures-and-queries-to-get-sub-trees/</link>
-      <pubDate>Fri, 03 Jun 2016 22:13:05 +0200</pubDate>
-      <guid>https://lynxline.com/posts/sqlite-tree-structures-and-queries-to-get-sub-trees/</guid>
-      <description>&lt;p&gt;SQLite is wonderful!&lt;/p&gt;&#xA;&lt;p&gt;Just today I found that SQLite support queries with a recurse to get the inner sub-trees:&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Thinking about user interfaces, part 3</title>
-      <link>https://lynxline.com/posts/thinking-about-user-interfaces-part-3/</link>
-      <pubDate>Fri, 25 Dec 2015 18:00:00 +0200</pubDate>
-      <guid>https://lynxline.com/posts/thinking-about-user-interfaces-part-3/</guid>
-      <description>Part 1&#xA;Part 2&#xA;Now interesting question, are there user interfaces which based on “verbs”.&#xA;Well, I know at least one called drakon-editor: http://drakon-editor.sourceforge.net/&#xA;That is extremely powerful tool or a user interface which allow to design algorithms:&#xA;So you can see, that looks as really totally verb-based user interface. It is very efficient but same time is also limited as do not provide way of defining structures of datas which are processed.</description>
-    </item>
-    <item>
-      <title>Thinking about user interfaces, part 2</title>
-      <link>https://lynxline.com/posts/thinking-about-user-interfaces-part-2/</link>
-      <pubDate>Mon, 21 Dec 2015 23:00:00 +0200</pubDate>
-      <guid>https://lynxline.com/posts/thinking-about-user-interfaces-part-2/</guid>
-      <description>Part 1&#xA;Now have a look at existing command line interface:&#xA;What really human see on the screen?&#xA;A specialist would say that from bottom (from input/cursor) to up the human sees a story of computer operations.&#xA;My correction would be that human sees a story of his mental activities shown on the screen. These activities are represented by result of computations, but main point is that what you see on the screen is a storyline of your mental actions :)</description>
-    </item>
-    <item>
-      <title>Thinking about user interfaces</title>
-      <link>https://lynxline.com/posts/thinking-about-user-interfaces/</link>
-      <pubDate>Sun, 20 Dec 2015 22:00:00 +0200</pubDate>
-      <guid>https://lynxline.com/posts/thinking-about-user-interfaces/</guid>
-      <description>Had some time to look into implementation of gui in inferno and take some thoughts.&#xA;First maybe about history of graphics user iterfaces and how they brought us to the current situation.&#xA;How a computer iteracts to an user?&#xA;Very first implementations of are just clones of typewriting process – user types on keyboard and same time computer types on paper roll actions. Due to this first commands are pretty small like “ls” “ps” “cd” etc.</description>
-    </item>
-  </channel>
+	<channel>
+		<title>Ideas on LynxLine</title>
+		<link>https://lynxline.com/tags/ideas/</link>
+		<description>Recent content in Ideas on LynxLine</description>
+		<generator>Hugo</generator>
+		<language>en-us</language>
+		
+		
+		
+		
+			<lastBuildDate>Fri, 03 Jun 2016 22:13:05 +0200</lastBuildDate>
+		
+			<atom:link href="https://lynxline.com/tags/ideas/index.xml" rel="self" type="application/rss+xml" />
+			<item>
+				<title>SQLite tree structures and queries to get sub-trees</title>
+				<link>https://lynxline.com/posts/sqlite-tree-structures-and-queries-to-get-sub-trees/</link>
+				<pubDate>Fri, 03 Jun 2016 22:13:05 +0200</pubDate>
+				<guid>https://lynxline.com/posts/sqlite-tree-structures-and-queries-to-get-sub-trees/</guid>
+				<description>&lt;p&gt;SQLite is wonderful!&lt;/p&gt;&#xA;&lt;p&gt;Just today I found that SQLite support queries with a recurse to get the inner sub-trees:&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title>Thinking about user interfaces, part 3</title>
+				<link>https://lynxline.com/posts/thinking-about-user-interfaces-part-3/</link>
+				<pubDate>Fri, 25 Dec 2015 18:00:00 +0200</pubDate>
+				<guid>https://lynxline.com/posts/thinking-about-user-interfaces-part-3/</guid>
+				<description>&lt;p&gt;&lt;a href=&#34;http://lynxline.com/thinking-about-user-interfaces/&#34;&gt;Part 1&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;http://lynxline.com/thinking-about-user-interfaces-part-2/&#34;&gt;Part 2&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;Now interesting question, are there user interfaces which based on “verbs”.&lt;/p&gt;&#xA;&lt;p&gt;Well, I know at least one called drakon-editor: &lt;a href=&#34;http://drakon-editor.sourceforge.net/&#34;&gt;http://drakon-editor.sourceforge.net/&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;That is extremely powerful tool or a user interface which allow to design algorithms:&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;http://lynxline.com/wp-content/uploads/2015/12/%D0%A1%D0%BD%D0%B8%D0%BC%D0%BE%D0%BA-%D1%8D%D0%BA%D1%80%D0%B0%D0%BD%D0%B0-2015-12-25-%D0%B2-17.28.59.png&#34;&gt;&lt;img src=&#34;https://lynxline.com/posts/thinking-about-user-interfaces-part-3/2015-12-25--17.28.59.png&#34; alt=&#34;Снимок экрана 2015-12-25 в 17.28.59&#34;&gt;&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;So you can see, that looks as really totally verb-based user interface. It is very efficient but same time is also limited as do not provide way of defining structures of datas which are processed. So no “object” functionality same time.&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title>Thinking about user interfaces, part 2</title>
+				<link>https://lynxline.com/posts/thinking-about-user-interfaces-part-2/</link>
+				<pubDate>Mon, 21 Dec 2015 23:00:00 +0200</pubDate>
+				<guid>https://lynxline.com/posts/thinking-about-user-interfaces-part-2/</guid>
+				<description>&lt;p&gt;&lt;a href=&#34;http://lynxline.com/thinking-about-user-interfaces/&#34;&gt;Part 1&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;Now have a look at existing command line interface:&lt;/p&gt;&#xA;&lt;p&gt;&lt;img src=&#34;http://s0.cyberciti.org/images/faq/2013/04/cat-append.text.example.png&#34; alt=&#34;terminal&#34;&gt;&lt;/p&gt;&#xA;&lt;p&gt;What really human see on the screen?&lt;/p&gt;&#xA;&lt;p&gt;A specialist would say that from bottom (from input/cursor) to up the human sees a story of computer operations.&lt;/p&gt;&#xA;&lt;p&gt;My correction would be that human sees a story of his mental activities shown on the screen. These activities are represented by result of computations, but main point is that what you see on the screen is a storyline of your mental actions :)&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title>Thinking about user interfaces</title>
+				<link>https://lynxline.com/posts/thinking-about-user-interfaces/</link>
+				<pubDate>Sun, 20 Dec 2015 22:00:00 +0200</pubDate>
+				<guid>https://lynxline.com/posts/thinking-about-user-interfaces/</guid>
+				<description>&lt;p&gt;Had some time to look into implementation of gui in inferno and take some thoughts.&lt;/p&gt;&#xA;&lt;p&gt;First maybe about history of graphics user iterfaces and how they brought us to the current situation.&lt;/p&gt;&#xA;&lt;p&gt;How a computer iteracts to an user?&lt;/p&gt;&#xA;&lt;p&gt;&lt;img src=&#34;https://upload.wikimedia.org/wikipedia/commons/thumb/9/91/Selectric_II.jpg/220px-Selectric_II.jpg&#34; alt=&#34;typewriter&#34;&gt;&lt;/p&gt;&#xA;&lt;p&gt;Very first implementations of are just clones of typewriting process – user types on keyboard and same time computer types on paper roll actions. Due to this first commands are pretty small like “&lt;strong&gt;ls&lt;/strong&gt;” “&lt;strong&gt;ps&lt;/strong&gt;” “&lt;strong&gt;cd&lt;/strong&gt;” etc. Also because of that all current shells inherit paradigm of typewriter: user see echo of what he types and between his types he sees “answers” of the computer. Ideal representation of the paradigm is “chatty” – user send “questions” and receive “answers”. That’s all, nothing else. All power of command lines of unix systems is based on idea of “chats” with a computer. More you know about language of “question” then more complicated logic can be launched inside a computer and you looks more powerful to your boss :)&lt;/p&gt;</description>
+			</item>
+	</channel>
 </rss>

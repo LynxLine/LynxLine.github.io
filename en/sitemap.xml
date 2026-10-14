@@ -95,6 +95,16 @@
   </url><url>
     <loc>https://lynxline.com/posts/agent-recall-mcp/</loc>
     <lastmod>2026-10-14T09:00:00+02:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en-us"
+                href="https://lynxline.com/posts/agent-recall-mcp/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="ja"
+                href="https://lynxline.com/ja/posts/agent-recall-mcp/"
+                />
   </url><url>
     <loc>https://lynxline.com/posts/agent-data-artifacts-mcp/</loc>
     <lastmod>2026-10-05T09:00:00+02:00</lastmod>

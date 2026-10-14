@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="ja"><head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <style>
+        :root {
+            --accent-color: #FF4D4D;
+        }
+    </style>
+
+    
+    
+    
+    
+    
+    
+
+    
+    <title>エージェントに想起させる：MCP 上で検索可能な会話履歴</title>
+    <meta name="description" content="">
+    <meta name="keywords" content='AI, MCP, Python, Data'>
+
+    <meta property="og:url" content="https://lynxline.com/ja/posts/agent-recall-mcp/">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="エージェントに想起させる：MCP 上で検索可能な会話履歴">
+    <meta property="og:description" content="">
+    <meta property="og:image" content="https://lynxline.com/images/lynx.jpg">
+    <meta property="og:image:secure_url" content="https://lynxline.com/images/lynx.jpg">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="エージェントに想起させる：MCP 上で検索可能な会話履歴">
+    <meta name="twitter:description" content="">
+    <meta property="twitter:domain" content="https://lynxline.com/ja/posts/agent-recall-mcp/">
+    <meta property="twitter:url" content="https://lynxline.com/ja/posts/agent-recall-mcp/">
+    <meta name="twitter:image" content="https://lynxline.com/images/lynx.jpg">
+
+    
+    <link rel="canonical" href="https://lynxline.com/ja/posts/agent-recall-mcp/" />
+
+    
+    <link rel="alternate" hreflang="ja" href="https://lynxline.com/ja/posts/agent-recall-mcp/" />
+    
+    <link rel="alternate" hreflang="en" href="https://lynxline.com/posts/agent-recall-mcp/" />
+    
+    
+    <link rel="alternate" hreflang="x-default" href="https://lynxline.com/posts/agent-recall-mcp/" />
+    
+    
+
+    
+    
+
+    
+    <link rel="stylesheet" type="text/css" href="/css/normalize.min.css" media="print">
+
+    
+    <link rel="stylesheet" type="text/css" href="/css/main.min.css">
+
+    
+    <link id="dark-theme" rel="stylesheet" href="/css/dark.min.css">
+
+    
+    <script src="/js/bundle.min.23a6a54d1ecbde7842938a593a7a1fdb1ee63af6fe2d73cb4c81c05425de46c2.js" integrity="sha256-I6alTR7L3nhCk4pZOnof2x7mOvb&#43;LXPLTIHAVCXeRsI="></script>
+
+    
+    
+</head>
+<body>
+        <script type="text/javascript">
+            
+            setThemeByUserPref();
+        </script><header class="header">
+    <nav class="header-nav">
+
+        
+        <div class="avatar">
+            <a href="https://lynxline.com/">
+                <img src='/images/lynx.jpg' alt="avatar" />
+            </a>
+        </div>
+        
+
+        <div class="nav-title">
+            <a class="nav-brand" href="https://lynxline.com/">LynxLine</a>
+        </div>
+
+        <div class="nav-links">
+            
+            <div class="nav-link">
+                <a href="https://lynxline.com/services/"><span data-feather='zap'></span> サービス </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://lynxline.com/ja/posts/"><span data-feather='layers'></span> 記事 </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://lynxline.com/ja/tags/"><span data-feather='tag'></span> タグ </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://lynxline.com/contact/"><span data-feather='mail'></span> お問い合わせ </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://github.com"><span data-feather='github'></span>  </a>
+            </div>
+            
+
+            <span class="nav-icons-divider"></span>
+            <div class="nav-link dark-theme-toggle">
+                <span id="dark-theme-toggle-screen-reader-target" class="sr-only"></span>
+                <a>
+                    <span id="theme-toggle-icon" data-feather="moon"></span>
+                </a>
+            </div>
+
+            <div class="nav-link" id="hamburger-menu-toggle">
+                <span id="hamburger-menu-toggle-screen-reader-target" class="sr-only">menu</span>
+                <a>
+                    <span data-feather="menu"></span>
+                </a>
+            </div>
+
+            
+            <ul class="nav-hamburger-list visibility-hidden">
+                
+                <li class="nav-item">
+                    <a href="https://lynxline.com/services/"><span data-feather='zap'></span> サービス </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://lynxline.com/ja/posts/"><span data-feather='layers'></span> 記事 </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://lynxline.com/ja/tags/"><span data-feather='tag'></span> タグ </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://lynxline.com/contact/"><span data-feather='mail'></span> お問い合わせ </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://github.com"><span data-feather='github'></span>  </a>
+                </li>
+                
+                <li class="nav-item dark-theme-toggle">
+                    <span id="dark-theme-toggle-screen-reader-target" class="sr-only">theme</span>
+                    <a>
+                        <span id="theme-toggle-icon" data-feather="moon"></span>
+                    </a>
+                </li>
+            </ul>
+
+        </div>
+    </nav>
+</header>
+<main id="content">
+    <div class="post container">
+    <div class="post-header-section">
+        <h1>エージェントに想起させる：MCP 上で検索可能な会話履歴</h1>
+        <small role="doc-subtitle"></small>
+        <p class="post-date">2026年10月14日
+        
+        </p>
+
+        <ul class="post-tags">
+        
+            <li class="post-tag"><a href="https://lynxline.com/ja/tags/ai">AI</a></li>
+        
+            <li class="post-tag"><a href="https://lynxline.com/ja/tags/mcp">MCP</a></li>
+        
+            <li class="post-tag"><a href="https://lynxline.com/ja/tags/python">Python</a></li>
+        
+            <li class="post-tag"><a href="https://lynxline.com/ja/tags/data">Data</a></li>
+        
+        </ul>
+
+        
+        <p class="post-translations">この記事を読む：
+        
+            <a href="/posts/agent-recall-mcp/" hreflang="en" onclick="try { localStorage.setItem('lang-choice', 'en') } catch (e) {}">English</a>
+        
+        </p>
+        
+    </div>
+
+    <div class="post-content">
+        <p>
+            <p>エージェントとのチャットは、毎回ゼロから始まります。月曜日、誰かがアシスタントと一緒に 2 つの拠点の実績を確認し、どのフォローアップを誰が担当するかを書き留め、予算のケースを決めます。木曜日に新しいチャットを開いて「N-11 について何を決めましたっけ？」と尋ねても、エージェントは N-11 が何なのか見当もつきません。ユーザーは画面をスクロールして戻り、コピーして貼り付け、また一から説明することになります。</p>
+<p>この記事では、そのギャップをごくわずかなコードでどう埋めたかを紹介します。エージェントに渡すツールは <code>recall_my_conversations</code> 1 つだけ。これは現在のユーザー自身の過去のチャットを検索し、日付付きの抜粋を返します。検索エンジンには <a href="https://github.com/huggingface/funes">funes</a> を使いました。自前で書く代わりに再利用した、オープンソースのプロジェクトです。つなぎ役は小さな <a href="https://gofastmcp.com">FastMCP</a> サーバーで、すべてが 1 つのコンテナの中で動きます。</p>
+<p>これは、MCP 上でのエージェント向けツール群についてのシリーズの 3 本目です。<a href="/ja/posts/sandboxed-python-mcp/">1 本目</a>は、エージェントが Python を安全に実行できる場所を用意しました。<a href="/ja/posts/agent-data-artifacts-mcp/">2 本目</a>は、行ではなく参照を渡すことで、大量のデータを会話記録の外に保ちました。今回は、エージェントが会話記録そのものを調べられるようにします。</p>
+<h2 id="想起は記憶ではないそしてそれでいい">想起は記憶ではない、そしてそれでいい</h2>
+<p>「エージェントの記憶」と言うとき、たいていは野心的な何かを指します。会話から事実を抽出し、プロファイルを最新に保ち、矛盾を解消し、適切な文脈を毎回のプロンプトにそっと注入するシステムです。これは作るのも難しく、信頼するのも難しいものです。うまくいかないと、エージェントはあなたが言ってもいないことを「記憶」してしまい、それがどこから来たのか誰にもわかりません。</p>
+<p>私たちが欲しかったのは、もっとずっとシンプルなもの、自分のメールを自分で検索する人の動きに近いものでした。</p>
+<ul>
+<li>過去は、起きたとおりの姿のまま残ります。要約も、書き換えも、統合もしません。</li>
+<li>いつ振り返るかは、ツールを呼び出すエージェント自身が決めます。</li>
+<li>返ってくるのは<strong>日付付きの、そのままの一節</strong>です。エージェントはそれを引用でき、ユーザーはそれを確認できます。</li>
+<li>関係するものが何も見つからなければ、エージェントはそう伝えます。</li>
+</ul>
+<p>想起がエージェントに与えるのは、<strong>過去へのヒント</strong>です。ユーザーのモデルを与えるわけではありません。エージェントは相変わらず毎回ゼロから推論しますが、もう<em>作業</em>までゼロからやり直す必要はありません。先週使ったパラメーター、書き留めた担当者、下された決定を拾い上げられます。ユーザーに繰り返させる代わりに。</p>
+<p>これだけで、価値の大部分を、リスクのごく一部で得られることがわかりました。</p>
+<h2 id="車輪の再発明はしないfunes">車輪の再発明はしない：funes</h2>
+<p>過去のエージェントセッションを検索することは、コーディングエージェントの世界ではすでに解決済みの問題です。Hugging Face の funes は、「過去のエージェントセッションの、永続的で検索可能な記憶」です。Claude Code や Codex などの会話記録をインデックス化し、エージェントが以前の作業を想起できるようにします。（この記事を準備する際にも、私たち自身の過去の記事を探すのに使いました。）</p>
+<p>開発者のノート PC だけでなく、プロダクトにもうまくはまる理由は次のとおりです。</p>
+<ul>
+<li><strong>バイナリ 1 つ、サービスなし。</strong> 組み込みのストレージエンジン（<a href="https://github.com/lancedb/lance">Lance</a>）を内蔵した、単一の Rust 実行ファイルです。動かすべきデータベースサーバーも、ベクトルサービスも、キューもありません。</li>
+<li><strong>内部に LLM はない。</strong> 検索は 2 つの小さなローカルモデル、<a href="https://huggingface.co/BAAI/bge-small-en-v1.5">bge-small-en-v1.5</a> の埋め込みモデルと、任意で使う <a href="https://huggingface.co/BAAI/bge-reranker-base">bge-reranker-base</a> のクロスエンコーダーだけで動きます。何もコンテナの外には出ませんし、想起がハルシネーションを起こすこともありません。実在するテキストしか返さないからです。</li>
+<li><strong>1 つの記憶は 1 つのディレクトリ。</strong> <code>FUNES_HOME=/some/dir</code> が、独立した記憶を与えてくれます。ストレージ層にとってのテナント分離は、ユーザーごとに 1 ディレクトリで十分です。</li>
+<li><strong>素朴な入力形式。</strong> インデックス化の対象は <code>.funes.jsonl</code> ファイルです。1 メッセージ 1 行で、セッション ID、連番、タイムスタンプ、ロール、テキストブロックを持ちます。どんなチャットシステムでも、これなら作れます。</li>
+<li><strong>エージェント向けの読み出しコマンド群：</strong> <code>recall</code>（ランク付き検索）、<code>get</code>（セッションの範囲を読む）、<code>scan</code>（1 セッション内の完全一致文字列）、<code>sessions</code>、<code>sketch</code>。</li>
+<li><strong>緩やかなライセンス：</strong> funes は Apache-2.0、2 つのモデルはどちらも MIT です。</li>
+</ul>
+<h3 id="想起が内部でどう動くか">想起が内部でどう動くか</h3>
+<p><img src="/posts/agent-recall-mcp/diagrams/04-inside-funes.png" alt="funes の想起処理の内部"></p>
+<p>クエリは、2 つの経路を同時に進みます。密ベクトル検索は、似た<em>意味</em>を持つ一節を見つけます（「作業指示」で「チケット」が見つかる、など）。BM25 による全文検索は、<code>MT-4471</code> や <code>N-11</code> のような、埋め込みが苦手とする正確な<em>トークン</em>を見つけます。2 つのランク付けされたリストは reciprocal rank fusion で統合され、各ヒットは前後のターンと一緒に返ってくるので、エージェントには答えだけでなく、その答えを導いた質問も見えます。</p>
+<p>同じ分裂は、私たちの<a href="/ja/posts/laya-decision-model/">テーブル名検索の実験</a>でも見られました。密ベクトル検索と字句検索は、それぞれ異なるクエリで失敗します。両者を融合させておくのは、安価な保険です。funes はそれを標準で備えています。</p>
+<p>任意で使える 3 段階目は、候補プールを再採点するクロスエンコーダーです。funes は、候補プールが <code>k</code> の 4 倍以上になったときにこれを有効にします。1 回の呼び出しあたり約 3 秒、1.6 GB の RAM がかかります（数値は後述）。会話の想起ではこれをオフにしています。プールは <code>4 × k</code> を下回ったままにし、最初の試みが外れたときは、エージェントが別の言葉で聞き直すことで補います。</p>
+<h2 id="アーキテクチャ">アーキテクチャ</h2>
+<p><img src="/posts/agent-recall-mcp/diagrams/01-architecture.png" alt="アーキテクチャ"></p>
+<p>パスは 2 つあり、意図的に異なる認証情報を使い分けています。</p>
+<ul>
+<li><strong>書き込みパス（破線）。</strong> チャットゲートウェイはもともとすべてのメッセージを見ているので、完了した各ターンを、共有鍵で保護された内部ルート経由で想起サーバーに転送します。エージェントプラットフォームはここに関与しません。記憶に書き込むことはできず、プロンプトインジェクションが「記憶」を植え付けることもできません。</li>
+<li><strong>読み出しパス。</strong> エージェントは、他の MCP ツールと同じように <code>recall_my_conversations</code> を呼び出します。サーバーは呼び出し元のトークンからユーザーを特定し、そのユーザーのディレクトリだけを検索します。誰の記憶を検索するかを、クエリのテキストが決めることは決してありません。</li>
+</ul>
+<p>エージェントプラットフォームは、MCP を話せるものなら何でも構いません。最初は、商用のエージェントプラットフォーム上で動く本番のコパイロットの中に、Java 製の MCP サーバーとしてこれを組み込みました。以下のデモは、同じ設計を Python だけで自己完結させたバージョンです。</p>
+<h2 id="書き込みパス完了したターンを転送する">書き込みパス：完了したターンを転送する</h2>
+<p><img src="/posts/agent-recall-mcp/diagrams/02-write-path.png" alt="書き込みパス"></p>
+<p>ゲートウェイは、各ターンの後に<strong>それまでの会話全体</strong>を送信します。無駄に聞こえるかもしれませんが、これによって書き込みが冪等になります。サーバーは会話ごとに 1 つのファイルをアトミックに書き換え、すでに埋め込み済みのものを把握している funes は、新しいテキストだけを処理します。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#a6e22e">@mcp.custom_route</span>(<span style="color:#e6db74">&#34;/turns&#34;</span>, methods<span style="color:#f92672">=</span>[<span style="color:#e6db74">&#34;POST&#34;</span>])
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">async</span> <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">ingest</span>(request: Request) <span style="color:#f92672">-&gt;</span> JSONResponse:
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> <span style="color:#f92672">not</span> hmac<span style="color:#f92672">.</span>compare_digest(request<span style="color:#f92672">.</span>headers<span style="color:#f92672">.</span>get(<span style="color:#e6db74">&#34;x-ingest-key&#34;</span>, <span style="color:#e6db74">&#34;&#34;</span>), INGEST_KEY):
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> JSONResponse({<span style="color:#e6db74">&#34;error&#34;</span>: <span style="color:#e6db74">&#34;unauthorized&#34;</span>}, status_code<span style="color:#f92672">=</span><span style="color:#ae81ff">401</span>)
+</span></span><span style="display:flex;"><span>    body <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> request<span style="color:#f92672">.</span>json()
+</span></span><span style="display:flex;"><span>    user, cid <span style="color:#f92672">=</span> body<span style="color:#f92672">.</span>get(<span style="color:#e6db74">&#34;user&#34;</span>), body<span style="color:#f92672">.</span>get(<span style="color:#e6db74">&#34;conversation_id&#34;</span>, <span style="color:#e6db74">&#34;&#34;</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> <span style="color:#f92672">not</span> user <span style="color:#f92672">or</span> <span style="color:#f92672">not</span> re<span style="color:#f92672">.</span>fullmatch(<span style="color:#e6db74">r</span><span style="color:#e6db74">&#34;[A-Za-z0-9_-]{1,128}&#34;</span>, cid):
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> JSONResponse({<span style="color:#e6db74">&#34;error&#34;</span>: <span style="color:#e6db74">&#34;user and a safe conversation_id are required&#34;</span>}, status_code<span style="color:#f92672">=</span><span style="color:#ae81ff">400</span>)
+</span></span><span style="display:flex;"><span>    payload <span style="color:#f92672">=</span> to_funes_jsonl(cid, body<span style="color:#f92672">.</span>get(<span style="color:#e6db74">&#34;turns&#34;</span>, []))
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    src <span style="color:#f92672">=</span> home(user) <span style="color:#f92672">/</span> <span style="color:#e6db74">&#34;src&#34;</span>
+</span></span><span style="display:flex;"><span>    src<span style="color:#f92672">.</span>mkdir(parents<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>, exist_ok<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>)
+</span></span><span style="display:flex;"><span>    tmp <span style="color:#f92672">=</span> src <span style="color:#f92672">/</span> <span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;.</span><span style="color:#e6db74">{</span>cid<span style="color:#e6db74">}</span><span style="color:#e6db74">.tmp&#34;</span>
+</span></span><span style="display:flex;"><span>    tmp<span style="color:#f92672">.</span>write_text(payload)
+</span></span><span style="display:flex;"><span>    tmp<span style="color:#f92672">.</span>replace(src <span style="color:#f92672">/</span> <span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">{</span>cid<span style="color:#e6db74">}</span><span style="color:#e6db74">.funes.jsonl&#34;</span>)   <span style="color:#75715e"># atomic: recall never sees half a file</span>
+</span></span><span style="display:flex;"><span>    schedule_index(user)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> JSONResponse({<span style="color:#e6db74">&#34;stored&#34;</span>: cid}, status_code<span style="color:#f92672">=</span><span style="color:#ae81ff">202</span>)
+</span></span></code></pre></div><p><code>home(user)</code> は <code>DATA / sha256(user)[:24]</code> なので、ディレクトリ名からユーザー ID はわかりません。funes の形式への変換は、数行で済みます。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">to_funes_jsonl</span>(conversation_id: str, turns: list[dict]) <span style="color:#f92672">-&gt;</span> str:
+</span></span><span style="display:flex;"><span>    lines <span style="color:#f92672">=</span> []
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> seq, t <span style="color:#f92672">in</span> enumerate(turns):
+</span></span><span style="display:flex;"><span>        ts <span style="color:#f92672">=</span> datetime<span style="color:#f92672">.</span>fromisoformat(t[<span style="color:#e6db74">&#34;ts&#34;</span>]<span style="color:#f92672">.</span>replace(<span style="color:#e6db74">&#34;Z&#34;</span>, <span style="color:#e6db74">&#34;+00:00&#34;</span>))<span style="color:#f92672">.</span>astimezone(timezone<span style="color:#f92672">.</span>utc)
+</span></span><span style="display:flex;"><span>        lines<span style="color:#f92672">.</span>append(json<span style="color:#f92672">.</span>dumps({
+</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">&#34;session_id&#34;</span>: conversation_id, <span style="color:#e6db74">&#34;turn_uuid&#34;</span>: t<span style="color:#f92672">.</span>get(<span style="color:#e6db74">&#34;id&#34;</span>) <span style="color:#f92672">or</span> <span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">{</span>conversation_id<span style="color:#e6db74">}</span><span style="color:#e6db74">-</span><span style="color:#e6db74">{</span>seq<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">&#34;seq&#34;</span>: seq, <span style="color:#e6db74">&#34;ts&#34;</span>: ts<span style="color:#f92672">.</span>strftime(<span style="color:#e6db74">&#34;%Y-%m-</span><span style="color:#e6db74">%d</span><span style="color:#e6db74">T%H:%M:%SZ&#34;</span>), <span style="color:#e6db74">&#34;role&#34;</span>: t[<span style="color:#e6db74">&#34;role&#34;</span>],
+</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">&#34;harness&#34;</span>: <span style="color:#e6db74">&#34;copilot&#34;</span>, <span style="color:#e6db74">&#34;blocks&#34;</span>: [{<span style="color:#e6db74">&#34;block_type&#34;</span>: <span style="color:#e6db74">&#34;text&#34;</span>, <span style="color:#e6db74">&#34;text&#34;</span>: t[<span style="color:#e6db74">&#34;text&#34;</span>]}],
+</span></span><span style="display:flex;"><span>        }))
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span><span style="color:#f92672">.</span>join(lines) <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>
+</span></span></code></pre></div><p>インデックス化は<strong>ユーザーごとにデバウンス</strong>されます。ターンがまとめて来ても <code>funes index</code> の実行は 1 回だけで、同じディレクトリに対して 2 つの実行が同時に走ることはありません。実行中に届いた書き込みは、もう 1 回分だけ追加で実行を予約します。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">schedule_index</span>(user: str) <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">None</span>:
+</span></span><span style="display:flex;"><span>    st <span style="color:#f92672">=</span> index_state<span style="color:#f92672">.</span>setdefault(user, {<span style="color:#e6db74">&#34;task&#34;</span>: <span style="color:#66d9ef">None</span>, <span style="color:#e6db74">&#34;dirty&#34;</span>: <span style="color:#66d9ef">False</span>})
+</span></span><span style="display:flex;"><span>    st[<span style="color:#e6db74">&#34;dirty&#34;</span>] <span style="color:#f92672">=</span> <span style="color:#66d9ef">True</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> st[<span style="color:#e6db74">&#34;task&#34;</span>] <span style="color:#f92672">is</span> <span style="color:#66d9ef">None</span> <span style="color:#f92672">or</span> st[<span style="color:#e6db74">&#34;task&#34;</span>]<span style="color:#f92672">.</span>done():
+</span></span><span style="display:flex;"><span>        st[<span style="color:#e6db74">&#34;task&#34;</span>] <span style="color:#f92672">=</span> asyncio<span style="color:#f92672">.</span>create_task(index_loop(user))
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">async</span> <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">index_loop</span>(user: str) <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">None</span>:
+</span></span><span style="display:flex;"><span>    st <span style="color:#f92672">=</span> index_state[user]
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">while</span> st[<span style="color:#e6db74">&#34;dirty&#34;</span>]:
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">await</span> asyncio<span style="color:#f92672">.</span>sleep(INDEX_DEBOUNCE)
+</span></span><span style="display:flex;"><span>        st[<span style="color:#e6db74">&#34;dirty&#34;</span>] <span style="color:#f92672">=</span> <span style="color:#66d9ef">False</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">await</span> funes(user, <span style="color:#e6db74">&#34;index&#34;</span>, <span style="color:#e6db74">&#34;--yes&#34;</span>, str(home(user) <span style="color:#f92672">/</span> <span style="color:#e6db74">&#34;src&#34;</span>), timeout<span style="color:#f92672">=</span><span style="color:#ae81ff">300</span>)
+</span></span></code></pre></div><p>想起はインデックス化を待ちません。ターンが閉じてから数秒後には検索できるようになります。「今何て言った？」を検索ツールに尋ねる人はいないので、これで十分です。</p>
+<h2 id="読み出しパスツール-1-つ">読み出しパス：ツール 1 つ</h2>
+<p><img src="/posts/agent-recall-mcp/diagrams/03-read-path.png" alt="読み出しパス"></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#a6e22e">@mcp.tool</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">async</span> <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">recall_my_conversations</span>(query: str) <span style="color:#f92672">-&gt;</span> str:
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;&#34;&#34;Search the current user&#39;s own earlier conversations with this assistant.
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    Use it when the user refers to something discussed before (&#34;last time&#34;, &#34;earlier&#34;,
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    &#34;what did we decide&#34;, &#34;the numbers we used&#34;). Use short queries built around identifiers
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    and key nouns (&#34;K-2 machine ticket&#34;); search again with other words if needed.
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    Returns dated passages from past chats. Quote them; do not invent details.&#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>    user <span style="color:#f92672">=</span> get_access_token()<span style="color:#f92672">.</span>client_id          <span style="color:#75715e"># from the verified token, never from the query</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> <span style="color:#f92672">not</span> (home(user) <span style="color:#f92672">/</span> <span style="color:#e6db74">&#34;memory&#34;</span>)<span style="color:#f92672">.</span>exists():
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;No earlier conversations are stored for this user yet.&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">async</span> <span style="color:#66d9ef">with</span> recall_slots:
+</span></span><span style="display:flex;"><span>        code, out <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> funes(user, <span style="color:#e6db74">&#34;recall&#34;</span>, <span style="color:#e6db74">&#34;-k&#34;</span>, str(RECALL_K),
+</span></span><span style="display:flex;"><span>                                <span style="color:#e6db74">&#34;--candidates&#34;</span>, str(RECALL_CANDIDATES), <span style="color:#e6db74">&#34;--&#34;</span>, query[:<span style="color:#ae81ff">500</span>],
+</span></span><span style="display:flex;"><span>                                timeout<span style="color:#f92672">=</span>RECALL_TIMEOUT)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> code <span style="color:#f92672">!=</span> <span style="color:#ae81ff">0</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;Conversation memory is unavailable right now; continue without it.&#34;</span>
+</span></span><span style="display:flex;"><span>    out <span style="color:#f92672">=</span> HINT_LINE<span style="color:#f92672">.</span>sub(<span style="color:#e6db74">&#34;&#34;</span>, out)<span style="color:#f92672">.</span>strip()         <span style="color:#75715e"># drop funes&#39; &#34;→ get &lt;session&gt; --memory &lt;path&gt;&#34; hints</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> out[:MAX_RESULT_CHARS] <span style="color:#f92672">or</span> <span style="color:#e6db74">&#34;Nothing relevant found in earlier conversations.&#34;</span>
+</span></span></code></pre></div><p>見た目以上に効いている細部がいくつかあります。</p>
+<ul>
+<li><strong>docstring が、呼び出しの引き金であり説明書でもある。</strong> エージェントは、説明文がユーザーの言い回しと合ったときにツールを呼び出します。「前回」「以前」「何を決めたっけ」は、人が実際に使う言葉です。説明文にはクエリの書き方も書いてあります。短く、識別子を中心にしたクエリの方がうまくランク付けされるからです（測定結果を参照）。</li>
+<li><strong>クエリの前の <code>--</code>。</strong> <code>-k 100</code> と入力したユーザーは、そのテキストを検索したいのであって、フラグを渡したいわけではありません。</li>
+<li><strong>ヒント行は取り除く。</strong> funes は各ヒットの後に <code>→ get &lt;session&gt; --memory &lt;path&gt;</code> を表示します。<code>get</code> を呼べるエージェント向けですが、こちらのエージェントは呼べません。放っておくと、サーバーのパスやセッション ID が答えに漏れるだけです。最初の試行でまさにこれが起き、エージェントが会話 ID の先頭部分を引用し始めました。</li>
+<li><strong>やわらかく失敗する。</strong> 記憶の問題が会話を壊すことは、絶対にあってはなりません。ツールは記憶が使えないと伝え、エージェントはそのまま続けます。</li>
+<li><strong>コストに上限を設ける。</strong> 同時実行は最大 4 件の想起、タイムアウトは 10 秒、コンテキストに入る文字数は 4,000 文字が上限です。</li>
+</ul>
+<p>funes の呼び出し自体は、環境をクリアした状態で実行されます。<code>FUNES_HOME</code> はユーザーのディレクトリに設定し、<code>HF_HUB_OFFLINE=1</code> を立て、モデルはイメージに焼き込まれたディレクトリから読み込みます。</p>
+<h2 id="パッケージングコンテナ-1-つ">パッケージング：コンテナ 1 つ</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-dockerfile" data-lang="dockerfile"><span style="display:flex;"><span><span style="color:#66d9ef">FROM</span> <span style="color:#e6db74">python:3.12-slim</span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">ARG</span> FUNES_VERSION<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>.8.0<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">ARG</span> FUNES_SHA256<span style="color:#f92672">=</span>3c7eacbaa4487d253f8e13ef7223325ba05069fc258533db6e19bb5765181fea
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">ADD</span> --checksum<span style="color:#f92672">=</span>sha256:<span style="color:#e6db74">${</span>FUNES_SHA256<span style="color:#e6db74">}</span> --chmod<span style="color:#f92672">=</span><span style="color:#ae81ff">0755</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span>    https://github.com/huggingface/funes/releases/download/v<span style="color:#e6db74">${</span>FUNES_VERSION<span style="color:#e6db74">}</span>/funes-x86_64-linux /usr/local/bin/funes<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"># Bake the embedder: a throwaway index + recall downloads exactly what funes needs.</span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">ARG</span> BAKE_RERANKER<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">ENV</span> HF_HOME<span style="color:#f92672">=</span>/opt/hf<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">RUN</span> mkdir -p /tmp/warm/src <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span> <span style="color:#f92672">&amp;&amp;</span> echo <span style="color:#e6db74">&#39;{&#34;session_id&#34;:&#34;warm&#34;,&#34;turn_uuid&#34;:&#34;t0&#34;,&#34;seq&#34;:0,&#34;ts&#34;:&#34;2026-01-01T00:00:00Z&#34;,&#34;role&#34;:&#34;user&#34;,&#34;harness&#34;:&#34;copilot&#34;,&#34;blocks&#34;:[{&#34;block_type&#34;:&#34;text&#34;,&#34;text&#34;:&#34;warm up&#34;}]}&#39;</span> &gt; /tmp/warm/src/w.funes.jsonl <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span> <span style="color:#f92672">&amp;&amp;</span> FUNES_HOME<span style="color:#f92672">=</span>/tmp/warm/home funes index --yes /tmp/warm/src <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span> <span style="color:#f92672">&amp;&amp;</span> FUNES_HOME<span style="color:#f92672">=</span>/tmp/warm/home funes recall -k <span style="color:#ae81ff">1</span> --candidates <span style="color:#ae81ff">2</span> warm <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span> <span style="color:#f92672">&amp;&amp;</span> <span style="color:#66d9ef">if</span> <span style="color:#f92672">[</span> <span style="color:#e6db74">&#34;</span>$BAKE_RERANKER<span style="color:#e6db74">&#34;</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span> <span style="color:#f92672">]</span>; <span style="color:#66d9ef">then</span> FUNES_HOME<span style="color:#f92672">=</span>/tmp/warm/home funes recall -k <span style="color:#ae81ff">1</span> --candidates <span style="color:#ae81ff">8</span> warm; <span style="color:#66d9ef">fi</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span> <span style="color:#f92672">&amp;&amp;</span> rm -rf /tmp/warm <span style="color:#f92672">&amp;&amp;</span> chmod -R a+rX /opt/hf<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">RUN</span> pip install --no-cache-dir fastmcp<span style="color:#f92672">==</span>4.1.0<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">WORKDIR</span> <span style="color:#e6db74">/app</span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">COPY</span> recall_server.py .<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">RUN</span> useradd -u <span style="color:#ae81ff">10001</span> -m app <span style="color:#f92672">&amp;&amp;</span> mkdir -p /data/memories <span style="color:#f92672">&amp;&amp;</span> chown app /data/memories<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">USER</span> <span style="color:#e6db74">app</span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">ENV</span> HF_HUB_OFFLINE<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">CMD</span> [<span style="color:#e6db74">&#34;python&#34;</span>, <span style="color:#e6db74">&#34;recall_server.py&#34;</span>]<span style="color:#960050;background-color:#1e0010">
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">services</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">recall-mcp</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">build</span>: <span style="color:#ae81ff">.</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">ports</span>: [<span style="color:#e6db74">&#34;8000:8000&#34;</span>]
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">environment</span>:
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">INGEST_KEY</span>: <span style="color:#ae81ff">${INGEST_KEY:-demo-ingest-key}</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">RECALL_K</span>: <span style="color:#e6db74">&#34;3&#34;</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">RECALL_CANDIDATES</span>: <span style="color:#e6db74">&#34;8&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">volumes</span>:
+</span></span><span style="display:flex;"><span>      - <span style="color:#ae81ff">memories:/data/memories</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">volumes</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">memories</span>:
+</span></span></code></pre></div><p>真似する価値があるのは、ウォームアップのステップです。モデルファイルをハードコードする代わりに、ビルドの中で小さなインデックス化と想起を 1 回ずつ実行し、funes が実際に使うモデルだけを <code>HF_HOME</code> にダウンロードさせます。実行時、コンテナは Hugging Face Hub に一切アクセスしません。イメージのレイヤーサイズは、funes のバイナリが 218 MB、埋め込みモデルが 134 MB、FastMCP が 119 MB です。リランカーを焼き込むとさらに 1.13 GB 増えます。これもオフにしておく理由の 1 つです。<code>RUN chmod</code> を別に走らせると 218 MB のバイナリが 2 つ目のレイヤーにコピーされてしまうので、<code>ADD --chmod</code> を使ってください。</p>
+<h2 id="うまくいくのか-ある運用リーダーの-2-週間">うまくいくのか？ ある運用リーダーの 2 週間</h2>
+<p>記憶には、いくつかの拠点を運用する人が 2 週間のうちに交わしていそうな、6 件の会話を種として入れました。2 拠点の実績レビュー、予算のための予測計算、夜間バッチの健全性チェック、引き継ぎ、単位換算の計算、キャパシティチェックです。これらの例は架空のもので、意図的に汎用的にしてあります。ID、担当者、チケット、数字さえあれば、どんな領域でも想起にとっては同じに見えます。2 人目のユーザー bob には、別の拠点についての会話を 1 件与えました。シーダーはチャットゲートウェイの役を演じ、本番とまったく同じように、各ターンの後に会話を送信します。</p>
+<p>エージェントには、ヘッドレスモードの Claude を使いました。このサーバーを<strong>唯一の</strong>ツールとして与え、ドメインについての他の知識は一切持たせていません。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>claude -p <span style="color:#e6db74">&#34;</span>$QUESTION<span style="color:#e6db74">&#34;</span> --strict-mcp-config --mcp-config mcp-alice.json <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span>  --tools <span style="color:#e6db74">&#34;&#34;</span> --allowedTools mcp__recall__recall_my_conversations <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span>  --system-prompt <span style="color:#e6db74">&#34;</span><span style="color:#66d9ef">$(</span>cat system.md<span style="color:#66d9ef">)</span><span style="color:#e6db74">&#34;</span>
+</span></span></code></pre></div><p>以下の回答はすべて、エージェントが想起した一節だけから作り出したものです。</p>
+<p><strong>2 つのチャットにまたがる決定とそのブロッカー。</strong> <em>「N-11 のアップグレードについて何を決めた？ スケジュールを組む前に何が終わっている必要がある？ メモによれば、そのブロッカーはまだ未解決？」</em> エージェントは 4 回の想起呼び出し（<code>N-11 upgrade</code>、<code>N-11 blocker schedule</code>、<code>MT-4471 K-2 machine</code>、<code>K-2 closed</code>）を行い、こう答えました。</p>
+<blockquote>
+<p><strong>決定（2026-10-08）：</strong> N-11 のアップグレード案を進めることに決めました。負荷 91% は「許容範囲だがぎりぎり」とのことでした。アップグレード後の North 仕上げラインの想定負荷は、2,400 台/日のうち約 2,185 台/日（91%）です。
+<strong>スケジュールを組む前に：</strong> 保守チケット MT-4471（K-2 マシンの問題）を先に解決する必要があります。
+<strong>ブロッカーはまだ未解決？</strong> 私のメモには解決したとは書かれていません。［…］2026-10-08 以降、MT-4471 が解決・クローズされたという記録は見当たりません。［…］スケジュールを組む前に、保守システムでチケットを確認してください。</p>
+</blockquote>
+<p>決定は 10-08 のチャットから、チケットの詳細は 10-03 の引き継ぎから来ています。エージェントはそれらを結び付け、メモに書かれていないことについては正直でした。</p>
+<p><strong>2 つのチャットにまたがって見つかった原因。</strong> <em>「9 月末に照合用の列が空だったのはなぜ？ 誰にエスカレーションした？」</em> あるチャットで、ユーザーは列が空であることに気づき、Tomas に聞くつもりだと書いていました。別の、後のチャットでは、2 件のジョブ失敗がデータフィード F-204 に起因することが判明していました。2 回の想起呼び出しで、エージェントはそれらを結び付けました。ジョブが失敗したのは F-204 フィードの欠落が原因で、問題は統合担当リーダーの Priya に渡っていた、と。さらに、チャットに記録されているのはエスカレーションする<em>つもり</em>だったという点だけで、2 件のジョブ失敗（09-26 以降）は 09-23 から 09-25 までの空白を説明しないとも付け加えました。想起されたテキストでは、正確なエラーメッセージが途中で切れているとも述べています。これは事実です。funes は前後のターンを短いプレビューとして返すので、エージェントは空白を埋めるのではなく、そう正直に言ったのです。</p>
+<p><strong>チャットをまたいだ To Do リスト。</strong> <em>「これまでの全チャットから、未対応のフォローアップを 1 つのリストにまとめて」</em> 5 回の想起呼び出しから、5 件の異なるチャットにまたがる 7 件の項目が得られ、それぞれに担当者、期限、出典の日付が付いていました。エージェントは今日の日付と照らして期限超過のものにフラグを立て、2 件が根本的には同じ問題であることを指摘し、曜日から日付に変換した箇所には印を付けて（「チャットには『木曜日』としか書かれていません」）ユーザーが確認できるようにしました。</p>
+<p><strong>正確な数値。</strong> <em>「ベースケースとして選んだ予測ケースはどれ？ パラメーターは？ 18 か月時点の値は？」</em> 双曲線型、q0 は 1,500 台/日、Di は 0.25/年、b は 0.6 で、18 か月時点では 1,069.5 台/日・693.3 千台、比較用に指数型ケースも添えられていました。数値は元の計算と完全に一致しており、エージェントは、チャットには決定は記録されているがその理由は記録されていない、とも付け加えました。</p>
+<p><strong>ネガティブコントロールと分離。</strong> <em>「モーター P-7 やチケット MT-5120 について話したことある？」</em> alice として尋ねると：「いいえ。検索できる過去のチャットには、モーター P-7 やチケット MT-5120 に関するものはありません。」取り違えの可能性があるものとして、最も近いヒット（マシン K-2、チケット MT-4471）を挙げました。bob として同じ質問をすると、P-7 のベアリング異音とチケット MT-5120 について書かれた、South ハブについての彼のチャットが返ってきました。言葉が完全に一致していても、alice には bob の履歴は見えません。alice のトークンが開くのは、常に alice 自身のディレクトリだけだからです。</p>
+<p>エージェントの実行は、端から端まで 4〜11 秒、想起呼び出しは 1 回あたり 2〜5 回でした。そのうち想起にかかる時間は、合計で約 1 秒です。完全な回答は <code>examples/agent-runs.md</code> にあります。</p>
+<h3 id="本番に近いスタックでも同じ結果">本番に近いスタックでも同じ結果</h3>
+<p>このデモを書く前に、同じ設計を実際のコパイロットに組み込みました。商用のエージェントプラットフォーム、自前のチャットゲートウェイ、Java 製の MCP サーバー、そして同じコンテナの中の funes です。4 件の作業チャット（データ照会、計算、引き継ぎメモ）の後、新しい会話の中で 4 件の想起チャットを行いました。エージェントは 13 回想起呼び出しを行いました。想起された事実はすべて正しく、想起したパラメーターからより長い期間の予算ケースを再計算したものや、一度も話題に出ていない設備についてのネガティブコントロールも含まれていました。想起された詳細の 1 つは、テストドライバーがストリームを途中で諦めた回答に由来するものでした。それでもゲートウェイは完了したターンを転送しており、記憶はテストハーネスよりも多くを知っていたのです。</p>
+<h2 id="測定結果">測定結果</h2>
+<p>選りすぐった例だけで終わらせないために、1 人のユーザー分の合成履歴を生成しました。6 メッセージからなる会話を N 件、それぞれに確認可能な事実（チケット番号、品質検査の不合格率、タスクの担当者、決定への参照のいずれか）を 1 つ、雑談の中に紛れ込ませています。紛らわしい要素は意図的に仕込んであります。どの拠点・設備も、約 6 件の会話に（雑談の中や、他の事実の一部として）登場し、同じ 12 人の人物、タスクの種類、症状があちこちで繰り返し出てくるので、クエリは<em>組み合わせ</em>に一致する必要があり、1 つの珍しい単語には頼れません。各質問の正解はちょうど 1 つです。質問は言い換えてあります。事実としては「チケット MT-1040 がオープンしている」と書かれていても、質問は「ポンプ P-003 のシール漏れについて起票された作業指示の番号は？」のように尋ねます。ヒットとは、期待される答えが、ツールが返すテキストの中に現れることを指します。</p>
+<p>すべて、4 CPU・4 GB に制限したコンテナの中で、呼び出しごとに新しい <code>funes</code> プロセスを 1 つ起動して実行しました。サーバーが実際に動かすのとまったく同じやり方です。</p>
+<table>
+	<thead>
+			<tr>
+					<th></th>
+					<th>1,000 件</th>
+					<th>3,000 件</th>
+					<th>10,000 件</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>メッセージ数 / 生テキスト量</td>
+					<td>6,000 / 1.5 MB</td>
+					<td>18,000 / 4.5 MB</td>
+					<td>60,000 / 14.9 MB</td>
+			</tr>
+			<tr>
+					<td><strong>想起、k=3、プール 8</strong>（採用設定）：ヒット率</td>
+					<td>91% / 93%</td>
+					<td>93% / 95%</td>
+					<td>100% / 97%</td>
+			</tr>
+			<tr>
+					<td>同条件、短いエージェント風クエリ</td>
+					<td>94%</td>
+					<td>95%</td>
+					<td>98%</td>
+			</tr>
+			<tr>
+					<td>想起、k=8、プール 8：ヒット率</td>
+					<td>100%</td>
+					<td>100%</td>
+					<td>100%</td>
+			</tr>
+			<tr>
+					<td>リランク付き想起、k=3、プール 32：ヒット率</td>
+					<td>99%</td>
+					<td>99%</td>
+					<td>100%</td>
+			</tr>
+			<tr>
+					<td>想起レイテンシ p50 / p95（リランクなし）</td>
+					<td>0.15–0.20 / 0.22 s</td>
+					<td>0.16–0.19 / 0.23 s</td>
+					<td>0.18–0.19 / 0.24 s</td>
+			</tr>
+			<tr>
+					<td>想起レイテンシ p50（リランクあり）</td>
+					<td>3.1 s</td>
+					<td>3.0 s</td>
+					<td>3.1 s</td>
+			</tr>
+			<tr>
+					<td>想起 1 回あたりのピークメモリ</td>
+					<td>231 MB（リランク時 1.64 GB）</td>
+					<td>234 MB（1.65 GB）</td>
+					<td>240 MB（1.66 GB）</td>
+			</tr>
+			<tr>
+					<td>会話を 1 件追加（増分インデックス化）</td>
+					<td>1.2–1.8 s, 270 MB</td>
+					<td>8–9 s, 305 MB</td>
+					<td>4.5–4.8 s, 390–400 MB</td>
+			</tr>
+			<tr>
+					<td>ゼロからインデックス化（バックフィル）</td>
+					<td>68–70 s, 650 MB</td>
+					<td>242 s, 1.26 GB</td>
+					<td>19.5 分, 1.9 GB</td>
+			</tr>
+			<tr>
+					<td>ディスク上の記憶ディレクトリのサイズ</td>
+					<td>86 MB</td>
+					<td>605 MB</td>
+					<td>424 MB</td>
+			</tr>
+	</tbody>
+</table>
+<p><em>各サイズ 100 問、4 CPU。セルに値が 2 つある場合は、毎回フルの再インデックス化を伴うベンチマークを 2 回実行したものです。ばらつきは、インデックス構築の実行間変動です。</em></p>
+<p>測定結果からわかること：</p>
+<ul>
+<li><strong>想起のレイテンシは、履歴の量に左右されない。</strong> 想起 1 回あたり約 0.2 秒・240 MB で、これは会話数が 1,000 件でも 10,000 件でも変わりません。その大半は、プロセスの起動と埋め込みモデルの読み込みです。規模感としては、1 日に 10 回チャットするエンジニアなら、年間で約 2,500 会話が積み上がります。</li>
+<li><strong>質問が失われることはなく、カットラインの下に沈むだけ。</strong> 3 件ではなく 8 件の一節を返すようにすると、どのサイズでも全問がヒットしました。3 件のままだと、最大 9% の質問を取りこぼしました。調べてみると、取りこぼしには共通の原因が 1 つありました。<em>別の</em>設備についてのほぼ同一の事実（K-039、K-019、K-007 の「振動アラームが何度も出る」）が、正解より上位に来てしまうのです。長く言い換えられた質問が、意味の上ではそれらとも一致してしまい、区別できる要素が ID だけだったからです。同じ質問を「コンプレッサー K-047 チケット」と短く詰めると、正しい会話が 1 位に来ました。エージェントがツール呼び出しを書くときの言い回しも、もともとこれに近いものです（私たちのエージェントのクエリは <code>MT-4471 K-2 compressor closed</code> のような形でした）。そして短いクエリは、全体として少し高いスコアになりました。ツールの説明文には「識別子を中心にした短いクエリを使う」という一文を加えました。</li>
+<li><strong>リランカーは k=3 の取りこぼしを買い戻せるが、代償は大きい。</strong> k=3 でも 99〜100% に達しますが、レイテンシは 15 倍、メモリは 7 倍、イメージには 1.1 GB のモデルが必要になります。一節を多く返す方法なら、レイテンシのコストなしに同じ精度が得られ、代わりにコンテキストのトークンを使います。私たちが k=3 のままにしているのは、最初の試みで質問に答えられなければエージェントが聞き直すからです。あなたのエージェントがそうしないなら、k（と文字数の上限）を上げてください。</li>
+<li><strong>インデックス化は、効いてほしいところで安く済む。</strong> 新しい会話は、リクエストの経路から外れたところで、数秒・数百 MB のうちに検索可能になります。10,000 会話分の履歴をゼロから構築するのには 20 分・2 GB かかります。これは一度きりのバックフィルなので、サーバーの中でやるのではなく、バッチジョブとして実行してください。</li>
+<li><strong>ディスク使用量は控えめだが、線形ではない。</strong> 記憶ディレクトリには、ベクトル、全文検索インデックス、テーブルのバージョンが入っています。そのサイズはストレージエンジンがどれだけコンパクションを行ったかに左右されます。今回の実行で 3,000 会話の方が 10,000 会話より容量を使ったのは、これが理由です。非常にヘビーなユーザーなら数百 MB、典型的なユーザーなら数 MB を見込んでおいてください。</li>
+</ul>
+<h2 id="これは何で何でないか">これは何で、何でないか</h2>
+<table>
+	<thead>
+			<tr>
+					<th>そうであるもの</th>
+					<th>そうでないもの</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>ユーザー自身の過去のチャットを、そのままの形で検索する</td>
+					<td>ナレッジベースや、ユーザーのプロファイル</td>
+			</tr>
+			<tr>
+					<td>エージェント起点：いつ振り返るかはエージェントが決める</td>
+					<td>毎回のプロンプトに黙って注入されるコンテキスト</td>
+			</tr>
+			<tr>
+					<td>エージェントが引用でき、ユーザーが検証できる、日付付きの一節</td>
+					<td>出典のない、抽出された「事実」</td>
+			</tr>
+			<tr>
+					<td>ユーザーごとに、呼び出し元のトークンで分離されている</td>
+					<td>チームで共有する知識（それは別の、意図的な設計が必要になる）</td>
+			</tr>
+			<tr>
+					<td>追記のみの履歴</td>
+					<td>チャットでそう言われていない限り、チケットがクローズされたことを知っているもの、ではない</td>
+			</tr>
+	</tbody>
+</table>
+<h2 id="限界">限界</h2>
+<ul>
+<li><strong>履歴は真実ではない。</strong> 想起が返すのは<em>言われたこと</em>であり、そこには間違いや、実現しなかった計画も含まれます。私たちのエージェントはこれをうまく扱えました（「メモには解決したかどうか書かれていません」）が、それはエージェントとそのプロンプトによるものです。ツール自体はそれを保証できません。</li>
+<li><strong>想起したチャット自体も記憶される。</strong> 想起を使った会話の回答も、他のターンと同じようにインデックス化されます。たいていはこれが助けになります。まとめられた To Do リストも検索できるようになるからです。しかし、間違った想起の回答もまた、将来の「記憶」になってしまいます。ほぼ想起の出力だけでできているターンを除外するのは、妥当な改良点です。</li>
+<li><strong>削除は再構築を意味する。</strong> funes は追記のみです。「この会話を忘れて」は、元のファイルを削除し、そのユーザーのディレクトリを再インデックス化することを意味します。1 人のユーザーについてなら安く済みますが、それでも、プライバシーの要求や保持ポリシーのために必要な、明示的な操作であることに変わりはありません。</li>
+<li><strong>秘密情報や個人データも残り続ける。</strong> ユーザーがチャットに貼り付けたものは何でも、その人の記憶に入ります。転送する前にゲートウェイでマスキングし、保持期間はあらかじめ決めておいてください。（funes には秘密情報向けの <code>scrub</code> コマンドがありますが、業務データ向けではありません。）</li>
+<li><strong>埋め込みは英語優先。</strong> bge-small-en は英語のモデルです。BM25 なら、どの言語であっても正確なコードには一致しますが、他の言語での意味ベースの検索には、多言語対応の埋め込みモデルが必要です。</li>
+<li><strong>エージェントの振る舞いは一定しない。</strong> リクエストにツール名が明示されていない限り、振り返るかどうかはエージェントが<em>判断</em>しなければなりません。よくできたツールの説明文で、たいていはそこまで持っていけます。残りは、システムプロンプトの一文（「ユーザーが以前の作業に言及したら、答える前に想起すること」）が埋めてくれます。</li>
+<li><strong>呼び出しごとに 1 プロセス。</strong> シンプルで頑丈ですが、どの想起呼び出しも、プロセスの起動とモデルの読み込みのコスト（約 0.2 秒のうちの一部）を払うことになります。リクエスト頻度が非常に高い場合は、テナントごとに長時間稼働する funes の MCP サーバー（<code>funes mcp &lt;memory&gt;</code>）を使えば、これを避けられます。</li>
+</ul>
+<h2 id="まとめ">まとめ</h2>
+<p>エージェントが毎回ゼロから始めるのをやめるのに、脳移植は要りません。必要なのは、すでに起きたことの中から調べる手段です。検索を funes に任せれば、この機能全体は、完了したターンを保存する 1 つのルートと、呼び出し元の身元のもとでそれを検索する 1 つのツール、そしてバージョンを固定したバイナリとモデルを焼き込んだ 1 つのコンテナに収まります。これは SF 的な意味での記憶ではありません。想起です。日付が付いていて検証可能な、過去へのヒントを、エージェントが必要なときに求める。それだけのことです。エージェントを使う人にとっては、「N-11 が何だったか思い出させて」と言うのと、「MT-4471 がクローズしたらアップグレードを進めると決めましたね。まだ未解決です」と言われるのとでは、大きな違いがあります。</p>
+<p>完全なデモ（サーバー、Dockerfile、compose ファイル、シード用の会話、エージェントのラッパー、ベンチマーク）は、付属のリポジトリにあります。</p>
+
+        </p>
+        
+    </div>
+
+    <div class="prev-next">
+        
+    </div>
+
+    
+    
+    
+</div>
+
+
+
+    
+
+        </main><footer class="footer">
+    
+    
+
+    
+    <span>
+        Made using <a target="_blank" href="https://gohugo.io/">HUGO</a>
+    </span>
+</footer>
+</body>
+</html>

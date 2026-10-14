@@ -10,9 +10,16 @@
 		
 		
 		
-			<lastBuildDate>Mon, 05 Oct 2026 09:00:00 +0200</lastBuildDate>
+			<lastBuildDate>Wed, 14 Oct 2026 09:00:00 +0200</lastBuildDate>
 		
 			<atom:link href="https://lynxline.com/tags/data/index.xml" rel="self" type="application/rss+xml" />
+			<item>
+				<title>Teach Your Agent to Recall: Searchable Conversation History over MCP</title>
+				<link>https://lynxline.com/posts/agent-recall-mcp/</link>
+				<pubDate>Wed, 14 Oct 2026 09:00:00 +0200</pubDate>
+				<guid>https://lynxline.com/posts/agent-recall-mcp/</guid>
+				<description>&lt;p&gt;Every chat with an agent starts from zero. On Monday someone reviews the output of two sites with the assistant, writes down who owns which follow-up and settles on a budget case. On Thursday they open a new chat and ask &amp;ldquo;what did we decide about N-11?&amp;rdquo;, and the agent has no idea what N-11 is. The user scrolls back, copies, pastes and explains everything again.&lt;/p&gt;&#xA;&lt;p&gt;This article shows how we closed that gap with very little code. The agent gets one tool, &lt;code&gt;recall_my_conversations&lt;/code&gt;, that searches the current user&amp;rsquo;s own earlier chats and returns dated passages. The search engine is &lt;a href=&#34;https://github.com/huggingface/funes&#34;&gt;funes&lt;/a&gt;, an open-source project we reuse instead of writing our own. The glue is a small &lt;a href=&#34;https://gofastmcp.com&#34;&gt;FastMCP&lt;/a&gt; server, and everything runs in one container.&lt;/p&gt;</description>
+			</item>
 			<item>
 				<title>Pass References, Not Rows: Data Artifacts for Agent Computations over MCP</title>
 				<link>https://lynxline.com/posts/agent-data-artifacts-mcp/</link>

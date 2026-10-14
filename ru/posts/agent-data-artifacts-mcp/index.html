@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="ru"><head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+
+    <style>
+        :root {
+            --accent-color: #FF4D4D;
+        }
+    </style>
+
+    
+    
+    
+    
+    
+    
+
+    
+    <title>Передавайте ссылки, а не строки: артефакты данных для вычислений агента через MCP</title>
+    <meta name="description" content="">
+    <meta name="keywords" content='AI, MCP, Python, Data'>
+
+    <meta property="og:url" content="https://lynxline.com/ru/posts/agent-data-artifacts-mcp/">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Передавайте ссылки, а не строки: артефакты данных для вычислений агента через MCP">
+    <meta property="og:description" content="">
+    <meta property="og:image" content="https://lynxline.com/images/lynxline-logo.png">
+    <meta property="og:image:secure_url" content="https://lynxline.com/images/lynxline-logo.png">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Передавайте ссылки, а не строки: артефакты данных для вычислений агента через MCP">
+    <meta name="twitter:description" content="">
+    <meta property="twitter:domain" content="https://lynxline.com/ru/posts/agent-data-artifacts-mcp/">
+    <meta property="twitter:url" content="https://lynxline.com/ru/posts/agent-data-artifacts-mcp/">
+    <meta name="twitter:image" content="https://lynxline.com/images/lynxline-logo.png">
+
+    
+    <link rel="canonical" href="https://lynxline.com/ru/posts/agent-data-artifacts-mcp/" />
+
+    
+    <link rel="alternate" hreflang="ru" href="https://lynxline.com/ru/posts/agent-data-artifacts-mcp/" />
+    
+    <link rel="alternate" hreflang="en" href="https://lynxline.com/posts/agent-data-artifacts-mcp/" />
+    
+    <link rel="alternate" hreflang="ja" href="https://lynxline.com/ja/posts/agent-data-artifacts-mcp/" />
+    
+    <link rel="alternate" hreflang="ko" href="https://lynxline.com/ko/posts/agent-data-artifacts-mcp/" />
+    
+    
+    <link rel="alternate" hreflang="x-default" href="https://lynxline.com/posts/agent-data-artifacts-mcp/" />
+    
+    
+
+    
+    
+
+    
+    <link rel="stylesheet" type="text/css" href="/css/normalize.min.css" media="print">
+
+    
+    <link rel="stylesheet" type="text/css" href="/css/site.min.css">
+
+    
+    <link id="dark-theme" rel="stylesheet" href="/css/site-dark.min.css">
+
+    
+    <script src="/js/bundle.min.23a6a54d1ecbde7842938a593a7a1fdb1ee63af6fe2d73cb4c81c05425de46c2.js" integrity="sha256-I6alTR7L3nhCk4pZOnof2x7mOvb&#43;LXPLTIHAVCXeRsI="></script>
+
+    
+    
+</head>
+<body>
+        <script type="text/javascript">
+            
+            setThemeByUserPref();
+        </script><header class="header">
+    <nav class="header-nav">
+
+        
+        <div class="avatar">
+            <a href="https://lynxline.com/">
+                <img src='/images/lynxline-logo.png' alt="LynxLine — lynx with neural-network ears and circuit traces" />
+            </a>
+        </div>
+        
+
+        <div class="nav-title">
+            <a class="nav-brand" href="https://lynxline.com/">LynxLine</a>
+        </div>
+
+        <div class="nav-links">
+            
+            <div class="nav-link">
+                <a href="https://lynxline.com/services/"><span data-feather='zap'></span> Услуги </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://lynxline.com/ru/posts/"><span data-feather='layers'></span> Записи </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://lynxline.com/ru/tags/"><span data-feather='tag'></span> Теги </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://lynxline.com/contact/"><span data-feather='mail'></span> Контакты </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://github.com"><span data-feather='github'></span>  </a>
+            </div>
+            
+
+            <span class="nav-icons-divider"></span>
+            <div class="nav-link dark-theme-toggle">
+                <span id="dark-theme-toggle-screen-reader-target" class="sr-only"></span>
+                <a>
+                    <span id="theme-toggle-icon" data-feather="moon"></span>
+                </a>
+            </div>
+
+            <div class="nav-link" id="hamburger-menu-toggle">
+                <span id="hamburger-menu-toggle-screen-reader-target" class="sr-only">menu</span>
+                <a>
+                    <span data-feather="menu"></span>
+                </a>
+            </div>
+
+            
+            <ul class="nav-hamburger-list visibility-hidden">
+                
+                <li class="nav-item">
+                    <a href="https://lynxline.com/services/"><span data-feather='zap'></span> Услуги </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://lynxline.com/ru/posts/"><span data-feather='layers'></span> Записи </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://lynxline.com/ru/tags/"><span data-feather='tag'></span> Теги </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://lynxline.com/contact/"><span data-feather='mail'></span> Контакты </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://github.com"><span data-feather='github'></span>  </a>
+                </li>
+                
+                <li class="nav-item dark-theme-toggle">
+                    <span id="dark-theme-toggle-screen-reader-target" class="sr-only">theme</span>
+                    <a>
+                        <span id="theme-toggle-icon" data-feather="moon"></span>
+                    </a>
+                </li>
+            </ul>
+
+        </div>
+    </nav>
+</header>
+<main id="content">
+    <div class="post container">
+    <div class="post-header-section">
+        <h1>Передавайте ссылки, а не строки: артефакты данных для вычислений агента через MCP</h1>
+        <small role="doc-subtitle"></small>
+        <p class="post-date">05.10.2026
+        
+        </p>
+
+        <ul class="post-tags">
+        
+            <li class="post-tag"><a href="https://lynxline.com/ru/tags/ai">AI</a></li>
+        
+            <li class="post-tag"><a href="https://lynxline.com/ru/tags/mcp">MCP</a></li>
+        
+            <li class="post-tag"><a href="https://lynxline.com/ru/tags/python">Python</a></li>
+        
+            <li class="post-tag"><a href="https://lynxline.com/ru/tags/data">Data</a></li>
+        
+        </ul>
+
+        
+        <p class="post-translations">Читать на другом языке:
+        
+            <a href="/posts/agent-data-artifacts-mcp/" hreflang="en" onclick="try { localStorage.setItem('lang-choice', 'en') } catch (e) {}">English</a>
+        
+            <a href="/ja/posts/agent-data-artifacts-mcp/" hreflang="ja" onclick="try { localStorage.setItem('lang-choice', 'ja') } catch (e) {}">日本語</a>
+        
+            <a href="/ko/posts/agent-data-artifacts-mcp/" hreflang="ko" onclick="try { localStorage.setItem('lang-choice', 'ko') } catch (e) {}">한국어</a>
+        
+        </p>
+        
+    </div>
+
+    <div class="post-content">
+        <p>
+            <p>В <a href="https://lynxline.com/ru/posts/sandboxed-python-mcp/">предыдущей статье</a> мы дали AI-агенту безопасное место для выполнения Python. Это ответило на вопрос, <em>где</em> выполняется написанный агентом код. Это продолжение отвечает на вопрос, который оказывается не менее важным: <strong>какие данные модели на самом деле нужно видеть?</strong></p>
+<p>Обычно ответ — намного меньше, чем мы ей даём.</p>
+<h2 id="наивный-паттерн">Наивный паттерн</h2>
+<p>Очевидный способ подключить агента к бизнес-системе выглядит так:</p>
+<ol>
+<li>Инструмент делает запрос к системе и возвращает набор результатов в виде JSON.</li>
+<li>Строки попадают в контекст модели.</li>
+<li>Модель их читает и отвечает: «топ-пять это&hellip;», «среднее значение&hellip;».</li>
+</ol>
+<p>Это работает в демо с двадцатью строками. На реальных данных это ломается тремя способами:</p>
+<ul>
+<li><strong>Безопасность.</strong> Каждая строка, возвращённая инструментом, теперь становится частью истории диалога. История сохраняется, логируется, повторно передаётся в следующие реплики, отправляется провайдеру модели, попадает в телеметрию и иногда сохраняется для оценки. Данные, которым никогда не нужно было покидать вашу систему, теперь скопированы во все эти места.</li>
+<li><strong>Стоимость и ёмкость.</strong> Строка с десятью полями — это примерно 40–60 токенов. Пять тысяч строк — это несколько сотен тысяч токенов: большая часть или всё окно контекста, за которое платят на каждой реплике, которая его несёт.</li>
+<li><strong>Корректность.</strong> LLM не вычисляют. Они оценивают. Попросите модель сложить 5000 чисел или ранжировать группы по изменению квартал к кварталу — и получите уверенный ответ, близкий к истине, но неверный. Тот же анализ на трёх строчках pandas даёт точный результат.</li>
+</ul>
+<p>В итоге модель делает именно то, что у неё получается хуже всего (арифметику над большими объёмами данных), используя ресурс, которого у неё меньше всего (контекст), и при этом разбрасывает данные повсюду.</p>
+<h2 id="паттерн-данные-остаются-на-месте-модель-получает-дескриптор">Паттерн: данные остаются на месте, модель получает дескриптор</h2>
+<p>Перевернём подход. Инструменты, производящие данные, <strong>не возвращают сами данные</strong>. Они сохраняют их на стороне сервера как <strong>артефакт</strong> и возвращают ссылку плюс ровно столько описания, сколько нужно модели, чтобы написать код для работы с ним:</p>
+<pre tabindex="0"><code>+--------------------------- MCP server ----------------------------+
+|                                                                   |
+|  fetch_*  ---&gt; [ artifact store ] &lt;---&gt; run_python (sandbox)      |
+|                   ^        ^                 |                    |
+|                   |        +---- outputs ----+                    |
+|                   +---- render_chart / export                     |
+|                                                                   |
++------------------------------|------------------------------------+
+                               | only: dataRef, schema, row count,
+                               |       tiny sample, small results
+                               v
+                       +---------------+
+                       |  LLM / agent  |
+                       +---------------+
+</code></pre><p>Задача модели меняется с «прочитать данные и ответить» на «понять <em>форму</em> данных и написать код, который даст ответ». С этой задачей модель справляется хорошо.</p>
+<p>Хранилище используют три вида инструментов:</p>
+<ul>
+<li><strong>Производители</strong> (<code>fetch_*</code>) выполняют запрос с правами вызывающего, сохраняют результат и возвращают описание.</li>
+<li><strong>Вычислительный инструмент</strong> (<code>run_python</code>) принимает ссылки в качестве входных данных. Внутри песочницы они оказываются DataFrame&rsquo;ами. Любые DataFrame, сохранённые скриптом, становятся <em>новыми</em> артефактами, а модели возвращается только небольшой JSON-результат.</li>
+<li><strong>Потребители</strong> (<code>render_chart</code>, <code>export_csv</code>) берут ссылку и превращают её во что-то, на что смотрит человек. Строки идут из хранилища прямо на экран пользователя, минуя модель.</li>
+</ul>
+<h2 id="минимальная-реализация">Минимальная реализация</h2>
+<p>В примерах, как и в прошлой статье, используются FastMCP и pandas. Они намеренно небольшие.</p>
+<h3 id="хранилище">Хранилище</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> secrets
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> time
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> dataclasses <span style="color:#f92672">import</span> dataclass, field
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> pandas <span style="color:#66d9ef">as</span> pd
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">@dataclass</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Artifact</span>:
+</span></span><span style="display:flex;"><span>    owner: str
+</span></span><span style="display:flex;"><span>    df: pd<span style="color:#f92672">.</span>DataFrame
+</span></span><span style="display:flex;"><span>    created: float <span style="color:#f92672">=</span> field(default_factory<span style="color:#f92672">=</span>time<span style="color:#f92672">.</span>monotonic)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">ArtifactStore</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">__init__</span>(self, ttl_seconds: int <span style="color:#f92672">=</span> <span style="color:#ae81ff">24</span> <span style="color:#f92672">*</span> <span style="color:#ae81ff">3600</span>, max_bytes: int <span style="color:#f92672">=</span> <span style="color:#ae81ff">50_000_000</span>):
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>_items: dict[str, Artifact] <span style="color:#f92672">=</span> {}
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>_ttl <span style="color:#f92672">=</span> ttl_seconds
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>_max_bytes <span style="color:#f92672">=</span> max_bytes
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">put</span>(self, owner: str, df: pd<span style="color:#f92672">.</span>DataFrame) <span style="color:#f92672">-&gt;</span> str:
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> df<span style="color:#f92672">.</span>memory_usage(deep<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>)<span style="color:#f92672">.</span>sum() <span style="color:#f92672">&gt;</span> self<span style="color:#f92672">.</span>_max_bytes:
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">raise</span> <span style="color:#a6e22e">ValueError</span>(<span style="color:#e6db74">&#34;artifact exceeds size cap - narrow the query&#34;</span>)
+</span></span><span style="display:flex;"><span>        ref <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;data_&#34;</span> <span style="color:#f92672">+</span> secrets<span style="color:#f92672">.</span>token_urlsafe(<span style="color:#ae81ff">12</span>)
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>_items[ref] <span style="color:#f92672">=</span> Artifact(owner, df)
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> ref
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">get</span>(self, owner: str, ref: str) <span style="color:#f92672">-&gt;</span> pd<span style="color:#f92672">.</span>DataFrame:
+</span></span><span style="display:flex;"><span>        now <span style="color:#f92672">=</span> time<span style="color:#f92672">.</span>monotonic()
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>_items <span style="color:#f92672">=</span> {k: a <span style="color:#66d9ef">for</span> k, a <span style="color:#f92672">in</span> self<span style="color:#f92672">.</span>_items<span style="color:#f92672">.</span>items() <span style="color:#66d9ef">if</span> now <span style="color:#f92672">-</span> a<span style="color:#f92672">.</span>created <span style="color:#f92672">&lt;</span> self<span style="color:#f92672">.</span>_ttl}
+</span></span><span style="display:flex;"><span>        artifact <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>_items<span style="color:#f92672">.</span>get(ref)
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> artifact <span style="color:#f92672">is</span> <span style="color:#66d9ef">None</span> <span style="color:#f92672">or</span> artifact<span style="color:#f92672">.</span>owner <span style="color:#f92672">!=</span> owner:
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">raise</span> <span style="color:#a6e22e">KeyError</span>(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;unknown or expired dataRef </span><span style="color:#e6db74">{</span>ref<span style="color:#e6db74">}</span><span style="color:#e6db74"> - fetch the data again&#34;</span>)
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> artifact<span style="color:#f92672">.</span>df
+</span></span></code></pre></div><p>Здесь важны две детали. Ссылки <strong>случайные, а не последовательные</strong>, и каждое чтение <strong>проверяет владельца</strong>. Ссылка, оказавшаяся в чужой истории диалога, бесполезна для этого чужого человека. Сообщение об ошибке также подсказывает агенту, как восстановиться.</p>
+<h3 id="описывать-а-не-вываливать-всё">Описывать, а не вываливать всё</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> json
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">describe</span>(ref: str, df: pd<span style="color:#f92672">.</span>DataFrame, sample_rows: int <span style="color:#f92672">=</span> <span style="color:#ae81ff">5</span>) <span style="color:#f92672">-&gt;</span> dict:
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;dataRef&#34;</span>: ref,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;rows&#34;</span>: len(df),
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;columns&#34;</span>: {c: str(t) <span style="color:#66d9ef">for</span> c, t <span style="color:#f92672">in</span> df<span style="color:#f92672">.</span>dtypes<span style="color:#f92672">.</span>items()},
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;nulls&#34;</span>: {c: int(n) <span style="color:#66d9ef">for</span> c, n <span style="color:#f92672">in</span> df<span style="color:#f92672">.</span>isna()<span style="color:#f92672">.</span>sum()<span style="color:#f92672">.</span>items() <span style="color:#66d9ef">if</span> n},
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;sample&#34;</span>: json<span style="color:#f92672">.</span>loads(df<span style="color:#f92672">.</span>head(sample_rows)<span style="color:#f92672">.</span>to_json(orient<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;records&#34;</span>, date_format<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;iso&#34;</span>)),
+</span></span><span style="display:flex;"><span>    }
+</span></span></code></pre></div><p>Имена колонок, типы, количество null-значений и горстка строк — вот что нужно человеку, чтобы написать <code>groupby</code>. Модели нужно то же самое.</p>
+<h3 id="инструменты-производители-и-вычислительный-инструмент">Инструменты-производители и вычислительный инструмент</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">from</span> fastmcp <span style="color:#f92672">import</span> FastMCP, Context
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>mcp <span style="color:#f92672">=</span> FastMCP(<span style="color:#e6db74">&#34;data-sandbox&#34;</span>)
+</span></span><span style="display:flex;"><span>store <span style="color:#f92672">=</span> ArtifactStore()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">owner_of</span>(ctx: Context) <span style="color:#f92672">-&gt;</span> str:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">...</span>  <span style="color:#75715e"># resolve the authenticated caller from your auth layer</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">@mcp.tool</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">async</span> <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">fetch_sales</span>(since: str, ctx: Context) <span style="color:#f92672">-&gt;</span> dict:
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;&#34;&#34;Load sales since a date into a server-side artifact.
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    Returns a dataRef with schema and a small sample, NOT the rows.
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    Analyse the data with run_python.&#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>    df <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> query_sales(since<span style="color:#f92672">=</span>since)  <span style="color:#75715e"># your system of record, under the caller&#39;s permissions</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> describe(store<span style="color:#f92672">.</span>put(owner_of(ctx), df), df)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">@mcp.tool</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">async</span> <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">run_python</span>(code: str, inputs: dict[str, str], ctx: Context) <span style="color:#f92672">-&gt;</span> dict:
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;&#34;&#34;Run Python in the sandbox. `inputs` maps variable names to dataRefs;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    each arrives as a pandas DataFrame. Store DataFrames in `outputs[name]`
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    to keep them as new artifacts. Assign a SMALL JSON value to `result`.&#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>    owner <span style="color:#f92672">=</span> owner_of(ctx)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">with</span> tempfile<span style="color:#f92672">.</span>TemporaryDirectory() <span style="color:#66d9ef">as</span> run:
+</span></span><span style="display:flex;"><span>        in_dir, out_dir <span style="color:#f92672">=</span> Path(run, <span style="color:#e6db74">&#34;in&#34;</span>), Path(run, <span style="color:#e6db74">&#34;out&#34;</span>)
+</span></span><span style="display:flex;"><span>        in_dir<span style="color:#f92672">.</span>mkdir()
+</span></span><span style="display:flex;"><span>        out_dir<span style="color:#f92672">.</span>mkdir()
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span> name, ref <span style="color:#f92672">in</span> inputs<span style="color:#f92672">.</span>items():
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> <span style="color:#f92672">not</span> name<span style="color:#f92672">.</span>isidentifier():
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">raise</span> <span style="color:#a6e22e">ValueError</span>(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;input name </span><span style="color:#e6db74">{</span>name<span style="color:#e6db74">!r}</span><span style="color:#e6db74"> must be a Python identifier&#34;</span>)
+</span></span><span style="display:flex;"><span>            store<span style="color:#f92672">.</span>get(owner, ref)<span style="color:#f92672">.</span>to_parquet(in_dir <span style="color:#f92672">/</span> <span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">{</span>name<span style="color:#e6db74">}</span><span style="color:#e6db74">.parquet&#34;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        res <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> execute_sandboxed(code, in_dir, out_dir)  <span style="color:#75715e"># the sandbox from part one</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        new <span style="color:#f92672">=</span> {p<span style="color:#f92672">.</span>stem: pd<span style="color:#f92672">.</span>read_parquet(p) <span style="color:#66d9ef">for</span> p <span style="color:#f92672">in</span> out_dir<span style="color:#f92672">.</span>glob(<span style="color:#e6db74">&#34;*.parquet&#34;</span>)}
+</span></span><span style="display:flex;"><span>        outputs <span style="color:#f92672">=</span> {name: describe(store<span style="color:#f92672">.</span>put(owner, df), df, sample_rows<span style="color:#f92672">=</span><span style="color:#ae81ff">3</span>) <span style="color:#66d9ef">for</span> name, df <span style="color:#f92672">in</span> new<span style="color:#f92672">.</span>items()}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> {<span style="color:#e6db74">&#34;ok&#34;</span>: res<span style="color:#f92672">.</span>ok, <span style="color:#e6db74">&#34;result&#34;</span>: cap_json(res<span style="color:#f92672">.</span>result), <span style="color:#e6db74">&#34;stdout&#34;</span>: truncate(res<span style="color:#f92672">.</span>stdout),
+</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">&#34;error&#34;</span>: res<span style="color:#f92672">.</span>error, <span style="color:#e6db74">&#34;outputs&#34;</span>: outputs}
+</span></span></code></pre></div><p>Внутри песочницы короткий пролог загружает каждый <code>in/*.parquet</code> в глобальную переменную и создаёт пустой словарь <code>outputs</code>. Эпилог записывает <code>outputs</code> в <code>out/</code> и сериализует <code>result</code>. У песочницы по-прежнему нет сети, и она видит только свою рабочую директорию, так что данные не смогут утечь и через скрипт. (Если в вашем рантайме нет <code>pyarrow</code>, подойдёт и CSV. Просто потеряете информацию о типах колонок.)</p>
+<h2 id="как-это-выглядит-в-истории-диалога">Как это выглядит в истории диалога</h2>
+<pre tabindex="0"><code>user:  Which five product lines lost the most revenue quarter over quarter?
+
+agent -&gt; fetch_sales(since=&#34;2025-01-01&#34;)
+      &lt;- {dataRef: &#34;data_x7Kq...&#34;, rows: 48210, columns: {...}, sample: [5 rows]}
+
+agent -&gt; run_python(inputs={&#34;sales&#34;: &#34;data_x7Kq...&#34;}, code=&#34;&#34;&#34;
+           q = sales.assign(q=sales.date.dt.to_period(&#34;Q&#34;))
+           pivot = q.pivot_table(index=&#34;line&#34;, columns=&#34;q&#34;, values=&#34;revenue&#34;, aggfunc=&#34;sum&#34;)
+           delta = (pivot.iloc[:, -1] - pivot.iloc[:, -2]).sort_values()
+           outputs[&#34;qoq&#34;] = delta.rename(&#34;delta&#34;).reset_index()
+           result = delta.head(5).round(2).to_dict()
+         &#34;&#34;&#34;)
+      &lt;- {result: {&#34;Line A&#34;: -182340.5, ...}, outputs: {&#34;qoq&#34;: {dataRef: &#34;data_Pm2...&#34;, rows: 312}}}
+
+agent: The five biggest drops were ...
+
+... several turns later ...
+
+user:  Chart all of them.
+agent -&gt; render_chart(dataRef=&#34;data_Pm2...&#34;, x=&#34;line&#34;, y=&#34;delta&#34;, kind=&#34;bar&#34;)
+</code></pre><p>В обработке участвовало 48 210 строк. До истории диалога дошло около двух килобайт. Ответ точен, потому что его вычислил pandas, а не модель.</p>
+<h2 id="артефакты-между-шагами-и-репликами">Артефакты между шагами и репликами</h2>
+<p>Поскольку ссылка — это короткая строка, она перемещается по диалогу так же, как любое другое значение:</p>
+<ul>
+<li><strong>Цепочки вызовов инструментов.</strong> <code>outputs</code> одного вызова <code>run_python</code> становятся <code>inputs</code> следующего. Многошаговый анализ (очистка, соединение, агрегация, ранжирование) — это цепочка ссылок. Промежуточные таблицы никогда не проходят через контекст.</li>
+<li><strong>Более поздние реплики.</strong> Ссылка из реплики 2 всё ещё в истории диалога на реплике 9. «А теперь разбей это по регионам» переиспользует сохранённый артефакт. Ничего не запрашивается заново, данные не вставляются повторно.</li>
+<li><strong>Истечение срока — часть архитектуры.</strong> TTL держит хранилище ограниченным по размеру. Просроченная ссылка возвращает ошибку, которая говорит агенту запросить данные заново, так что устаревший дескриптор падает чисто, а не тихо возвращает старые данные.</li>
+</ul>
+<p>Укажите это агенту в инструкциях: <em>никогда не просить сырые строки, чтобы ответить на вопрос; загружать в артефакт, вычислять через run_python и строить графики по dataRef.</em></p>
+<h2 id="правила-на-которых-это-держится">Правила, на которых это держится</h2>
+<ul>
+<li><strong>Возвращайте форму данных, а не их содержимое.</strong> Схему, количество строк, количество null-значений и несколько примеров строк. Сделайте размер выборки настраиваемым и установите его в ноль для чувствительных наборов данных.</li>
+<li><strong>Держите всё, что возвращается модели, маленьким, и обеспечивайте это принудительно.</strong> Ограничивайте размер <code>result</code> и обрезайте <code>stdout</code>. Иначе один <code>print(df)</code> отправит модели всю таблицу целиком.</li>
+<li><strong>Каждая ссылка принадлежит одному владельцу.</strong> Используйте случайные ID и проверяйте владельца при каждом чтении. Ссылка — это не право доступа.</li>
+<li><strong>Производители соблюдают правила исходной системы.</strong> Артефакт содержит ровно то, что вызывающему было разрешено получить: та же авторизация, те же лимиты по строкам.</li>
+<li><strong>Ограничивайте хранилище.</strong> Лимит байт на артефакт, TTL и поиск в рамках владельца. Оно держит рабочие данные какое-то время. Это не хранилище данных.</li>
+<li><strong>Дайте каждому отображающему инструменту принимать ссылки.</strong> Графики, таблицы и экспорт читают прямо из хранилища, так что шаг «покажи мне» тоже не прогоняет строки через модель.</li>
+</ul>
+<h2 id="честные-компромиссы">Честные компромиссы</h2>
+<p>Этот подход <strong>снижает</strong> риск утечки. Он не <strong>устраняет</strong> его полностью. Примеры строк и агрегаты — всё ещё данные. Группа из одного элемента — это, по сути, отдельная запись, и настойчивый промпт всё ещё может попросить агента вывести строки в пределах лимита вывода. Относитесь к лимиту результата и размеру выборки как к настройкам политики, а настоящей границей считайте авторизацию исходной системы.</p>
+<p>Модель также больше не видит данные напрямую. Выборка из пяти строк может вводить в заблуждение: странные значения, смешанные единицы измерения, колонка на 90% из null. Дешёвый инструмент <code>describe_data(dataRef)</code>, возвращающий сводную статистику по запросу, решает большую часть этих проблем без возврата полного дампа.</p>
+<h2 id="итог">Итог</h2>
+<p>Песочница из первой части сделала выполнение кода агента безопасным. Артефакты данных делают его осмысленным. Модель планирует и пишет код, Python делает арифметику, а данные остаются в вашей системе. В итоге история диалога хранит вопрос, код и ответ: воспроизводимую запись анализа, которая не содержит ни одного байта данных, над которыми он был проведён.</p>
+
+        </p>
+        
+    </div>
+
+    <div class="prev-next">
+        
+    </div>
+
+    
+    
+    
+</div>
+
+
+
+    
+
+        </main><footer class="footer">
+    
+    
+
+    
+    <span>
+        Made using <a target="_blank" href="https://gohugo.io/">HUGO</a>
+    </span>
+</footer>
+</body>
+</html>

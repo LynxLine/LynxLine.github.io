@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+	<channel>
+		<title>Tags on LynxLine</title>
+		<link>https://lynxline.com/ru/tags/</link>
+		<description>Recent content in Tags on LynxLine</description>
+		<generator>Hugo</generator>
+		<language>ru</language>
+		
+		
+		
+		
+			<lastBuildDate>Wed, 14 Oct 2026 09:00:00 +0200</lastBuildDate>
+		
+			<atom:link href="https://lynxline.com/ru/tags/index.xml" rel="self" type="application/rss+xml" />
+			<item>
+				<title>AI</title>
+				<link>https://lynxline.com/ru/tags/ai/</link>
+				<pubDate>Wed, 14 Oct 2026 09:00:00 +0200</pubDate>
+				<guid>https://lynxline.com/ru/tags/ai/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Data</title>
+				<link>https://lynxline.com/ru/tags/data/</link>
+				<pubDate>Wed, 14 Oct 2026 09:00:00 +0200</pubDate>
+				<guid>https://lynxline.com/ru/tags/data/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>MCP</title>
+				<link>https://lynxline.com/ru/tags/mcp/</link>
+				<pubDate>Wed, 14 Oct 2026 09:00:00 +0200</pubDate>
+				<guid>https://lynxline.com/ru/tags/mcp/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Python</title>
+				<link>https://lynxline.com/ru/tags/python/</link>
+				<pubDate>Wed, 14 Oct 2026 09:00:00 +0200</pubDate>
+				<guid>https://lynxline.com/ru/tags/python/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Machine Learning</title>
+				<link>https://lynxline.com/ru/tags/machine-learning/</link>
+				<pubDate>Mon, 28 Sep 2026 09:00:00 +0200</pubDate>
+				<guid>https://lynxline.com/ru/tags/machine-learning/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Security</title>
+				<link>https://lynxline.com/ru/tags/security/</link>
+				<pubDate>Fri, 11 Sep 2026 09:00:00 +0200</pubDate>
+				<guid>https://lynxline.com/ru/tags/security/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Claude</title>
+				<link>https://lynxline.com/ru/tags/claude/</link>
+				<pubDate>Thu, 03 Sep 2026 09:00:00 +0200</pubDate>
+				<guid>https://lynxline.com/ru/tags/claude/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Inferno OS</title>
+				<link>https://lynxline.com/ru/tags/inferno-os/</link>
+				<pubDate>Thu, 03 Sep 2026 09:00:00 +0200</pubDate>
+				<guid>https://lynxline.com/ru/tags/inferno-os/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Tools</title>
+				<link>https://lynxline.com/ru/tags/tools/</link>
+				<pubDate>Wed, 02 Sep 2026 12:00:00 +0200</pubDate>
+				<guid>https://lynxline.com/ru/tags/tools/</guid>
+				<description></description>
+			</item>
+	</channel>
+</rss>

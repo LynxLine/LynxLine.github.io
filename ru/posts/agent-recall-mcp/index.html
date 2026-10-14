@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="ru"><head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+
+    <style>
+        :root {
+            --accent-color: #FF4D4D;
+        }
+    </style>
+
+    
+    
+    
+    
+    
+    
+
+    
+    <title>Научите агента вспоминать: история диалогов с возможностью поиска через MCP</title>
+    <meta name="description" content="">
+    <meta name="keywords" content='AI, MCP, Python, Data'>
+
+    <meta property="og:url" content="https://lynxline.com/ru/posts/agent-recall-mcp/">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Научите агента вспоминать: история диалогов с возможностью поиска через MCP">
+    <meta property="og:description" content="">
+    <meta property="og:image" content="https://lynxline.com/images/lynxline-logo.png">
+    <meta property="og:image:secure_url" content="https://lynxline.com/images/lynxline-logo.png">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Научите агента вспоминать: история диалогов с возможностью поиска через MCP">
+    <meta name="twitter:description" content="">
+    <meta property="twitter:domain" content="https://lynxline.com/ru/posts/agent-recall-mcp/">
+    <meta property="twitter:url" content="https://lynxline.com/ru/posts/agent-recall-mcp/">
+    <meta name="twitter:image" content="https://lynxline.com/images/lynxline-logo.png">
+
+    
+    <link rel="canonical" href="https://lynxline.com/ru/posts/agent-recall-mcp/" />
+
+    
+    <link rel="alternate" hreflang="ru" href="https://lynxline.com/ru/posts/agent-recall-mcp/" />
+    
+    <link rel="alternate" hreflang="en" href="https://lynxline.com/posts/agent-recall-mcp/" />
+    
+    <link rel="alternate" hreflang="ja" href="https://lynxline.com/ja/posts/agent-recall-mcp/" />
+    
+    <link rel="alternate" hreflang="ko" href="https://lynxline.com/ko/posts/agent-recall-mcp/" />
+    
+    
+    <link rel="alternate" hreflang="x-default" href="https://lynxline.com/posts/agent-recall-mcp/" />
+    
+    
+
+    
+    
+
+    
+    <link rel="stylesheet" type="text/css" href="/css/normalize.min.css" media="print">
+
+    
+    <link rel="stylesheet" type="text/css" href="/css/site.min.css">
+
+    
+    <link id="dark-theme" rel="stylesheet" href="/css/site-dark.min.css">
+
+    
+    <script src="/js/bundle.min.23a6a54d1ecbde7842938a593a7a1fdb1ee63af6fe2d73cb4c81c05425de46c2.js" integrity="sha256-I6alTR7L3nhCk4pZOnof2x7mOvb&#43;LXPLTIHAVCXeRsI="></script>
+
+    
+    
+</head>
+<body>
+        <script type="text/javascript">
+            
+            setThemeByUserPref();
+        </script><header class="header">
+    <nav class="header-nav">
+
+        
+        <div class="avatar">
+            <a href="https://lynxline.com/">
+                <img src='/images/lynxline-logo.png' alt="LynxLine — lynx with neural-network ears and circuit traces" />
+            </a>
+        </div>
+        
+
+        <div class="nav-title">
+            <a class="nav-brand" href="https://lynxline.com/">LynxLine</a>
+        </div>
+
+        <div class="nav-links">
+            
+            <div class="nav-link">
+                <a href="https://lynxline.com/services/"><span data-feather='zap'></span> Услуги </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://lynxline.com/ru/posts/"><span data-feather='layers'></span> Записи </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://lynxline.com/ru/tags/"><span data-feather='tag'></span> Теги </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://lynxline.com/contact/"><span data-feather='mail'></span> Контакты </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://github.com"><span data-feather='github'></span>  </a>
+            </div>
+            
+
+            <span class="nav-icons-divider"></span>
+            <div class="nav-link dark-theme-toggle">
+                <span id="dark-theme-toggle-screen-reader-target" class="sr-only"></span>
+                <a>
+                    <span id="theme-toggle-icon" data-feather="moon"></span>
+                </a>
+            </div>
+
+            <div class="nav-link" id="hamburger-menu-toggle">
+                <span id="hamburger-menu-toggle-screen-reader-target" class="sr-only">menu</span>
+                <a>
+                    <span data-feather="menu"></span>
+                </a>
+            </div>
+
+            
+            <ul class="nav-hamburger-list visibility-hidden">
+                
+                <li class="nav-item">
+                    <a href="https://lynxline.com/services/"><span data-feather='zap'></span> Услуги </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://lynxline.com/ru/posts/"><span data-feather='layers'></span> Записи </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://lynxline.com/ru/tags/"><span data-feather='tag'></span> Теги </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://lynxline.com/contact/"><span data-feather='mail'></span> Контакты </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://github.com"><span data-feather='github'></span>  </a>
+                </li>
+                
+                <li class="nav-item dark-theme-toggle">
+                    <span id="dark-theme-toggle-screen-reader-target" class="sr-only">theme</span>
+                    <a>
+                        <span id="theme-toggle-icon" data-feather="moon"></span>
+                    </a>
+                </li>
+            </ul>
+
+        </div>
+    </nav>
+</header>
+<main id="content">
+    <div class="post container">
+    <div class="post-header-section">
+        <h1>Научите агента вспоминать: история диалогов с возможностью поиска через MCP</h1>
+        <small role="doc-subtitle"></small>
+        <p class="post-date">14.10.2026
+        
+        </p>
+
+        <ul class="post-tags">
+        
+            <li class="post-tag"><a href="https://lynxline.com/ru/tags/ai">AI</a></li>
+        
+            <li class="post-tag"><a href="https://lynxline.com/ru/tags/mcp">MCP</a></li>
+        
+            <li class="post-tag"><a href="https://lynxline.com/ru/tags/python">Python</a></li>
+        
+            <li class="post-tag"><a href="https://lynxline.com/ru/tags/data">Data</a></li>
+        
+        </ul>
+
+        
+        <p class="post-translations">Читать на другом языке:
+        
+            <a href="/posts/agent-recall-mcp/" hreflang="en" onclick="try { localStorage.setItem('lang-choice', 'en') } catch (e) {}">English</a>
+        
+            <a href="/ja/posts/agent-recall-mcp/" hreflang="ja" onclick="try { localStorage.setItem('lang-choice', 'ja') } catch (e) {}">日本語</a>
+        
+            <a href="/ko/posts/agent-recall-mcp/" hreflang="ko" onclick="try { localStorage.setItem('lang-choice', 'ko') } catch (e) {}">한국어</a>
+        
+        </p>
+        
+    </div>
+
+    <div class="post-content">
+        <p>
+            <p>Каждый чат с агентом начинается с нуля. В понедельник кто-то вместе с ассистентом разбирает показатели по двум площадкам, записывает, кто за какое последующее действие отвечает, и утверждает бюджетный сценарий. В четверг он открывает новый чат и спрашивает «что мы решили по N-11?» — а агент понятия не имеет, что такое N-11. Пользователь прокручивает назад, копирует, вставляет и объясняет всё заново.</p>
+<p>Эта статья показывает, как мы закрыли этот разрыв совсем небольшим количеством кода. Агенту даётся один инструмент, <code>recall_my_conversations</code>, который ищет по более ранним чатам текущего пользователя и возвращает датированные фрагменты. Поисковый движок — <a href="https://github.com/huggingface/funes">funes</a>, open-source проект, который мы переиспользовали вместо того, чтобы писать свой. Связующим звеном служит небольшой сервер <a href="https://gofastmcp.com">FastMCP</a>, и всё это работает в одном контейнере.</p>
+<p>Это третья часть серии об инструментах для агентов через MCP. <a href="https://lynxline.com/ru/posts/sandboxed-python-mcp/">Первая</a> дала агенту безопасное место для выполнения Python. <a href="https://lynxline.com/ru/posts/agent-data-artifacts-mcp/">Вторая</a> удержала большие объёмы данных вне истории диалога, передавая ссылки вместо строк. Эта позволяет агенту искать информацию в самих историях диалогов.</p>
+<h2 id="вспоминание--это-не-память-и-это-нормально">Вспоминание — это не память, и это нормально</h2>
+<p>«Память агента» обычно означает что-то амбициозное: систему, которая извлекает факты из диалогов, поддерживает профиль в актуальном состоянии, разрешает противоречия и незаметно подмешивает нужный контекст в каждый промпт. Это сложно построить и сложно доверять. Когда что-то идёт не так, агент «вспоминает» то, чего вы никогда не говорили, и никто не может понять, откуда это взялось.</p>
+<p>Нам хотелось чего-то намного проще — что работает скорее как человек, ищущий что-то в собственной почте:</p>
+<ul>
+<li>Прошлое остаётся ровно таким, каким оно было. Ничего не резюмируется, не переписывается, не сливается.</li>
+<li>Агент сам решает, когда оглянуться назад, вызывая инструмент.</li>
+<li>В ответ приходят <strong>дословные фрагменты с датами</strong>, так что агент может их процитировать, а пользователь — проверить.</li>
+<li>Если ничего подходящего не нашлось, агент так и говорит.</li>
+</ul>
+<p>Вспоминание даёт агенту <strong>подсказки из прошлого</strong>. Оно не даёт ему модель пользователя. Агент по-прежнему каждый раз рассуждает с нуля, но больше не <em>работает</em> с нуля. Он может подхватить параметры, которые использовал на прошлой неделе, записанного ответственного или принятое решение — вместо того, чтобы просить пользователя повторить их.</p>
+<p>Оказывается, это даёт большую часть ценности при малой доле риска.</p>
+<h2 id="не-изобретайте-велосипед-заново-funes">Не изобретайте велосипед заново: funes</h2>
+<p>Поиск по прошлым сессиям агента — для кодинг-агентов это давно решённая задача. funes от Hugging Face — это «долговечная, доступная для поиска память о ваших прошлых сессиях агента». Он индексирует истории диалогов Claude Code, Codex и подобных, чтобы агент мог вспомнить более раннюю работу. (Мы использовали его при подготовке этой статьи, чтобы найти собственные более ранние тексты.)</p>
+<p>Что делает его подходящим не только для ноутбука разработчика, но и для продукта:</p>
+<ul>
+<li><strong>Один бинарник, никаких сервисов.</strong> Единственный исполняемый файл на Rust со встроенным движком хранения (<a href="https://github.com/lancedb/lance">Lance</a>). Не нужно поднимать ни сервер БД, ни векторный сервис, ни очередь.</li>
+<li><strong>Внутри нет LLM.</strong> Поиск работает на двух маленьких локальных моделях: эмбеддере <a href="https://huggingface.co/BAAI/bge-small-en-v1.5">bge-small-en-v1.5</a> и опциональном кросс-энкодере <a href="https://huggingface.co/BAAI/bge-reranker-base">bge-reranker-base</a>. Ничего не покидает контейнер, и вспоминание не может галлюцинировать. Оно возвращает только реально существующий текст.</li>
+<li><strong>Память — это директория.</strong> <code>FUNES_HOME=/some/dir</code> даёт независимую память. Одной директории на пользователя достаточно для всей изоляции арендаторов, которая нужна слою хранения.</li>
+<li><strong>Простой формат ввода.</strong> Индексируются файлы <code>.funes.jsonl</code>: одна строка на сообщение с id сессии, порядковым номером, временной меткой, ролью и текстовыми блоками. Это может сгенерировать любая чат-система.</li>
+<li><strong>Команды чтения для агентов:</strong> <code>recall</code> (ранжированный поиск), <code>get</code> (чтение диапазона сессии), <code>scan</code> (точная строка в одной сессии), <code>sessions</code>, <code>sketch</code>.</li>
+<li><strong>Лояльные лицензии:</strong> funes — Apache-2.0, обе модели — MIT.</li>
+</ul>
+<h3 id="как-вспоминание-устроено-внутри">Как вспоминание устроено внутри</h3>
+<p><img src="/posts/agent-recall-mcp/diagrams/04-inside-funes.png" alt="Внутреннее устройство вспоминания funes"></p>
+<p>Запрос одновременно идёт по двум путям. Плотный векторный поиск находит фрагменты со схожим <em>смыслом</em> («наряд-заказ» находит «тикет»). Полнотекстовый поиск BM25 находит точные <em>токены</em> вроде <code>MT-4471</code> или <code>N-11</code>, с которыми эмбеддинги справляются плохо. Два ранжированных списка объединяются через reciprocal rank fusion, и каждое совпадение возвращается вместе с соседними репликами, так что агент видит не только ответ, но и вопрос, который к нему привёл.</p>
+<p>Такое же разделение мы наблюдали в нашем <a href="https://lynxline.com/ru/posts/laya-decision-model/">эксперименте с поиском имён таблиц</a>. Плотный и лексический поиск проваливаются на разных запросах, и объединить их — дешёвая страховка. funes делает это из коробки.</p>
+<p>Необязательный третий этап — кросс-энкодер, пересчитывающий оценки пула. funes включает его, когда пул кандидатов хотя бы в четыре раза больше <code>k</code>. Это стоит около трёх секунд и 1,6 ГБ RAM на вызов (цифры ниже). Для диалогового вспоминания мы держим его выключенным: пул остаётся меньше <code>4 × k</code>, а агент компенсирует это, переспрашивая другими словами, когда первая попытка промахивается.</p>
+<h2 id="архитектура">Архитектура</h2>
+<p><img src="/posts/agent-recall-mcp/diagrams/01-architecture.png" alt="Архитектура"></p>
+<p>Есть два пути, и они намеренно используют разные учётные данные:</p>
+<ul>
+<li><strong>Путь записи (пунктир).</strong> Чат-шлюз и так видит каждое сообщение, так что он пересылает каждую завершённую реплику на сервер вспоминания по внутреннему маршруту, защищённому общим ключом. Платформа агента в этом не участвует. Она не может писать в память, и prompt injection не может подложить «воспоминания».</li>
+<li><strong>Путь чтения.</strong> Агент вызывает <code>recall_my_conversations</code> так же, как любой другой инструмент MCP. Сервер берёт пользователя из токена вызывающего и ищет только в директории этого пользователя. Текст запроса никогда не выбирает, чья память ищется.</li>
+</ul>
+<p>Платформой агента может быть что угодно, что говорит на MCP. Мы впервые реализовали это внутри продакшен-копайлота, работающего на коммерческой платформе агентов, с MCP-сервером на Java. Демо ниже — самодостаточная версия того же дизайна на одном Python.</p>
+<h2 id="путь-записи-пересылка-завершённых-реплик">Путь записи: пересылка завершённых реплик</h2>
+<p><img src="/posts/agent-recall-mcp/diagrams/02-write-path.png" alt="Путь записи"></p>
+<p>Шлюз после каждой реплики отправляет <strong>весь диалог целиком на данный момент</strong>. Звучит расточительно, но это делает запись идемпотентной: сервер атомарно перезаписывает один файл на диалог, а funes, который отслеживает, что уже заэмбеддено, обрабатывает только новый текст.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#a6e22e">@mcp.custom_route</span>(<span style="color:#e6db74">&#34;/turns&#34;</span>, methods<span style="color:#f92672">=</span>[<span style="color:#e6db74">&#34;POST&#34;</span>])
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">async</span> <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">ingest</span>(request: Request) <span style="color:#f92672">-&gt;</span> JSONResponse:
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> <span style="color:#f92672">not</span> hmac<span style="color:#f92672">.</span>compare_digest(request<span style="color:#f92672">.</span>headers<span style="color:#f92672">.</span>get(<span style="color:#e6db74">&#34;x-ingest-key&#34;</span>, <span style="color:#e6db74">&#34;&#34;</span>), INGEST_KEY):
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> JSONResponse({<span style="color:#e6db74">&#34;error&#34;</span>: <span style="color:#e6db74">&#34;unauthorized&#34;</span>}, status_code<span style="color:#f92672">=</span><span style="color:#ae81ff">401</span>)
+</span></span><span style="display:flex;"><span>    body <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> request<span style="color:#f92672">.</span>json()
+</span></span><span style="display:flex;"><span>    user, cid <span style="color:#f92672">=</span> body<span style="color:#f92672">.</span>get(<span style="color:#e6db74">&#34;user&#34;</span>), body<span style="color:#f92672">.</span>get(<span style="color:#e6db74">&#34;conversation_id&#34;</span>, <span style="color:#e6db74">&#34;&#34;</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> <span style="color:#f92672">not</span> user <span style="color:#f92672">or</span> <span style="color:#f92672">not</span> re<span style="color:#f92672">.</span>fullmatch(<span style="color:#e6db74">r</span><span style="color:#e6db74">&#34;[A-Za-z0-9_-]{1,128}&#34;</span>, cid):
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> JSONResponse({<span style="color:#e6db74">&#34;error&#34;</span>: <span style="color:#e6db74">&#34;user and a safe conversation_id are required&#34;</span>}, status_code<span style="color:#f92672">=</span><span style="color:#ae81ff">400</span>)
+</span></span><span style="display:flex;"><span>    payload <span style="color:#f92672">=</span> to_funes_jsonl(cid, body<span style="color:#f92672">.</span>get(<span style="color:#e6db74">&#34;turns&#34;</span>, []))
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    src <span style="color:#f92672">=</span> home(user) <span style="color:#f92672">/</span> <span style="color:#e6db74">&#34;src&#34;</span>
+</span></span><span style="display:flex;"><span>    src<span style="color:#f92672">.</span>mkdir(parents<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>, exist_ok<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>)
+</span></span><span style="display:flex;"><span>    tmp <span style="color:#f92672">=</span> src <span style="color:#f92672">/</span> <span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;.</span><span style="color:#e6db74">{</span>cid<span style="color:#e6db74">}</span><span style="color:#e6db74">.tmp&#34;</span>
+</span></span><span style="display:flex;"><span>    tmp<span style="color:#f92672">.</span>write_text(payload)
+</span></span><span style="display:flex;"><span>    tmp<span style="color:#f92672">.</span>replace(src <span style="color:#f92672">/</span> <span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">{</span>cid<span style="color:#e6db74">}</span><span style="color:#e6db74">.funes.jsonl&#34;</span>)   <span style="color:#75715e"># atomic: recall never sees half a file</span>
+</span></span><span style="display:flex;"><span>    schedule_index(user)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> JSONResponse({<span style="color:#e6db74">&#34;stored&#34;</span>: cid}, status_code<span style="color:#f92672">=</span><span style="color:#ae81ff">202</span>)
+</span></span></code></pre></div><p><code>home(user)</code> — это <code>DATA / sha256(user)[:24]</code>, так что имена директорий не раскрывают id пользователей. Преобразование в формат funes занимает несколько строк:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">to_funes_jsonl</span>(conversation_id: str, turns: list[dict]) <span style="color:#f92672">-&gt;</span> str:
+</span></span><span style="display:flex;"><span>    lines <span style="color:#f92672">=</span> []
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> seq, t <span style="color:#f92672">in</span> enumerate(turns):
+</span></span><span style="display:flex;"><span>        ts <span style="color:#f92672">=</span> datetime<span style="color:#f92672">.</span>fromisoformat(t[<span style="color:#e6db74">&#34;ts&#34;</span>]<span style="color:#f92672">.</span>replace(<span style="color:#e6db74">&#34;Z&#34;</span>, <span style="color:#e6db74">&#34;+00:00&#34;</span>))<span style="color:#f92672">.</span>astimezone(timezone<span style="color:#f92672">.</span>utc)
+</span></span><span style="display:flex;"><span>        lines<span style="color:#f92672">.</span>append(json<span style="color:#f92672">.</span>dumps({
+</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">&#34;session_id&#34;</span>: conversation_id, <span style="color:#e6db74">&#34;turn_uuid&#34;</span>: t<span style="color:#f92672">.</span>get(<span style="color:#e6db74">&#34;id&#34;</span>) <span style="color:#f92672">or</span> <span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">{</span>conversation_id<span style="color:#e6db74">}</span><span style="color:#e6db74">-</span><span style="color:#e6db74">{</span>seq<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">&#34;seq&#34;</span>: seq, <span style="color:#e6db74">&#34;ts&#34;</span>: ts<span style="color:#f92672">.</span>strftime(<span style="color:#e6db74">&#34;%Y-%m-</span><span style="color:#e6db74">%d</span><span style="color:#e6db74">T%H:%M:%SZ&#34;</span>), <span style="color:#e6db74">&#34;role&#34;</span>: t[<span style="color:#e6db74">&#34;role&#34;</span>],
+</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">&#34;harness&#34;</span>: <span style="color:#e6db74">&#34;copilot&#34;</span>, <span style="color:#e6db74">&#34;blocks&#34;</span>: [{<span style="color:#e6db74">&#34;block_type&#34;</span>: <span style="color:#e6db74">&#34;text&#34;</span>, <span style="color:#e6db74">&#34;text&#34;</span>: t[<span style="color:#e6db74">&#34;text&#34;</span>]}],
+</span></span><span style="display:flex;"><span>        }))
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span><span style="color:#f92672">.</span>join(lines) <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>
+</span></span></code></pre></div><p>Индексация <strong>дебаунсится по каждому пользователю отдельно</strong>. Пачка реплик порождает один запуск <code>funes index</code>, никогда два одновременных запуска для одной директории, а запись, пришедшая во время выполнения, гарантирует ровно ещё один дополнительный запуск:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">schedule_index</span>(user: str) <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">None</span>:
+</span></span><span style="display:flex;"><span>    st <span style="color:#f92672">=</span> index_state<span style="color:#f92672">.</span>setdefault(user, {<span style="color:#e6db74">&#34;task&#34;</span>: <span style="color:#66d9ef">None</span>, <span style="color:#e6db74">&#34;dirty&#34;</span>: <span style="color:#66d9ef">False</span>})
+</span></span><span style="display:flex;"><span>    st[<span style="color:#e6db74">&#34;dirty&#34;</span>] <span style="color:#f92672">=</span> <span style="color:#66d9ef">True</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> st[<span style="color:#e6db74">&#34;task&#34;</span>] <span style="color:#f92672">is</span> <span style="color:#66d9ef">None</span> <span style="color:#f92672">or</span> st[<span style="color:#e6db74">&#34;task&#34;</span>]<span style="color:#f92672">.</span>done():
+</span></span><span style="display:flex;"><span>        st[<span style="color:#e6db74">&#34;task&#34;</span>] <span style="color:#f92672">=</span> asyncio<span style="color:#f92672">.</span>create_task(index_loop(user))
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">async</span> <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">index_loop</span>(user: str) <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">None</span>:
+</span></span><span style="display:flex;"><span>    st <span style="color:#f92672">=</span> index_state[user]
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">while</span> st[<span style="color:#e6db74">&#34;dirty&#34;</span>]:
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">await</span> asyncio<span style="color:#f92672">.</span>sleep(INDEX_DEBOUNCE)
+</span></span><span style="display:flex;"><span>        st[<span style="color:#e6db74">&#34;dirty&#34;</span>] <span style="color:#f92672">=</span> <span style="color:#66d9ef">False</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">await</span> funes(user, <span style="color:#e6db74">&#34;index&#34;</span>, <span style="color:#e6db74">&#34;--yes&#34;</span>, str(home(user) <span style="color:#f92672">/</span> <span style="color:#e6db74">&#34;src&#34;</span>), timeout<span style="color:#f92672">=</span><span style="color:#ae81ff">300</span>)
+</span></span></code></pre></div><p>Вспоминание не ждёт индексации. Реплика становится доступной для поиска через несколько секунд после завершения, и это нормально, потому что никто не спрашивает «что мы только что сказали?» через поисковый инструмент.</p>
+<h2 id="путь-чтения-один-инструмент">Путь чтения: один инструмент</h2>
+<p><img src="/posts/agent-recall-mcp/diagrams/03-read-path.png" alt="Путь чтения"></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#a6e22e">@mcp.tool</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">async</span> <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">recall_my_conversations</span>(query: str) <span style="color:#f92672">-&gt;</span> str:
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;&#34;&#34;Search the current user&#39;s own earlier conversations with this assistant.
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    Use it when the user refers to something discussed before (&#34;last time&#34;, &#34;earlier&#34;,
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    &#34;what did we decide&#34;, &#34;the numbers we used&#34;). Use short queries built around identifiers
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    and key nouns (&#34;K-2 machine ticket&#34;); search again with other words if needed.
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    Returns dated passages from past chats. Quote them; do not invent details.&#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>    user <span style="color:#f92672">=</span> get_access_token()<span style="color:#f92672">.</span>client_id          <span style="color:#75715e"># from the verified token, never from the query</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> <span style="color:#f92672">not</span> (home(user) <span style="color:#f92672">/</span> <span style="color:#e6db74">&#34;memory&#34;</span>)<span style="color:#f92672">.</span>exists():
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;No earlier conversations are stored for this user yet.&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">async</span> <span style="color:#66d9ef">with</span> recall_slots:
+</span></span><span style="display:flex;"><span>        code, out <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> funes(user, <span style="color:#e6db74">&#34;recall&#34;</span>, <span style="color:#e6db74">&#34;-k&#34;</span>, str(RECALL_K),
+</span></span><span style="display:flex;"><span>                                <span style="color:#e6db74">&#34;--candidates&#34;</span>, str(RECALL_CANDIDATES), <span style="color:#e6db74">&#34;--&#34;</span>, query[:<span style="color:#ae81ff">500</span>],
+</span></span><span style="display:flex;"><span>                                timeout<span style="color:#f92672">=</span>RECALL_TIMEOUT)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> code <span style="color:#f92672">!=</span> <span style="color:#ae81ff">0</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;Conversation memory is unavailable right now; continue without it.&#34;</span>
+</span></span><span style="display:flex;"><span>    out <span style="color:#f92672">=</span> HINT_LINE<span style="color:#f92672">.</span>sub(<span style="color:#e6db74">&#34;&#34;</span>, out)<span style="color:#f92672">.</span>strip()         <span style="color:#75715e"># drop funes&#39; &#34;→ get &lt;session&gt; --memory &lt;path&gt;&#34; hints</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> out[:MAX_RESULT_CHARS] <span style="color:#f92672">or</span> <span style="color:#e6db74">&#34;Nothing relevant found in earlier conversations.&#34;</span>
+</span></span></code></pre></div><p>Несколько деталей важнее, чем кажется на первый взгляд:</p>
+<ul>
+<li><strong>docstring — это и триггер, и инструкция.</strong> Агенты вызывают инструмент, когда его описание совпадает с формулировкой пользователя. «В прошлый раз», «раньше» и «что мы решили» — слова, которые люди реально используют. Описание также говорит, как формулировать запрос, потому что короткие запросы, насыщенные идентификаторами, ранжируются лучше (см. измерения).</li>
+<li><strong><code>--</code> перед запросом.</strong> Пользователь, напечатавший <code>-k 100</code>, ищет именно этот текст, а не передаёт флаг.</li>
+<li><strong>Убирайте строки с подсказками.</strong> funes печатает <code>→ get &lt;session&gt; --memory &lt;path&gt;</code> после каждого совпадения для агентов, умеющих вызывать <code>get</code>. Наш не умеет, так что эти строки лишь протекают в ответ путями сервера и id сессий. Именно это мы увидели в первом же прогоне, когда агент начал цитировать префиксы id диалогов.</li>
+<li><strong>Мягкий отказ.</strong> Проблема с памятью никогда не должна ломать диалог. Инструмент сообщает, что память недоступна, и агент продолжает работу.</li>
+<li><strong>Ограниченная стоимость.</strong> Не более четырёх одновременных вспоминаний, таймаут 10 секунд и лимит в 4000 символов на то, что попадает в контекст.</li>
+</ul>
+<p>Сам вызов funes выполняется с очищенным окружением: <code>FUNES_HOME</code> указывает на директорию пользователя, выставлен <code>HF_HUB_OFFLINE=1</code>, а модели читаются из директории, запечённой в образ.</p>
+<h2 id="упаковка-один-контейнер">Упаковка: один контейнер</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-dockerfile" data-lang="dockerfile"><span style="display:flex;"><span><span style="color:#66d9ef">FROM</span> <span style="color:#e6db74">python:3.12-slim</span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">ARG</span> FUNES_VERSION<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>.8.0<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">ARG</span> FUNES_SHA256<span style="color:#f92672">=</span>3c7eacbaa4487d253f8e13ef7223325ba05069fc258533db6e19bb5765181fea
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">ADD</span> --checksum<span style="color:#f92672">=</span>sha256:<span style="color:#e6db74">${</span>FUNES_SHA256<span style="color:#e6db74">}</span> --chmod<span style="color:#f92672">=</span><span style="color:#ae81ff">0755</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span>    https://github.com/huggingface/funes/releases/download/v<span style="color:#e6db74">${</span>FUNES_VERSION<span style="color:#e6db74">}</span>/funes-x86_64-linux /usr/local/bin/funes<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"># Bake the embedder: a throwaway index + recall downloads exactly what funes needs.</span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">ARG</span> BAKE_RERANKER<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">ENV</span> HF_HOME<span style="color:#f92672">=</span>/opt/hf<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">RUN</span> mkdir -p /tmp/warm/src <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span> <span style="color:#f92672">&amp;&amp;</span> echo <span style="color:#e6db74">&#39;{&#34;session_id&#34;:&#34;warm&#34;,&#34;turn_uuid&#34;:&#34;t0&#34;,&#34;seq&#34;:0,&#34;ts&#34;:&#34;2026-01-01T00:00:00Z&#34;,&#34;role&#34;:&#34;user&#34;,&#34;harness&#34;:&#34;copilot&#34;,&#34;blocks&#34;:[{&#34;block_type&#34;:&#34;text&#34;,&#34;text&#34;:&#34;warm up&#34;}]}&#39;</span> &gt; /tmp/warm/src/w.funes.jsonl <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span> <span style="color:#f92672">&amp;&amp;</span> FUNES_HOME<span style="color:#f92672">=</span>/tmp/warm/home funes index --yes /tmp/warm/src <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span> <span style="color:#f92672">&amp;&amp;</span> FUNES_HOME<span style="color:#f92672">=</span>/tmp/warm/home funes recall -k <span style="color:#ae81ff">1</span> --candidates <span style="color:#ae81ff">2</span> warm <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span> <span style="color:#f92672">&amp;&amp;</span> <span style="color:#66d9ef">if</span> <span style="color:#f92672">[</span> <span style="color:#e6db74">&#34;</span>$BAKE_RERANKER<span style="color:#e6db74">&#34;</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span> <span style="color:#f92672">]</span>; <span style="color:#66d9ef">then</span> FUNES_HOME<span style="color:#f92672">=</span>/tmp/warm/home funes recall -k <span style="color:#ae81ff">1</span> --candidates <span style="color:#ae81ff">8</span> warm; <span style="color:#66d9ef">fi</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span> <span style="color:#f92672">&amp;&amp;</span> rm -rf /tmp/warm <span style="color:#f92672">&amp;&amp;</span> chmod -R a+rX /opt/hf<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">RUN</span> pip install --no-cache-dir fastmcp<span style="color:#f92672">==</span>4.1.0<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">WORKDIR</span> <span style="color:#e6db74">/app</span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">COPY</span> recall_server.py .<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">RUN</span> useradd -u <span style="color:#ae81ff">10001</span> -m app <span style="color:#f92672">&amp;&amp;</span> mkdir -p /data/memories <span style="color:#f92672">&amp;&amp;</span> chown app /data/memories<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">USER</span> <span style="color:#e6db74">app</span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">ENV</span> HF_HUB_OFFLINE<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">CMD</span> [<span style="color:#e6db74">&#34;python&#34;</span>, <span style="color:#e6db74">&#34;recall_server.py&#34;</span>]<span style="color:#960050;background-color:#1e0010">
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">services</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">recall-mcp</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">build</span>: <span style="color:#ae81ff">.</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">ports</span>: [<span style="color:#e6db74">&#34;8000:8000&#34;</span>]
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">environment</span>:
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">INGEST_KEY</span>: <span style="color:#ae81ff">${INGEST_KEY:-demo-ingest-key}</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">RECALL_K</span>: <span style="color:#e6db74">&#34;3&#34;</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">RECALL_CANDIDATES</span>: <span style="color:#e6db74">&#34;8&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">volumes</span>:
+</span></span><span style="display:flex;"><span>      - <span style="color:#ae81ff">memories:/data/memories</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">volumes</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">memories</span>:
+</span></span></code></pre></div><p>Трюк, который стоит перенять, — шаг прогрева. Вместо того чтобы жёстко прописывать файлы моделей, сборка запускает одну маленькую индексацию и одно вспоминание, так что funes скачивает в <code>HF_HOME</code> ровно те модели, которые использует. В рантайме контейнер никогда не обращается к Hugging Face Hub. Слои образа: 218 МБ на бинарник funes, 134 МБ на эмбеддер и 119 МБ на FastMCP. Запекание реранкера добавило бы ещё 1,13 ГБ, и это ещё одна причина держать его выключенным. Используйте <code>ADD --chmod</code>, а не отдельный <code>RUN chmod</code>, который копирует 218-мегабайтный бинарник во второй слой.</p>
+<h2 id="работает-ли-это-две-недели-из-жизни-руководителя-эксплуатации">Работает ли это? Две недели из жизни руководителя эксплуатации</h2>
+<p>Мы засеяли память шестью диалогами, какие могли бы реально случиться за две недели у человека, управляющего несколькими площадками: разбор показателей по двум площадкам, расчёты прогноза для бюджета, проверка состояния ночных заданий, передача смены, арифметика с коэффициентами и проверка мощностей. Эти примеры вымышленные и намеренно обобщённые; для вспоминания любая предметная область с ID, ответственными, тикетами и цифрами выглядит одинаково. Второй пользователь, bob, получил один диалог про другую площадку. Сидер играет роль чат-шлюза и отправляет диалог после каждой реплики, в точности как в продакшене.</p>
+<p>В качестве агента мы использовали Claude в headless-режиме, с этим сервером как <strong>единственным</strong> инструментом и без какого-либо иного знания предметной области:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>claude -p <span style="color:#e6db74">&#34;</span>$QUESTION<span style="color:#e6db74">&#34;</span> --strict-mcp-config --mcp-config mcp-alice.json <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span>  --tools <span style="color:#e6db74">&#34;&#34;</span> --allowedTools mcp__recall__recall_my_conversations <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span>  --system-prompt <span style="color:#e6db74">&#34;</span><span style="color:#66d9ef">$(</span>cat system.md<span style="color:#66d9ef">)</span><span style="color:#e6db74">&#34;</span>
+</span></span></code></pre></div><p>Каждый ответ ниже агент составил исключительно по вспомненным фрагментам.</p>
+<p><strong>Решение и его блокер, в двух чатах.</strong> <em>«Что мы решили по апгрейду N-11, и что должно произойти до того, как его можно будет запланировать? Этот блокер всё ещё открыт, судя по моим заметкам?»</em> Агент сделал четыре вспоминания (<code>N-11 upgrade</code>, <code>N-11 blocker schedule</code>, <code>MT-4471 K-2 machine</code>, <code>K-2 closed</code>) и ответил:</p>
+<blockquote>
+<p><strong>Решение (2026-10-08):</strong> вы решили продолжить с предложением по апгрейду N-11. Вы сказали, что нагрузка 91% «приемлема, но впритык». Ожидаемая нагрузка на линию North после апгрейда — около 2185 из 2400 единиц/день (91%).
+<strong>Прежде чем это можно будет запланировать:</strong> сначала нужно закрыть тикет на обслуживание MT-4471 (проблема с машиной K-2).
+<strong>Блокер всё ещё открыт?</strong> В моих заметках не отмечено, что он закрыт. […] Я не нашёл ничего после 2026-10-08, что говорило бы о решении или закрытии MT-4471. […] Проверьте тикет в системе обслуживания, прежде чем планировать.</p>
+</blockquote>
+<p>Решение пришло из чата 10-08, а детали тикета — из передачи смены от 10-03. Агент связал их вместе и честно указал, чего в заметках нет.</p>
+<p><strong>Причина, найденная в двух чатах.</strong> <em>«Почему колонки сверки были пустыми в конце сентября, и кому я это эскалировал?»</em> В одном чате пользователь заметил пустые колонки и планировал спросить Tomas. В более позднем чате два неудачных запуска заданий привели к фиду данных F-204. С помощью двух вспоминаний агент связал это: запуски падали из-за разрыва в фиде F-204, а проблема была передана Priya, руководителю направления интеграций. Он добавил, что в чате зафиксирован только <em>план</em> эскалировать, и что два неудачных запуска (09-26 и позже) не объясняют пустые дни с 09-23 по 09-25. Он также сказал, что вспомненный текст обрезал точный текст ошибки. Это правда: funes возвращает соседние реплики как короткие превью, и агент честно сказал об этом, вместо того чтобы домысливать пробел.</p>
+<p><strong>Список задач из разных чатов.</strong> <em>«Дай мне один сводный список моих открытых задач по всем прошлым чатам.»</em> Пять вспоминаний дали семь пунктов из пяти разных чатов, у каждого — ответственный, срок и дата источника. Агент отметил просроченные относительно сегодняшней даты, указал, что два пункта на самом деле одна и та же проблема, и пометил место, где день недели был превращён в дату («в чате сказано только „четверг“»), чтобы пользователь мог проверить.</p>
+<p><strong>Точные цифры.</strong> <em>«Какой прогнозный сценарий мы выбрали как базовый, с какими параметрами, и что он дал на 18 месяцев?»</em> Гиперболический, q0 1500 единиц/день, Di 0,25/год, b 0,6, что даёт 1069,5 единиц/день и 693,3 тыс. единиц, с экспоненциальным сценарием для сравнения. Цифры точно совпадают с исходным расчётом, и агент добавил, что в чатах зафиксировано решение, но не причина, по которой оно было принято.</p>
+<p><strong>Негативный контроль и изоляция.</strong> <em>«Я вообще когда-нибудь обсуждал мотор P-7 или тикет MT-5120?»</em> От имени alice: «Нет. В прошлых чатах, которые я могу искать, нет ничего про мотор P-7 или тикет MT-5120». Он перечислил ближайшие совпадения (машина K-2, тикет MT-4471) как возможную путаницу. От имени bob тот же вопрос вернул его чат про узел South с шумом подшипника P-7 и тикетом MT-5120. alice не может увидеть историю bob, даже если слова совпадают точно, потому что её токен открывает только её собственную директорию.</p>
+<p>Запуски агента занимали от 4 до 11 секунд целиком, с двумя-пятью вызовами вспоминания каждый. На сами вспоминания уходит около секунды из этого времени. Полные ответы — в <code>examples/agent-runs.md</code>.</p>
+<h3 id="тот-же-результат-на-стеке-близком-к-продакшену">Тот же результат на стеке, близком к продакшену</h3>
+<p>Прежде чем писать демо, мы подключили тот же дизайн к настоящему копайлоту: коммерческая платформа агентов, собственный чат-шлюз, MCP-сервер на Java и funes в том же контейнере. За четырьмя рабочими чатами (поиск данных, расчёты, заметка о передаче смены) последовали четыре чата со вспоминанием в новых диалогах. Агент сделал 13 вызовов вспоминания. Каждый вспомненный факт оказался верным, включая пересчёт бюджетного сценария на более длинный горизонт по вспомненным параметрам и негативный контроль по оборудованию, которое никогда не упоминалось. Одна вспомненная деталь пришла из ответа, чей стрим наш тестовый драйвер уже забросил. Шлюз всё равно переслал завершённую реплику, и память знала больше, чем тестовый харнесс.</p>
+<h2 id="измерения">Измерения</h2>
+<p>Чтобы выйти за рамки отобранных вручную примеров, мы сгенерировали синтетическую историю для одного пользователя: N диалогов по шесть сообщений, в каждом среди болтовни спрятан один проверяемый факт (номер тикета, процент брака контроля качества, ответственный за задачу или ссылка на решение). Дистракторы заложены намеренно. Каждая площадка и единица оборудования встречается примерно в шести диалогах (в болтовне и в составе других фактов), и одни и те же двенадцать человек, типы задач и симптомов повторяются повсюду, так что запрос должен совпасть с <em>комбинацией</em> и не может полагаться на одно редкое слово. У каждого вопроса ровно один верный ответ. Вопросы перефразированы: факт гласит «тикет MT-1040 открыт», а вопрос спрашивает «какой номер наряд-заказа был заведён на утечку сальника на насосе P-003?». Совпадение означает, что ожидаемый ответ встречается в тексте, который вернул инструмент.</p>
+<p>Всё выполнялось внутри контейнера, ограниченного 4 CPU и 4 ГБ, с одним новым процессом <code>funes</code> на вызов — в точности как это делает сервер.</p>
+<table>
+	<thead>
+			<tr>
+					<th></th>
+					<th>1000 диалогов</th>
+					<th>3000 диалогов</th>
+					<th>10 000 диалогов</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>Сообщений / сырой текст</td>
+					<td>6000 / 1,5 МБ</td>
+					<td>18 000 / 4,5 МБ</td>
+					<td>60 000 / 14,9 МБ</td>
+			</tr>
+			<tr>
+					<td><strong>Вспоминание, k=3, пул 8</strong> (наша настройка): доля попаданий</td>
+					<td>91% / 93%</td>
+					<td>93% / 95%</td>
+					<td>100% / 97%</td>
+			</tr>
+			<tr>
+					<td>То же, короткие запросы в стиле агента</td>
+					<td>94%</td>
+					<td>95%</td>
+					<td>98%</td>
+			</tr>
+			<tr>
+					<td>Вспоминание, k=8, пул 8: доля попаданий</td>
+					<td>100%</td>
+					<td>100%</td>
+					<td>100%</td>
+			</tr>
+			<tr>
+					<td>Вспоминание с реранком, k=3, пул 32: доля попаданий</td>
+					<td>99%</td>
+					<td>99%</td>
+					<td>100%</td>
+			</tr>
+			<tr>
+					<td>Задержка вспоминания p50 / p95 (без реранка)</td>
+					<td>0,15–0,20 / 0,22 с</td>
+					<td>0,16–0,19 / 0,23 с</td>
+					<td>0,18–0,19 / 0,24 с</td>
+			</tr>
+			<tr>
+					<td>Задержка вспоминания p50 (с реранком)</td>
+					<td>3,1 с</td>
+					<td>3,0 с</td>
+					<td>3,1 с</td>
+			</tr>
+			<tr>
+					<td>Пиковая память на вспоминание</td>
+					<td>231 МБ (с реранком 1,64 ГБ)</td>
+					<td>234 МБ (1,65 ГБ)</td>
+					<td>240 МБ (1,66 ГБ)</td>
+			</tr>
+			<tr>
+					<td>Добавить один диалог (инкрементальная индексация)</td>
+					<td>1,2–1,8 с, 270 МБ</td>
+					<td>8–9 с, 305 МБ</td>
+					<td>4,5–4,8 с, 390–400 МБ</td>
+			</tr>
+			<tr>
+					<td>Индексация с нуля (полная заливка)</td>
+					<td>68–70 с, 650 МБ</td>
+					<td>242 с, 1,26 ГБ</td>
+					<td>19,5 мин, 1,9 ГБ</td>
+			</tr>
+			<tr>
+					<td>Директория памяти на диске</td>
+					<td>86 МБ</td>
+					<td>605 МБ</td>
+					<td>424 МБ</td>
+			</tr>
+	</tbody>
+</table>
+<p>По 100 вопросов на каждый размер, 4 CPU. Там, где в ячейке два значения, бенчмарк запускался дважды с полной переиндексацией каждый раз; разброс — это вариация между прогонами сборки индекса.</p>
+<p>Что говорят цифры:</p>
+<ul>
+<li><strong>Задержка вспоминания не зависит от размера истории.</strong> Одно вспоминание стоит около 0,2 секунды и 240 МБ что при 1000, что при 10 000 диалогов, и большая часть этого — запуск процесса и загрузка эмбеддера. Для масштаба: инженер с десятью чатами в день накапливает около 2500 диалогов за год.</li>
+<li><strong>Вопрос никогда не теряется, он просто оказывается ниже отсечки.</strong> С восемью фрагментами вместо трёх каждый вопрос давал совпадение при любом размере. С тремя — до 9% вопросов промахивались. У изученных нами промахов была одна общая причина: почти идентичные факты про <em>другое</em> оборудование («вибросигнализация срабатывает снова и снова» для K-039, K-019 и K-007) обгоняли правильный вариант, потому что длинный, перефразированный вопрос совпадал с ними по смыслу, а различающим был только ID. Тот же вопрос, сокращённый до «компрессор K-047 тикет», ставил правильный диалог на первое место. Именно так агенты и формулируют вызовы инструментов в принципе (запросы нашего агента выглядели как <code>MT-4471 K-2 compressor closed</code>), и короткие запросы в целом получали чуть более высокие оценки. Мы добавили в описание инструмента фразу «используйте короткие запросы, построенные вокруг идентификаторов».</li>
+<li><strong>Реранкер отыгрывает промахи k=3, но по высокой цене.</strong> Он дотягивает до 99–100% при k=3, но это стоит в 15 раз больше по задержке, в 7 раз больше по памяти и добавляет в образ модель на 1,1 ГБ. Возврат большего числа фрагментов даёт ту же точность без затрат на задержку, но тратит токены контекста. Мы держим k=3, потому что агенты переспрашивают, если первая попытка не отвечает на вопрос. Поднимите k (и лимит символов), если ваш агент так не делает.</li>
+<li><strong>Индексация дёшева там, где это важно.</strong> Новый диалог становится доступным для поиска за секунды и несколько сотен мегабайт, вне пути обработки запроса. Построение истории из 10 000 диалогов с нуля занимает 20 минут и 2 ГБ. Это разовая полная заливка, так что запускайте её как batch-задачу, а не внутри сервера.</li>
+<li><strong>Использование диска скромное, но не линейное.</strong> Директория памяти хранит векторы, полнотекстовый индекс и версии таблиц. Её размер зависит от того, как часто движок хранения выполнял компакцию, поэтому в наших прогонах 3000 диалогов заняли больше места, чем 10 000. Закладывайте сотни мегабайт на очень активного пользователя и несколько мегабайт на типичного.</li>
+</ul>
+<h2 id="что-это-такое-а-что-нет">Что это такое, а что нет</h2>
+<table>
+	<thead>
+			<tr>
+					<th>Это</th>
+					<th>А это нет</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>Поиск по собственным дословным прошлым чатам пользователя</td>
+					<td>База знаний или профиль пользователя</td>
+			</tr>
+			<tr>
+					<td>Инициировано агентом: агент сам решает, когда оглянуться назад</td>
+					<td>Контекст, незаметно подмешиваемый в каждый промпт</td>
+			</tr>
+			<tr>
+					<td>Датированные фрагменты, которые агент может процитировать, а пользователь проверить</td>
+					<td>Извлечённые «факты» без источника</td>
+			</tr>
+			<tr>
+					<td>Отдельно для каждого пользователя, изолировано токеном вызывающего</td>
+					<td>Общекомандное знание (это был бы отдельный, осознанный дизайн)</td>
+			</tr>
+			<tr>
+					<td>История только на дозапись</td>
+					<td>Нечто, знающее, что тикет закрыт, если только об этом не сказано в чате</td>
+			</tr>
+	</tbody>
+</table>
+<h2 id="ограничения">Ограничения</h2>
+<ul>
+<li><strong>История — не истина.</strong> Вспоминание возвращает то, что было <em>сказано</em>, включая ошибки и планы, которые так и не осуществились. Наш агент справлялся с этим хорошо («в ваших заметках не сказано, было ли это закрыто»), но это заслуга агента и его промпта. Сам инструмент этого гарантировать не может.</li>
+<li><strong>Диалоги со вспоминанием тоже запоминаются.</strong> Ответы из диалогов со вспоминанием индексируются так же, как любая другая реплика. Обычно это помогает: сводный список задач тоже становится доступен для поиска. Но неверный ответ вспоминания тоже станет будущим «воспоминанием». Исключать реплики, состоящие в основном из вывода вспоминания, — разумное уточнение.</li>
+<li><strong>Удаление — это пересборка.</strong> funes работает только на дозапись. «Забудь этот диалог» означает удаление исходного файла и переиндексацию директории этого пользователя. Для одного пользователя это дёшево, но всё равно остаётся явной операцией, нужной для запросов о приватности и политик хранения.</li>
+<li><strong>Секреты и персональные данные остаются.</strong> Всё, что пользователь вставляет в чат, попадает в его память. Маскируйте на шлюзе перед пересылкой и заранее решите вопрос хранения. (У funes есть команда <code>scrub</code> для секретов, но не для бизнес-данных.)</li>
+<li><strong>Эмбеддинги в первую очередь под английский.</strong> bge-small-en — английская модель. BM25 по-прежнему точно находит коды на любом языке, но для смыслового поиска на других языках нужен многоязычный эмбеддер.</li>
+<li><strong>Поведение агента непостоянно.</strong> Без явного упоминания имени инструмента в запросе агенту приходится самому <em>решать</em>, оглядываться ли назад. Хорошее описание инструмента доводит дело почти до конца. Строка в системном промпте («если пользователь ссылается на более раннюю работу, сначала вспомни, а потом отвечай») добирает остальное.</li>
+<li><strong>Один процесс на вызов.</strong> Просто и надёжно, но каждое вспоминание платит за старт процесса и загрузку модели (часть тех самых ~0,2 с). При очень высокой частоте запросов долгоживущий MCP-сервер funes на арендатора (<code>funes mcp &lt;memory&gt;</code>) позволил бы этого избежать.</li>
+</ul>
+<h2 id="итог">Итог</h2>
+<p>Агентам не нужна пересадка мозга, чтобы перестать начинать с нуля. Им нужен способ заглянуть в то, что уже произошло. Когда поиск делает funes, вся фича сводится к одному маршруту, сохраняющему завершённые реплики, одному инструменту, который ищет по ним под личностью вызывающего, и одному контейнеру с закреплённым бинарником и запечённой моделью. Это не память в фантастическом смысле. Это вспоминание: датированные, проверяемые подсказки из прошлого, которые агент запрашивает, когда они нужны. Для людей, использующих агента, это разница между «напомни мне, что такое N-11» и «вы решили продолжать после закрытия MT-4471; он всё ещё не закрыт».</p>
+<p>Полное демо (сервер, Dockerfile, compose-файл, затравочные диалоги, обёртка для агента и бенчмарк) — в сопутствующем репозитории.</p>
+
+        </p>
+        
+    </div>
+
+    <div class="prev-next">
+        
+    </div>
+
+    
+    
+    
+</div>
+
+
+
+    
+
+        </main><footer class="footer">
+    
+    
+
+    
+    <span>
+        Made using <a target="_blank" href="https://gohugo.io/">HUGO</a>
+    </span>
+</footer>
+</body>
+</html>

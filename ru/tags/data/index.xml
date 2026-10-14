@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+	<channel>
+		<title>Data on LynxLine</title>
+		<link>https://lynxline.com/ru/tags/data/</link>
+		<description>Recent content in Data on LynxLine</description>
+		<generator>Hugo</generator>
+		<language>ru</language>
+		
+		
+		
+		
+			<lastBuildDate>Wed, 14 Oct 2026 09:00:00 +0200</lastBuildDate>
+		
+			<atom:link href="https://lynxline.com/ru/tags/data/index.xml" rel="self" type="application/rss+xml" />
+			<item>
+				<title>Научите агента вспоминать: история диалогов с возможностью поиска через MCP</title>
+				<link>https://lynxline.com/ru/posts/agent-recall-mcp/</link>
+				<pubDate>Wed, 14 Oct 2026 09:00:00 +0200</pubDate>
+				<guid>https://lynxline.com/ru/posts/agent-recall-mcp/</guid>
+				<description>&lt;p&gt;Каждый чат с агентом начинается с нуля. В понедельник кто-то вместе с ассистентом разбирает показатели по двум площадкам, записывает, кто за какое последующее действие отвечает, и утверждает бюджетный сценарий. В четверг он открывает новый чат и спрашивает «что мы решили по N-11?» — а агент понятия не имеет, что такое N-11. Пользователь прокручивает назад, копирует, вставляет и объясняет всё заново.&lt;/p&gt;&#xA;&lt;p&gt;Эта статья показывает, как мы закрыли этот разрыв совсем небольшим количеством кода. Агенту даётся один инструмент, &lt;code&gt;recall_my_conversations&lt;/code&gt;, который ищет по более ранним чатам текущего пользователя и возвращает датированные фрагменты. Поисковый движок — &lt;a href=&#34;https://github.com/huggingface/funes&#34;&gt;funes&lt;/a&gt;, open-source проект, который мы переиспользовали вместо того, чтобы писать свой. Связующим звеном служит небольшой сервер &lt;a href=&#34;https://gofastmcp.com&#34;&gt;FastMCP&lt;/a&gt;, и всё это работает в одном контейнере.&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title>Передавайте ссылки, а не строки: артефакты данных для вычислений агента через MCP</title>
+				<link>https://lynxline.com/ru/posts/agent-data-artifacts-mcp/</link>
+				<pubDate>Mon, 05 Oct 2026 09:00:00 +0200</pubDate>
+				<guid>https://lynxline.com/ru/posts/agent-data-artifacts-mcp/</guid>
+				<description>&lt;p&gt;В &lt;a href=&#34;https://lynxline.com/ru/posts/sandboxed-python-mcp/&#34;&gt;предыдущей статье&lt;/a&gt; мы дали AI-агенту безопасное место для выполнения Python. Это ответило на вопрос, &lt;em&gt;где&lt;/em&gt; выполняется написанный агентом код. Это продолжение отвечает на вопрос, который оказывается не менее важным: &lt;strong&gt;какие данные модели на самом деле нужно видеть?&lt;/strong&gt;&lt;/p&gt;&#xA;&lt;p&gt;Обычно ответ — намного меньше, чем мы ей даём.&lt;/p&gt;&#xA;&lt;h2 id=&#34;наивный-паттерн&#34;&gt;Наивный паттерн&lt;/h2&gt;&#xA;&lt;p&gt;Очевидный способ подключить агента к бизнес-системе выглядит так:&lt;/p&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;Инструмент делает запрос к системе и возвращает набор результатов в виде JSON.&lt;/li&gt;&#xA;&lt;li&gt;Строки попадают в контекст модели.&lt;/li&gt;&#xA;&lt;li&gt;Модель их читает и отвечает: «топ-пять это&amp;hellip;», «среднее значение&amp;hellip;».&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;p&gt;Это работает в демо с двадцатью строками. На реальных данных это ломается тремя способами:&lt;/p&gt;</description>
+			</item>
+	</channel>
+</rss>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+	<channel>
+		<title>Machine Learning on LynxLine</title>
+		<link>https://lynxline.com/ru/tags/machine-learning/</link>
+		<description>Recent content in Machine Learning on LynxLine</description>
+		<generator>Hugo</generator>
+		<language>ru</language>
+		
+		
+		
+		
+			<lastBuildDate>Mon, 28 Sep 2026 09:00:00 +0200</lastBuildDate>
+		
+			<atom:link href="https://lynxline.com/ru/tags/machine-learning/index.xml" rel="self" type="application/rss+xml" />
+			<item>
+				<title>От вопроса к имени таблицы: пробуем маленькую модель принятия решений там, где все тянутся к LLM</title>
+				<link>https://lynxline.com/ru/posts/laya-decision-model/</link>
+				<pubDate>Mon, 28 Sep 2026 09:00:00 +0200</pubDate>
+				<guid>https://lynxline.com/ru/posts/laya-decision-model/</guid>
+				<description>&lt;p&gt;Нам нужно было сопоставлять произвольный вопрос пользователя с одним из примерно 1000 имён таблиц базы данных — быстро и на собственном железе. Мы испробовали &lt;a href=&#34;https://github.com/NandhaKishorM/laya&#34;&gt;Laya&lt;/a&gt;, open-source «модель решений System-1», от и до: zero-shot, с гибридным поиском и, наконец, дообученную на синтетических данных. Вот что сработало, что незаметно провалилось и что мы бы сделали иначе.&lt;/p&gt;&#xA;&lt;h2 id=&#34;проблема&#34;&gt;Проблема&lt;/h2&gt;&#xA;&lt;p&gt;Наша платформа данных предоставляет около 1000 логических таблиц. Пользователи задают вопросы вроде &lt;em&gt;«какие были суммарные дневные продажи по магазинам в январе, по дням?»&lt;/em&gt;, и где-то до генерации SQL что-то должно решить, что этот вопрос про &lt;code&gt;XQR7_DTV_AGG&lt;/code&gt;, а не про сорок других таблиц, в которых тоже упоминаются магазины, дни или суммы. Большая LLM справляется с этим хорошо, но нам хотелось, чтобы это был дешёвый локальный примитив: вызываемый на каждой реплике пользователя, добавляющий десятки миллисекунд, а не секунды, и никогда не отправляющий метаданные схемы во внешний API.&lt;/p&gt;</description>
+			</item>
+	</channel>
+</rss>

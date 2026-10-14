@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+	<channel>
+		<title>Posts on LynxLine</title>
+		<link>https://lynxline.com/ru/posts/</link>
+		<description>Recent content in Posts on LynxLine</description>
+		<generator>Hugo</generator>
+		<language>ru</language>
+		
+		
+		
+		
+			<lastBuildDate>Wed, 14 Oct 2026 09:00:00 +0200</lastBuildDate>
+		
+			<atom:link href="https://lynxline.com/ru/posts/index.xml" rel="self" type="application/rss+xml" />
+			<item>
+				<title>Научите агента вспоминать: история диалогов с возможностью поиска через MCP</title>
+				<link>https://lynxline.com/ru/posts/agent-recall-mcp/</link>
+				<pubDate>Wed, 14 Oct 2026 09:00:00 +0200</pubDate>
+				<guid>https://lynxline.com/ru/posts/agent-recall-mcp/</guid>
+				<description>&lt;p&gt;Каждый чат с агентом начинается с нуля. В понедельник кто-то вместе с ассистентом разбирает показатели по двум площадкам, записывает, кто за какое последующее действие отвечает, и утверждает бюджетный сценарий. В четверг он открывает новый чат и спрашивает «что мы решили по N-11?» — а агент понятия не имеет, что такое N-11. Пользователь прокручивает назад, копирует, вставляет и объясняет всё заново.&lt;/p&gt;&#xA;&lt;p&gt;Эта статья показывает, как мы закрыли этот разрыв совсем небольшим количеством кода. Агенту даётся один инструмент, &lt;code&gt;recall_my_conversations&lt;/code&gt;, который ищет по более ранним чатам текущего пользователя и возвращает датированные фрагменты. Поисковый движок — &lt;a href=&#34;https://github.com/huggingface/funes&#34;&gt;funes&lt;/a&gt;, open-source проект, который мы переиспользовали вместо того, чтобы писать свой. Связующим звеном служит небольшой сервер &lt;a href=&#34;https://gofastmcp.com&#34;&gt;FastMCP&lt;/a&gt;, и всё это работает в одном контейнере.&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title>Передавайте ссылки, а не строки: артефакты данных для вычислений агента через MCP</title>
+				<link>https://lynxline.com/ru/posts/agent-data-artifacts-mcp/</link>
+				<pubDate>Mon, 05 Oct 2026 09:00:00 +0200</pubDate>
+				<guid>https://lynxline.com/ru/posts/agent-data-artifacts-mcp/</guid>
+				<description>&lt;p&gt;В &lt;a href=&#34;https://lynxline.com/ru/posts/sandboxed-python-mcp/&#34;&gt;предыдущей статье&lt;/a&gt; мы дали AI-агенту безопасное место для выполнения Python. Это ответило на вопрос, &lt;em&gt;где&lt;/em&gt; выполняется написанный агентом код. Это продолжение отвечает на вопрос, который оказывается не менее важным: &lt;strong&gt;какие данные модели на самом деле нужно видеть?&lt;/strong&gt;&lt;/p&gt;&#xA;&lt;p&gt;Обычно ответ — намного меньше, чем мы ей даём.&lt;/p&gt;&#xA;&lt;h2 id=&#34;наивный-паттерн&#34;&gt;Наивный паттерн&lt;/h2&gt;&#xA;&lt;p&gt;Очевидный способ подключить агента к бизнес-системе выглядит так:&lt;/p&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;Инструмент делает запрос к системе и возвращает набор результатов в виде JSON.&lt;/li&gt;&#xA;&lt;li&gt;Строки попадают в контекст модели.&lt;/li&gt;&#xA;&lt;li&gt;Модель их читает и отвечает: «топ-пять это&amp;hellip;», «среднее значение&amp;hellip;».&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;p&gt;Это работает в демо с двадцатью строками. На реальных данных это ломается тремя способами:&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title>От вопроса к имени таблицы: пробуем маленькую модель принятия решений там, где все тянутся к LLM</title>
+				<link>https://lynxline.com/ru/posts/laya-decision-model/</link>
+				<pubDate>Mon, 28 Sep 2026 09:00:00 +0200</pubDate>
+				<guid>https://lynxline.com/ru/posts/laya-decision-model/</guid>
+				<description>&lt;p&gt;Нам нужно было сопоставлять произвольный вопрос пользователя с одним из примерно 1000 имён таблиц базы данных — быстро и на собственном железе. Мы испробовали &lt;a href=&#34;https://github.com/NandhaKishorM/laya&#34;&gt;Laya&lt;/a&gt;, open-source «модель решений System-1», от и до: zero-shot, с гибридным поиском и, наконец, дообученную на синтетических данных. Вот что сработало, что незаметно провалилось и что мы бы сделали иначе.&lt;/p&gt;&#xA;&lt;h2 id=&#34;проблема&#34;&gt;Проблема&lt;/h2&gt;&#xA;&lt;p&gt;Наша платформа данных предоставляет около 1000 логических таблиц. Пользователи задают вопросы вроде &lt;em&gt;«какие были суммарные дневные продажи по магазинам в январе, по дням?»&lt;/em&gt;, и где-то до генерации SQL что-то должно решить, что этот вопрос про &lt;code&gt;XQR7_DTV_AGG&lt;/code&gt;, а не про сорок других таблиц, в которых тоже упоминаются магазины, дни или суммы. Большая LLM справляется с этим хорошо, но нам хотелось, чтобы это был дешёвый локальный примитив: вызываемый на каждой реплике пользователя, добавляющий десятки миллисекунд, а не секунды, и никогда не отправляющий метаданные схемы во внешний API.&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title>Безопасная песочница для AI-агента: выполнение кода через MCP</title>
+				<link>https://lynxline.com/ru/posts/sandboxed-python-mcp/</link>
+				<pubDate>Fri, 11 Sep 2026 09:00:00 +0200</pubDate>
+				<guid>https://lynxline.com/ru/posts/sandboxed-python-mcp/</guid>
+				<description>&lt;p&gt;LLM-агенты на удивление хорошо &lt;em&gt;пишут&lt;/em&gt; код и на удивление не везёт им с его &lt;em&gt;выполнением&lt;/em&gt;. В тот момент, когда вы позволяете модели выполнять произвольный Python на той же машине, где лежат ваши SSH-ключи, файлы &lt;code&gt;.env&lt;/code&gt; и продакшен-kubeconfig, вы построили очень вежливый сервис удалённого выполнения кода. И всё же выполнение кода — один из самых мощных инструментов, которые можно дать агенту: обработка данных, быстрые численные проверки, разбор странных форматов файлов, проверка собственных гипотез — всё это работает радикально лучше, когда модель может реально запустить то, что написала.&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title>llm9p: LLM поверх протокола 9P</title>
+				<link>https://lynxline.com/ru/posts/llm9p/</link>
+				<pubDate>Thu, 03 Sep 2026 09:00:00 +0200</pubDate>
+				<guid>https://lynxline.com/ru/posts/llm9p/</guid>
+				<description>&lt;p&gt;Спустя годы после того, как этот блог посвятил целую серию лабораторных работ портированию Inferno OS на Raspberry Pi, кто-то применил ту же философию «всё — это файл» к языковым моделям. &lt;a href=&#34;https://github.com/NERVsystems/llm9p&#34;&gt;llm9p&lt;/a&gt; представляет LLM в виде файловой системы 9P: пишете промпт в &lt;code&gt;ask&lt;/code&gt;, читаете ответ обратно. Модель, temperature и системный промпт — тоже просто файлы, а состояние диалога сохраняется до сброса.&lt;/p&gt;&#xA;&lt;p&gt;По-настоящему в духе Plan 9 то, как это монтируется: через 9pfuse из plan9port, через встроенный в Linux модуль ядра 9P или — лучше всего — через Infernode, хостинговую Inferno OS. Никакого SDK, никакого API-клиента — только файлы и пайпы.&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title>Скилл i-have-adhd для Claude Code</title>
+				<link>https://lynxline.com/ru/posts/i-have-adhd-claude-skill/</link>
+				<pubDate>Wed, 02 Sep 2026 12:00:00 +0200</pubDate>
+				<guid>https://lynxline.com/ru/posts/i-have-adhd-claude-skill/</guid>
+				<description>&lt;p&gt;У каждого AI-ассистента одна и та же привычка: три абзаца прочисток горла, прежде чем он скажет то, о чём вы на самом деле спросили. «Сейчас разберусь&amp;hellip; кстати, стоит упомянуть&amp;hellip; вот итог того, что удалось найти&amp;hellip;» К моменту, когда появляется ответ, вы уже забыли, о чём спрашивали.&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://github.com/ayghri/i-have-adhd&#34;&gt;ayghri/i-have-adhd&lt;/a&gt; — скилл для Claude Code, который просто отключает это поведение. Когда он активен, модель начинает говорить иначе:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Ответ или следующее действие — всегда первым делом&lt;/li&gt;&#xA;&lt;li&gt;Многошаговая работа нумеруется, на каждом шаге — одно конкретное действие&lt;/li&gt;&#xA;&lt;li&gt;Без вступлений, без повторов, без итоговой сводки в конце&lt;/li&gt;&#xA;&lt;li&gt;Прогресс переносится между репликами, а не сбрасывается каждый раз&lt;/li&gt;&#xA;&lt;li&gt;Оценки по времени конкретны, а не «скоро» или «в ближайшее время»&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;Скилл делали для доступности при СДВГ, но его тысячи раз установили люди, которым просто хочется инструментов, не прячущих суть под водой. Оказывается, порог терпения продираться сквозь воду у большинства из нас примерно одинаковый.&lt;/p&gt;</description>
+			</item>
+	</channel>
+</rss>

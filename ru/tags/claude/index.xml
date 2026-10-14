@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+	<channel>
+		<title>Claude on LynxLine</title>
+		<link>https://lynxline.com/ru/tags/claude/</link>
+		<description>Recent content in Claude on LynxLine</description>
+		<generator>Hugo</generator>
+		<language>ru</language>
+		
+		
+		
+		
+			<lastBuildDate>Thu, 03 Sep 2026 09:00:00 +0200</lastBuildDate>
+		
+			<atom:link href="https://lynxline.com/ru/tags/claude/index.xml" rel="self" type="application/rss+xml" />
+			<item>
+				<title>llm9p: LLM поверх протокола 9P</title>
+				<link>https://lynxline.com/ru/posts/llm9p/</link>
+				<pubDate>Thu, 03 Sep 2026 09:00:00 +0200</pubDate>
+				<guid>https://lynxline.com/ru/posts/llm9p/</guid>
+				<description>&lt;p&gt;Спустя годы после того, как этот блог посвятил целую серию лабораторных работ портированию Inferno OS на Raspberry Pi, кто-то применил ту же философию «всё — это файл» к языковым моделям. &lt;a href=&#34;https://github.com/NERVsystems/llm9p&#34;&gt;llm9p&lt;/a&gt; представляет LLM в виде файловой системы 9P: пишете промпт в &lt;code&gt;ask&lt;/code&gt;, читаете ответ обратно. Модель, temperature и системный промпт — тоже просто файлы, а состояние диалога сохраняется до сброса.&lt;/p&gt;&#xA;&lt;p&gt;По-настоящему в духе Plan 9 то, как это монтируется: через 9pfuse из plan9port, через встроенный в Linux модуль ядра 9P или — лучше всего — через Infernode, хостинговую Inferno OS. Никакого SDK, никакого API-клиента — только файлы и пайпы.&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title>Скилл i-have-adhd для Claude Code</title>
+				<link>https://lynxline.com/ru/posts/i-have-adhd-claude-skill/</link>
+				<pubDate>Wed, 02 Sep 2026 12:00:00 +0200</pubDate>
+				<guid>https://lynxline.com/ru/posts/i-have-adhd-claude-skill/</guid>
+				<description>&lt;p&gt;У каждого AI-ассистента одна и та же привычка: три абзаца прочисток горла, прежде чем он скажет то, о чём вы на самом деле спросили. «Сейчас разберусь&amp;hellip; кстати, стоит упомянуть&amp;hellip; вот итог того, что удалось найти&amp;hellip;» К моменту, когда появляется ответ, вы уже забыли, о чём спрашивали.&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://github.com/ayghri/i-have-adhd&#34;&gt;ayghri/i-have-adhd&lt;/a&gt; — скилл для Claude Code, который просто отключает это поведение. Когда он активен, модель начинает говорить иначе:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Ответ или следующее действие — всегда первым делом&lt;/li&gt;&#xA;&lt;li&gt;Многошаговая работа нумеруется, на каждом шаге — одно конкретное действие&lt;/li&gt;&#xA;&lt;li&gt;Без вступлений, без повторов, без итоговой сводки в конце&lt;/li&gt;&#xA;&lt;li&gt;Прогресс переносится между репликами, а не сбрасывается каждый раз&lt;/li&gt;&#xA;&lt;li&gt;Оценки по времени конкретны, а не «скоро» или «в ближайшее время»&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;Скилл делали для доступности при СДВГ, но его тысячи раз установили люди, которым просто хочется инструментов, не прячущих суть под водой. Оказывается, порог терпения продираться сквозь воду у большинства из нас примерно одинаковый.&lt;/p&gt;</description>
+			</item>
+	</channel>
+</rss>

@@ -50,6 +50,8 @@
     
     <link rel="alternate" hreflang="ko" href="https://lynxline.com/ko/posts/agent-data-artifacts-mcp/" />
     
+    <link rel="alternate" hreflang="ru" href="https://lynxline.com/ru/posts/agent-data-artifacts-mcp/" />
+    
     
     <link rel="alternate" hreflang="x-default" href="https://lynxline.com/posts/agent-data-artifacts-mcp/" />
     
@@ -76,6 +78,17 @@
                 if (choice === "en") return;
                 var lang = (navigator.languages && navigator.languages[0]) || navigator.language || "";
                 if (choice === "ko" || new RegExp("^" + "ko" + "\\b", "i").test(lang)) location.replace("/ko/posts/agent-data-artifacts-mcp/");
+            } catch (e) {}
+        })();
+    </script>
+    
+    <script>
+        (function () {
+            try {
+                var choice = localStorage.getItem("lang-choice");
+                if (choice === "en") return;
+                var lang = (navigator.languages && navigator.languages[0]) || navigator.language || "";
+                if (choice === "ru" || new RegExp("^" + "ru" + "\\b", "i").test(lang)) location.replace("/ru/posts/agent-data-artifacts-mcp/");
             } catch (e) {}
         })();
     </script>
@@ -215,6 +228,8 @@
             <a href="/ja/posts/agent-data-artifacts-mcp/" hreflang="ja" onclick="try { localStorage.setItem('lang-choice', 'ja') } catch (e) {}">日本語</a>
         
             <a href="/ko/posts/agent-data-artifacts-mcp/" hreflang="ko" onclick="try { localStorage.setItem('lang-choice', 'ko') } catch (e) {}">한국어</a>
+        
+            <a href="/ru/posts/agent-data-artifacts-mcp/" hreflang="ru" onclick="try { localStorage.setItem('lang-choice', 'ru') } catch (e) {}">Русский</a>
         
         </p>
         

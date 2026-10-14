@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+	<channel>
+		<title>Security on LynxLine</title>
+		<link>https://lynxline.com/ru/tags/security/</link>
+		<description>Recent content in Security on LynxLine</description>
+		<generator>Hugo</generator>
+		<language>ru</language>
+		
+		
+		
+		
+			<lastBuildDate>Fri, 11 Sep 2026 09:00:00 +0200</lastBuildDate>
+		
+			<atom:link href="https://lynxline.com/ru/tags/security/index.xml" rel="self" type="application/rss+xml" />
+			<item>
+				<title>Безопасная песочница для AI-агента: выполнение кода через MCP</title>
+				<link>https://lynxline.com/ru/posts/sandboxed-python-mcp/</link>
+				<pubDate>Fri, 11 Sep 2026 09:00:00 +0200</pubDate>
+				<guid>https://lynxline.com/ru/posts/sandboxed-python-mcp/</guid>
+				<description>&lt;p&gt;LLM-агенты на удивление хорошо &lt;em&gt;пишут&lt;/em&gt; код и на удивление не везёт им с его &lt;em&gt;выполнением&lt;/em&gt;. В тот момент, когда вы позволяете модели выполнять произвольный Python на той же машине, где лежат ваши SSH-ключи, файлы &lt;code&gt;.env&lt;/code&gt; и продакшен-kubeconfig, вы построили очень вежливый сервис удалённого выполнения кода. И всё же выполнение кода — один из самых мощных инструментов, которые можно дать агенту: обработка данных, быстрые численные проверки, разбор странных форматов файлов, проверка собственных гипотез — всё это работает радикально лучше, когда модель может реально запустить то, что написала.&lt;/p&gt;</description>
+			</item>
+	</channel>
+</rss>

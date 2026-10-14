@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+	<channel>
+		<title>AI on LynxLine</title>
+		<link>https://lynxline.com/ko/tags/ai/</link>
+		<description>Recent content in AI on LynxLine</description>
+		<generator>Hugo</generator>
+		<language>ko</language>
+		
+		
+		
+		
+			<lastBuildDate>Wed, 14 Oct 2026 09:00:00 +0200</lastBuildDate>
+		
+			<atom:link href="https://lynxline.com/ko/tags/ai/index.xml" rel="self" type="application/rss+xml" />
+			<item>
+				<title>에이전트에게 리콜을 가르치다: MCP 위의 검색 가능한 대화 기록</title>
+				<link>https://lynxline.com/ko/posts/agent-recall-mcp/</link>
+				<pubDate>Wed, 14 Oct 2026 09:00:00 +0200</pubDate>
+				<guid>https://lynxline.com/ko/posts/agent-recall-mcp/</guid>
+				<description>&lt;p&gt;에이전트와의 모든 대화는 제로에서 시작합니다. 월요일에 누군가가 어시스턴트와 함께 두 현장의 실적을 검토하고, 어떤 후속 작업을 누가 맡을지 적어두고, 예산안을 확정합니다. 목요일에 새 대화를 열고 &amp;ldquo;N-11에 대해 뭘로 결정했었지?&amp;ldquo;라고 물으면, 에이전트는 N-11이 뭔지조차 모릅니다. 사용자는 화면을 거슬러 올라가고, 복사하고, 붙여넣고, 처음부터 다시 설명해야 합니다.&lt;/p&gt;&#xA;&lt;p&gt;이 글은 아주 적은 코드로 그 간극을 어떻게 메웠는지 보여줍니다. 에이전트에게는 도구 하나, &lt;code&gt;recall_my_conversations&lt;/code&gt;만 주어집니다. 이 도구는 현재 사용자 본인의 이전 대화를 검색해서 날짜가 붙은 구절을 반환합니다. 검색 엔진은 &lt;a href=&#34;https://github.com/huggingface/funes&#34;&gt;funes&lt;/a&gt;입니다. 직접 만드는 대신 재사용한 오픈소스 프로젝트입니다. 이를 이어붙이는 건 작은 &lt;a href=&#34;https://gofastmcp.com&#34;&gt;FastMCP&lt;/a&gt; 서버이고, 모든 것이 컨테이너 하나 안에서 돌아갑니다.&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title>행이 아니라 참조를 넘겨라: MCP 위에서 에이전트 계산을 위한 데이터 아티팩트</title>
+				<link>https://lynxline.com/ko/posts/agent-data-artifacts-mcp/</link>
+				<pubDate>Mon, 05 Oct 2026 09:00:00 +0200</pubDate>
+				<guid>https://lynxline.com/ko/posts/agent-data-artifacts-mcp/</guid>
+				<description>&lt;p&gt;&lt;a href=&#34;https://lynxline.com/ko/posts/sandboxed-python-mcp/&#34;&gt;이전 글&lt;/a&gt;에서는 AI 에이전트에게 Python을 안전하게 실행할 공간을 마련해주었습니다. 그건 에이전트가 작성한 코드가 &lt;em&gt;어디서&lt;/em&gt; 실행되는지에 대한 답이었습니다. 이번 후속 글은 그에 못지않게 중요한 질문에 답합니다. &lt;strong&gt;모델이 실제로 봐야 하는 데이터는 무엇인가?&lt;/strong&gt;&lt;/p&gt;&#xA;&lt;p&gt;대개 그 답은 우리가 지금 넘겨주고 있는 양보다 훨씬 적습니다.&lt;/p&gt;&#xA;&lt;h2 id=&#34;순진한-패턴&#34;&gt;순진한 패턴&lt;/h2&gt;&#xA;&lt;p&gt;에이전트를 업무 시스템에 연결하는 가장 뻔한 방법은 이렇습니다.&lt;/p&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;도구가 시스템에 질의하고 결과 집합을 JSON으로 반환한다.&lt;/li&gt;&#xA;&lt;li&gt;그 행들이 모델의 컨텍스트에 들어간다.&lt;/li&gt;&#xA;&lt;li&gt;모델이 그것을 읽고 답한다. &amp;ldquo;상위 5개는&amp;hellip;&amp;rdquo;, &amp;ldquo;평균은&amp;hellip;&amp;rdquo;.&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;p&gt;행이 20개뿐인 데모에서는 이게 통합니다. 실제 데이터 앞에서는 세 가지 방식으로 무너집니다.&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title>질문에서 테이블 이름으로: 다들 LLM부터 찾는 자리에 작은 판정 모델을 써본 이야기</title>
+				<link>https://lynxline.com/ko/posts/laya-decision-model/</link>
+				<pubDate>Mon, 28 Sep 2026 09:00:00 +0200</pubDate>
+				<guid>https://lynxline.com/ko/posts/laya-decision-model/</guid>
+				<description>&lt;p&gt;자유 형식의 사용자 질문을 약 1,000개의 데이터베이스 테이블 이름 중 하나로, 그것도 빠르게, 자체 하드웨어에서 매핑해야 했습니다. 오픈소스 &amp;ldquo;System-1 판정 모델&amp;quot;인 &lt;a href=&#34;https://github.com/NandhaKishorM/laya&#34;&gt;Laya&lt;/a&gt;를 끝까지 써봤습니다. 제로샷부터, 하이브리드 검색과 결합한 경우, 그리고 마지막으로 합성 데이터로 파인튜닝한 경우까지요. 무엇이 통했고, 무엇이 조용히 실패했고, 다시 한다면 무엇을 다르게 할지 정리합니다.&lt;/p&gt;&#xA;&lt;h2 id=&#34;문제-상황&#34;&gt;문제 상황&lt;/h2&gt;&#xA;&lt;p&gt;저희 데이터 플랫폼은 약 1,000개의 논리 테이블을 노출합니다. 사용자는 &lt;em&gt;&amp;ldquo;1월 매장별 일일 매출 합계를 날짜별로 알려줘&amp;rdquo;&lt;/em&gt; 같은 질문을 던지고, SQL 생성보다 앞선 어느 지점에서 이 질문이 &lt;code&gt;XQR7_DTV_AGG&lt;/code&gt;에 관한 것이지, 매장/날짜/합계를 똑같이 언급하는 다른 40개 테이블에 관한 게 아니라는 걸 뭔가가 결정해야 합니다. 큰 LLM이라면 이걸 잘 해내지만, 저희는 이 조회가 저렴하고 로컬에서 돌아가는 기본 연산이길 원했습니다. 사용자의 모든 턴마다 호출되고, 초 단위가 아니라 수십 밀리초만 추가되며, 스키마 메타데이터를 외부 API로 절대 내보내지 않는 것이요.&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title>AI 에이전트에게 안전한 파이썬 놀이터 주기: MCP 위의 샌드박스 코드 실행</title>
+				<link>https://lynxline.com/ko/posts/sandboxed-python-mcp/</link>
+				<pubDate>Fri, 11 Sep 2026 09:00:00 +0200</pubDate>
+				<guid>https://lynxline.com/ko/posts/sandboxed-python-mcp/</guid>
+				<description>&lt;p&gt;LLM 에이전트는 코드를 &lt;em&gt;작성&lt;/em&gt;하는 데는 놀라울 만큼 뛰어나지만, 그걸 &lt;em&gt;실행&lt;/em&gt;하는 데는 놀라울 만큼 운이 따르지 않습니다. SSH 키, &lt;code&gt;.env&lt;/code&gt; 파일, 프로덕션 kubeconfig가 들어 있는 바로 그 머신에서 모델이 임의의 Python을 실행하게 두는 순간, 당신은 아주 공손한 원격 코드 실행 서비스를 만든 셈입니다. 그럼에도 코드 실행은 에이전트에게 줄 수 있는 가장 영향력 큰 도구 중 하나입니다. 데이터 정리, 빠른 수치 검증, 이상한 파일 형식 파싱, 자기 가설 검증까지 — 모델이 자기가 쓴 코드를 실제로 돌려볼 수 있을 때 모든 게 극적으로 잘 돌아갑니다.&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title>llm9p: 9P 프로토콜 위의 LLM</title>
+				<link>https://lynxline.com/ko/posts/llm9p/</link>
+				<pubDate>Thu, 03 Sep 2026 09:00:00 +0200</pubDate>
+				<guid>https://lynxline.com/ko/posts/llm9p/</guid>
+				<description>&lt;p&gt;이 블로그가 Inferno OS를 Raspberry Pi로 포팅하는 랩 연재를 통째로 다룬 지 몇 년이 지난 지금, 누군가 같은 &amp;ldquo;모든 것은 파일이다&amp;quot;라는 철학을 언어 모델에 그대로 적용했습니다. &lt;a href=&#34;https://github.com/NERVsystems/llm9p&#34;&gt;llm9p&lt;/a&gt;는 LLM을 9P 파일시스템으로 노출시킵니다. &lt;code&gt;ask&lt;/code&gt;에 프롬프트를 쓰고, 응답을 읽어오면 됩니다. 모델, temperature, 시스템 프롬프트도 전부 파일이고, 대화 상태는 리셋하기 전까지 유지됩니다.&lt;/p&gt;&#xA;&lt;p&gt;진짜 Plan 9다운 지점은 마운트 방식입니다. plan9port의 9pfuse, 리눅스 기본 9P 커널 모듈, 그리고 무엇보다도 호스팅형 Inferno OS인 Infernode를 통해 마운트할 수 있습니다. SDK도, API 클라이언트도 필요 없습니다. 파일과 파이프만 있으면 됩니다.&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title>Claude Code용 i-have-adhd 스킬</title>
+				<link>https://lynxline.com/ko/posts/i-have-adhd-claude-skill/</link>
+				<pubDate>Wed, 02 Sep 2026 12:00:00 +0200</pubDate>
+				<guid>https://lynxline.com/ko/posts/i-have-adhd-claude-skill/</guid>
+				<description>&lt;p&gt;모든 AI 어시스턴트에게는 똑같은 버릇이 있습니다. 정작 물어본 것을 답하기 전에 세 단락쯤 목을 가다듬는 겁니다. &amp;ldquo;한번 살펴볼게요&amp;hellip; 참고로 말씀드리면&amp;hellip; 찾은 내용을 정리하면&amp;hellip;&amp;rdquo; 답이 나올 때쯤이면 이미 무엇을 물었는지 잊어버린 뒤입니다.&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://github.com/ayghri/i-have-adhd&#34;&gt;ayghri/i-have-adhd&lt;/a&gt;는 이런 행동을 그냥 꺼버리는 Claude Code 스킬입니다. 활성화하면 모델이 말하는 방식이 이렇게 바뀝니다.&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;답 또는 다음 행동이 항상 맨 먼저 나온다&lt;/li&gt;&#xA;&lt;li&gt;여러 단계로 된 작업은 번호를 매기고, 한 단계에 하나의 구체적 행동만 담는다&lt;/li&gt;&#xA;&lt;li&gt;서두도, 요약 반복도, 마무리 정리도 없다&lt;/li&gt;&#xA;&lt;li&gt;진행 상황은 매번 초기화되지 않고 턴을 넘어 이어진다&lt;/li&gt;&#xA;&lt;li&gt;소요 시간은 &amp;ldquo;곧&amp;quot;이나 &amp;ldquo;머지않아&amp;quot;가 아니라 구체적으로 제시한다&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;원래는 ADHD 접근성을 위해 만들어졌지만, 핵심을 묻어버리지 않는 도구를 원하는 사람들 사이에서 수천 건의 설치 수를 기록했습니다. 알고 보면 쓸데없는 말을 헤치고 읽어내는 인내심의 한계는 다들 비슷한 모양입니다.&lt;/p&gt;</description>
+			</item>
+	</channel>
+</rss>

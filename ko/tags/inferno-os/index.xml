@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+	<channel>
+		<title>Inferno OS on LynxLine</title>
+		<link>https://lynxline.com/ko/tags/inferno-os/</link>
+		<description>Recent content in Inferno OS on LynxLine</description>
+		<generator>Hugo</generator>
+		<language>ko</language>
+		
+		
+		
+		
+			<lastBuildDate>Thu, 03 Sep 2026 09:00:00 +0200</lastBuildDate>
+		
+			<atom:link href="https://lynxline.com/ko/tags/inferno-os/index.xml" rel="self" type="application/rss+xml" />
+			<item>
+				<title>llm9p: 9P 프로토콜 위의 LLM</title>
+				<link>https://lynxline.com/ko/posts/llm9p/</link>
+				<pubDate>Thu, 03 Sep 2026 09:00:00 +0200</pubDate>
+				<guid>https://lynxline.com/ko/posts/llm9p/</guid>
+				<description>&lt;p&gt;이 블로그가 Inferno OS를 Raspberry Pi로 포팅하는 랩 연재를 통째로 다룬 지 몇 년이 지난 지금, 누군가 같은 &amp;ldquo;모든 것은 파일이다&amp;quot;라는 철학을 언어 모델에 그대로 적용했습니다. &lt;a href=&#34;https://github.com/NERVsystems/llm9p&#34;&gt;llm9p&lt;/a&gt;는 LLM을 9P 파일시스템으로 노출시킵니다. &lt;code&gt;ask&lt;/code&gt;에 프롬프트를 쓰고, 응답을 읽어오면 됩니다. 모델, temperature, 시스템 프롬프트도 전부 파일이고, 대화 상태는 리셋하기 전까지 유지됩니다.&lt;/p&gt;&#xA;&lt;p&gt;진짜 Plan 9다운 지점은 마운트 방식입니다. plan9port의 9pfuse, 리눅스 기본 9P 커널 모듈, 그리고 무엇보다도 호스팅형 Inferno OS인 Infernode를 통해 마운트할 수 있습니다. SDK도, API 클라이언트도 필요 없습니다. 파일과 파이프만 있으면 됩니다.&lt;/p&gt;</description>
+			</item>
+	</channel>
+</rss>

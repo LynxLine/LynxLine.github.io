@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="ko"><head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+
+    <style>
+        :root {
+            --accent-color: #FF4D4D;
+        }
+    </style>
+
+    
+    
+    
+    
+    
+    
+
+    
+    <title>질문에서 테이블 이름으로: 다들 LLM부터 찾는 자리에 작은 판정 모델을 써본 이야기</title>
+    <meta name="description" content="">
+    <meta name="keywords" content='AI, Machine Learning, Python'>
+
+    <meta property="og:url" content="https://lynxline.com/ko/posts/laya-decision-model/">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="질문에서 테이블 이름으로: 다들 LLM부터 찾는 자리에 작은 판정 모델을 써본 이야기">
+    <meta property="og:description" content="">
+    <meta property="og:image" content="https://lynxline.com/images/lynxline-logo.png">
+    <meta property="og:image:secure_url" content="https://lynxline.com/images/lynxline-logo.png">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="질문에서 테이블 이름으로: 다들 LLM부터 찾는 자리에 작은 판정 모델을 써본 이야기">
+    <meta name="twitter:description" content="">
+    <meta property="twitter:domain" content="https://lynxline.com/ko/posts/laya-decision-model/">
+    <meta property="twitter:url" content="https://lynxline.com/ko/posts/laya-decision-model/">
+    <meta name="twitter:image" content="https://lynxline.com/images/lynxline-logo.png">
+
+    
+    <link rel="canonical" href="https://lynxline.com/ko/posts/laya-decision-model/" />
+
+    
+    <link rel="alternate" hreflang="ko" href="https://lynxline.com/ko/posts/laya-decision-model/" />
+    
+    <link rel="alternate" hreflang="en" href="https://lynxline.com/posts/laya-decision-model/" />
+    
+    <link rel="alternate" hreflang="ja" href="https://lynxline.com/ja/posts/laya-decision-model/" />
+    
+    
+    <link rel="alternate" hreflang="x-default" href="https://lynxline.com/posts/laya-decision-model/" />
+    
+    
+
+    
+    
+
+    
+    <link rel="stylesheet" type="text/css" href="/css/normalize.min.css" media="print">
+
+    
+    <link rel="stylesheet" type="text/css" href="/css/site.min.css">
+
+    
+    <link id="dark-theme" rel="stylesheet" href="/css/site-dark.min.css">
+
+    
+    <script src="/js/bundle.min.23a6a54d1ecbde7842938a593a7a1fdb1ee63af6fe2d73cb4c81c05425de46c2.js" integrity="sha256-I6alTR7L3nhCk4pZOnof2x7mOvb&#43;LXPLTIHAVCXeRsI="></script>
+
+    
+    
+</head>
+<body>
+        <script type="text/javascript">
+            
+            setThemeByUserPref();
+        </script><header class="header">
+    <nav class="header-nav">
+
+        
+        <div class="avatar">
+            <a href="https://lynxline.com/">
+                <img src='/images/lynxline-logo.png' alt="LynxLine — lynx with neural-network ears and circuit traces" />
+            </a>
+        </div>
+        
+
+        <div class="nav-title">
+            <a class="nav-brand" href="https://lynxline.com/">LynxLine</a>
+        </div>
+
+        <div class="nav-links">
+            
+            <div class="nav-link">
+                <a href="https://lynxline.com/services/"><span data-feather='zap'></span> 서비스 </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://lynxline.com/ko/posts/"><span data-feather='layers'></span> 게시물 </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://lynxline.com/ko/tags/"><span data-feather='tag'></span> 태그 </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://lynxline.com/contact/"><span data-feather='mail'></span> 문의하기 </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://github.com"><span data-feather='github'></span>  </a>
+            </div>
+            
+
+            <span class="nav-icons-divider"></span>
+            <div class="nav-link dark-theme-toggle">
+                <span id="dark-theme-toggle-screen-reader-target" class="sr-only"></span>
+                <a>
+                    <span id="theme-toggle-icon" data-feather="moon"></span>
+                </a>
+            </div>
+
+            <div class="nav-link" id="hamburger-menu-toggle">
+                <span id="hamburger-menu-toggle-screen-reader-target" class="sr-only">menu</span>
+                <a>
+                    <span data-feather="menu"></span>
+                </a>
+            </div>
+
+            
+            <ul class="nav-hamburger-list visibility-hidden">
+                
+                <li class="nav-item">
+                    <a href="https://lynxline.com/services/"><span data-feather='zap'></span> 서비스 </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://lynxline.com/ko/posts/"><span data-feather='layers'></span> 게시물 </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://lynxline.com/ko/tags/"><span data-feather='tag'></span> 태그 </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://lynxline.com/contact/"><span data-feather='mail'></span> 문의하기 </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://github.com"><span data-feather='github'></span>  </a>
+                </li>
+                
+                <li class="nav-item dark-theme-toggle">
+                    <span id="dark-theme-toggle-screen-reader-target" class="sr-only">theme</span>
+                    <a>
+                        <span id="theme-toggle-icon" data-feather="moon"></span>
+                    </a>
+                </li>
+            </ul>
+
+        </div>
+    </nav>
+</header>
+<main id="content">
+    <div class="post container">
+    <div class="post-header-section">
+        <h1>질문에서 테이블 이름으로: 다들 LLM부터 찾는 자리에 작은 판정 모델을 써본 이야기</h1>
+        <small role="doc-subtitle"></small>
+        <p class="post-date">2026년 9월 28일
+        
+        </p>
+
+        <ul class="post-tags">
+        
+            <li class="post-tag"><a href="https://lynxline.com/ko/tags/ai">AI</a></li>
+        
+            <li class="post-tag"><a href="https://lynxline.com/ko/tags/machine-learning">Machine Learning</a></li>
+        
+            <li class="post-tag"><a href="https://lynxline.com/ko/tags/python">Python</a></li>
+        
+        </ul>
+
+        
+        <p class="post-translations">다른 언어로 읽기:
+        
+            <a href="/posts/laya-decision-model/" hreflang="en" onclick="try { localStorage.setItem('lang-choice', 'en') } catch (e) {}">English</a>
+        
+            <a href="/ja/posts/laya-decision-model/" hreflang="ja" onclick="try { localStorage.setItem('lang-choice', 'ja') } catch (e) {}">日本語</a>
+        
+        </p>
+        
+    </div>
+
+    <div class="post-content">
+        <p>
+            <p>자유 형식의 사용자 질문을 약 1,000개의 데이터베이스 테이블 이름 중 하나로, 그것도 빠르게, 자체 하드웨어에서 매핑해야 했습니다. 오픈소스 &ldquo;System-1 판정 모델&quot;인 <a href="https://github.com/NandhaKishorM/laya">Laya</a>를 끝까지 써봤습니다. 제로샷부터, 하이브리드 검색과 결합한 경우, 그리고 마지막으로 합성 데이터로 파인튜닝한 경우까지요. 무엇이 통했고, 무엇이 조용히 실패했고, 다시 한다면 무엇을 다르게 할지 정리합니다.</p>
+<h2 id="문제-상황">문제 상황</h2>
+<p>저희 데이터 플랫폼은 약 1,000개의 논리 테이블을 노출합니다. 사용자는 <em>&ldquo;1월 매장별 일일 매출 합계를 날짜별로 알려줘&rdquo;</em> 같은 질문을 던지고, SQL 생성보다 앞선 어느 지점에서 이 질문이 <code>XQR7_DTV_AGG</code>에 관한 것이지, 매장/날짜/합계를 똑같이 언급하는 다른 40개 테이블에 관한 게 아니라는 걸 뭔가가 결정해야 합니다. 큰 LLM이라면 이걸 잘 해내지만, 저희는 이 조회가 저렴하고 로컬에서 돌아가는 기본 연산이길 원했습니다. 사용자의 모든 턴마다 호출되고, 초 단위가 아니라 수십 밀리초만 추가되며, 스키마 메타데이터를 외부 API로 절대 내보내지 않는 것이요.</p>
+<p>크고 닫힌 레이블 집합에 대한 분류라는 이 틀이, 정확히 Laya가 내세우는 것입니다. Laya는 ModernBERT 계열 인코더 위에 만들어진, 파라미터 4억 2,100만 개짜리 비자기회귀 판정 모델이며 Apache 2.0으로 공개되어 있습니다. <em>상태</em>(사용자의 텍스트)와 후보 답들이 달린 타입 있는 <em>질문</em>을 주면, 한 번의 forward pass로 보정된 확률과 함께 선택지를 반환합니다. 일반적인 GPU에서 약 33ms입니다. 레이블 집합은 요청 시점에 정의되므로 테이블이 추가돼도 재학습이 필요 없습니다. 서류상으로는 완벽한 궁합이었습니다.</p>
+<h2 id="첫-번째-벽-긴-컨텍스트-모델이-아니다">첫 번째 벽: 긴 컨텍스트 모델이 아니다</h2>
+<p>순진한 계획 — &ldquo;모든 테이블 정보를 전부 컨텍스트로 모델에 넣는다&rdquo; — 은 즉시 죽습니다. 테이블별 문서(이름, 사람이 읽는 라벨, 설명, 컬럼 목록, 전형적인 사용 문구, 구분 노트)를 압축해도 약 8.5MB, 거의 200만 토큰에 달합니다. Laya의 입력 예산은 512 토큰(일부 체크포인트는 1,024)이고, 그중 약 200토큰은 답변 선택지를 렌더링하는 데 쓰입니다. 공식 문서 자체도 질문당 선택지가 약 20개를 넘으면 품질이 떨어진다고 밝히고 있습니다.</p>
+<p>그래서 아키텍처는 2단계일 수밖에 없습니다.</p>
+<ol>
+<li><strong>검색</strong> 단계가 약 1,000개 테이블을 쿼리에 대한 상위 15개 후보로 좁힙니다.</li>
+<li><strong>판정</strong> 단계: Laya가 각 후보의 약 140자짜리 설명을 보고 하나를 고릅니다.</li>
+</ol>
+<p>표준적인 &lsquo;검색 후 재정렬&rsquo; 패턴입니다. 흥미로운 부분은 각 단계가 실제로 얼마나 기여했는가입니다.</p>
+<h2 id="일단-측정-가능하게-만들기">일단 측정 가능하게 만들기</h2>
+<p>평가 세트는 기존의 각본화된 고객지원 대화 라이브러리로부터 만들었습니다. 기대 답변 텍스트가 실제 사용된 테이블을 명시하는 115개 턴입니다. 어떤 모델을 쓰느냐보다 중요했던 세부사항이 두 가지 있습니다.</p>
+<ul>
+<li><strong>정답 레이블에는 노이즈가 있다.</strong> &ldquo;기대되는&rdquo; 테이블은 참조 에이전트가 마침 사용했던 테이블일 뿐이고, 오답으로 처리된 것이 실은 타당한 대안인 경우도 있습니다. 아래의 절대 수치는 비관적으로 잡힌 값입니다.</li>
+<li><strong>후속 질문은 이력 없이는 답할 수 없다.</strong> &ldquo;그 달 물량 좀 보여줘&quot;는 그 자체로는 아무것도 검색해내지 못합니다. 직전 사용자 턴 두 개를 쿼리에 이어 붙이면(<code>q_ctx</code>) 연구 전체의 모든 지표가 거의 두 배가 되었습니다. 사용자가 후속 질문을 한다면, 대화 컨텍스트는 최적화 옵션이 아니라 — 기본 전제입니다.</li>
+</ul>
+<h2 id="1단계-검색이-상한선을-결정한다">1단계: 검색이 상한선을 결정한다</h2>
+<p>판정 단계가 무엇을 하든, 검색이 끌어올리지 못한 테이블은 고를 수 없습니다. 그래서 hit@15가 end-to-end 정확도의 확고한 상한선이 됩니다. 같은 압축 TSV(테이블당 한 행, 필드별 가중치) 위에서 검색기 세 가지를 비교했습니다.</p>
+<table>
+	<thead>
+			<tr>
+					<th>검색기</th>
+					<th>hit@15, 쿼리만</th>
+					<th>hit@15, 컨텍스트 포함</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>BM25, 필드 가중치 적용</td>
+					<td>0.24</td>
+					<td>0.45</td>
+			</tr>
+			<tr>
+					<td>BM25 + 수작업 약어 별칭</td>
+					<td>0.24</td>
+					<td>0.46</td>
+			</tr>
+			<tr>
+					<td>하이브리드: BM25 + 소형 임베딩 모델, reciprocal rank fusion</td>
+					<td>0.39</td>
+					<td><strong>0.65</strong></td>
+			</tr>
+	</tbody>
+</table>
+<p><em>평가 턴 중 정답 테이블이 상위 15개 후보 안에 들어간 비율. 임베딩 모델: 파라미터 3,300만 개짜리 문장 인코더, 테이블당 벡터 하나.</em></p>
+<p>여기서 발견한 것은 두 가지입니다.</p>
+<ul>
+<li><strong>어휘 격차가 가장 큰 실패 원인이다.</strong> 사용자는 &ldquo;매장별 일일 매출&quot;이라고 말하지만, 테이블 이름은 <code>XQR7_DTV_AGG</code>이고 설명에는 &ldquo;집계된 거래량&quot;이라고 적혀 있습니다. 약어로 이루어진 명명 규칙을 어휘 기반 검색은 메울 수 없습니다. 작은 밀집 임베딩 모델이 1,000×384 행렬 하나의 비용으로 그 격차 대부분을 메워줬습니다.</li>
+<li><strong>수작업 별칭 목록은 함정이다.</strong> 약 30개의 확장 규칙(&ldquo;매장&quot;의 약어 → <em>매장</em>, 등등)을 만들어서 얻은 건 1포인트였습니다. 명명 규칙의 롱테일은 누구의 인내심보다도 깁니다. 임베딩은 그걸 공짜로 학습합니다.</li>
+</ul>
+<h2 id="2단계-판정-모델이-실제로-더해주는-것">2단계: 판정 모델이 실제로 더해주는 것</h2>
+<p>하이브리드 검색과 컨텍스트를 함께 쓰면, 정답 테이블이 후보 목록에 들어 있는 비율은 65%입니다. 제로샷 Laya는 그중에서 전체 턴의 20%만 정확히 골라냅니다.</p>
+<table>
+	<thead>
+			<tr>
+					<th>구성(컨텍스트 포함)</th>
+					<th>Top-1 정확도</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>하이브리드 검색만, 1위 채택</td>
+					<td>0.17</td>
+			</tr>
+			<tr>
+					<td>밀집 임베딩 모델만, 1위 채택</td>
+					<td>0.22</td>
+			</tr>
+			<tr>
+					<td>하이브리드 상위 15개 → Laya 선택</td>
+					<td>0.20</td>
+			</tr>
+			<tr>
+					<td>하이브리드 상위 50개 → Laya 토너먼트(13개씩 배치, 승자 진출)</td>
+					<td>0.19</td>
+			</tr>
+	</tbody>
+</table>
+<p><em>실제 대화 115턴에 대한 end-to-end 정확도. 예측이 참조 답변에 명시된 테이블 중 하나와 일치하면 정답으로 집계.</em></p>
+<p>너그럽게 보면: 자기 후보 목록 안에서 Laya는 약 31%를 정답으로 바꿔냅니다 — 15개 선택지 중 무작위로 고를 때의 6.7%보다 4배 이상 높은 수치이고, 그것도 한 번도 본 적 없는 140자짜리 설명을 보고, 단 한 번의 forward pass로 해낸 겁니다. 메커니즘 자체는 작동합니다.</p>
+<p>솔직하게 보면: 파이프라인 전체가 단순한 밀집 검색기의 1위 결과보다 못합니다. 그리고 토너먼트 방식 — 50개 후보를 배치로 나눠 넣고 승자를 진출시키는 — 은 상황을 오히려 <em>악화</em>시켰습니다. 배치 승자는 그 배치 안에서만 최선일 뿐이라, 좋은 후보가 초반에 강한 경쟁자에게 걸려 일찍 탈락해버리기 때문입니다.</p>
+<p>그래도 정말 쓸모 있는 속성 하나는 살아남았습니다. <strong>확신도가 갈린다</strong>는 것입니다. 보고된 확신도의 중앙값은 정답일 때 0.88<del>0.90, 오답일 때 0.68</del>0.73이었습니다(다만 출시된 보정 온도 테이블이 선택지 11개 이상 구간을 다루지 않으므로, 이 값은 절대치가 아니라 상대적인 신호로 봐야 합니다). 이 덕분에 Laya는 저렴한 에스컬레이션 관문으로 쓸 수 있습니다. 확신이 높으면 로컬에서 답하고, 아니면 큰 모델로 넘기는 식입니다.</p>
+<h2 id="파인튜닝-시도-혹은-엉뚱한-벤치마크에서-이기는-법">파인튜닝 시도, 혹은 엉뚱한 벤치마크에서 이기는 법</h2>
+<p>Laya의 가중치는 공개되어 있고, 저자들은 완전한 파인튜닝 레시피(적절한 스코어링 규칙 기반 보상에 대한 정책 그래디언트 학습, 마지막에 보정 단계 포함)도 공개합니다. 저자들 자신의 특화 체크포인트는 자기네 벤치마크에서 거의 무작위 수준에서 0.77까지 뛰어오릅니다. 요지는 정확히, 여러분 자신의 판정 작업에 맞춰 특화시킬 수 있다는 것입니다. 그래서 해봤습니다.</p>
+<p><strong>학습 데이터는 공짜로 얻었습니다.</strong> 테이블별 문서에는 &ldquo;전형적인 사용 문구&quot;가 들어 있습니다. <em>&ldquo;즐겨 쓰는 배송 경로, 저장된 경로 조합, 선호하는 운송업체 경로&rdquo;</em> 같은 짧은 문자열입니다. 쉼표로 나누면 전체 1,000개 테이블에 걸쳐 약 25,000개의 (쿼리, 테이블) 쌍이 나옵니다. 각 쌍마다 15지선다 문제를 만들었고, 오답 선택지는 해당 쿼리에 대해 검색기가 실제로 내놓은 상위 후보들로 채웠습니다. 배포 환경의 분포와 맞아떨어지는 하드 네거티브인 셈입니다. 테이블의 5%는 통째로 검증용으로 떼어두었고, 실제 대화 115턴은 학습이 절대 건드리지 않는 테스트 세트로 남겨두었으며, 선택지 설명에서는 사용 문구를 제거해서 모델이 단순 문자열 매칭을 학습하지 못하게 했습니다.</p>
+<p><strong>실제 실행:</strong> 하드웨어 사정상 학습은 CPU에서 돌렸습니다. 56스레드 Xeon에, 트레이너는 NCCL/CUDA에서 Gloo로 패치하고, bf16 autocast, 프로세스 우선순위는 최저로 설정했습니다. 처리량은 마이크로배치당 약 20초, 에폭당 약 17시간, 4에폭에 사흘이 채 안 걸렸습니다. 권장하지는 않지만, 이 레시피에 특별한 장비가 필요 없다는 건 증명됩니다.</p>
+<p>결과는 이 글에서 가장 많은 걸 알려주는 표입니다.</p>
+<table>
+	<thead>
+			<tr>
+					<th>체크포인트</th>
+					<th>합성 검증(사용 문구 쿼리)</th>
+					<th>실제 대화(115턴)</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>기본 Laya, 제로샷</td>
+					<td>0.244</td>
+					<td>0.200</td>
+			</tr>
+			<tr>
+					<td>1에폭 후</td>
+					<td>0.340</td>
+					<td>0.165</td>
+			</tr>
+			<tr>
+					<td>4에폭 후</td>
+					<td><strong>0.380</strong></td>
+					<td><strong>0.139</strong></td>
+			</tr>
+	</tbody>
+</table>
+<p><em>합성 쿼리로 파인튜닝: 검증 정확도는 56% 상승, 실제 환경 정확도는 30% 하락. 양쪽 방향 모두 단조적으로.</em></p>
+<p>모델은 정확히 저희가 가르친 대로 배웠습니다. 문서에서 가져온 짧고 키워드로 빽빽한 명사구를 분류하는 법이요. 실제 사용자는 길고, 맥락적이고, 대화체인 질문을 던집니다. 이 둘은 서로 다른 입력 분포이고, 학습이 한 에폭씩 돌 때마다 모델은 합성 분포 쪽으로 더 끌려갔습니다. 과적합을 잡으려고 일부러 만든 홀드아웃 테이블 검증 세트는 아무것도 잡아내지 못했습니다. 그 검증 세트도 학습 세트와 똑같은 합성 분포에서 뽑혔기 때문입니다. 엉뚱한 것을, 그것도 자신만만하게 검증하고 있었던 겁니다.</p>
+<blockquote>
+<p><strong>포스터로 만들어 붙이고 싶은 교훈:</strong> 검증 세트는 학습 데이터와 <em>다른</em> 축에 대해서만 일반화를 증명합니다. 저희 검증 세트는 <em>테이블</em>은 달랐지만 <em>쿼리 스타일</em>은 같았으므로, 전자만 측정할 수 있었습니다. 실제 트래픽이 학습 데이터와 스타일 면에서 다르다면, 검증 세트도 그래야 합니다 — 설령 그것이 생성된 1,000개 예시 대신 손으로 쓴 50개 예시를 의미하더라도요.</p>
+</blockquote>
+<h2 id="주의사항-모음">주의사항 모음</h2>
+<ol>
+<li><strong>Laya는 컨텍스트 모델이 아니다.</strong> 입력 토큰 512<del>1,024개, 쓸 수 있는 선택지는 약 15</del>20개. 레이블 집합이 큰 작업은 모두 &lsquo;검색 후 판정&rsquo; 구조가 되며, 상한선을 결정하는 건 판정 모델이 아니라 검색 품질입니다.</li>
+<li><strong>어휘 기반 검색은 스키마 어휘에서 실패한다.</strong> 약어로 된 테이블 이름과 자연스러운 표현 사이의 간극이 실패의 가장 큰 원인입니다. 작은 밀집 임베딩 모델이 가장 저렴하면서도 큰 개선을 가져다줍니다.</li>
+<li><strong>대화 컨텍스트는 정확도를 두 배로 만든다.</strong> 검색 전에 최근 사용자 턴을 이어 붙여서 후속 질문을 해결하세요.</li>
+<li><strong>확신도는 선택지 수가 적을 때만 보정되어 있다.</strong> 공식 온도 테이블은 11개 이상 구간에서 멈춥니다. 그 이상에서는 확신도를 확률이 아니라 에스컬레이션을 위한 상대적 신호로만 쓰세요.</li>
+<li><strong>후보가 많을 때 토너먼트를 돌리면 정확도가 떨어진다.</strong> 배치 승자는 그 배치 안에서만 최선입니다. 판정을 여러 단계로 쌓지 말고 검색 범위를 넓히세요.</li>
+<li><strong>메타데이터에서 뽑아낸 합성 쿼리로 파인튜닝하는 건, 실제 쿼리가 다르게 생겼다면 명백히 해롭습니다</strong> — 그리고 합성 검증 세트는 그 사실을 경고해주지 않습니다.</li>
+<li><strong>참조 답변에서 뽑은 정답 레이블에는 노이즈가 있습니다.</strong> 절대 정확도는 하한선 정도로 보고, 구성 간의 차이에 주목하세요.</li>
+</ol>
+<h2 id="그래도-개선할-가치가-있을까">그래도 개선할 가치가 있을까?</h2>
+<p>네, 그렇다고 생각합니다. 기대 수익 순서대로 세 방향입니다.</p>
+<p><strong>1. 모델이 아니라 학습 데이터 분포를 고쳐라.</strong> 파인튜닝 메커니즘 자체는 분명히 작동합니다 — CPU로 사흘 만에 검증 정확도를 14포인트 움직였으니까요. 잘못된 목표를 최적화한 건 저희가 잘못된 쿼리를 먹였기 때문입니다. 해법은 실제와 비슷하게 보이는 학습용 질문을 생성하는 것입니다. 유능한 LLM으로 각 사용 문구를 완전한 대화체 질문으로 다시 쓰게 하고, 그중 일부에는 그럴듯한 대화 맥락을 앞에 붙이고, 실제 로그에 남아 있는 쿼리가 있다면 섞어 넣으세요. 레시피도, 하드 네거티브도, 홀드아웃 원칙도 그대로 두고 — 여기에 실제 트래픽에서 뽑은 검증 슬라이스만 더하면 됩니다.</p>
+<p><strong>2. 판정 단계보다 검색에 먼저 투자하라.</strong> 더 큰 임베딩 모델, 단순 이어붙이기 대신 대화 맥락으로 다시 쓴 쿼리를 임베딩하는 것, 테이블마다 여러 관점(이름 확장, 설명, 컬럼 목록을 따로)으로 인덱싱하는 것 모두가 0.65라는 상한선을 직접 공략합니다. hit@15의 1포인트는 판정 단계 전환율의 1포인트보다 더 가치가 있습니다.</p>
+<p><strong>3. 판정 모델은 강점이 있는 곳, 즉 관문으로 써라.</strong> 제로샷 상태에서도 Laya의 확신도는 정답과 오답을 갈라냅니다. 실용적인 프로덕션 구조는 이렇습니다. 밀집 검색이 후보를 제안하고, Laya가 상위 후보를 판정하고, 확신도가 높으면 약 50ms 만에 로컬에서 답하고, 낮으면 큰 모델로 넘깁니다. 그러면 작은 모델은 LLM을 이길 필요가 없습니다 — 트래픽의 쉬운 대다수만 흡수하면 되고, 이건 훨씬 낮은 기준입니다.</p>
+<hr>
+<p><em>재현을 위한 설정: 테이블 약 1,000개, 테이블별 문서는 TSV 한 행으로 압축, 필드별 가중치를 적용한 BM25, reciprocal rank fusion(k=60)을 결합한 파라미터 3,300만 개짜리 문장 임베딩 모델, Python SDK를 통한 Laya 421M 영어 체크포인트, 공개된 정책 그래디언트 레시피로 파인튜닝(선택형 항목 24.6천 개, 4에폭, 유효 배치 32, 학습률 2.5e-5 코사인), 평가는 대화 115턴에 대해 정답 중 하나라도 일치하면 정답으로 처리. 모든 수치는 단일 실행 결과이므로, 작은 차이는 그에 맞게 해석해야 합니다.</em></p>
+
+        </p>
+        
+    </div>
+
+    <div class="prev-next">
+        
+    </div>
+
+    
+    
+    
+</div>
+
+
+
+    
+
+        </main><footer class="footer">
+    
+    
+
+    
+    <span>
+        Made using <a target="_blank" href="https://gohugo.io/">HUGO</a>
+    </span>
+</footer>
+</body>
+</html>

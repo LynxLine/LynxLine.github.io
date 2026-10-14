@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="ko"><head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+
+    <style>
+        :root {
+            --accent-color: #FF4D4D;
+        }
+    </style>
+
+    
+    
+    
+    
+    
+    
+
+    
+    <title>행이 아니라 참조를 넘겨라: MCP 위에서 에이전트 계산을 위한 데이터 아티팩트</title>
+    <meta name="description" content="">
+    <meta name="keywords" content='AI, MCP, Python, Data'>
+
+    <meta property="og:url" content="https://lynxline.com/ko/posts/agent-data-artifacts-mcp/">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="행이 아니라 참조를 넘겨라: MCP 위에서 에이전트 계산을 위한 데이터 아티팩트">
+    <meta property="og:description" content="">
+    <meta property="og:image" content="https://lynxline.com/images/lynxline-logo.png">
+    <meta property="og:image:secure_url" content="https://lynxline.com/images/lynxline-logo.png">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="행이 아니라 참조를 넘겨라: MCP 위에서 에이전트 계산을 위한 데이터 아티팩트">
+    <meta name="twitter:description" content="">
+    <meta property="twitter:domain" content="https://lynxline.com/ko/posts/agent-data-artifacts-mcp/">
+    <meta property="twitter:url" content="https://lynxline.com/ko/posts/agent-data-artifacts-mcp/">
+    <meta name="twitter:image" content="https://lynxline.com/images/lynxline-logo.png">
+
+    
+    <link rel="canonical" href="https://lynxline.com/ko/posts/agent-data-artifacts-mcp/" />
+
+    
+    <link rel="alternate" hreflang="ko" href="https://lynxline.com/ko/posts/agent-data-artifacts-mcp/" />
+    
+    <link rel="alternate" hreflang="en" href="https://lynxline.com/posts/agent-data-artifacts-mcp/" />
+    
+    <link rel="alternate" hreflang="ja" href="https://lynxline.com/ja/posts/agent-data-artifacts-mcp/" />
+    
+    
+    <link rel="alternate" hreflang="x-default" href="https://lynxline.com/posts/agent-data-artifacts-mcp/" />
+    
+    
+
+    
+    
+
+    
+    <link rel="stylesheet" type="text/css" href="/css/normalize.min.css" media="print">
+
+    
+    <link rel="stylesheet" type="text/css" href="/css/site.min.css">
+
+    
+    <link id="dark-theme" rel="stylesheet" href="/css/site-dark.min.css">
+
+    
+    <script src="/js/bundle.min.23a6a54d1ecbde7842938a593a7a1fdb1ee63af6fe2d73cb4c81c05425de46c2.js" integrity="sha256-I6alTR7L3nhCk4pZOnof2x7mOvb&#43;LXPLTIHAVCXeRsI="></script>
+
+    
+    
+</head>
+<body>
+        <script type="text/javascript">
+            
+            setThemeByUserPref();
+        </script><header class="header">
+    <nav class="header-nav">
+
+        
+        <div class="avatar">
+            <a href="https://lynxline.com/">
+                <img src='/images/lynxline-logo.png' alt="LynxLine — lynx with neural-network ears and circuit traces" />
+            </a>
+        </div>
+        
+
+        <div class="nav-title">
+            <a class="nav-brand" href="https://lynxline.com/">LynxLine</a>
+        </div>
+
+        <div class="nav-links">
+            
+            <div class="nav-link">
+                <a href="https://lynxline.com/services/"><span data-feather='zap'></span> 서비스 </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://lynxline.com/ko/posts/"><span data-feather='layers'></span> 게시물 </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://lynxline.com/ko/tags/"><span data-feather='tag'></span> 태그 </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://lynxline.com/contact/"><span data-feather='mail'></span> 문의하기 </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://github.com"><span data-feather='github'></span>  </a>
+            </div>
+            
+
+            <span class="nav-icons-divider"></span>
+            <div class="nav-link dark-theme-toggle">
+                <span id="dark-theme-toggle-screen-reader-target" class="sr-only"></span>
+                <a>
+                    <span id="theme-toggle-icon" data-feather="moon"></span>
+                </a>
+            </div>
+
+            <div class="nav-link" id="hamburger-menu-toggle">
+                <span id="hamburger-menu-toggle-screen-reader-target" class="sr-only">menu</span>
+                <a>
+                    <span data-feather="menu"></span>
+                </a>
+            </div>
+
+            
+            <ul class="nav-hamburger-list visibility-hidden">
+                
+                <li class="nav-item">
+                    <a href="https://lynxline.com/services/"><span data-feather='zap'></span> 서비스 </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://lynxline.com/ko/posts/"><span data-feather='layers'></span> 게시물 </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://lynxline.com/ko/tags/"><span data-feather='tag'></span> 태그 </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://lynxline.com/contact/"><span data-feather='mail'></span> 문의하기 </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://github.com"><span data-feather='github'></span>  </a>
+                </li>
+                
+                <li class="nav-item dark-theme-toggle">
+                    <span id="dark-theme-toggle-screen-reader-target" class="sr-only">theme</span>
+                    <a>
+                        <span id="theme-toggle-icon" data-feather="moon"></span>
+                    </a>
+                </li>
+            </ul>
+
+        </div>
+    </nav>
+</header>
+<main id="content">
+    <div class="post container">
+    <div class="post-header-section">
+        <h1>행이 아니라 참조를 넘겨라: MCP 위에서 에이전트 계산을 위한 데이터 아티팩트</h1>
+        <small role="doc-subtitle"></small>
+        <p class="post-date">2026년 10월 5일
+        
+        </p>
+
+        <ul class="post-tags">
+        
+            <li class="post-tag"><a href="https://lynxline.com/ko/tags/ai">AI</a></li>
+        
+            <li class="post-tag"><a href="https://lynxline.com/ko/tags/mcp">MCP</a></li>
+        
+            <li class="post-tag"><a href="https://lynxline.com/ko/tags/python">Python</a></li>
+        
+            <li class="post-tag"><a href="https://lynxline.com/ko/tags/data">Data</a></li>
+        
+        </ul>
+
+        
+        <p class="post-translations">다른 언어로 읽기:
+        
+            <a href="/posts/agent-data-artifacts-mcp/" hreflang="en" onclick="try { localStorage.setItem('lang-choice', 'en') } catch (e) {}">English</a>
+        
+            <a href="/ja/posts/agent-data-artifacts-mcp/" hreflang="ja" onclick="try { localStorage.setItem('lang-choice', 'ja') } catch (e) {}">日本語</a>
+        
+        </p>
+        
+    </div>
+
+    <div class="post-content">
+        <p>
+            <p><a href="https://lynxline.com/ko/posts/sandboxed-python-mcp/">이전 글</a>에서는 AI 에이전트에게 Python을 안전하게 실행할 공간을 마련해주었습니다. 그건 에이전트가 작성한 코드가 <em>어디서</em> 실행되는지에 대한 답이었습니다. 이번 후속 글은 그에 못지않게 중요한 질문에 답합니다. <strong>모델이 실제로 봐야 하는 데이터는 무엇인가?</strong></p>
+<p>대개 그 답은 우리가 지금 넘겨주고 있는 양보다 훨씬 적습니다.</p>
+<h2 id="순진한-패턴">순진한 패턴</h2>
+<p>에이전트를 업무 시스템에 연결하는 가장 뻔한 방법은 이렇습니다.</p>
+<ol>
+<li>도구가 시스템에 질의하고 결과 집합을 JSON으로 반환한다.</li>
+<li>그 행들이 모델의 컨텍스트에 들어간다.</li>
+<li>모델이 그것을 읽고 답한다. &ldquo;상위 5개는&hellip;&rdquo;, &ldquo;평균은&hellip;&rdquo;.</li>
+</ol>
+<p>행이 20개뿐인 데모에서는 이게 통합니다. 실제 데이터 앞에서는 세 가지 방식으로 무너집니다.</p>
+<ul>
+<li><strong>보안.</strong> 도구가 반환한 모든 행이 이제 대화 기록의 일부가 됩니다. 대화 기록은 저장되고, 로그로 남고, 이후 턴에 다시 재생되고, 모델 제공업체로 전송되고, 텔레메트리에 수집되며, 때로는 평가용으로 보관됩니다. 원래 시스템 밖으로 나갈 필요가 전혀 없었던 데이터가 이제 그 모든 곳에 복사된 셈입니다.</li>
+<li><strong>비용과 용량.</strong> 필드 10개짜리 행 하나는 대략 40~60토큰입니다. 5,000행이면 수십만 토큰이 됩니다. 컨텍스트 윈도우의 대부분 혹은 전부이고, 그걸 들고 다니는 모든 턴마다 비용을 지불하게 됩니다.</li>
+<li><strong>정확성.</strong> LLM은 계산하지 않습니다. 추정할 뿐입니다. 모델에게 숫자 5,000개를 더하거나 전분기 대비 변화로 그룹 순위를 매기라고 하면, 자신만만하지만 근사치일 뿐 틀린 답이 나옵니다. 같은 분석이 pandas로는 세 줄이면 정확하게 나옵니다.</li>
+</ul>
+<p>결국 모델은 자기가 가장 못하는 일(대량 데이터에 대한 산술)을, 가장 적게 가진 자원(컨텍스트)을 써서 하게 되고, 그 과정에서 데이터를 사방에 흩뿌립니다.</p>
+<h2 id="패턴-데이터는-제자리에-모델은-핸들만">패턴: 데이터는 제자리에, 모델은 핸들만</h2>
+<p>발상을 뒤집어 봅시다. 데이터를 만들어내는 도구는 <strong>데이터를 반환하지 않습니다</strong>. 서버 쪽에 <strong>아티팩트</strong>로 저장해두고, 참조와 함께 모델이 그걸 대상으로 코드를 작성하는 데 필요한 만큼의 설명만 반환합니다.</p>
+<pre tabindex="0"><code>+--------------------------- MCP server ----------------------------+
+|                                                                   |
+|  fetch_*  ---&gt; [ artifact store ] &lt;---&gt; run_python (sandbox)      |
+|                   ^        ^                 |                    |
+|                   |        +---- outputs ----+                    |
+|                   +---- render_chart / export                     |
+|                                                                   |
++------------------------------|------------------------------------+
+                               | only: dataRef, schema, row count,
+                               |       tiny sample, small results
+                               v
+                       +---------------+
+                       |  LLM / agent  |
+                       +---------------+
+</code></pre><p>모델의 역할이 &ldquo;데이터를 읽고 답하기&quot;에서 &ldquo;데이터의 <em>형태</em>를 이해하고 답을 내는 코드를 작성하기&quot;로 바뀝니다. 모델은 그 역할을 잘 해냅니다.</p>
+<p>세 종류의 도구가 이 저장소를 사용합니다.</p>
+<ul>
+<li><strong>생산자</strong>(<code>fetch_*</code>)는 호출자의 권한으로 쿼리를 실행하고, 결과를 저장한 뒤 설명을 반환합니다.</li>
+<li><strong>계산 도구</strong>(<code>run_python</code>)는 참조를 입력으로 받습니다. 샌드박스 안에서는 이것이 DataFrame으로 나타납니다. 스크립트가 저장하는 모든 DataFrame은 <em>새로운</em> 아티팩트가 되고, 모델에게는 작은 JSON 결과만 돌아갑니다.</li>
+<li><strong>소비자</strong>(<code>render_chart</code>, <code>export_csv</code>)는 참조를 받아 사람이 보는 형태로 바꿉니다. 행은 저장소에서 사용자 화면으로 바로 가고, 모델을 거치지 않습니다.</li>
+</ul>
+<h2 id="최소-구현">최소 구현</h2>
+<p>예제는 이전 글과 마찬가지로 FastMCP와 pandas를 사용합니다. 일부러 작게 만들었습니다.</p>
+<h3 id="저장소">저장소</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> secrets
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> time
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> dataclasses <span style="color:#f92672">import</span> dataclass, field
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> pandas <span style="color:#66d9ef">as</span> pd
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">@dataclass</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Artifact</span>:
+</span></span><span style="display:flex;"><span>    owner: str
+</span></span><span style="display:flex;"><span>    df: pd<span style="color:#f92672">.</span>DataFrame
+</span></span><span style="display:flex;"><span>    created: float <span style="color:#f92672">=</span> field(default_factory<span style="color:#f92672">=</span>time<span style="color:#f92672">.</span>monotonic)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">ArtifactStore</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">__init__</span>(self, ttl_seconds: int <span style="color:#f92672">=</span> <span style="color:#ae81ff">24</span> <span style="color:#f92672">*</span> <span style="color:#ae81ff">3600</span>, max_bytes: int <span style="color:#f92672">=</span> <span style="color:#ae81ff">50_000_000</span>):
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>_items: dict[str, Artifact] <span style="color:#f92672">=</span> {}
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>_ttl <span style="color:#f92672">=</span> ttl_seconds
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>_max_bytes <span style="color:#f92672">=</span> max_bytes
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">put</span>(self, owner: str, df: pd<span style="color:#f92672">.</span>DataFrame) <span style="color:#f92672">-&gt;</span> str:
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> df<span style="color:#f92672">.</span>memory_usage(deep<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>)<span style="color:#f92672">.</span>sum() <span style="color:#f92672">&gt;</span> self<span style="color:#f92672">.</span>_max_bytes:
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">raise</span> <span style="color:#a6e22e">ValueError</span>(<span style="color:#e6db74">&#34;artifact exceeds size cap - narrow the query&#34;</span>)
+</span></span><span style="display:flex;"><span>        ref <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;data_&#34;</span> <span style="color:#f92672">+</span> secrets<span style="color:#f92672">.</span>token_urlsafe(<span style="color:#ae81ff">12</span>)
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>_items[ref] <span style="color:#f92672">=</span> Artifact(owner, df)
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> ref
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">get</span>(self, owner: str, ref: str) <span style="color:#f92672">-&gt;</span> pd<span style="color:#f92672">.</span>DataFrame:
+</span></span><span style="display:flex;"><span>        now <span style="color:#f92672">=</span> time<span style="color:#f92672">.</span>monotonic()
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>_items <span style="color:#f92672">=</span> {k: a <span style="color:#66d9ef">for</span> k, a <span style="color:#f92672">in</span> self<span style="color:#f92672">.</span>_items<span style="color:#f92672">.</span>items() <span style="color:#66d9ef">if</span> now <span style="color:#f92672">-</span> a<span style="color:#f92672">.</span>created <span style="color:#f92672">&lt;</span> self<span style="color:#f92672">.</span>_ttl}
+</span></span><span style="display:flex;"><span>        artifact <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>_items<span style="color:#f92672">.</span>get(ref)
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> artifact <span style="color:#f92672">is</span> <span style="color:#66d9ef">None</span> <span style="color:#f92672">or</span> artifact<span style="color:#f92672">.</span>owner <span style="color:#f92672">!=</span> owner:
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">raise</span> <span style="color:#a6e22e">KeyError</span>(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;unknown or expired dataRef </span><span style="color:#e6db74">{</span>ref<span style="color:#e6db74">}</span><span style="color:#e6db74"> - fetch the data again&#34;</span>)
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> artifact<span style="color:#f92672">.</span>df
+</span></span></code></pre></div><p>여기서 중요한 세부사항이 두 가지 있습니다. 참조는 <strong>순차적이 아니라 무작위</strong>이고, 모든 읽기는 <strong>소유자를 확인</strong>합니다. 다른 사람의 대화 기록에 참조가 섞여 들어가도 그 사람에게는 쓸모가 없습니다. 에러 메시지는 에이전트에게 복구 방법도 알려줍니다.</p>
+<h3 id="쏟아내지-말고-설명하라">쏟아내지 말고 설명하라</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> json
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">describe</span>(ref: str, df: pd<span style="color:#f92672">.</span>DataFrame, sample_rows: int <span style="color:#f92672">=</span> <span style="color:#ae81ff">5</span>) <span style="color:#f92672">-&gt;</span> dict:
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;dataRef&#34;</span>: ref,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;rows&#34;</span>: len(df),
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;columns&#34;</span>: {c: str(t) <span style="color:#66d9ef">for</span> c, t <span style="color:#f92672">in</span> df<span style="color:#f92672">.</span>dtypes<span style="color:#f92672">.</span>items()},
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;nulls&#34;</span>: {c: int(n) <span style="color:#66d9ef">for</span> c, n <span style="color:#f92672">in</span> df<span style="color:#f92672">.</span>isna()<span style="color:#f92672">.</span>sum()<span style="color:#f92672">.</span>items() <span style="color:#66d9ef">if</span> n},
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;sample&#34;</span>: json<span style="color:#f92672">.</span>loads(df<span style="color:#f92672">.</span>head(sample_rows)<span style="color:#f92672">.</span>to_json(orient<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;records&#34;</span>, date_format<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;iso&#34;</span>)),
+</span></span><span style="display:flex;"><span>    }
+</span></span></code></pre></div><p>컬럼 이름, 타입, null 개수, 그리고 몇 개의 샘플 행. 사람이 <code>groupby</code>를 작성하는 데 필요한 것이 이것이고, 모델에게 필요한 것도 똑같습니다.</p>
+<h3 id="생산자-도구와-계산-도구">생산자 도구와 계산 도구</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">from</span> fastmcp <span style="color:#f92672">import</span> FastMCP, Context
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>mcp <span style="color:#f92672">=</span> FastMCP(<span style="color:#e6db74">&#34;data-sandbox&#34;</span>)
+</span></span><span style="display:flex;"><span>store <span style="color:#f92672">=</span> ArtifactStore()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">owner_of</span>(ctx: Context) <span style="color:#f92672">-&gt;</span> str:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">...</span>  <span style="color:#75715e"># resolve the authenticated caller from your auth layer</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">@mcp.tool</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">async</span> <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">fetch_sales</span>(since: str, ctx: Context) <span style="color:#f92672">-&gt;</span> dict:
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;&#34;&#34;Load sales since a date into a server-side artifact.
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    Returns a dataRef with schema and a small sample, NOT the rows.
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    Analyse the data with run_python.&#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>    df <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> query_sales(since<span style="color:#f92672">=</span>since)  <span style="color:#75715e"># your system of record, under the caller&#39;s permissions</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> describe(store<span style="color:#f92672">.</span>put(owner_of(ctx), df), df)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">@mcp.tool</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">async</span> <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">run_python</span>(code: str, inputs: dict[str, str], ctx: Context) <span style="color:#f92672">-&gt;</span> dict:
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;&#34;&#34;Run Python in the sandbox. `inputs` maps variable names to dataRefs;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    each arrives as a pandas DataFrame. Store DataFrames in `outputs[name]`
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    to keep them as new artifacts. Assign a SMALL JSON value to `result`.&#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>    owner <span style="color:#f92672">=</span> owner_of(ctx)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">with</span> tempfile<span style="color:#f92672">.</span>TemporaryDirectory() <span style="color:#66d9ef">as</span> run:
+</span></span><span style="display:flex;"><span>        in_dir, out_dir <span style="color:#f92672">=</span> Path(run, <span style="color:#e6db74">&#34;in&#34;</span>), Path(run, <span style="color:#e6db74">&#34;out&#34;</span>)
+</span></span><span style="display:flex;"><span>        in_dir<span style="color:#f92672">.</span>mkdir()
+</span></span><span style="display:flex;"><span>        out_dir<span style="color:#f92672">.</span>mkdir()
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span> name, ref <span style="color:#f92672">in</span> inputs<span style="color:#f92672">.</span>items():
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> <span style="color:#f92672">not</span> name<span style="color:#f92672">.</span>isidentifier():
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">raise</span> <span style="color:#a6e22e">ValueError</span>(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;input name </span><span style="color:#e6db74">{</span>name<span style="color:#e6db74">!r}</span><span style="color:#e6db74"> must be a Python identifier&#34;</span>)
+</span></span><span style="display:flex;"><span>            store<span style="color:#f92672">.</span>get(owner, ref)<span style="color:#f92672">.</span>to_parquet(in_dir <span style="color:#f92672">/</span> <span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">{</span>name<span style="color:#e6db74">}</span><span style="color:#e6db74">.parquet&#34;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        res <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> execute_sandboxed(code, in_dir, out_dir)  <span style="color:#75715e"># the sandbox from part one</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        new <span style="color:#f92672">=</span> {p<span style="color:#f92672">.</span>stem: pd<span style="color:#f92672">.</span>read_parquet(p) <span style="color:#66d9ef">for</span> p <span style="color:#f92672">in</span> out_dir<span style="color:#f92672">.</span>glob(<span style="color:#e6db74">&#34;*.parquet&#34;</span>)}
+</span></span><span style="display:flex;"><span>        outputs <span style="color:#f92672">=</span> {name: describe(store<span style="color:#f92672">.</span>put(owner, df), df, sample_rows<span style="color:#f92672">=</span><span style="color:#ae81ff">3</span>) <span style="color:#66d9ef">for</span> name, df <span style="color:#f92672">in</span> new<span style="color:#f92672">.</span>items()}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> {<span style="color:#e6db74">&#34;ok&#34;</span>: res<span style="color:#f92672">.</span>ok, <span style="color:#e6db74">&#34;result&#34;</span>: cap_json(res<span style="color:#f92672">.</span>result), <span style="color:#e6db74">&#34;stdout&#34;</span>: truncate(res<span style="color:#f92672">.</span>stdout),
+</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">&#34;error&#34;</span>: res<span style="color:#f92672">.</span>error, <span style="color:#e6db74">&#34;outputs&#34;</span>: outputs}
+</span></span></code></pre></div><p>샌드박스 안에서는 짧은 준비 코드가 각 <code>in/*.parquet</code>을 전역 변수로 불러오고 빈 <code>outputs</code> 딕셔너리를 만듭니다. 마무리 코드는 <code>outputs</code>를 <code>out/</code>에 기록하고 <code>result</code>를 직렬화합니다. 샌드박스는 여전히 네트워크가 없고 자기 실행 디렉터리만 볼 수 있으므로, 스크립트를 통해서도 데이터가 빠져나갈 수 없습니다. (런타임에 <code>pyarrow</code>가 없다면 CSV도 됩니다. 다만 컬럼 타입 정보는 잃게 됩니다.)</p>
+<h2 id="대화-기록은-이렇게-생겼다">대화 기록은 이렇게 생겼다</h2>
+<pre tabindex="0"><code>user:  Which five product lines lost the most revenue quarter over quarter?
+
+agent -&gt; fetch_sales(since=&#34;2025-01-01&#34;)
+      &lt;- {dataRef: &#34;data_x7Kq...&#34;, rows: 48210, columns: {...}, sample: [5 rows]}
+
+agent -&gt; run_python(inputs={&#34;sales&#34;: &#34;data_x7Kq...&#34;}, code=&#34;&#34;&#34;
+           q = sales.assign(q=sales.date.dt.to_period(&#34;Q&#34;))
+           pivot = q.pivot_table(index=&#34;line&#34;, columns=&#34;q&#34;, values=&#34;revenue&#34;, aggfunc=&#34;sum&#34;)
+           delta = (pivot.iloc[:, -1] - pivot.iloc[:, -2]).sort_values()
+           outputs[&#34;qoq&#34;] = delta.rename(&#34;delta&#34;).reset_index()
+           result = delta.head(5).round(2).to_dict()
+         &#34;&#34;&#34;)
+      &lt;- {result: {&#34;Line A&#34;: -182340.5, ...}, outputs: {&#34;qoq&#34;: {dataRef: &#34;data_Pm2...&#34;, rows: 312}}}
+
+agent: The five biggest drops were ...
+
+... several turns later ...
+
+user:  Chart all of them.
+agent -&gt; render_chart(dataRef=&#34;data_Pm2...&#34;, x=&#34;line&#34;, y=&#34;delta&#34;, kind=&#34;bar&#34;)
+</code></pre><p>48,210개 행이 관련되어 있었습니다. 대화 기록에 도달한 건 약 2킬로바이트였습니다. 답이 정확한 이유는 모델이 아니라 pandas가 계산했기 때문입니다.</p>
+<h2 id="단계와-턴을-넘나드는-아티팩트">단계와 턴을 넘나드는 아티팩트</h2>
+<p>참조는 짧은 문자열이기 때문에, 다른 값과 똑같이 대화 속을 돌아다닙니다.</p>
+<ul>
+<li><strong>연쇄되는 도구 호출.</strong> 한 <code>run_python</code> 호출의 <code>outputs</code>가 다음 호출의 <code>inputs</code>가 됩니다. 여러 단계로 된 분석(정제, 조인, 집계, 순위 매기기)은 참조의 사슬입니다. 중간 테이블은 컨텍스트를 전혀 거치지 않습니다.</li>
+<li><strong>나중 턴.</strong> 2번째 턴의 참조는 9번째 턴에도 대화 기록에 그대로 남아 있습니다. &ldquo;이제 그걸 지역별로 나눠줘&quot;는 저장된 아티팩트를 재사용합니다. 다시 가져올 필요도, 데이터를 다시 붙여넣을 필요도 없습니다.</li>
+<li><strong>만료도 설계의 일부.</strong> TTL이 저장소 크기를 일정하게 유지해줍니다. 만료된 참조는 다시 가져오라는 에러를 반환하므로, 오래된 핸들은 낡은 데이터를 조용히 돌려주는 대신 깔끔하게 실패합니다.</li>
+</ul>
+<p>이 내용을 에이전트 지침에 적어두세요. <em>질문에 답하려고 원본 행을 요청하지 말 것. 아티팩트로 가져와서, run_python으로 계산하고, dataRef로 차트를 그릴 것.</em></p>
+<h2 id="이-패턴을-지탱하는-규칙">이 패턴을 지탱하는 규칙</h2>
+<ul>
+<li><strong>데이터의 내용이 아니라 형태를 반환하라.</strong> 스키마, 행 수, null 개수, 샘플 행 몇 개. 샘플 크기는 설정 가능하게 만들고, 민감한 데이터셋에는 0으로 설정하세요.</li>
+<li><strong>모델에게 돌아가는 모든 것을 작게 유지하고, 그걸 강제하라.</strong> <code>result</code>의 크기를 제한하고 <code>stdout</code>을 잘라내세요. 그러지 않으면 <code>print(df)</code> 한 줄이 테이블 전체를 모델에게 돌려보냅니다.</li>
+<li><strong>참조는 각각 한 명의 소유자에게 속한다.</strong> 무작위 ID를 쓰고 읽을 때마다 소유자를 확인하세요. 참조는 권한 증표가 아닙니다.</li>
+<li><strong>생산자는 원본 시스템의 규칙을 지킨다.</strong> 아티팩트에는 호출자가 가져올 수 있도록 허용된 것만 정확히 담깁니다. 같은 인가, 같은 행 수 제한입니다.</li>
+<li><strong>저장소에 한계를 둬라.</strong> 아티팩트당 바이트 상한, TTL, 소유자 범위의 조회. 이곳은 작업용 데이터를 잠시 담아두는 곳이지, 데이터 웨어하우스가 아닙니다.</li>
+<li><strong>화면에 보여주는 모든 경로가 참조를 받도록 하라.</strong> 차트, 표, 내보내기 모두 저장소에서 직접 읽으므로, &ldquo;보여줘&rdquo; 단계에서도 행이 모델을 거치지 않습니다.</li>
+</ul>
+<h2 id="솔직한-트레이드오프">솔직한 트레이드오프</h2>
+<p>이 방식은 노출을 <strong>줄입니다</strong>. <strong>없애지는</strong> 않습니다. 샘플 행과 집계값도 여전히 데이터입니다. 크기가 1인 그룹은 레코드 하나나 마찬가지이고, 작정하고 만든 프롬프트는 여전히 출력 상한 안에서 행을 출력하라고 에이전트에게 요구할 수 있습니다. 결과 상한과 샘플 크기는 정책 설정으로 다루고, 진짜 경계는 원본 시스템의 인가에 두세요.</p>
+<p>모델은 이제 데이터를 직접 볼 수도 없습니다. 5행짜리 샘플은 오해를 부를 수 있습니다. 이상한 값, 섞여 있는 단위, 90%가 null인 컬럼처럼요. 요청 시 요약 통계를 반환하는 저렴한 <code>describe_data(dataRef)</code> 도구 하나면, 전체를 다시 쏟아내지 않고도 이런 문제 대부분을 해결할 수 있습니다.</p>
+<h2 id="마치며">마치며</h2>
+<p>1부의 샌드박스는 에이전트 코드 실행을 안전하게 만들었습니다. 데이터 아티팩트는 그걸 실행할 가치가 있게 만듭니다. 모델은 계획을 세우고 코드를 작성하고, Python이 산술을 하고, 데이터는 여러분의 시스템 안에 남습니다. 대화 기록에는 결국 질문과 코드와 답만 남습니다. 그 분석이 다룬 데이터는 하나도 담겨 있지 않은, 재현 가능한 분석 기록입니다.</p>
+
+        </p>
+        
+    </div>
+
+    <div class="prev-next">
+        
+    </div>
+
+    
+    
+    
+</div>
+
+
+
+    
+
+        </main><footer class="footer">
+    
+    
+
+    
+    <span>
+        Made using <a target="_blank" href="https://gohugo.io/">HUGO</a>
+    </span>
+</footer>
+</body>
+</html>

@@ -14,6 +14,11 @@
                 hreflang="ja"
                 href="https://lynxline.com/ja/tags/ai/"
                 />
+    <xhtml:link
+                rel="alternate"
+                hreflang="ko"
+                href="https://lynxline.com/ko/tags/ai/"
+                />
   </url><url>
     <loc>https://lynxline.com/tags/data/</loc>
     <lastmod>2026-10-14T09:00:00+02:00</lastmod>
@@ -26,6 +31,11 @@
                 rel="alternate"
                 hreflang="ja"
                 href="https://lynxline.com/ja/tags/data/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="ko"
+                href="https://lynxline.com/ko/tags/data/"
                 />
   </url><url>
     <loc>https://lynxline.com/</loc>
@@ -40,6 +50,11 @@
                 hreflang="ja"
                 href="https://lynxline.com/ja/"
                 />
+    <xhtml:link
+                rel="alternate"
+                hreflang="ko"
+                href="https://lynxline.com/ko/"
+                />
   </url><url>
     <loc>https://lynxline.com/tags/mcp/</loc>
     <lastmod>2026-10-14T09:00:00+02:00</lastmod>
@@ -52,6 +67,11 @@
                 rel="alternate"
                 hreflang="ja"
                 href="https://lynxline.com/ja/tags/mcp/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="ko"
+                href="https://lynxline.com/ko/tags/mcp/"
                 />
   </url><url>
     <loc>https://lynxline.com/posts/</loc>
@@ -66,6 +86,11 @@
                 hreflang="ja"
                 href="https://lynxline.com/ja/posts/"
                 />
+    <xhtml:link
+                rel="alternate"
+                hreflang="ko"
+                href="https://lynxline.com/ko/posts/"
+                />
   </url><url>
     <loc>https://lynxline.com/tags/python/</loc>
     <lastmod>2026-10-14T09:00:00+02:00</lastmod>
@@ -78,6 +103,11 @@
                 rel="alternate"
                 hreflang="ja"
                 href="https://lynxline.com/ja/tags/python/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="ko"
+                href="https://lynxline.com/ko/tags/python/"
                 />
   </url><url>
     <loc>https://lynxline.com/tags/</loc>
@@ -92,6 +122,11 @@
                 hreflang="ja"
                 href="https://lynxline.com/ja/tags/"
                 />
+    <xhtml:link
+                rel="alternate"
+                hreflang="ko"
+                href="https://lynxline.com/ko/tags/"
+                />
   </url><url>
     <loc>https://lynxline.com/posts/agent-recall-mcp/</loc>
     <lastmod>2026-10-14T09:00:00+02:00</lastmod>
@@ -104,6 +139,11 @@
                 rel="alternate"
                 hreflang="ja"
                 href="https://lynxline.com/ja/posts/agent-recall-mcp/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="ko"
+                href="https://lynxline.com/ko/posts/agent-recall-mcp/"
                 />
   </url><url>
     <loc>https://lynxline.com/posts/agent-data-artifacts-mcp/</loc>
@@ -118,6 +158,11 @@
                 hreflang="ja"
                 href="https://lynxline.com/ja/posts/agent-data-artifacts-mcp/"
                 />
+    <xhtml:link
+                rel="alternate"
+                hreflang="ko"
+                href="https://lynxline.com/ko/posts/agent-data-artifacts-mcp/"
+                />
   </url><url>
     <loc>https://lynxline.com/posts/laya-decision-model/</loc>
     <lastmod>2026-09-28T09:00:00+02:00</lastmod>
@@ -131,6 +176,11 @@
                 hreflang="ja"
                 href="https://lynxline.com/ja/posts/laya-decision-model/"
                 />
+    <xhtml:link
+                rel="alternate"
+                hreflang="ko"
+                href="https://lynxline.com/ko/posts/laya-decision-model/"
+                />
   </url><url>
     <loc>https://lynxline.com/tags/machine-learning/</loc>
     <lastmod>2026-09-28T09:00:00+02:00</lastmod>
@@ -143,6 +193,11 @@
                 rel="alternate"
                 hreflang="ja"
                 href="https://lynxline.com/ja/tags/machine-learning/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="ko"
+                href="https://lynxline.com/ko/tags/machine-learning/"
                 />
   </url><url>
     <loc>https://lynxline.com/tags/bitmessage/</loc>
@@ -172,6 +227,11 @@
                 hreflang="ja"
                 href="https://lynxline.com/ja/posts/sandboxed-python-mcp/"
                 />
+    <xhtml:link
+                rel="alternate"
+                hreflang="ko"
+                href="https://lynxline.com/ko/posts/sandboxed-python-mcp/"
+                />
   </url><url>
     <loc>https://lynxline.com/tags/security/</loc>
     <lastmod>2026-09-11T09:00:00+02:00</lastmod>
@@ -184,6 +244,11 @@
                 rel="alternate"
                 hreflang="ja"
                 href="https://lynxline.com/ja/tags/security/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="ko"
+                href="https://lynxline.com/ko/tags/security/"
                 />
   </url><url>
     <loc>https://lynxline.com/tags/claude/</loc>
@@ -198,6 +263,11 @@
                 hreflang="ja"
                 href="https://lynxline.com/ja/tags/claude/"
                 />
+    <xhtml:link
+                rel="alternate"
+                hreflang="ko"
+                href="https://lynxline.com/ko/tags/claude/"
+                />
   </url><url>
     <loc>https://lynxline.com/tags/inferno-os/</loc>
     <lastmod>2026-09-03T09:00:00+02:00</lastmod>
@@ -210,6 +280,11 @@
                 rel="alternate"
                 hreflang="ja"
                 href="https://lynxline.com/ja/tags/inferno-os/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="ko"
+                href="https://lynxline.com/ko/tags/inferno-os/"
                 />
   </url><url>
     <loc>https://lynxline.com/posts/llm9p/</loc>
@@ -224,6 +299,11 @@
                 hreflang="ja"
                 href="https://lynxline.com/ja/posts/llm9p/"
                 />
+    <xhtml:link
+                rel="alternate"
+                hreflang="ko"
+                href="https://lynxline.com/ko/posts/llm9p/"
+                />
   </url><url>
     <loc>https://lynxline.com/posts/i-have-adhd-claude-skill/</loc>
     <lastmod>2026-09-02T12:00:00+02:00</lastmod>
@@ -237,6 +317,11 @@
                 hreflang="ja"
                 href="https://lynxline.com/ja/posts/i-have-adhd-claude-skill/"
                 />
+    <xhtml:link
+                rel="alternate"
+                hreflang="ko"
+                href="https://lynxline.com/ko/posts/i-have-adhd-claude-skill/"
+                />
   </url><url>
     <loc>https://lynxline.com/tags/tools/</loc>
     <lastmod>2026-09-02T12:00:00+02:00</lastmod>
@@ -249,6 +334,11 @@
                 rel="alternate"
                 hreflang="ja"
                 href="https://lynxline.com/ja/tags/tools/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="ko"
+                href="https://lynxline.com/ko/tags/tools/"
                 />
   </url><url>
     <loc>https://lynxline.com/services/</loc>
@@ -660,6 +750,11 @@
                 rel="alternate"
                 hreflang="ja"
                 href="https://lynxline.com/ja/categories/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="ko"
+                href="https://lynxline.com/ko/categories/"
                 />
   </url>
 </urlset>
